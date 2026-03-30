@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #000000;
+  --color-foreground: #ffffff;
+  
+  --color-card: rgba(255, 255, 255, 0.03);
+  --color-card-border: rgba(255, 255, 255, 0.08);
+  
+  --color-primary: #ffffff;
+  --color-accent: #666666;
+
+  --font-sans: var(--font-inter), sans-serif;
+  --font-heading: var(--font-outfit), sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    @apply font-sans selection:bg-white/20 selection:text-white;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tighter;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-card backdrop-blur-3xl border border-card-border rounded-3xl shadow-[0_8px_32px_rgba(0,0,0,0.8)];
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-white via-white/80 to-transparent;
+  }
+  
+  .vercel-glow {
+    box-shadow: 0 0 120px rgba(255,255,255,0.1), inset 0 0 20px rgba(255,255,255,0.05);
+  }
+}
+
+/* Custom minimal scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #555; }

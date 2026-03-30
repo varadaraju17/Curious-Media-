@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "home": "Home",
+    "media": "Curious Media",
+    "studio": "Curious Studio",
+    "products": "Curious Products",
+    "creators": "Creators",
+    "brands": "Brands",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "home": {
+    "title": "Where Brands Meet Creators",
+    "subtitle": "A premium media-tech platform empowering digital storytelling and powerful collaborations.",
+    "cta_explore": "Explore Our World",
+    "cta_contact": "Work With Us",
+    "story": {
+      "text": "We don't just create content. We engineer narratives that captivate audiences, bridge the gap between visionary brands and influential creators, and build the future of digital media."
+    },
+    "divisions": {
+      "title": "Our Divisions",
+      "subtitle": "Three specialized pillars. One unified ecosystem built to scale your digital presence.",
+      "media_desc": "Influencer marketing, social media management, and talent acquisition.",
+      "studio_desc": "High-end cinematic video production, brand reels, and ad storytelling.",
+      "products_desc": "In-house tech products bridging the creator economy.",
+      "explore": "Explore"
+    },
+    "analytics": {
+      "title": "Performance That Scales",
+      "subtitle": "Real-time ROI and audience analytics powered by Curious OS."
+    },
+    "cta": {
+      "title": "Ready to make an impact?",
+      "subtitle": "Join visionary brands and elite creators who are shaping the future of digital media with Curious."
+    }
+  }
+}
