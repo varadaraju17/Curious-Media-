@@ -32,7 +32,7 @@ export function CTASection({ dict, locale }: { dict: any; locale: Locale }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-5xl md:text-7xl lg:text-[100px] font-black font-heading leading-none tracking-tighter mb-8 text-transparent bg-clip-text bg-gradient-to-b from-white via-white/90 to-blue-400/20"
+          className="text-5xl md:text-7xl lg:text-[100px] font-black font-heading leading-none tracking-tighter mb-8 text-white"
         >
           {dict.home.cta.title.split(' ')[0]}
           <br />
@@ -44,7 +44,7 @@ export function CTASection({ dict, locale }: { dict: any; locale: Locale }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="text-xl md:text-3xl text-white/50 mb-16 max-w-2xl font-medium tracking-tight"
+          className="text-xl md:text-3xl text-white/70 mb-16 max-w-2xl font-medium tracking-tight"
         >
           {dict.home.cta.subtitle}
         </motion.p>
@@ -57,7 +57,7 @@ export function CTASection({ dict, locale }: { dict: any; locale: Locale }) {
         >
           <Link 
             href={`/${locale}/contact`}
-            className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-white px-10 py-5 text-black font-black tracking-wide transition-all hover:scale-110 hover:shadow-[0_0_60px_rgba(255,255,255,0.4)]"
+            className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-white px-10 py-5 text-blue-600 font-black tracking-wide transition-all hover:scale-110 hover:shadow-[0_0_60px_rgba(255,255,255,0.4)]"
           >
             <span className="relative z-10 text-lg">{dict.home.cta.button}</span>
             <ArrowRight className="relative z-10 w-6 h-6 group-hover:translate-x-1 transition-transform" />

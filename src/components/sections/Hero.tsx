@@ -45,7 +45,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[10vw] md:text-[8vw] leading-[0.9] font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-white/90 to-blue-400/20"
+          className="text-[10vw] md:text-[8vw] leading-[0.9] font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-white/90 to-blue-900/40"
         >
           WHERE BRANDS<br/>
           MEET CREATORS.
@@ -55,7 +55,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-12 text-xl md:text-3xl text-white/50 max-w-3xl leading-snug tracking-tight font-medium"
+          className="mt-12 text-xl md:text-3xl text-white/70 max-w-3xl leading-snug tracking-tight font-medium"
         >
           {dict.home?.subtitle || "A premium media-tech platform empowering digital storytelling and powerful collaborations."}
         </motion.p>
@@ -69,14 +69,14 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
         >
            <Link 
              href={`/${locale}/media`} 
-             className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-white px-8 py-4 text-black font-bold tracking-wide transition-all hover:scale-105 hover:bg-blue-50"
+             className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-white px-8 py-4 text-blue-600 font-bold tracking-wide transition-all hover:scale-105 hover:bg-blue-50"
            >
              {dict.home?.cta_explore || "Explore Our World"}
              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
            </Link>
            <Link 
              href={`/${locale}/studio`} 
-             className="group inline-flex items-center justify-center gap-3 rounded-full border border-white/10 glass px-8 py-4 font-bold text-white transition-all hover:bg-white/10 hover:border-white/20 select-none"
+             className="group inline-flex items-center justify-center gap-3 rounded-full border border-white/20 glass px-8 py-4 font-bold text-white transition-all hover:bg-white/20 hover:border-white/30 select-none"
            >
              <PlayCircle className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />
              Watch Showreel

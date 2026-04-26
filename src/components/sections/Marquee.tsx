@@ -44,9 +44,9 @@ export function Marquee({ type, dict }: { type: "brands" | "creators"; dict: any
   const repeatItems = [...items, ...items, ...items, ...items];
 
   return (
-    <section className="py-20 bg-background overflow-hidden border-y border-white/5">
+    <section className="py-20 bg-background overflow-hidden border-y border-white/10">
       <div className="container mx-auto px-4 md:px-8 mb-10 text-center">
-        <p className="text-white/40 uppercase tracking-[0.2em] font-bold text-sm">
+        <p className="text-white/60 uppercase tracking-[0.2em] font-bold text-sm">
           {type === "brands" ? "Trusted By Visionary Brands" : "Powering Top Digital Talent"}
         </p>
       </div>
@@ -67,29 +67,30 @@ export function Marquee({ type, dict }: { type: "brands" | "creators"; dict: any
           {repeatItems.map((item: any, index) => (
             <div 
               key={index}
-              className="px-8 md:px-16 flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300 group/item"
+              className="px-8 md:px-16 flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 group/item"
             >
               {type === "brands" ? (
                 <div className="flex flex-col items-center gap-3">
-                  <div className="relative w-14 h-14 md:w-20 md:h-20 flex items-center justify-center rounded-2xl bg-white/5 border border-white/5 group-hover/item:border-blue-500/20 group-hover/item:bg-blue-500/5 transition-all duration-500 overflow-hidden">
+                  <div className="relative w-14 h-14 md:w-20 md:h-20 flex items-center justify-center rounded-2xl bg-white p-2 shadow-xl group-hover/item:scale-110 transition-all duration-500 overflow-hidden">
                     <img 
-                      src={`https://logo.clearbit.com/${item.domain}`} 
+                      src={`https://www.google.com/s2/favicons?domain=${item.domain}&sz=128`} 
                       alt={item.name}
-                      className="max-w-[60%] max-h-[60%] object-contain filter brightness-0 invert opacity-80 group-hover/item:opacity-100 transition-opacity"
+                      className="max-w-[80%] max-h-[80%] object-contain"
+                      loading="lazy"
                       onError={(e) => {
                         (e.target as any).style.display = 'none';
                         const parent = (e.target as any).parentElement;
                         const fallback = document.createElement('div');
-                        fallback.className = 'w-full h-full flex items-center justify-center font-black text-xl md:text-2xl text-white/20 bg-gradient-to-br from-blue-500/10 to-transparent';
+                        fallback.className = 'w-full h-full flex items-center justify-center font-black text-xl md:text-2xl text-blue-600 bg-blue-50';
                         fallback.innerText = item.name[0];
                         parent.appendChild(fallback);
                       }}
                     />
                   </div>
-                  <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-white/20 group-hover/item:text-blue-400/60 transition-colors">{item.name}</span>
+                  <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-white/60 group-hover/item:text-white transition-colors">{item.name}</span>
                 </div>
               ) : (
-                <h3 className="text-4xl md:text-6xl font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20">
+                <h3 className="text-4xl md:text-6xl font-black font-heading tracking-tighter text-white">
                   {item}
                 </h3>
               )}
