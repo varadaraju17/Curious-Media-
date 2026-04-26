@@ -7,9 +7,9 @@ import { ArrowRight } from "lucide-react";
 
 export function CTASection({ dict, locale }: { dict: any; locale: Locale }) {
   return (
-    <section className="py-32 md:py-64 relative z-10 overflow-hidden bg-black border-t border-white/5">
+    <section className="py-32 md:py-64 relative z-10 overflow-hidden bg-background border-t border-white/5">
       {/* Background Central Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1200px] h-[800px] bg-white/5 blur-[250px] rounded-full pointer-events-none mix-blend-screen"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1200px] h-[800px] bg-blue-500/10 blur-[250px] rounded-full pointer-events-none mix-blend-screen"></div>
       
       {/* Vercel Grid Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_70%_70%_at_50%_50%,#000_10%,transparent_100%)] pointer-events-none"></div>
@@ -22,7 +22,7 @@ export function CTASection({ dict, locale }: { dict: any; locale: Locale }) {
            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 glass mb-8 shadow-[0_0_30px_rgba(255,255,255,0.03)]">
-            <span className="flex h-2 w-2 rounded-full bg-white animate-pulse"></span>
+            <span className="flex h-2 w-2 rounded-full bg-blue-400 animate-pulse"></span>
             <span className="text-xs font-bold tracking-widest uppercase text-white/70">Initiate Collaboration</span>
           </div>
         </motion.div>
@@ -32,7 +32,7 @@ export function CTASection({ dict, locale }: { dict: any; locale: Locale }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-5xl md:text-7xl lg:text-[100px] font-black font-heading leading-none tracking-tighter mb-8 text-transparent bg-clip-text bg-gradient-to-b from-white via-white/90 to-black/20"
+          className="text-5xl md:text-7xl lg:text-[100px] font-black font-heading leading-none tracking-tighter mb-8 text-transparent bg-clip-text bg-gradient-to-b from-white via-white/90 to-blue-400/20"
         >
           {dict.home.cta.title.split(' ')[0]}
           <br />

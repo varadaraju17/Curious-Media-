@@ -10,7 +10,7 @@ interface FooterProps {
 
 export function Footer({ dict, locale }: FooterProps) {
   return (
-    <footer className="mt-20 border-t border-white/10 bg-black pt-16 pb-8">
+    <footer className="mt-20 border-t border-white/10 bg-background pt-16 pb-8">
       <div className="container mx-auto px-4 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-2">

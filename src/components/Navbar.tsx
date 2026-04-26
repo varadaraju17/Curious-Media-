@@ -46,7 +46,7 @@ export function Navbar({ dict, locale }: NavProps) {
       <div className="container mx-auto px-4 md:px-8">
         <div className={`flex items-center justify-between rounded-full transition-all duration-500 ${
           scrolled 
-            ? "bg-black/60 backdrop-blur-3xl px-8 py-3 shadow-[0_0_30px_rgba(255,255,255,0.03)] border border-white/10" 
+            ? "bg-background/60 backdrop-blur-3xl px-8 py-3 shadow-[0_0_30px_rgba(30,58,138,0.05)] border border-white/10" 
             : "bg-transparent px-4 py-2 border border-transparent"
         }`}>
           <Link href={`/${locale}`} className="text-xl md:text-2xl font-bold font-heading tracking-tighter text-white z-10 shrink-0">
@@ -128,7 +128,7 @@ export function Navbar({ dict, locale }: NavProps) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden absolute top-20 left-4 right-4 bg-black/95 backdrop-blur-3xl p-6 rounded-3xl border border-white/10 flex flex-col gap-2 shadow-[0_20px_60px_rgba(0,0,0,0.9)] z-50"
+            className="md:hidden absolute top-20 left-4 right-4 bg-background/95 backdrop-blur-3xl p-6 rounded-3xl border border-white/10 flex flex-col gap-2 shadow-[0_20px_60px_rgba(0,0,0,0.9)] z-50"
           >
             {navLinks.map((link) => {
                const isActive = pathname.includes(link.href) && (link.href !== `/${locale}` || pathname === `/${locale}`);

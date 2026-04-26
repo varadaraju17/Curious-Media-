@@ -7,9 +7,9 @@ export function Analytics({ dict }: { dict: any }) {
   const bars = [40, 65, 45, 80, 55, 90, 100];
 
   return (
-    <section className="py-32 md:py-48 relative z-10 bg-black border-t border-white/5">
+    <section className="py-32 md:py-48 relative z-10 bg-background border-t border-white/5">
       {/* Background Cinematic Glows */}
-      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-white/5 blur-[200px] rounded-full pointer-events-none mix-blend-screen mix-blend-plus-lighter"></div>
+      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-blue-500/5 blur-[200px] rounded-full pointer-events-none mix-blend-screen mix-blend-plus-lighter"></div>
       
       <div className="container mx-auto px-4 md:px-8 max-w-6xl relative z-10">
         <div className="flex flex-col md:flex-row items-center gap-16 md:gap-24">
@@ -58,7 +58,7 @@ export function Analytics({ dict }: { dict: any }) {
                whileInView={{ opacity: 1, scale: 1 }}
                viewport={{ once: true }}
                transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-               className="bg-black/80 backdrop-blur-3xl rounded-[40px] p-8 shadow-[0_20px_80px_rgba(255,255,255,0.04)] border border-white/10 relative group overflow-hidden"
+               className="bg-background/80 backdrop-blur-3xl rounded-[40px] p-8 shadow-[0_20px_80px_rgba(30,58,138,0.1)] border border-white/10 relative group overflow-hidden"
              >
                 {/* Internal Grid */}
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
