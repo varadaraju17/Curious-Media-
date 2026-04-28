@@ -1,123 +1,157 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { ArrowUpRight, TrendingUp } from "lucide-react";
 
 const campaigns = [
   {
     title: "Space Gen",
     brand: "TVF",
     metrics: [
-      { label: "Committed Viewership", value: "70 M+" },
-      { label: "Delivered Viewership", value: "110 M+" },
-      { label: "Engagement Rate", value: "Above 5%" },
+      { label: "Committed Views", value: "70M+" },
+      { label: "Delivered Views", value: "110M+" },
+      { label: "Engagement", value: "> 5%" },
     ],
     slug: "space-gen",
+    color: "from-blue-600 to-sky-400",
+    shadow: "rgba(56,189,248,0.4)",
   },
   {
     title: "Medical Dreams",
     brand: "Girliyapa",
     metrics: [
-      { label: "Committed Viewership", value: "25 M+" },
-      { label: "Delivered Viewership", value: "70 M+" },
-      { label: "Engagement Rate", value: "Above 3%" },
+      { label: "Committed Views", value: "25M+" },
+      { label: "Delivered Views", value: "70M+" },
+      { label: "Engagement", value: "> 3%" },
     ],
     slug: "medical-dreams",
+    color: "from-indigo-500 to-purple-400",
+    shadow: "rgba(168,85,247,0.4)",
   },
   {
     title: "India Tour",
     brand: "Travis Scott",
     metrics: [
-      { label: "Committed Viewership", value: "20 M+" },
-      { label: "Delivered Viewership", value: "100 M+" },
-      { label: "Engagement Rate", value: "Above 7%" },
+      { label: "Committed Views", value: "20M+" },
+      { label: "Delivered Views", value: "100M+" },
+      { label: "Engagement", value: "> 7%" },
     ],
     slug: "travis-scott-india",
+    color: "from-violet-500 to-pink-400",
+    shadow: "rgba(236,72,153,0.4)",
   },
   {
     title: "Pyaar ki Raahein",
     brand: "Balaji Telefilms",
     metrics: [
-      { label: "Committed Viewership", value: "20 M+" },
-      { label: "Delivered Viewership", value: "45 M+" },
-      { label: "Engagement Rate", value: "Above 3%" },
+      { label: "Committed Views", value: "20M+" },
+      { label: "Delivered Views", value: "45M+" },
+      { label: "Engagement", value: "> 3%" },
     ],
     slug: "pyaar-ki-raahein",
+    color: "from-blue-500 to-cyan-400",
+    shadow: "rgba(34,211,238,0.4)",
   },
   {
     title: "Influencer Marketing",
     brand: "AstroTalk",
     metrics: [
-      { label: "No. of Influencers", value: "50+ (Pan India)" },
-      { label: "Committed Viewership", value: "80 M" },
-      { label: "CPV", value: "0.10p - 0.20p" },
+      { label: "Influencers", value: "50+" },
+      { label: "Delivered Views", value: "80M+" },
+      { label: "CPV", value: "0.10p" },
     ],
     slug: "astrotalk-influencer",
+    color: "from-fuchsia-500 to-rose-400",
+    shadow: "rgba(251,113,133,0.4)",
   },
   {
     title: "Pink Sale",
     brand: "Nykaa",
     metrics: [
-      { label: "No. of Influencers", value: "50+ (South India)" },
-      { label: "Committed Viewership", value: "55 M" },
-      { label: "CPV", value: "0.10p - 0.20p" },
+      { label: "Influencers", value: "50+" },
+      { label: "Delivered Views", value: "55M+" },
+      { label: "CPV", value: "0.15p" },
     ],
     slug: "nykaa-pink-sale",
+    color: "from-pink-500 to-orange-400",
+    shadow: "rgba(251,146,60,0.4)",
   },
   {
     title: "Motion Class Campaign",
     brand: "Motion Class",
     metrics: [
-      { label: "Committed Viewership", value: "20 M+" },
-      { label: "Delivered Viewership", value: "35 M+" },
-      { label: "Engagement Rate", value: "Above 3%" },
+      { label: "Committed Views", value: "20M+" },
+      { label: "Delivered Views", value: "35M+" },
+      { label: "Engagement", value: "> 3%" },
     ],
     slug: "motion-class-campaign",
+    color: "from-blue-600 to-indigo-400",
+    shadow: "rgba(129,140,248,0.4)",
   },
   {
     title: "Collage Days",
     brand: "Alright",
     metrics: [
-      { label: "Committed Viewership", value: "12 M+" },
-      { label: "Delivered Viewership", value: "20 M+" },
-      { label: "Engagement Rate", value: "Above 3%" },
+      { label: "Committed Views", value: "12M+" },
+      { label: "Delivered Views", value: "20M+" },
+      { label: "Engagement", value: "> 3%" },
     ],
     slug: "collage-days",
+    color: "from-sky-500 to-blue-400",
+    shadow: "rgba(96,165,250,0.4)",
   },
 ];
 
 export function CaseStudies() {
   return (
-    <section className="py-20 md:py-32 lg:py-40 bg-white relative overflow-hidden border-t border-blue-100">
-      {/* Decorative top gradient */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-50/80 via-white to-white pointer-events-none" />
+    <section className="py-24 md:py-40 bg-[#040D21] relative overflow-hidden border-t border-blue-400/10">
+      {/* Background Glows */}
+      <div className="absolute top-0 right-0 w-[800px] h-[600px] bg-blue-600/10 blur-[200px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[500px] bg-indigo-900/10 blur-[180px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/15 to-transparent" />
 
+      {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-12 md:mb-20 container mx-auto px-4 md:px-8 relative z-10"
+        className="container mx-auto px-4 md:px-8 max-w-[1400px] relative z-10 mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8"
       >
-        <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-blue-200 bg-blue-50 mb-8">
-          <span className="text-xs font-bold tracking-[0.2em] uppercase text-blue-700">Proven Impact</span>
+        <div className="max-w-2xl">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-400/25 bg-blue-500/10 backdrop-blur-sm mb-6">
+            <span className="flex h-2 w-2 rounded-full bg-blue-400 animate-pulse shadow-[0_0_8px_rgba(96,165,250,0.8)]" />
+            <span className="text-xs font-bold tracking-[0.2em] uppercase text-blue-200">Proven Impact</span>
+          </div>
+          <h3 className="text-5xl md:text-7xl lg:text-[80px] font-black font-heading text-white tracking-tighter leading-none">
+            Featured <br className="hidden md:block"/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-sky-300">Campaigns.</span>
+          </h3>
         </div>
-        <h3 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-[#0A1628] tracking-tighter">
-          Featured Campaigns
-        </h3>
+        
+        <div className="flex flex-col items-start md:items-end gap-4 shrink-0">
+          <p className="text-white/40 font-medium max-w-sm text-sm md:text-base md:text-right leading-relaxed">
+            Explore how we've helped the world's most ambitious brands shatter their viewership and conversion goals.
+          </p>
+          <button className="group flex items-center gap-2 text-[11px] font-bold tracking-widest uppercase text-blue-300 hover:text-white transition-colors mt-2">
+            View All Work
+            <TrendingUp className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+          </button>
+        </div>
       </motion.div>
 
-      {/* Edge-to-edge carousel */}
+      {/* Edge-to-edge Carousel */}
       <div className="w-full relative z-10">
-        <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 px-6 md:px-[10%] pb-12 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 px-4 md:px-8 xl:px-[calc((100vw-1400px)/2+2rem)] pb-20 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {campaigns.map((campaign, index) => (
             <div
               key={index}
-              className="flex-none w-[80vw] sm:w-[50vw] md:w-[40vw] lg:w-[28vw] snap-center"
+              className="flex-none w-[85vw] sm:w-[50vw] md:w-[40vw] lg:w-[28vw] snap-center group perspective-1000"
             >
               <CampaignCard campaign={campaign} index={index} />
             </div>
           ))}
-          <div className="flex-none w-[10vw]" />
+          {/* Spacer for right padding in scrolling */}
+          <div className="flex-none w-[5vw] md:w-[10vw]" />
         </div>
       </div>
     </section>
@@ -125,81 +159,77 @@ export function CaseStudies() {
 }
 
 function CampaignCard({ campaign, index }: { campaign: any; index: number }) {
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      initial={{ opacity: 0, x: 50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
       transition={{ delay: index * 0.1, duration: 0.8, ease: "easeOut" }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onClick={() => setIsHovered(!isHovered)}
-      className="relative aspect-[3/4] rounded-3xl md:rounded-[2.5rem] overflow-hidden group cursor-pointer border border-blue-100 shadow-[0_8px_32px_rgba(27,79,216,0.10)] hover:shadow-[0_20px_60px_rgba(27,79,216,0.20)] transform-gpu hover:-translate-y-1 transition-all duration-500"
+      className="relative h-[500px] md:h-[600px] rounded-[2.5rem] p-1 overflow-hidden group cursor-pointer transition-transform duration-500 hover:-translate-y-2"
     >
-      {/* Poster Image */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src={`/images/posters/${campaign.slug}.jpg`}
-          alt={campaign.brand}
-          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.12]"
-          onError={(e) => {
-            (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1574267432553-4b4628081c31?auto=format&fit=crop&q=80&w=600";
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent lg:group-hover:opacity-0 transition-opacity duration-500" />
-      </div>
-
-      {/* Default info */}
-      <motion.div
-        animate={{ opacity: isHovered ? 0 : 1 }}
-        transition={{ duration: 0.3 }}
-        className="absolute inset-x-0 bottom-0 p-6 md:p-8 z-10 flex flex-col justify-end h-full pointer-events-none"
-      >
-        <div className="inline-flex max-w-max items-center px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/30 mb-3 md:mb-4">
-          <p className="text-white font-bold uppercase tracking-widest text-[9px] md:text-[10px]">
-            {campaign.brand}
-          </p>
-        </div>
-        <h4 className="text-2xl md:text-3xl font-black text-white leading-[1.1] tracking-tight">
-          {campaign.title}
-        </h4>
-        <div className="absolute top-6 right-6 lg:hidden w-8 h-8 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center pointer-events-auto">
-          <span className="text-white text-xs">+</span>
-        </div>
-      </motion.div>
-
-      {/* Hover details — blue overlay */}
-      <motion.div
-        initial={false}
-        animate={{ opacity: isHovered ? 1 : 0 }}
-        transition={{ duration: 0.4 }}
-        className={`absolute inset-0 z-20 bg-gradient-to-br from-blue-700/97 to-blue-900/95 backdrop-blur-xl p-6 md:p-8 flex flex-col justify-center gap-4 md:gap-8 border-[0.5px] border-white/20 rounded-3xl md:rounded-[2.5rem] ${isHovered ? 'pointer-events-auto' : 'pointer-events-none'}`}
-      >
-        <div className="border-b border-white/20 pb-4 md:pb-6">
-          <h4 className="text-lg md:text-xl xl:text-2xl font-black text-white/90">Campaign Metrics</h4>
-        </div>
-        <div className="space-y-4 md:space-y-6">
-          {campaign.metrics.map((metric: any, i: number) => (
-            <div
-              key={i}
-              className={`transform transition-all duration-500 translate-y-4 opacity-0 ${isHovered ? 'translate-y-0 opacity-100' : ''}`}
-              style={{ transitionDelay: `${150 + i * 100}ms` }}
-            >
-              <p className="text-blue-200/80 text-[9px] sm:text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold mb-0.5 md:mb-1">
-                {metric.label}
-              </p>
-              <p className="text-xl sm:text-2xl md:text-3xl font-black text-white tracking-tighter">
-                {metric.value}
+      {/* Animated gradient border container */}
+      <div className="absolute inset-0 bg-blue-400/10 group-hover:bg-blue-400/30 transition-colors duration-500 rounded-[2.5rem]" />
+      
+      {/* Core Card */}
+      <div className="absolute inset-[1px] bg-[#071428] rounded-[calc(2.5rem-1px)] overflow-hidden flex flex-col">
+        
+        {/* Top Image Half */}
+        <div className="relative h-[55%] w-full overflow-hidden bg-[#040D21]">
+          <img
+            src={`/images/posters/${campaign.slug}.jpg`}
+            alt={campaign.brand}
+            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-70 group-hover:opacity-100 mix-blend-luminosity group-hover:mix-blend-normal"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1574267432553-4b4628081c31?auto=format&fit=crop&q=80&w=600";
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#071428] via-[#071428]/40 to-transparent" />
+          
+          {/* Brand Tag */}
+          <div className="absolute top-5 left-5 md:top-6 md:left-6">
+            <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#040D21]/60 backdrop-blur-md border border-white/10 shadow-lg">
+              <span className={`w-2 h-2 rounded-full bg-gradient-to-r ${campaign.color} mr-2`} />
+              <p className="text-white font-bold uppercase tracking-widest text-[9px] md:text-[10px]">
+                {campaign.brand}
               </p>
             </div>
-          ))}
+          </div>
         </div>
-        <div className="absolute top-6 right-6 lg:hidden w-8 h-8 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center">
-          <span className="text-white text-xs">−</span>
+
+        {/* Bottom Content Half */}
+        <div className="relative flex flex-col flex-1 p-6 md:p-8 justify-between z-10 bg-gradient-to-b from-[#071428] to-[#040D21]">
+          <h4 className="text-2xl md:text-3xl font-black text-white leading-tight tracking-tighter mb-6 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-blue-200 transition-colors duration-400">
+            {campaign.title}
+          </h4>
+
+          {/* Metrics List (Mobile friendly left/right alignment) */}
+          <div className="flex flex-col gap-3 md:gap-4 mt-auto relative z-10 w-full pr-0 md:pr-4">
+            {campaign.metrics.map((metric: any, i: number) => (
+              <div key={i} className="flex items-center justify-between border-b border-white/5 pb-3 last:border-0 last:pb-0">
+                <p className="text-white/40 text-[10px] md:text-[11px] uppercase tracking-[0.15em] font-bold">
+                  {metric.label}
+                </p>
+                <p className={`text-base md:text-lg font-black text-transparent bg-clip-text bg-gradient-to-r ${campaign.color}`}>
+                  {metric.value}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Hover Glow Effect */}
+          <div 
+            className="absolute bottom-0 right-0 w-32 h-32 blur-[50px] opacity-0 group-hover:opacity-40 transition-opacity duration-700 pointer-events-none"
+            style={{ background: campaign.shadow }}
+          />
         </div>
-      </motion.div>
+
+        {/* Floating Arrow CTA */}
+        <div className="absolute bottom-6 md:bottom-8 right-6 md:right-8 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-400 z-20">
+          <div className={`w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-r ${campaign.color} shadow-[0_5px_20px_${campaign.shadow}]`}>
+            <ArrowUpRight className="w-4 h-4 text-white" />
+          </div>
+        </div>
+      </div>
     </motion.div>
   );
 }
