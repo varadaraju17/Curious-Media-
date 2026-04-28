@@ -39,7 +39,7 @@ export default async function LocaleLayout(
 
   return (
     <html lang={locale} className={`${inter.variable} ${outfit.variable} dark antialiased`}>
-      <body className="font-sans bg-background text-foreground min-h-screen flex flex-col">
+      <body className="font-sans bg-[#040D21] text-white min-h-screen flex flex-col">
         <Providers>
           <Navbar dict={dict} locale={locale as Locale} />
           {props.children}

@@ -1,47 +1,96 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #0000FF;
-  --color-foreground: #ffffff;
-  
-  --color-card: rgba(255, 255, 255, 0.1);
-  --color-card-border: rgba(255, 255, 255, 0.2);
-  
-  --color-primary: #ffffff;
-  --color-accent: #ffffff;
+  /* ── Premium Deep Blue Design System ── */
+  --color-background: #040D21;
+  --color-surface:    #071428;
+  --color-surface-2:  #0B1D3A;
+  --color-surface-3:  #0F2347;
+  --color-foreground: #FFFFFF;
 
-  --font-sans: var(--font-inter), sans-serif;
+  --color-primary:   #2563EB;
+  --color-secondary: #3B82F6;
+  --color-accent:    #60A5FA;
+  --color-electric:  #38BDF8;
+  --color-glow:      rgba(37,99,235,0.5);
+
+  --font-sans:    var(--font-inter), sans-serif;
   --font-heading: var(--font-outfit), sans-serif;
 }
 
 @layer base {
   body {
-    background-color: var(--color-background);
-    background-image: 
-      radial-gradient(at 0% 0%, rgba(30, 58, 138, 0.15) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, rgba(30, 58, 138, 0.15) 0px, transparent 50%);
-    color: var(--color-foreground);
-    @apply font-sans selection:bg-blue-500/30 selection:text-white;
+    background-color: #040D21;
+    background-image:
+      radial-gradient(ellipse 90% 60% at 50% -10%, rgba(37,99,235,0.30) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 35% at 0% 90%,   rgba(56,189,248,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 55% 40% at 100% 60%,  rgba(37,99,235,0.07) 0%, transparent 60%);
+    color: #FFFFFF;
+    @apply font-sans selection:bg-blue-500/40 selection:text-white;
     overflow-x: hidden;
   }
-  
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading tracking-tighter;
   }
 }
 
 @layer utilities {
+  /* Premium glass card */
   .glass {
-    @apply bg-white/[0.03] backdrop-blur-3xl border border-white/10 rounded-3xl shadow-[0_8px_32px_rgba(0,0,0,0.4)];
+    background: linear-gradient(135deg, rgba(11,29,58,0.80) 0%, rgba(7,20,40,0.60) 100%);
+    @apply backdrop-blur-2xl border border-blue-500/15 rounded-3xl shadow-[0_8px_40px_rgba(4,13,33,0.8)];
   }
-  
+
+  /* Glass card — lighter variant */
+  .glass-light {
+    background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+    @apply backdrop-blur-xl border border-white/10 rounded-3xl;
+  }
+
+  /* Gradient text — electric blue */
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-b from-white via-white/80 to-blue-400/20;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#60A5FA] via-[#38BDF8] to-[#93C5FD];
+  }
+  .text-gradient-white {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50;
+  }
+
+  /* Primary CTA button */
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-3 rounded-full px-8 py-4
+           bg-gradient-to-r from-blue-600 to-blue-500
+           text-white font-bold tracking-wide
+           shadow-[0_0_30px_rgba(37,99,235,0.55),0_4px_15px_rgba(0,0,0,0.4)]
+           hover:shadow-[0_0_55px_rgba(59,130,246,0.75),0_4px_20px_rgba(0,0,0,0.5)]
+           hover:scale-105 transition-all duration-300;
+  }
+
+  .divider-glow {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-blue-500/30 to-transparent;
+  }
+
+  /* Glowing badge */
+  .badge-glow {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full
+           border border-blue-400/30 bg-blue-500/10 backdrop-blur-sm
+           shadow-[0_0_20px_rgba(37,99,235,0.20)];
   }
 }
 
-/* Custom minimal scrollbar */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #020617; }
-::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: #334155; }
+/* Animated gradient orb utility */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50%       { transform: translateY(-30px) scale(1.05); }
+}
+@keyframes float-slower {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50%       { transform: translateY(-20px) scale(1.03); }
+}
+.animate-float      { animation: float-slow   8s ease-in-out infinite; }
+.animate-float-slow { animation: float-slower 12s ease-in-out infinite; }
+
+/* Scrollbar */
+::-webkit-scrollbar       { width: 4px; }
+::-webkit-scrollbar-track { background: #040D21; }
+::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #2563EB, #38BDF8); border-radius: 10px; }
