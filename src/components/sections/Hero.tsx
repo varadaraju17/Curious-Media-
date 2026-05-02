@@ -22,40 +22,39 @@ const particles = [
 ];
 
 
-const floatingCards = [
-  {
-    icon: <TrendingUp className="w-4 h-4 text-white" />,
-    iconBg: "bg-gradient-to-br from-emerald-400 to-teal-500",
-    label: "Campaign Live",
-    value: "+110M Views",
-    valueColor: "text-[#0B2EA8]",
-    delay: 0.55,
-    pos: "left-0 sm:-left-6 top-8 sm:top-14",
-    floatClass: "float-card",
-  },
-  {
-    icon: <Zap className="w-4 h-4 text-white" />,
-    iconBg: "bg-gradient-to-br from-violet-500 to-purple-600",
-    label: "Avg. ROI",
-    value: "14.5×",
-    valueColor: "text-violet-600",
-    delay: 0.65,
-    pos: "right-0 sm:-right-4 top-4 sm:top-8",
-    floatClass: "float-card-slow",
-  },
-  {
-    icon: <Users className="w-4 h-4 text-white" />,
-    iconBg: "bg-gradient-to-br from-[#0B2EA8] to-blue-500",
-    label: "Creator Network",
-    value: "1000+ Active",
-    valueColor: "text-[#0B2EA8]",
-    delay: 0.75,
-    pos: "left-0 sm:-left-6 bottom-8 sm:bottom-14",
-    floatClass: "float-card",
-  },
-];
-
 export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
+  const floatingCards = [
+    {
+      icon: <TrendingUp className="w-4 h-4 text-white" />,
+      iconBg: "bg-gradient-to-br from-emerald-400 to-teal-500",
+      label: dict.hero.cards.campaign,
+      value: `+110M ${dict.hero.cards.views}`,
+      valueColor: "text-[#0B2EA8]",
+      delay: 0.55,
+      pos: "left-0 sm:-left-6 top-8 sm:top-14",
+      floatClass: "float-card",
+    },
+    {
+      icon: <Zap className="w-4 h-4 text-white" />,
+      iconBg: "bg-gradient-to-br from-violet-500 to-purple-600",
+      label: dict.hero.cards.roi,
+      value: "14.5×",
+      valueColor: "text-violet-600",
+      delay: 0.65,
+      pos: "right-0 sm:-right-4 top-4 sm:top-8",
+      floatClass: "float-card-slow",
+    },
+    {
+      icon: <Users className="w-4 h-4 text-white" />,
+      iconBg: "bg-gradient-to-br from-[#0B2EA8] to-blue-500",
+      label: dict.hero.cards.network,
+      value: `1000+ ${dict.hero.cards.active}`,
+      valueColor: "text-[#0B2EA8]",
+      delay: 0.75,
+      pos: "left-0 sm:-left-6 bottom-8 sm:bottom-14",
+      floatClass: "float-card",
+    },
+  ];
   return (
     <section className="relative bg-white overflow-hidden">
 
@@ -229,7 +228,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600" />
               </span>
               <span className="text-[10px] sm:text-[11px] font-black tracking-[0.20em] uppercase text-[#0B2EA8]">
-                India&apos;s #1 Creator Monetisation Platform
+                {dict.hero.badge}
               </span>
             </motion.div>
 
@@ -244,7 +243,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                 transition={{ delay: 0.15, duration: 0.6 }}
                 className="block text-[#0A1A4E]"
               >
-                DON&apos;T JUST
+                {dict.hero.headline_line1}
               </motion.span>
 
               {/* Line 2 — with shimmer underline */}
@@ -254,7 +253,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                 transition={{ delay: 0.22, duration: 0.6 }}
                 className="block relative text-[#0B2EA8] w-fit"
               >
-                CREATE.
+                {dict.hero.headline_line2}
                 <motion.span
                   initial={{ scaleX: 0, opacity: 0 }}
                   animate={{ scaleX: 1, opacity: 1 }}
@@ -271,7 +270,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                 transition={{ delay: 0.30, duration: 0.6 }}
                 className="block mt-2"
               >
-                <span className="text-shimmer">MONETIZE</span>
+                <span className="text-shimmer">{dict.hero.headline_line3}</span>
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, x: -24 }}
@@ -279,7 +278,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                 transition={{ delay: 0.38, duration: 0.6 }}
                 className="block -mt-1 sm:-mt-2"
               >
-                <span className="text-shimmer">WITH US.</span>
+                <span className="text-shimmer">{dict.hero.headline_line4}</span>
               </motion.span>
             </h1>
 
@@ -291,7 +290,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                 transition={{ delay: 0.44, duration: 0.6 }}
                 className="text-base sm:text-lg md:text-xl font-black text-[#0B2EA8] leading-tight tracking-tight uppercase sm:whitespace-nowrap"
               >
-                Turn your content into a scalable income.
+                {dict.hero.subheading}
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 14 }}
@@ -299,8 +298,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                 transition={{ delay: 0.50, duration: 0.6 }}
                 className="text-sm sm:text-base md:text-[17px] text-slate-500 font-medium leading-relaxed"
               >
-                Curious Media helps creators move beyond brand deals to earn
-                consistently—across every platform.
+                {dict.hero.description}
               </motion.p>
             </div>
 
@@ -311,7 +309,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
               transition={{ delay: 0.56, duration: 0.6 }}
               className="mt-7 flex flex-wrap gap-2"
             >
-              {["Brand Deals", "Content Monetization", "Talent Management", "Creator Growth"].map((feat) => (
+              {dict.hero.features.map((feat: string) => (
                 <div key={feat} className="inline-flex items-center gap-1.5 px-3.5 py-1.5
                   rounded-full bg-blue-50 border border-blue-100 text-[11px] font-bold text-[#0B2EA8]"
                 >
@@ -342,7 +340,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0B2EA8] via-blue-500 to-[#0B2EA8]
                   bg-[size:200%] hover:bg-right-center transition-all duration-700
                   group-hover:bg-[position:100%]" />
-                <span className="relative z-10">Get Started</span>
+                <span className="relative z-10">{dict.hero.cta_primary}</span>
                 <ArrowRight className="relative z-10 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
 
@@ -355,7 +353,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                   hover:border-[#0B2EA8] hover:text-[#0B2EA8] hover:bg-blue-50
                   hover:scale-[1.02] transition-all duration-300"
               >
-                Explore More
+                {dict.hero.cta_secondary}
               </Link>
             </motion.div>
 
@@ -436,10 +434,10 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                   >
                     <div className="flex items-center gap-2 mb-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                      <p className="text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-cyan-300 font-black">Global Network</p>
+                      <p className="text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-cyan-300 font-black">{dict.hero.widget.badge}</p>
                     </div>
                     <h3 className="text-sm sm:text-[15px] font-black text-white leading-tight">
-                      Connecting Brands<br />With Audiences.
+                      {dict.hero.widget.title}
                     </h3>
                     <div className="mt-2 h-[2px] w-full rounded-full bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-400 opacity-60" />
                   </motion.div>

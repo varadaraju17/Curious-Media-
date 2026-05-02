@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Mail, Phone, MapPin } from "lucide-react";
 
-export function ContactSection() {
+export function ContactSection({ dict }: { dict: any }) {
   return (
     <>
       {/* ── Contact Form Section ── */}
@@ -24,16 +24,16 @@ export function ContactSection() {
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0B2EA8] mb-6 w-fit">
                 <span className="flex h-1.5 w-1.5 rounded-full bg-blue-300 animate-pulse" />
-                <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white">Contact Us</span>
+                <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white">{dict.contact.badge}</span>
               </div>
 
               <h2 className="text-4xl md:text-5xl lg:text-[56px] font-black font-heading tracking-tighter leading-[0.95] text-[#0B2EA8] mb-5 uppercase">
-                Let&apos;s build something<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-400">extraordinary.</span>
+                {dict.contact.title_1}<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-400">{dict.contact.title_2}</span>
               </h2>
 
               <p className="text-base text-blue-800/65 mb-10 font-medium leading-relaxed max-w-sm">
-                Our team is ready to help you scale your digital presence. Reach out any time — we respond within 24 hours.
+                {dict.contact.description}
               </p>
 
               {/* Contact Info Cards */}

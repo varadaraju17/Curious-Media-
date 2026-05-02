@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 
-export function Testimonials() {
+export function Testimonials({ dict }: { dict: any }) {
   const testimonials = [
     {
       name: "Sarah Jenkins",
@@ -54,7 +54,7 @@ export function Testimonials() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0B2EA8] mb-5"
           >
             <span className="flex h-1.5 w-1.5 rounded-full bg-blue-300 animate-pulse" />
-            <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white">Client Experiences</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white">{dict.testimonials.badge}</span>
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 24 }}
@@ -63,8 +63,8 @@ export function Testimonials() {
             transition={{ delay: 0.06 }}
             className="text-4xl md:text-6xl lg:text-[68px] font-black font-heading tracking-tighter leading-[0.95] text-[#0B2EA8] uppercase"
           >
-            Don&apos;t just take<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-400">our word for it.</span>
+            {dict.testimonials.title_1}<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-400">{dict.testimonials.title_2}</span>
           </motion.h2>
         </div>
 

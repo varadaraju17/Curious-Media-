@@ -7,31 +7,118 @@
     "creators": "Creators",
     "brands": "Brands",
     "about": "About",
-    "contact": "Contact"
+    "contact": "Contact",
+    "records": "Curious Music"
   },
-  "home": {
-    "title": "Where Brands Meet Creators",
-    "subtitle": "A premium media-tech platform empowering digital storytelling and powerful collaborations.",
-    "cta_explore": "Explore Our World",
-    "cta_contact": "Work With Us",
-    "story": {
-      "text": "We don't just create content. We engineer narratives that captivate audiences, bridge the gap between visionary brands and influential creators, and build the future of digital media."
+  "hero": {
+    "badge": "India's #1 Creator Monetisation Platform",
+    "headline_line1": "DON'T JUST",
+    "headline_line2": "CREATE.",
+    "headline_line3": "MONETIZE",
+    "headline_line4": "WITH US.",
+    "subheading": "Turn your content into a scalable income.",
+    "description": "Curious Media helps creators move beyond brand deals to earn consistently—across every platform.",
+    "features": ["Brand Deals", "Content Monetization", "Talent Management", "Creator Growth"],
+    "cta_primary": "Get Started",
+    "cta_secondary": "Explore More",
+    "cards": {
+      "campaign": "Campaign Live",
+      "roi": "Avg. ROI",
+      "network": "Creator Network",
+      "active": "Active",
+      "views": "Views",
+      "growth": "Growth"
     },
-    "divisions": {
-      "title": "Our Divisions",
-      "subtitle": "Three specialized pillars. One unified ecosystem built to scale your digital presence.",
-      "media_desc": "Influencer marketing, social media management, and talent acquisition.",
-      "studio_desc": "High-end cinematic video production, brand reels, and ad storytelling.",
-      "products_desc": "In-house tech products bridging the creator economy.",
-      "explore": "Explore"
-    },
-    "analytics": {
-      "title": "Performance That Scales",
-      "subtitle": "Real-time ROI and audience analytics powered by Curious OS."
-    },
-    "cta": {
-      "title": "Ready to make an impact?",
-      "subtitle": "Join visionary brands and elite creators who are shaping the future of digital media with Curious."
+    "widget": {
+      "badge": "Global Network",
+      "title": "Connecting Brands With Audiences."
     }
+  },
+  "marquee": {
+    "brands_badge": "Brand Partners",
+    "brands_title_1": "Trusted by the",
+    "brands_title_2": "world's best brands.",
+    "content_title_1": "Powered by",
+    "content_title_2": "India's top studios.",
+    "content_partners": "Trusted by the Best in Content"
+  },
+  "divisions": {
+    "badge": "The Ecosystem",
+    "title_1": "The Curious",
+    "title_2": "Ecosystem.",
+    "description": "Discover our specialized divisions powering the next generation of digital storytelling and audience monetization.",
+    "media": {
+      "title": "Curious Media",
+      "subtitle": "Marketing & Talent",
+      "desc": "Curious Media handles the business side of influence. We connect elite creators with global brands and manage complex marketing campaigns."
+    },
+    "studio": {
+      "title": "Curious Studio",
+      "subtitle": "Production & Content",
+      "desc": "Our state-of-the-art production studio delivers cinematic-quality videos, reels, and high-impact digital content for brands and creators."
+    },
+    "products": {
+      "title": "Curious Products",
+      "subtitle": "Tech & Platforms",
+      "desc": "We build the software and platforms that power the creator economy, including Curious OS for real-time campaign tracking and ROI."
+    },
+    "music": {
+      "title": "Curious Music",
+      "subtitle": "Music & Artists",
+      "desc": "Discovering talent, building artists, creating stars. Your sound, amplified to millions."
+    }
+  },
+  "case_studies": {
+    "badge": "Proven Impact",
+    "title_1": "Featured",
+    "title_2": "Campaigns.",
+    "description": "Explore how we've helped the world's most ambitious brands shatter their viewership goals.",
+    "cta": "View All Work"
+  },
+  "testimonials": {
+    "badge": "Client Experiences",
+    "title_1": "Don't just take",
+    "title_2": "our word for it."
+  },
+  "contact": {
+    "badge": "Contact Us",
+    "title_1": "Let's build something",
+    "title_2": "extraordinary.",
+    "description": "Our team is ready to help you scale your digital presence. Reach out any time — we respond within 24 hours.",
+    "email": "Email Us",
+    "phone": "Call Us",
+    "location": "Our Location",
+    "follow": "Follow Us"
+  },
+  "brand_win": {
+    "badge": "Our Promise",
+    "title_1": "How Brands",
+    "title_2": "Win.",
+    "description": "We don't just promise results — we contractually commit to them. Every campaign is backed by our performance guarantee.",
+    "commit": "WE Commit",
+    "reach": {
+      "title": "Reach.",
+      "desc": "Guaranteed viewership delivered to your exact target audience, every single time.",
+      "stat_label": "Total Views Delivered"
+    },
+    "engagement": {
+      "title": "Engagement.",
+      "desc": "Real, authentic interactions that build brand love and community — not just numbers.",
+      "stat_label": "Avg. Engagement Rate"
+    },
+    "viewership": {
+      "title": "Viewership.",
+      "desc": "We over-deliver — always. Our track record speaks in millions of verified views.",
+      "stat_label": "Views on Best Campaign"
+    }
+  },
+  "footer": {
+    "tagline": "Grow Faster. Earn Smarter.",
+    "subtitle": "A premium media-tech platform empowering digital storytelling and powerful collaborations.",
+    "platform": "Platform",
+    "company": "Company",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "rights": "All rights reserved."
   }
 }

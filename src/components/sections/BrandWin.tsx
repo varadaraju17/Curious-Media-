@@ -3,43 +3,43 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, Award, Zap } from "lucide-react";
 
-const commitments = [
-  {
-    label: "WE Commit",
-    value: "Reach.",
-    icon: <Zap className="w-5 h-5" />,
-    desc: "Guaranteed viewership delivered to your exact target audience, every single time.",
-    gradient: "from-blue-600 to-sky-400",
-    accentBg: "bg-blue-50",
-    iconBg: "bg-blue-600",
-    stat: "4.2B+",
-    statLabel: "Total Views Delivered",
-  },
-  {
-    label: "WE Commit",
-    value: "Engagement.",
-    icon: <Award className="w-5 h-5" />,
-    desc: "Real, authentic interactions that build brand love and community — not just numbers.",
-    gradient: "from-indigo-600 to-blue-400",
-    accentBg: "bg-indigo-50",
-    iconBg: "bg-indigo-600",
-    stat: ">5%",
-    statLabel: "Avg. Engagement Rate",
-  },
-  {
-    label: "WE Commit",
-    value: "Viewership.",
-    icon: <CheckCircle2 className="w-5 h-5" />,
-    desc: "We over-deliver — always. Our track record speaks in millions of verified views.",
-    gradient: "from-violet-600 to-indigo-400",
-    accentBg: "bg-violet-50",
-    iconBg: "bg-violet-600",
-    stat: "110M+",
-    statLabel: "Views on Best Campaign",
-  },
-];
+export function BrandWin({ dict }: { dict: any }) {
+  const commitments = [
+    {
+      label: dict.brand_win.commit,
+      value: dict.brand_win.reach.title,
+      icon: <Zap className="w-5 h-5" />,
+      desc: dict.brand_win.reach.desc,
+      gradient: "from-blue-600 to-sky-400",
+      accentBg: "bg-blue-50",
+      iconBg: "bg-blue-600",
+      stat: "4.2B+",
+      statLabel: dict.brand_win.reach.stat_label,
+    },
+    {
+      label: dict.brand_win.commit,
+      value: dict.brand_win.engagement.title,
+      icon: <Award className="w-5 h-5" />,
+      desc: dict.brand_win.engagement.desc,
+      gradient: "from-indigo-600 to-blue-400",
+      accentBg: "bg-indigo-50",
+      iconBg: "bg-indigo-600",
+      stat: ">5%",
+      statLabel: dict.brand_win.engagement.stat_label,
+    },
+    {
+      label: dict.brand_win.commit,
+      value: dict.brand_win.viewership.title,
+      icon: <CheckCircle2 className="w-5 h-5" />,
+      desc: dict.brand_win.viewership.desc,
+      gradient: "from-violet-600 to-indigo-400",
+      accentBg: "bg-violet-50",
+      iconBg: "bg-violet-600",
+      stat: "110M+",
+      statLabel: dict.brand_win.viewership.stat_label,
+    },
+  ];
 
-export function BrandWin() {
   return (
     <section className="py-24 md:py-36 bg-white relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
@@ -58,7 +58,7 @@ export function BrandWin() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0B2EA8] mb-5"
           >
             <span className="flex h-1.5 w-1.5 rounded-full bg-blue-300 animate-pulse" />
-            <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white">Our Promise</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white">{dict.brand_win.badge}</span>
           </motion.div>
 
           <motion.h2
@@ -68,8 +68,8 @@ export function BrandWin() {
             transition={{ delay: 0.06 }}
             className="text-5xl md:text-7xl lg:text-[84px] font-black font-heading tracking-tighter leading-[0.9] text-[#0B2EA8]"
           >
-            How Brands<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-400">Win.</span>
+            {dict.brand_win.title_1}<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-400">{dict.brand_win.title_2}</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -78,7 +78,7 @@ export function BrandWin() {
             transition={{ delay: 0.1 }}
             className="mt-5 text-base md:text-lg text-blue-800/60 font-medium max-w-xl mx-auto leading-relaxed"
           >
-            We don&apos;t just promise results — we contractually commit to them. Every campaign is backed by our performance guarantee.
+            {dict.brand_win.description}
           </motion.p>
         </div>
 

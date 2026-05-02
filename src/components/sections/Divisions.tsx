@@ -8,8 +8,8 @@ import { Play, TrendingUp, Sparkles, ArrowRight, Disc, ChevronRight } from "luci
 export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
   const divisions = [
     {
-      title: "Curious Media",
-      desc: "India's #1 creator monetisation platform. We help creators grow faster and earn smarter across every platform.",
+      title: dict.divisions.media.title,
+      desc: dict.divisions.media.desc,
       icon: <TrendingUp className="w-5 h-5" />,
       image: "/images/divisions/media.png",
       gradient: "from-blue-600 to-blue-400",
@@ -19,11 +19,11 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
       accentBadge: "bg-blue-100 text-blue-700",
       href: `/${locale}/media`,
       num: "01",
-      tag: "Creator Growth",
+      tag: dict.divisions.media.subtitle,
     },
     {
-      title: "Curious Studios",
-      desc: "Premium content production — from concept to viral. We amplify offline stories into digital phenomena.",
+      title: dict.divisions.studio.title,
+      desc: dict.divisions.studio.desc,
       icon: <Play className="w-5 h-5" />,
       image: "/images/divisions/studio.png",
       gradient: "from-indigo-600 to-blue-400",
@@ -33,13 +33,13 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
       accentBadge: "bg-indigo-100 text-indigo-700",
       href: `/${locale}/studio`,
       num: "02",
-      tag: "Content Production",
+      tag: dict.divisions.studio.subtitle,
     },
     {
-      title: "Curious Music",
-      desc: "Discovering talent, building artists, creating stars. Your sound, amplified to millions.",
+      title: dict.divisions.music.title,
+      desc: dict.divisions.music.desc,
       icon: <Disc className="w-5 h-5" />,
-      image: "/images/divisions/records.png",
+      image: "/images/divisions/music.png",
       gradient: "from-violet-600 to-indigo-400",
       accentBg: "bg-violet-50",
       accentBorder: "border-violet-200",
@@ -47,11 +47,11 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
       accentBadge: "bg-violet-100 text-violet-700",
       href: `/${locale}/records`,
       num: "03",
-      tag: "Music & Artists",
+      tag: dict.divisions.music.subtitle,
     },
     {
-      title: "Curious Products",
-      desc: "Building the future of digital commerce. Innovative products that bridge audiences and brands.",
+      title: dict.divisions.products.title,
+      desc: dict.divisions.products.desc,
       icon: <Sparkles className="w-5 h-5" />,
       image: "/images/divisions/products.png",
       gradient: "from-sky-600 to-blue-400",
@@ -61,7 +61,7 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
       accentBadge: "bg-sky-100 text-sky-700",
       href: `/${locale}/products`,
       num: "04",
-      tag: "Innovation",
+      tag: dict.divisions.products.subtitle,
     },
   ];
 
@@ -84,7 +84,7 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0B2EA8] mb-5"
             >
               <span className="flex h-1.5 w-1.5 rounded-full bg-blue-300 animate-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white">The Ecosystem</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white">{dict.divisions.badge}</span>
             </motion.div>
 
             <motion.h2
@@ -94,8 +94,8 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
               transition={{ delay: 0.05 }}
               className="text-4xl md:text-6xl lg:text-[68px] font-black font-heading tracking-tighter leading-[0.95] text-[#0B2EA8] uppercase"
             >
-              The Curious<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-blue-400 to-sky-400">Ecosystem.</span>
+              {dict.divisions.title_1}<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-blue-400 to-sky-400">{dict.divisions.title_2}</span>
             </motion.h2>
           </div>
 
@@ -106,7 +106,7 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
             transition={{ delay: 0.1 }}
             className="text-base md:text-lg text-blue-800/65 font-medium max-w-sm md:text-right leading-relaxed"
           >
-            Discover our specialized divisions powering the next generation of digital storytelling and audience monetization.
+            {dict.divisions.description}
           </motion.p>
         </div>
 

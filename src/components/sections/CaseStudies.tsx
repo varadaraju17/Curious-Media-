@@ -13,6 +13,7 @@ const campaigns = [
       { label: "Engagement", value: "> 5%", icon: <Users className="w-3 h-3" /> },
     ],
     slug: "space-gen",
+    image: "/images/campaigns/space-gen.png",
     color: "from-blue-600 to-sky-400",
     tagColor: "bg-blue-50 text-blue-700 border-blue-200",
     accentColor: "bg-blue-600",
@@ -26,6 +27,7 @@ const campaigns = [
       { label: "Engagement", value: "> 3%", icon: <Users className="w-3 h-3" /> },
     ],
     slug: "medical-dreams",
+    image: "/images/campaigns/medical-dreams.png",
     color: "from-indigo-600 to-purple-400",
     tagColor: "bg-indigo-50 text-indigo-700 border-indigo-200",
     accentColor: "bg-indigo-600",
@@ -39,6 +41,7 @@ const campaigns = [
       { label: "Engagement", value: "> 7%", icon: <Users className="w-3 h-3" /> },
     ],
     slug: "travis-scott-india",
+    image: "/images/campaigns/india-tour.png",
     color: "from-violet-600 to-pink-400",
     tagColor: "bg-violet-50 text-violet-700 border-violet-200",
     accentColor: "bg-violet-600",
@@ -52,6 +55,7 @@ const campaigns = [
       { label: "Engagement", value: "> 3%", icon: <Users className="w-3 h-3" /> },
     ],
     slug: "pyaar-ki-raahein",
+    image: "/images/campaigns/pyaar-ki-raahein.png",
     color: "from-blue-500 to-cyan-400",
     tagColor: "bg-sky-50 text-sky-700 border-sky-200",
     accentColor: "bg-sky-600",
@@ -65,6 +69,7 @@ const campaigns = [
       { label: "CPV", value: "₹0.10", icon: <Eye className="w-3 h-3" /> },
     ],
     slug: "astrotalk-influencer",
+    image: "/images/campaigns/influencer-marketing.png",
     color: "from-fuchsia-600 to-rose-400",
     tagColor: "bg-fuchsia-50 text-fuchsia-700 border-fuchsia-200",
     accentColor: "bg-fuchsia-600",
@@ -78,6 +83,7 @@ const campaigns = [
       { label: "CPV", value: "₹0.15", icon: <Eye className="w-3 h-3" /> },
     ],
     slug: "nykaa-pink-sale",
+    image: "/images/campaigns/pink-sale.png",
     color: "from-pink-500 to-orange-400",
     tagColor: "bg-pink-50 text-pink-700 border-pink-200",
     accentColor: "bg-pink-600",
@@ -91,6 +97,7 @@ const campaigns = [
       { label: "Engagement", value: "> 3%", icon: <Users className="w-3 h-3" /> },
     ],
     slug: "motion-class-campaign",
+    image: "/images/campaigns/motion-class.png",
     color: "from-blue-700 to-indigo-400",
     tagColor: "bg-blue-50 text-blue-700 border-blue-200",
     accentColor: "bg-blue-700",
@@ -104,13 +111,14 @@ const campaigns = [
       { label: "Engagement", value: "> 3%", icon: <Users className="w-3 h-3" /> },
     ],
     slug: "collage-days",
+    image: "/images/campaigns/space-gen.png",
     color: "from-sky-600 to-blue-400",
     tagColor: "bg-sky-50 text-sky-700 border-sky-200",
     accentColor: "bg-sky-600",
   },
 ];
 
-export function CaseStudies() {
+export function CaseStudies({ dict }: { dict: any }) {
   return (
     <section className="py-24 md:py-36 bg-[#F8FAFF] relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
@@ -128,20 +136,20 @@ export function CaseStudies() {
           <div>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0B2EA8] mb-5">
               <span className="flex h-1.5 w-1.5 rounded-full bg-blue-300 animate-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white">Proven Impact</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white">{dict.case_studies.badge}</span>
             </div>
             <h2 className="text-4xl md:text-6xl lg:text-[68px] font-black font-heading tracking-tighter leading-[0.95] text-[#0B2EA8] uppercase">
-              Featured<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-400">Campaigns.</span>
+              {dict.case_studies.title_1}<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-400">{dict.case_studies.title_2}</span>
             </h2>
           </div>
 
           <div className="flex flex-col items-start md:items-end gap-3 shrink-0">
             <p className="text-base text-blue-800/65 font-medium max-w-xs md:text-right leading-relaxed">
-              Explore how we&apos;ve helped the world&apos;s most ambitious brands shatter their viewership goals.
+              {dict.case_studies.description}
             </p>
             <button className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-[#0B2EA8] border border-blue-200 bg-white rounded-full px-4 py-2 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-300">
-              View All Work <ArrowUpRight className="w-3.5 h-3.5" />
+              {dict.case_studies.cta} <ArrowUpRight className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>

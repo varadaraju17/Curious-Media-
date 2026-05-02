@@ -131,7 +131,7 @@ export function Marquee({ type, dict, title }: MarqueeProps) {
                 ? <TrendingUp className="w-3.5 h-3.5 text-[#0B2EA8]" />
                 : <Users className="w-3.5 h-3.5 text-[#0B2EA8]" />}
               <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#0B2EA8]">
-                {isBrands ? "Brand Partners" : "Content Partners"}
+                {isBrands ? dict.marquee.brands_badge : dict.marquee.content_badge}
               </span>
             </motion.div>
 
@@ -144,12 +144,12 @@ export function Marquee({ type, dict, title }: MarqueeProps) {
               aria-hidden="true"
             >
               {isBrands ? (
-                <>Trusted by the<br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-400">world&apos;s best brands.</span>
+                <>{dict.marquee.brands_title_1}<br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-400">{dict.marquee.brands_title_2}</span>
                 </>
               ) : (
-                <>Powered by<br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-400">India&apos;s top studios.</span>
+                <>{dict.marquee.content_title_1}<br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-400">{dict.marquee.content_title_2}</span>
                 </>
               )}
             </motion.h2>

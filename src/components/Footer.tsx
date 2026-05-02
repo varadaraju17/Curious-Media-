@@ -8,16 +8,16 @@ interface FooterProps { dict: any; locale: Locale; }
 export function Footer({ dict, locale }: FooterProps) {
   const links = {
     platform: [
-      { href: `/${locale}/media`,    label: "Curious Media" },
-      { href: `/${locale}/studio`,   label: "Curious Studios" },
-      { href: `/${locale}/records`,  label: "Curious Music" },
-      { href: `/${locale}/products`, label: "Curious Products" },
+      { href: `/${locale}/media`,    label: dict.nav.media },
+      { href: `/${locale}/studio`,   label: dict.nav.studio },
+      { href: `/${locale}/records`,  label: dict.nav.records || "Curious Music" },
+      { href: `/${locale}/products`, label: dict.nav.products },
     ],
     company: [
-      { href: `/${locale}/about`,    label: "About Us" },
-      { href: `/${locale}/creators`, label: "Creators" },
-      { href: `/en/services`,        label: "Our Services" },
-      { href: `/${locale}/contact`,  label: "Contact" },
+      { href: `/${locale}/about`,    label: dict.nav.about || "About Us" },
+      { href: `/${locale}/creators`, label: dict.nav.creators || "Creators" },
+      { href: `/${locale}/services`, label: "Our Services" },
+      { href: `/${locale}/contact`,  label: dict.nav.contact },
     ],
   };
 
@@ -33,9 +33,9 @@ export function Footer({ dict, locale }: FooterProps) {
             <h2 className="text-4xl md:text-5xl font-black font-heading tracking-tighter text-[#0B2EA8] mb-1">
               CURIOUS<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-sky-300">.</span>
             </h2>
-            <p className="text-[10px] mb-5 font-black uppercase tracking-[0.28em] text-blue-600/60">Grow Faster. Earn Smarter.</p>
+            <p className="text-[10px] mb-5 font-black uppercase tracking-[0.28em] text-blue-600/60">{dict.footer.tagline}</p>
             <p className="text-blue-800/60 max-w-xs mb-8 text-sm font-medium leading-relaxed">
-              {dict.home?.subtitle || "A premium media-tech platform empowering digital storytelling and powerful collaborations."}
+              {dict.footer.subtitle}
             </p>
 
             {/* Social mini buttons */}
@@ -54,7 +54,7 @@ export function Footer({ dict, locale }: FooterProps) {
 
           {/* Platform */}
           <div className="md:col-span-3 lg:col-span-2 lg:col-start-7">
-            <h3 className="text-[10px] font-black tracking-[0.28em] uppercase mb-6 text-[#0B2EA8]">Platform</h3>
+            <h3 className="text-[10px] font-black tracking-[0.28em] uppercase mb-6 text-[#0B2EA8]">{dict.footer.platform}</h3>
             <ul className="flex flex-col gap-3">
               {links.platform.map((link) => (
                 <li key={link.href}>
@@ -71,7 +71,7 @@ export function Footer({ dict, locale }: FooterProps) {
 
           {/* Company */}
           <div className="md:col-span-3 lg:col-span-2">
-            <h3 className="text-[10px] font-black tracking-[0.28em] uppercase mb-6 text-[#0B2EA8]">Company</h3>
+            <h3 className="text-[10px] font-black tracking-[0.28em] uppercase mb-6 text-[#0B2EA8]">{dict.footer.company}</h3>
             <ul className="flex flex-col gap-3">
               {links.company.map((link) => (
                 <li key={link.href}>
@@ -89,10 +89,10 @@ export function Footer({ dict, locale }: FooterProps) {
 
         {/* Bottom bar */}
         <div className="border-t border-blue-100 pt-8 flex flex-col md:flex-row items-center justify-between text-blue-800/40 text-xs font-medium tracking-wide gap-4">
-          <p>© {new Date().getFullYear()} Curious Media. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Curious Media. {dict.footer.rights}</p>
           <div className="flex gap-8">
-            <Link href="#" className="hover:text-[#0B2EA8] transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-[#0B2EA8] transition-colors">Terms of Service</Link>
+            <Link href="#" className="hover:text-[#0B2EA8] transition-colors">{dict.footer.privacy}</Link>
+            <Link href="#" className="hover:text-[#0B2EA8] transition-colors">{dict.footer.terms}</Link>
           </div>
         </div>
       </div>
