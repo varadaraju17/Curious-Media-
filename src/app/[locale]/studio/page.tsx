@@ -14,7 +14,7 @@ export default function StudioPage() {
   ];
 
   return (
-    <main className="flex-1 w-full bg-black">
+    <main className="flex-1 w-full bg-white">
       {/* Studio Hero */}
       <section className="relative pt-40 pb-32 px-4 md:px-8 border-b border-white/5">
         <div className="absolute inset-0 z-0 opacity-40">
@@ -65,7 +65,7 @@ export default function StudioPage() {
       </section>
 
       {/* Grid Gallery */}
-      <section className="py-24 px-4 md:px-8 border-t border-white/5 bg-black">
+      <section className="py-24 px-4 md:px-8 border-t border-blue-100 bg-white">
         <div className="container mx-auto text-center max-w-4xl">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16">
              <h2 className="text-4xl md:text-6xl font-bold font-heading">Featured Work</h2>

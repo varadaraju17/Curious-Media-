@@ -1,118 +1,185 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { TrendingUp, Activity } from "lucide-react";
+import { TrendingUp, Activity, BarChart3, Globe2 } from "lucide-react";
 
 export function Analytics({ dict }: { dict: any }) {
   const bars = [40, 65, 45, 80, 55, 90, 100];
+  const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+  const stats = [
+    { icon: <Globe2 className="w-4 h-4" />, label: "Global Reach", value: "4.2B+", sub: "Total audience" },
+    { icon: <Activity className="w-4 h-4" />, label: "Avg. ROI", value: "14.5×", sub: "Per campaign" },
+  ];
+
+  const kpis = [
+    { label: "Campaigns Delivered", value: "500+", color: "text-blue-600" },
+    { label: "Brand Partners", value: "29+", color: "text-indigo-600" },
+    { label: "Creator Network", value: "1000+", color: "text-sky-600" },
+    { label: "Cities Covered", value: "15+", color: "text-violet-600" },
+  ];
 
   return (
-    <section className="py-32 md:py-48 relative z-10 bg-[#040D21] overflow-hidden">
-      {/* Section glow */}
-      <div className="absolute top-1/4 right-0 w-[700px] h-[700px] bg-blue-600/12 blur-[200px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-sky-500/6 blur-[180px] rounded-full pointer-events-none" />
-      {/* Top/bottom dividers */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/20 to-transparent" />
+    <section className="py-24 md:py-36 bg-white relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(11,46,168,0.04),transparent)] pointer-events-none" />
 
-      <div className="container mx-auto px-4 md:px-8 max-w-7xl relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+      <div className="container mx-auto px-4 md:px-8 max-w-[1400px] relative z-10">
 
-          {/* LEFT */}
-          <div className="w-full lg:w-1/2">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-400/25 bg-blue-500/10 backdrop-blur-sm mb-10">
-                <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse shadow-[0_0_10px_rgba(96,165,250,0.8)]" />
-                <span className="text-xs font-bold tracking-[0.2em] uppercase text-blue-200">Data-Driven Execution</span>
-              </div>
+        {/* Header */}
+        <div className="text-center mb-16 md:mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0B2EA8] mb-5"
+          >
+            <span className="flex h-1.5 w-1.5 rounded-full bg-blue-300 animate-pulse" />
+            <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white">Data-Driven Results</span>
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.06 }}
+            className="text-4xl md:text-6xl lg:text-[68px] font-black font-heading tracking-tighter leading-[0.95] text-[#0B2EA8]"
+          >
+            {dict.home?.analytics?.title || "Proven"}<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-400">Results.</span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="mt-5 text-base md:text-lg text-blue-800/60 font-medium max-w-xl mx-auto"
+          >
+            {dict.home?.analytics?.subtitle || "We translate deep analytics into unprecedented digital growth."}
+          </motion.p>
+        </div>
 
-              <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-black font-heading mb-8 tracking-tighter leading-[0.9] text-white">
-                {dict.home?.analytics?.title || "Proven Results."}
-              </h2>
-              <p className="text-xl md:text-2xl text-white/45 mb-16 max-w-lg font-medium tracking-tight leading-snug">
-                {dict.home?.analytics?.subtitle || "We translate deep analytics into unprecedented digital growth."}
-              </p>
+        {/* Main Content */}
+        <div className="flex flex-col lg:flex-row gap-8 items-stretch">
 
-              <div className="grid grid-cols-2 gap-8 lg:gap-12 border-t border-white/8 pt-14">
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <TrendingUp className="text-blue-400 w-4 h-4" />
-                    <p className="text-[10px] font-bold text-white/40 uppercase tracking-[0.2em]">Global Reach</p>
+          {/* LEFT: Stat Cards + KPIs */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="w-full lg:w-5/12 flex flex-col gap-5"
+          >
+            {/* Big stats */}
+            <div className="grid grid-cols-2 gap-5">
+              {stats.map((stat, i) => (
+                <div key={i} className="bg-white rounded-3xl border border-blue-100 p-6
+                  shadow-[0_4px_24px_rgba(11,46,168,0.06)]
+                  hover:shadow-[0_12px_40px_rgba(11,46,168,0.12)] transition-shadow duration-300"
+                >
+                  <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-[#0B2EA8] mb-4">
+                    {stat.icon}
                   </div>
-                  <h4 className="text-6xl md:text-[80px] font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-blue-300 leading-none">
-                    4.2B<span className="text-3xl md:text-4xl text-white/30 ml-1">+</span>
-                  </h4>
+                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-blue-800/40 mb-1">{stat.label}</p>
+                  <h4 className="text-3xl md:text-4xl font-black font-heading tracking-tighter text-[#0B2EA8] leading-none">{stat.value}</h4>
+                  <p className="text-xs text-blue-800/50 mt-1 font-medium">{stat.sub}</p>
                 </div>
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <Activity className="text-blue-400 w-4 h-4" />
-                    <p className="text-[10px] font-bold text-white/40 uppercase tracking-[0.2em]">Avg. ROI</p>
-                  </div>
-                  <h4 className="text-6xl md:text-[80px] font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-blue-300 leading-none">
-                    14.5<span className="text-3xl md:text-4xl text-white/30 ml-1">x</span>
-                  </h4>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+              ))}
+            </div>
 
-          {/* RIGHT — chart */}
-          <div className="w-full lg:w-1/2">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="relative rounded-[2.5rem] p-6 md:p-10 overflow-hidden border border-blue-400/12 shadow-[0_30px_100px_rgba(4,13,33,0.8)]"
+            {/* KPI Grid */}
+            <div className="grid grid-cols-2 gap-4">
+              {kpis.map((kpi, i) => (
+                <div key={i} className="bg-[#F8FAFF] rounded-2xl border border-blue-100 p-5">
+                  <h5 className={`text-2xl font-black font-heading tracking-tighter ${kpi.color} leading-none mb-1`}>{kpi.value}</h5>
+                  <p className="text-[10px] font-bold text-blue-800/50 uppercase tracking-widest leading-tight">{kpi.label}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Performance badge */}
+            <div className="bg-[#0B2EA8] rounded-3xl p-6 flex items-center gap-5">
+              <div className="w-12 h-12 rounded-2xl bg-white/15 flex items-center justify-center shrink-0">
+                <BarChart3 className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <p className="text-white/60 text-[10px] font-black uppercase tracking-[0.25em] mb-1">Performance Index</p>
+                <h4 className="text-3xl font-black font-heading tracking-tighter text-white leading-none">
+                  +1,240% <span className="text-white/40 text-base font-sans font-normal">Δ Growth</span>
+                </h4>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* RIGHT: Chart Card */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="w-full lg:w-7/12"
+          >
+            <div className="h-full bg-white rounded-3xl border border-blue-100 p-8 md:p-10
+              shadow-[0_4px_24px_rgba(11,46,168,0.06)]
+              hover:shadow-[0_20px_60px_rgba(11,46,168,0.12)] transition-shadow duration-300"
             >
-              {/* Card BG */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#0B1D3A] via-[#071428] to-[#040D21]" />
-              {/* Internal grid */}
-              <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.04)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
-              {/* Glow corners */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/12 blur-[100px] rounded-full pointer-events-none" />
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-sky-500/8 blur-[80px] rounded-full pointer-events-none" />
-
-              <div className="relative z-10 flex justify-between items-end mb-14 pb-8 border-b border-white/8">
+              <div className="flex justify-between items-center mb-8">
                 <div>
-                  <p className="text-white/35 text-[10px] font-bold tracking-[0.25em] uppercase mb-2">Performance Index</p>
-                  <p className="text-4xl md:text-5xl font-black font-heading tracking-tighter text-white">
-                    +1,240%
-                    <span className="text-white/35 text-sm tracking-normal font-sans ml-3">Δ Growth</span>
-                  </p>
+                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-blue-800/40 mb-1">Weekly Campaign Performance</p>
+                  <h4 className="text-2xl font-black font-heading tracking-tighter text-[#0B2EA8]">Views Delivered</h4>
                 </div>
-                <div className="flex gap-2">
-                  <span className="w-2 h-2 rounded-full bg-white/15" />
-                  <span className="w-2 h-2 rounded-full bg-blue-400/50" />
-                  <span className="w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_10px_rgba(96,165,250,0.8)]" />
+                <div className="flex items-center gap-2">
+                  <TrendingUp className="w-4 h-4 text-blue-500" />
+                  <span className="text-xs font-bold text-blue-600 bg-blue-50 border border-blue-200 rounded-full px-2.5 py-1">+34% this week</span>
                 </div>
               </div>
 
-              {/* Bar chart */}
-              <div className="h-56 flex items-end justify-between gap-2.5 relative z-10">
+              {/* Bar Chart */}
+              <div className="h-56 flex items-end justify-between gap-3 mb-4">
                 {bars.map((height, index) => (
-                  <div key={index} className="w-full h-full relative group/bar flex items-end">
-                    <div className="absolute bottom-0 w-full h-full bg-blue-900/20 rounded-t-sm" />
-                    <motion.div
-                      initial={{ height: 0 }}
-                      whileInView={{ height: `${height}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
-                      className="absolute bottom-0 w-full rounded-t-md overflow-hidden group-hover/bar:brightness-125 transition-all"
-                      style={{ background: `linear-gradient(to top, rgba(37,99,235,0.3), rgba(59,130,246,0.7), rgba(96,165,250,1))` }}
-                    >
-                      <div className="absolute top-0 left-0 right-0 h-[3px] bg-blue-300 shadow-[0_0_12px_rgba(96,165,250,1)]" />
-                    </motion.div>
+                  <div key={index} className="w-full h-full relative group/bar flex flex-col items-center justify-end gap-2">
+                    {/* Hover value */}
+                    <span className="text-[9px] font-bold text-blue-800/50 opacity-0 group-hover/bar:opacity-100 transition-opacity">
+                      {Math.round(height * 1.2)}M
+                    </span>
+                    {/* Background track */}
+                    <div className="w-full h-full relative rounded-t-lg overflow-hidden">
+                      <div className="absolute inset-0 bg-blue-50 rounded-t-lg" />
+                      <motion.div
+                        initial={{ height: 0 }}
+                        whileInView={{ height: `${height}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: index * 0.08 }}
+                        className="absolute bottom-0 w-full rounded-t-lg overflow-hidden group-hover/bar:brightness-110 transition-all"
+                        style={{ background: `linear-gradient(to top, #0B2EA8, #3B82F6, #7DD3FC)` }}
+                      >
+                        <div className="absolute top-0 left-0 right-0 h-[3px] bg-sky-300/80 rounded-full" />
+                      </motion.div>
+                    </div>
                   </div>
                 ))}
               </div>
-            </motion.div>
-          </div>
 
+              {/* X-axis labels */}
+              <div className="flex justify-between gap-3">
+                {days.map((day, i) => (
+                  <span key={i} className="w-full text-center text-[9px] font-bold text-blue-800/30 uppercase tracking-widest">{day}</span>
+                ))}
+              </div>
+
+              {/* Legend */}
+              <div className="mt-6 pt-6 border-t border-blue-50 flex items-center gap-6">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-gradient-to-r from-[#0B2EA8] to-sky-400" />
+                  <span className="text-[10px] font-bold text-blue-800/50">Delivered Views</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-blue-100 border border-blue-200" />
+                  <span className="text-[10px] font-bold text-blue-800/50">Committed Views</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

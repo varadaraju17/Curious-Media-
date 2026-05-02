@@ -5,7 +5,7 @@ import { Sparkles } from "lucide-react";
 
 export default function ProductsPage() {
   return (
-    <main className="flex-1 w-full bg-black min-h-screen relative flex items-center justify-center overflow-hidden">
+    <main className="flex-1 w-full bg-white min-h-screen relative flex items-center justify-center overflow-hidden">
       {/* Cinematic Glow Background */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/20 blur-[200px] rounded-full pointer-events-none mix-blend-screen"></div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/20 blur-[150px] rounded-full pointer-events-none mix-blend-screen delay-1000"></div>

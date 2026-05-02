@@ -1,73 +1,136 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { CheckCircle2, Award, Zap } from "lucide-react";
 
 const commitments = [
-  { text: "Reach.", highlight: "WE Commit" },
-  { text: "Engagement.", highlight: "WE Commit" },
-  { text: "Viewership.", highlight: "WE Commit" },
+  {
+    label: "WE Commit",
+    value: "Reach.",
+    icon: <Zap className="w-5 h-5" />,
+    desc: "Guaranteed viewership delivered to your exact target audience, every single time.",
+    gradient: "from-blue-600 to-sky-400",
+    accentBg: "bg-blue-50",
+    iconBg: "bg-blue-600",
+    stat: "4.2B+",
+    statLabel: "Total Views Delivered",
+  },
+  {
+    label: "WE Commit",
+    value: "Engagement.",
+    icon: <Award className="w-5 h-5" />,
+    desc: "Real, authentic interactions that build brand love and community — not just numbers.",
+    gradient: "from-indigo-600 to-blue-400",
+    accentBg: "bg-indigo-50",
+    iconBg: "bg-indigo-600",
+    stat: ">5%",
+    statLabel: "Avg. Engagement Rate",
+  },
+  {
+    label: "WE Commit",
+    value: "Viewership.",
+    icon: <CheckCircle2 className="w-5 h-5" />,
+    desc: "We over-deliver — always. Our track record speaks in millions of verified views.",
+    gradient: "from-violet-600 to-indigo-400",
+    accentBg: "bg-violet-50",
+    iconBg: "bg-violet-600",
+    stat: "110M+",
+    statLabel: "Views on Best Campaign",
+  },
 ];
 
 export function BrandWin() {
   return (
-    <section className="py-24 md:py-40 bg-[#040D21] relative overflow-hidden flex items-center justify-center">
-      {/* ── Background Elements ── */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.08)_0%,transparent_70%)] rounded-full pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] border border-blue-500/5 rounded-full pointer-events-none" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/15 to-transparent" />
+    <section className="py-24 md:py-36 bg-white relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
+      {/* Ambient radial glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_100%,rgba(11,46,168,0.05),transparent)] pointer-events-none" />
 
-      <div className="container mx-auto px-4 md:px-8 relative z-10 w-full overflow-hidden max-w-[1400px]">
-        
-        {/* ── Header ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16 md:mb-24 flex flex-col items-center"
-        >
-          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-blue-400/20 bg-blue-500/10 backdrop-blur-md mb-8">
-            <span className="flex h-2 w-2 rounded-full bg-blue-400 animate-pulse shadow-[0_0_8px_rgba(96,165,250,1)]" />
-            <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-blue-200">
-              Our Promise
-            </span>
-          </div>
-          <h3 className="text-5xl sm:text-6xl md:text-7xl lg:text-[90px] xl:text-[110px] font-black text-white tracking-tighter leading-none">
-            How Brands Win.
-          </h3>
-        </motion.div>
+      <div className="container mx-auto px-4 md:px-8 max-w-[1400px] relative z-10">
 
-        {/* ── Single Line Typography Layout ── */}
-        <div className="flex flex-col lg:flex-row items-center justify-between w-full border-y border-white/10 relative">
-          {commitments.map((item, index) => (
+        {/* Header */}
+        <div className="text-center mb-16 md:mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0B2EA8] mb-5"
+          >
+            <span className="flex h-1.5 w-1.5 rounded-full bg-blue-300 animate-pulse" />
+            <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white">Our Promise</span>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.06 }}
+            className="text-5xl md:text-7xl lg:text-[84px] font-black font-heading tracking-tighter leading-[0.9] text-[#0B2EA8]"
+          >
+            How Brands<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-400">Win.</span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="mt-5 text-base md:text-lg text-blue-800/60 font-medium max-w-xl mx-auto leading-relaxed"
+          >
+            We don&apos;t just promise results — we contractually commit to them. Every campaign is backed by our performance guarantee.
+          </motion.p>
+        </div>
+
+        {/* Cards Row */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {commitments.map((item, i) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
+              key={i}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.15, duration: 0.8, ease: "easeOut" }}
-              className="group relative flex-1 flex flex-col items-center justify-center py-16 md:py-20 lg:py-24 w-full cursor-default"
+              transition={{ delay: i * 0.1, duration: 0.6, ease: "easeOut" }}
+              className="group relative rounded-3xl bg-white border border-blue-100 p-8 overflow-hidden
+                shadow-[0_4px_24px_rgba(11,46,168,0.06)]
+                hover:shadow-[0_20px_60px_rgba(11,46,168,0.14)]
+                hover:-translate-y-2 transition-all duration-400 cursor-default"
             >
-              {/* Vertical Dividers (Desktop) */}
-              {index !== 0 && (
-                <div className="hidden lg:block absolute left-0 top-10 bottom-10 w-px bg-gradient-to-b from-transparent via-blue-400/20 to-transparent pointer-events-none" />
-              )}
-              {/* Horizontal Dividers (Mobile) */}
-              {index !== 0 && (
-                <div className="block lg:hidden absolute top-0 left-10 right-10 h-px bg-gradient-to-r from-transparent via-blue-400/20 to-transparent pointer-events-none" />
-              )}
+              {/* Top gradient bar */}
+              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${item.gradient}`} />
 
-              {/* Hover Backlight */}
-              <div className="absolute inset-0 bg-blue-500/0 group-hover:bg-blue-500/[0.03] transition-colors duration-500 pointer-events-none" />
+              {/* Icon */}
+              <div className={`w-11 h-11 rounded-2xl ${item.iconBg} flex items-center justify-center text-white mb-7 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                {item.icon}
+              </div>
 
-              {/* Top Label */}
-              <span className="text-[10px] md:text-xs font-bold text-blue-400/50 tracking-[0.3em] uppercase mb-4 md:mb-6 group-hover:text-blue-300 transition-colors duration-500">
-                {item.highlight}
-              </span>
+              {/* Label */}
+              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-800/40 mb-2">
+                {item.label}
+              </p>
 
-              {/* Massive Single-Line Text */}
-              <span className="text-5xl sm:text-6xl md:text-7xl lg:text-6xl xl:text-[80px] font-black text-white tracking-tighter leading-none transition-all duration-500 group-hover:scale-105 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-b group-hover:from-white group-hover:to-blue-200 drop-shadow-[0_0_0_rgba(0,0,0,0)] group-hover:drop-shadow-[0_10px_30px_rgba(37,99,235,0.4)]">
-                {item.text}
-              </span>
+              {/* Value */}
+              <h3 className="text-4xl md:text-5xl font-black font-heading tracking-tighter text-[#0B2EA8] mb-4 leading-none">
+                {item.value}
+              </h3>
+
+              {/* Description */}
+              <p className="text-sm text-blue-800/60 leading-relaxed mb-8">
+                {item.desc}
+              </p>
+
+              {/* Stat */}
+              <div className={`rounded-2xl ${item.accentBg} p-4 border border-blue-100`}>
+                <p className={`text-2xl font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r ${item.gradient}`}>
+                  {item.stat}
+                </p>
+                <p className="text-[10px] font-bold text-blue-800/50 uppercase tracking-widest mt-0.5">
+                  {item.statLabel}
+                </p>
+              </div>
+
+              {/* Hover background glow */}
+              <div className={`absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-5 blur-[40px] rounded-full transition-opacity duration-500`} />
             </motion.div>
           ))}
         </div>

@@ -8,107 +8,121 @@ export function Testimonials() {
     {
       name: "Sarah Jenkins",
       role: "CMO, TechNova",
+      company: "TechNova",
       quote: "Curious Media completely transformed our creator monetization strategy. Their analytics and distribution network helped us 5X our engagement in just 3 months.",
       rating: 5,
       gradient: "from-blue-600 to-sky-400",
-      accentColor: "#60A5FA",
+      initials: "SJ",
+      tagColor: "bg-blue-50 text-blue-700",
     },
     {
       name: "Marcus Aurelius",
       role: "Lead Creator, MA Vlogs",
+      company: "MA Vlogs",
       quote: "Before Curious, I didn't know how to scale beyond simple sponsorships. Now, I have a dedicated ecosystem that treats my brand like a real business.",
       rating: 5,
-      gradient: "from-indigo-500 to-blue-400",
-      accentColor: "#818CF8",
+      gradient: "from-indigo-600 to-blue-400",
+      initials: "MA",
+      tagColor: "bg-indigo-50 text-indigo-700",
     },
     {
       name: "Priya Sharma",
       role: "VP Marketing, Global Brands",
-      quote: "The sheer premium quality and seamless execution Curious brought to our campaign was unmatched. They handle creators with incredible precision.",
+      company: "Global Brands",
+      quote: "The sheer premium quality and seamless execution Curious brought to our campaign was unmatched. They handle creators with incredible precision and deliver beyond expectations.",
       rating: 5,
-      gradient: "from-sky-500 to-cyan-400",
-      accentColor: "#38BDF8",
-    }
+      gradient: "from-sky-600 to-cyan-400",
+      initials: "PS",
+      tagColor: "bg-sky-50 text-sky-700",
+    },
   ];
 
   return (
-    <section className="py-24 md:py-36 relative z-10 bg-[#040D21] overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/15 to-transparent" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-blue-700/8 blur-[200px] rounded-full pointer-events-none" />
+    <section className="py-24 md:py-36 bg-[#F8FAFF] relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(11,46,168,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(11,46,168,0.025)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
 
-      <div className="container relative mx-auto px-4 md:px-8 z-20 max-w-[1400px]">
+      <div className="container mx-auto px-4 md:px-8 max-w-[1400px] relative z-10">
 
         {/* Header */}
-        <div className="flex flex-col items-center text-center mb-16 md:mb-24">
+        <div className="text-center mb-16 md:mb-20">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-400/25 bg-blue-500/10 backdrop-blur-sm mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0B2EA8] mb-5"
           >
-            <span className="flex h-2 w-2 rounded-full bg-blue-400 animate-pulse shadow-[0_0_8px_rgba(96,165,250,0.8)]" />
-            <span className="text-xs font-bold tracking-[0.2em] uppercase text-blue-200">Client Experiences</span>
+            <span className="flex h-1.5 w-1.5 rounded-full bg-blue-300 animate-pulse" />
+            <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white">Client Experiences</span>
           </motion.div>
-
           <motion.h2
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-[80px] font-black font-heading mb-4 tracking-tighter leading-[1.05]"
+            transition={{ delay: 0.06 }}
+            className="text-4xl md:text-6xl lg:text-[68px] font-black font-heading tracking-tighter leading-[0.95] text-[#0B2EA8] uppercase"
           >
-            <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60">
-              DON&apos;T JUST TAKE<br/>OUR WORD FOR IT.
-            </span>
+            Don&apos;t just take<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-400">our word for it.</span>
           </motion.h2>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 auto-rows-fr">
+        {/* Testimonial Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map((t, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.15, duration: 0.7, ease: "easeOut" }}
-              className="group relative flex flex-col h-full rounded-3xl p-8 lg:p-10 border border-blue-400/10 hover:border-blue-400/30 transition-all duration-500 hover:-translate-y-2 overflow-hidden"
-              style={{ background: "linear-gradient(135deg, #0B1D3A 0%, #071428 100%)", boxShadow: "0 10px 40px rgba(4,13,33,0.7)" }}
+              transition={{ delay: idx * 0.1, duration: 0.6, ease: "easeOut" }}
+              className="group relative flex flex-col bg-white rounded-3xl border border-blue-100 p-8 overflow-hidden
+                shadow-[0_4px_24px_rgba(11,46,168,0.06)]
+                hover:shadow-[0_20px_60px_rgba(11,46,168,0.14)]
+                hover:-translate-y-2 transition-all duration-400"
             >
-              {/* Top gradient line */}
-              <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${t.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-              {/* Inner glow */}
-              <div className="absolute top-0 right-0 w-48 h-48 blur-[80px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{ background: `${t.accentColor}18` }} />
+              {/* Top accent line */}
+              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${t.gradient}`} />
 
+              {/* Quote icon */}
               <div className="mb-6">
-                <Quote className="w-8 h-8 text-blue-400/20 group-hover:text-blue-400/40 transition-colors duration-400" />
+                <div className={`w-10 h-10 rounded-2xl bg-gradient-to-br ${t.gradient} flex items-center justify-center`}>
+                  <Quote className="w-4 h-4 text-white" />
+                </div>
               </div>
 
-              <p className="text-white/70 text-base md:text-lg font-medium leading-relaxed mb-auto grow group-hover:text-white/85 transition-colors duration-400">
+              {/* Stars */}
+              <div className="flex gap-1 mb-5">
+                {[...Array(t.rating)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-blue-400 text-blue-400" />
+                ))}
+              </div>
+
+              {/* Quote text */}
+              <p className="text-blue-900/75 text-base leading-relaxed mb-auto grow font-medium">
                 &ldquo;{t.quote}&rdquo;
               </p>
 
-              <div className="mt-8 pt-7 border-t border-white/8 group-hover:border-white/15 transition-colors duration-400 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${t.gradient} flex items-center justify-center text-white font-black text-sm shrink-0 shadow-[0_0_15px_${t.accentColor}40]`}>
-                    {t.name[0]}
-                  </div>
-                  <div>
-                    <h4 className="text-white font-bold text-sm">{t.name}</h4>
-                    <p className="text-white/35 text-xs font-medium">{t.role}</p>
-                  </div>
+              {/* Author */}
+              <div className="mt-8 pt-6 border-t border-blue-50 flex items-center gap-4">
+                <div className={`w-11 h-11 rounded-2xl bg-gradient-to-br ${t.gradient} flex items-center justify-center text-white font-black text-sm shrink-0`}>
+                  {t.initials}
                 </div>
-                <div className="flex gap-0.5">
-                  {[...Array(t.rating)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-blue-400 text-blue-400" />
-                  ))}
+                <div className="flex-1 min-w-0">
+                  <h4 className="text-[#0B2EA8] font-bold text-sm leading-tight truncate">{t.name}</h4>
+                  <p className="text-blue-800/50 text-xs font-medium truncate">{t.role}</p>
                 </div>
+                <span className={`text-[9px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full ${t.tagColor} border border-current/20 shrink-0`}>
+                  ✓ Verified
+                </span>
               </div>
+
+              {/* Hover glow */}
+              <div className={`absolute -bottom-8 -right-8 w-36 h-36 bg-gradient-to-br ${t.gradient} opacity-0 group-hover:opacity-5 blur-[40px] rounded-full transition-opacity duration-500`} />
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );

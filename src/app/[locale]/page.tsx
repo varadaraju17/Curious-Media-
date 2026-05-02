@@ -19,8 +19,8 @@ export default async function Home(props: { params: Promise<{ locale: string }> 
   return (
     <>
       <Hero dict={dict} locale={locale} />
-      <Divisions dict={dict} locale={locale} />
       <Marquee type="brands" dict={dict} />
+      <Divisions dict={dict} locale={locale} />
       <Marquee type="content" dict={dict} title="Trusted by the Best in Content" />
       <BrandWin />
       <CaseStudies />

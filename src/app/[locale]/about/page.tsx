@@ -14,7 +14,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <main className="flex-1 w-full bg-black">
+    <main className="flex-1 w-full bg-white">
       {/* Hero */}
       <section className="pt-40 pb-20 px-4 md:px-8 border-b border-white/5 relative overflow-hidden">
         <div className="absolute -top-[20%] -right-[10%] w-[600px] h-[600px] bg-primary/20 blur-[150px] rounded-full pointer-events-none"></div>
@@ -40,7 +40,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission */}
-      <section className="py-32 px-4 md:px-8 bg-black">
+      <section className="py-32 px-4 md:px-8 bg-white">
         <div className="container mx-auto max-w-6xl text-center">
            <motion.h2 
              initial={{ opacity: 0, scale: 0.9 }}

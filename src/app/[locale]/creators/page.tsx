@@ -24,8 +24,8 @@ export default function CreatorsPage() {
     : CREATORS.filter(c => c.category === filter);
 
   return (
-    <main className="flex-1 w-full bg-black min-h-screen relative">
-      <section className="pt-32 pb-20 px-4 md:px-8 border-b border-white/5 relative z-10">
+    <main className="flex-1 w-full bg-white min-h-screen relative">
+      <section className="pt-32 pb-20 px-4 md:px-8 border-b border-blue-100 relative z-10">
         <div className="container mx-auto max-w-6xl text-center">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -38,7 +38,7 @@ export default function CreatorsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-xl text-white/60 max-w-2xl mx-auto mb-16"
+            className="text-xl text-blue-800/70 max-w-2xl mx-auto mb-16"
           >
             Explore the top 1% of digital talent. Filter by niche, audience size, and performance metrics.
           </motion.p>
@@ -103,7 +103,7 @@ export default function CreatorsPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-black/80 backdrop-blur-xl"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-blue-950/25 backdrop-blur-xl"
             onClick={() => setSelectedCreator(null)}
           >
             <motion.div 

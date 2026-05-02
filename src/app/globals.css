@@ -1,96 +1,105 @@
 @import "tailwindcss";
 
 @theme {
-  /* ── Premium Deep Blue Design System ── */
-  --color-background: #040D21;
-  --color-surface:    #071428;
-  --color-surface-2:  #0B1D3A;
-  --color-surface-3:  #0F2347;
-  --color-foreground: #FFFFFF;
-
-  --color-primary:   #2563EB;
-  --color-secondary: #3B82F6;
-  --color-accent:    #60A5FA;
-  --color-electric:  #38BDF8;
-  --color-glow:      rgba(37,99,235,0.5);
-
   --font-sans:    var(--font-inter), sans-serif;
   --font-heading: var(--font-outfit), sans-serif;
 }
 
+/* ── Animated Blob Keyframes ── */
+@keyframes blob1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(40px, -30px) scale(1.08); }
+  66%       { transform: translate(-20px, 20px) scale(0.95); }
+}
+@keyframes blob2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(-50px, 20px) scale(1.05); }
+  66%       { transform: translate(30px, -40px) scale(0.92); }
+}
+@keyframes blob3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(20px, 30px) scale(1.1); }
+}
+@keyframes float-y {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+@keyframes float-y-slow {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.blob-1 { animation: blob1 9s ease-in-out infinite; }
+.blob-2 { animation: blob2 12s ease-in-out infinite; }
+.blob-3 { animation: blob3 7s ease-in-out infinite; }
+.float-card  { animation: float-y 4s ease-in-out infinite; }
+.float-card-slow { animation: float-y-slow 5.5s ease-in-out infinite; }
+.text-shimmer {
+  background: linear-gradient(90deg,#0B2EA8 0%,#3B82F6 40%,#06B6D4 60%,#0B2EA8 100%);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+
 @layer base {
-  body {
-    background-color: #040D21;
-    background-image:
-      radial-gradient(ellipse 90% 60% at 50% -10%, rgba(37,99,235,0.30) 0%, transparent 65%),
-      radial-gradient(ellipse 45% 35% at 0% 90%,   rgba(56,189,248,0.08) 0%, transparent 60%),
-      radial-gradient(ellipse 55% 40% at 100% 60%,  rgba(37,99,235,0.07) 0%, transparent 60%);
-    color: #FFFFFF;
-    @apply font-sans selection:bg-blue-500/40 selection:text-white;
+  html {
     overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: #ffffff;
+    color: #0b2ea8;
+    @apply font-sans selection:bg-blue-200 selection:text-blue-900;
+    overflow-x: hidden;
+    width: 100%;
+    min-width: 320px; /* minimum supported width */
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading tracking-tighter;
+    @apply font-heading tracking-tighter text-[#0b2ea8];
+  }
+
+  img, video, svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Prevent any child from breaking out horizontally */
+  * {
+    box-sizing: border-box;
   }
 }
 
 @layer utilities {
-  /* Premium glass card */
-  .glass {
-    background: linear-gradient(135deg, rgba(11,29,58,0.80) 0%, rgba(7,20,40,0.60) 100%);
-    @apply backdrop-blur-2xl border border-blue-500/15 rounded-3xl shadow-[0_8px_40px_rgba(4,13,33,0.8)];
+  .glass, .glass-panel {
+    @apply bg-white border border-blue-100 rounded-3xl shadow-[0_12px_40px_rgba(11,46,168,0.08)];
   }
-
-  /* Glass card — lighter variant */
   .glass-light {
-    background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
-    @apply backdrop-blur-xl border border-white/10 rounded-3xl;
+    @apply bg-blue-50 border border-blue-100 rounded-3xl;
   }
-
-  /* Gradient text — electric blue */
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#60A5FA] via-[#38BDF8] to-[#93C5FD];
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#0B2EA8] via-[#1D4ED8] to-[#2563EB];
   }
-  .text-gradient-white {
-    @apply bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50;
-  }
-
-  /* Primary CTA button */
   .btn-primary {
-    @apply relative inline-flex items-center justify-center gap-3 rounded-full px-8 py-4
-           bg-gradient-to-r from-blue-600 to-blue-500
-           text-white font-bold tracking-wide
-           shadow-[0_0_30px_rgba(37,99,235,0.55),0_4px_15px_rgba(0,0,0,0.4)]
-           hover:shadow-[0_0_55px_rgba(59,130,246,0.75),0_4px_20px_rgba(0,0,0,0.5)]
-           hover:scale-105 transition-all duration-300;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 bg-[#0B2EA8] text-white font-bold hover:bg-[#0a268a] transition-all;
   }
-
-  .divider-glow {
-    @apply h-px w-full bg-gradient-to-r from-transparent via-blue-500/30 to-transparent;
-  }
-
-  /* Glowing badge */
-  .badge-glow {
-    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full
-           border border-blue-400/30 bg-blue-500/10 backdrop-blur-sm
-           shadow-[0_0_20px_rgba(37,99,235,0.20)];
+  /* Responsive container utility */
+  .section-container {
+    @apply container mx-auto px-4 sm:px-6 md:px-8 max-w-[1400px];
   }
 }
 
-/* Animated gradient orb utility */
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0px) scale(1); }
-  50%       { transform: translateY(-30px) scale(1.05); }
-}
-@keyframes float-slower {
-  0%, 100% { transform: translateY(0px) scale(1); }
-  50%       { transform: translateY(-20px) scale(1.03); }
-}
-.animate-float      { animation: float-slow   8s ease-in-out infinite; }
-.animate-float-slow { animation: float-slower 12s ease-in-out infinite; }
+/* Custom scrollbar */
+::-webkit-scrollbar       { width: 5px; }
+::-webkit-scrollbar-track { background: #eff6ff; }
+::-webkit-scrollbar-thumb { background: #1d4ed8; border-radius: 10px; }
 
-/* Scrollbar */
-::-webkit-scrollbar       { width: 4px; }
-::-webkit-scrollbar-track { background: #040D21; }
-::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #2563EB, #38BDF8); border-radius: 10px; }

@@ -38,8 +38,8 @@ export default async function LocaleLayout(
   const dict = await getDictionary(locale as Locale);
 
   return (
-    <html lang={locale} className={`${inter.variable} ${outfit.variable} dark antialiased`}>
-      <body className="font-sans bg-[#040D21] text-white min-h-screen flex flex-col">
+    <html lang={locale} className={`${inter.variable} ${outfit.variable} antialiased`}>
+      <body className="font-sans bg-white text-[#0B2EA8] min-h-screen flex flex-col">
         <Providers>
           <Navbar dict={dict} locale={locale as Locale} />
           {props.children}

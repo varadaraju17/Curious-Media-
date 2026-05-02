@@ -21,9 +21,9 @@ export default function MediaPage() {
   ];
 
   return (
-    <main className="flex-1 w-full bg-black">
+    <main className="flex-1 w-full bg-white">
       {/* Hero Section */}
-      <section className="relative pt-40 pb-20 px-4 md:px-8 border-b border-white/5 overflow-hidden">
+      <section className="relative pt-40 pb-20 px-4 md:px-8 border-b border-blue-100 overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 blur-[150px] rounded-full"></div>
         <div className="container mx-auto max-w-6xl relative z-10 text-center">
           <motion.h1 
@@ -37,7 +37,7 @@ export default function MediaPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-xl text-white/70 max-w-3xl mx-auto mb-10"
+            className="text-xl text-blue-800/70 max-w-3xl mx-auto mb-10"
           >
             We represent the new elite of digital storytellers and orchestrate campaigns that define internet culture.
           </motion.p>
@@ -67,7 +67,7 @@ export default function MediaPage() {
       </section>
 
       {/* Creator Marketplace UI Mockup */}
-      <section className="py-32 px-4 md:px-8 bg-black relative">
+      <section className="py-32 px-4 md:px-8 bg-white relative">
         <div className="container mx-auto max-w-6xl">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
             <div>

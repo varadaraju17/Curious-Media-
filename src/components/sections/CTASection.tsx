@@ -7,12 +7,12 @@ import { ArrowRight } from "lucide-react";
 
 export function CTASection({ dict, locale }: { dict: any; locale: Locale }) {
   return (
-    <section className="py-32 md:py-64 relative z-10 overflow-hidden bg-background border-t border-white/5">
+    <section className="py-32 md:py-64 relative z-10 overflow-hidden bg-white border-t border-blue-100">
       {/* Background Central Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1200px] h-[800px] bg-[#0000FF]/25 blur-[250px] rounded-full pointer-events-none mix-blend-screen"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1200px] h-[800px] bg-blue-100/40 blur-[250px] rounded-full pointer-events-none mix-blend-multiply"></div>
       
       {/* Vercel Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_70%_70%_at_50%_50%,#000_15%,transparent_100%)] pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(11,46,168,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(11,46,168,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_70%_70%_at_50%_50%,#000_15%,transparent_100%)] pointer-events-none"></div>
 
       <div className="container relative mx-auto px-4 md:px-8 text-center z-20 flex flex-col items-center">
         <motion.div
@@ -21,8 +21,8 @@ export function CTASection({ dict, locale }: { dict: any; locale: Locale }) {
            viewport={{ once: true }}
            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md mb-10 shadow-[0_0_40px_rgba(255,255,255,0.05)] text-xs md:text-sm font-bold tracking-[0.2em] uppercase text-white/80 transition-all hover:bg-white/10 hover:scale-105 cursor-default">
-            <span className="flex h-2 w-2 rounded-full bg-white animate-pulse shadow-[0_0_10px_#fff]"></span>
+          <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-blue-200 bg-blue-50/50 backdrop-blur-md mb-10 shadow-[0_0_40px_rgba(11,46,168,0.05)] text-xs md:text-sm font-bold tracking-[0.2em] uppercase text-[#0B2EA8] transition-all hover:bg-blue-100/50 hover:scale-105 cursor-default">
+            <span className="flex h-2 w-2 rounded-full bg-blue-500 animate-pulse shadow-[0_0_10px_rgba(37,99,235,0.5)]"></span>
             Initiate Collaboration
           </div>
         </motion.div>
@@ -32,7 +32,7 @@ export function CTASection({ dict, locale }: { dict: any; locale: Locale }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-6xl md:text-[90px] lg:text-[140px] font-black font-heading leading-[0.85] tracking-tighter mb-8 text-transparent bg-clip-text bg-gradient-to-b from-white via-white/90 to-white/40 drop-shadow-2xl"
+          className="text-6xl md:text-[90px] lg:text-[140px] font-black font-heading leading-[0.85] tracking-tighter mb-8 text-transparent bg-clip-text bg-gradient-to-b from-[#0B2EA8] via-blue-800 to-blue-600 drop-shadow-xl"
         >
           {dict.home?.cta?.title?.split(' ')[0] || "READY."}
           <br />
@@ -44,7 +44,7 @@ export function CTASection({ dict, locale }: { dict: any; locale: Locale }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="text-lg md:text-3xl text-white/60 mb-16 max-w-3xl font-medium tracking-tight leading-snug"
+          className="text-lg md:text-3xl text-blue-800/60 mb-16 max-w-3xl font-medium tracking-tight leading-snug"
         >
           {dict.home?.cta?.subtitle || "Step into the future of media storytelling with Curious Media."}
         </motion.p>
@@ -57,11 +57,11 @@ export function CTASection({ dict, locale }: { dict: any; locale: Locale }) {
         >
           <Link 
             href={`/${locale}/contact`}
-            className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-white px-12 py-6 text-[#0000FF] font-black tracking-widest transition-all hover:scale-105 hover:shadow-[0_0_60px_rgba(255,255,255,0.3)] shadow-[0_20px_50px_rgba(0,0,255,0.2)]"
+            className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-[#0B2EA8] px-12 py-6 text-white font-black tracking-widest transition-all hover:scale-105 hover:shadow-[0_0_60px_rgba(11,46,168,0.3)] shadow-[0_20px_50px_rgba(11,46,168,0.2)]"
           >
             <span className="relative z-10 text-lg md:text-xl uppercase">{dict.home?.cta?.button || "Start Your Journey"}</span>
             <ArrowRight className="relative z-10 w-6 h-6 group-hover:translate-x-1 transition-transform" />
-            <div className="absolute inset-0 bg-[#0000FF]/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
           </Link>
         </motion.div>
       </div>

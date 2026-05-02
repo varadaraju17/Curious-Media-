@@ -55,7 +55,7 @@ const STATS = [
 
 export default function CuriousRecordsPage() {
   return (
-    <main className="min-h-screen bg-background text-white overflow-hidden">
+    <main className="min-h-screen bg-white text-[#0B2EA8] overflow-hidden">
 
       {/* ── HERO ── */}
       <section className="relative min-h-[90vh] flex flex-col justify-center overflow-hidden pt-32 pb-20">
@@ -74,7 +74,7 @@ export default function CuriousRecordsPage() {
             className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-fuchsia-400/25 bg-fuchsia-500/10 backdrop-blur-md mb-8 shadow-[0_0_25px_rgba(192,38,211,0.2)]"
           >
             <Headphones className="w-3.5 h-3.5 text-fuchsia-300" />
-            <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-fuchsia-200">Curious Records</span>
+            <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-fuchsia-200">Curious Music</span>
           </motion.div>
 
           {/* Headline */}
@@ -97,7 +97,7 @@ export default function CuriousRecordsPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-lg md:text-2xl text-white/50 max-w-2xl mx-auto mb-12 leading-relaxed font-medium"
           >
-            Curious Records is India's boldest independent music label — forging the next generation of artists through creative freedom, world-class production, and global reach.
+            Curious Music is India's boldest independent music label — forging the next generation of artists through creative freedom, world-class production, and global reach.
           </motion.p>
 
           <motion.div

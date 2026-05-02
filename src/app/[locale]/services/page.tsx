@@ -27,7 +27,7 @@ export default function ServicesPage() {
     },
     {
       id: "records",
-      title: "Curious Records",
+      title: "Curious Music",
       desc: "Discovering talent. Building artists. Creating stars.",
       extended: "A dedicated label focused on unearthing raw musical talent and transforming them into global superstars through unrivaled promotion and production.",
       icon: <Disc className="w-14 h-14" />,
@@ -48,7 +48,7 @@ export default function ServicesPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#040D21] pt-32 pb-24 relative overflow-hidden">
+    <main className="min-h-screen bg-white pt-32 pb-24 relative overflow-hidden">
       {/* Page glows */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-600/15 blur-[220px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-indigo-800/8 blur-[200px] rounded-full pointer-events-none" />

@@ -29,7 +29,7 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="flex-1 w-full bg-black min-h-screen">
+    <main className="flex-1 w-full bg-white min-h-screen">
       <section className="pt-40 pb-20 px-4 md:px-8 border-b border-white/5 relative overflow-hidden">
         <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-accent/20 blur-[150px] rounded-full pointer-events-none"></div>
 

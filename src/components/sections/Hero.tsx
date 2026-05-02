@@ -1,128 +1,465 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Locale } from "@/i18n/config";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { useRef } from "react";
+import { ArrowRight, TrendingUp, Users, Zap, CheckCircle } from "lucide-react";
+
+/* Particles config */
+const particles = [
+  { x: "12%",  y: "18%", size: 5,  delay: 0,    dur: 7  },
+  { x: "80%",  y: "12%", size: 4,  delay: 1.5,  dur: 9  },
+  { x: "65%",  y: "55%", size: 6,  delay: 0.8,  dur: 6  },
+  { x: "28%",  y: "70%", size: 4,  delay: 2.2,  dur: 8  },
+  { x: "90%",  y: "75%", size: 5,  delay: 0.4,  dur: 10 },
+  { x: "50%",  y: "30%", size: 3,  delay: 1.8,  dur: 7  },
+  { x: "18%",  y: "45%", size: 6,  delay: 3.0,  dur: 9  },
+  { x: "72%",  y: "88%", size: 4,  delay: 0.6,  dur: 8  },
+  { x: "38%",  y: "92%", size: 3,  delay: 2.6,  dur: 6  },
+  { x: "55%",  y: "8%",  size: 5,  delay: 1.2,  dur: 11 },
+  { x: "6%",   y: "80%", size: 4,  delay: 0.2,  dur: 8  },
+  { x: "93%",  y: "38%", size: 5,  delay: 3.5,  dur: 7  },
+];
+
+
+const floatingCards = [
+  {
+    icon: <TrendingUp className="w-4 h-4 text-white" />,
+    iconBg: "bg-gradient-to-br from-emerald-400 to-teal-500",
+    label: "Campaign Live",
+    value: "+110M Views",
+    valueColor: "text-[#0B2EA8]",
+    delay: 0.55,
+    pos: "left-0 sm:-left-6 top-8 sm:top-14",
+    floatClass: "float-card",
+  },
+  {
+    icon: <Zap className="w-4 h-4 text-white" />,
+    iconBg: "bg-gradient-to-br from-violet-500 to-purple-600",
+    label: "Avg. ROI",
+    value: "14.5×",
+    valueColor: "text-violet-600",
+    delay: 0.65,
+    pos: "right-0 sm:-right-4 top-4 sm:top-8",
+    floatClass: "float-card-slow",
+  },
+  {
+    icon: <Users className="w-4 h-4 text-white" />,
+    iconBg: "bg-gradient-to-br from-[#0B2EA8] to-blue-500",
+    label: "Creator Network",
+    value: "1000+ Active",
+    valueColor: "text-[#0B2EA8]",
+    delay: 0.75,
+    pos: "left-0 sm:-left-6 bottom-8 sm:bottom-14",
+    floatClass: "float-card",
+  },
+];
 
 export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
-  const container = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: container, offset: ["start start", "end start"] });
-  const y       = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.65], [1, 0]);
-
   return (
-    <section ref={container} className="relative min-h-[100svh] flex flex-col justify-center overflow-hidden bg-[#040D21] pt-28 pb-16">
+    <section className="relative bg-white overflow-hidden">
 
-      {/* ── Background layers ── */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(59,130,246,0.10)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
-      <motion.div style={{ y, opacity }}
-        className="absolute -top-40 left-1/2 -translate-x-1/2 w-[1100px] h-[700px] bg-gradient-to-b from-blue-600/30 via-blue-800/15 to-transparent blur-[160px] rounded-full pointer-events-none"
-      />
-      <div className="absolute top-1/4 -right-32 w-[500px] h-[500px] bg-sky-500/10 blur-[180px] rounded-full pointer-events-none animate-float-slow" />
-      <div className="absolute bottom-0 -left-32 w-[450px] h-[450px] bg-blue-700/12 blur-[160px] rounded-full pointer-events-none animate-float" />
-      <div className="absolute top-[45%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/15 to-transparent pointer-events-none" />
+      {/* ══════════════════════════════════
+          MOTION GRAPHICS BACKGROUND
+      ══════════════════════════════════ */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden bg-white">
+        
+        {/* 1. Dynamic Panning Grid */}
+        <motion.div 
+          className="absolute inset-0 [mask-image:radial-gradient(ellipse_80%_60%_at_50%_40%,#000_30%,transparent_100%)]"
+          style={{
+            backgroundImage: "linear-gradient(rgba(11,46,168,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(11,46,168,0.06) 1px, transparent 1px)",
+            backgroundSize: "60px 60px"
+          }}
+          animate={{ backgroundPosition: ["0px 0px", "60px 60px"] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+        />
 
-      <div className="container mx-auto px-4 sm:px-8 md:px-10 relative z-20 w-full">
-        <div className="flex flex-col lg:flex-row gap-14 xl:gap-20 items-center justify-between">
+        {/* 2. Abstract Flowing Lines (SVG) */}
+        <svg className="absolute inset-0 w-full h-full opacity-50" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="lineGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#0B2EA8" stopOpacity="0" />
+              <stop offset="50%" stopColor="#3B82F6" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#06B6D4" stopOpacity="0" />
+            </linearGradient>
+            <linearGradient id="lineGrad2" x1="100%" y1="0%" x2="0%" y2="0%">
+              <stop offset="0%" stopColor="#8B5CF6" stopOpacity="0" />
+              <stop offset="50%" stopColor="#06B6D4" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#3B82F6" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          
+          <motion.path
+            d="M-200,600 C200,400 400,800 800,500 C1200,200 1400,400 1600,400"
+            fill="none"
+            stroke="url(#lineGrad1)"
+            strokeWidth="2"
+            initial={{ pathLength: 0, pathOffset: 1 }}
+            animate={{ pathLength: 1, pathOffset: 0 }}
+            transition={{ duration: 6, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" }}
+          />
+          <motion.path
+            d="M-200,400 C200,600 600,200 1000,500 C1400,800 1500,600 1600,600"
+            fill="none"
+            stroke="url(#lineGrad2)"
+            strokeWidth="3"
+            initial={{ pathLength: 0, pathOffset: 1 }}
+            animate={{ pathLength: 1, pathOffset: 0 }}
+            transition={{ duration: 8, ease: "easeInOut", repeat: Infinity, repeatType: "mirror", delay: 1 }}
+          />
+        </svg>
 
-          {/* ── LEFT ── */}
+        {/* 3. Floating Geometric Elements (Pluses and Circles) */}
+        {[
+          { top: '15%', left: '10%', size: 24, type: 'plus', color: 'text-blue-400/40', delay: 0 },
+          { top: '25%', left: '85%', size: 32, type: 'circle', color: 'border-cyan-400/30', delay: 1 },
+          { top: '65%', left: '15%', size: 16, type: 'circle', color: 'border-violet-400/40', delay: 2 },
+          { top: '75%', left: '80%', size: 28, type: 'plus', color: 'text-blue-500/30', delay: 0.5 },
+          { top: '40%', left: '50%', size: 20, type: 'plus', color: 'text-cyan-500/30', delay: 1.5 },
+        ].map((el, i) => (
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full lg:w-[54%] text-center lg:text-left flex flex-col items-center lg:items-start"
+            key={i}
+            className={`absolute ${el.type === 'circle' ? `rounded-full border-[2px] ${el.color}` : el.color}`}
+            style={{ 
+              top: el.top, 
+              left: el.left, 
+              width: el.type === 'circle' ? el.size : 'auto', 
+              height: el.type === 'circle' ? el.size : 'auto',
+              fontSize: el.type === 'plus' ? el.size : 'inherit',
+              fontWeight: 'bold',
+              lineHeight: 1
+            }}
+            animate={{
+              y: [0, -30, 0],
+              rotate: el.type === 'plus' ? [0, 90, 180, 270, 360] : 0,
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.8, 0.3]
+            }}
+            transition={{
+              duration: 6 + i,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: el.delay
+            }}
           >
+            {el.type === 'plus' && '+'}
+          </motion.div>
+        ))}
+
+        {/* 4. Cinematic Glowing Orbs */}
+        <motion.div
+          className="absolute rounded-full mix-blend-multiply filter blur-[100px] opacity-[0.15] bg-[#3B82F6]"
+          style={{ width: '45vw', height: '45vw', maxWidth: '600px', maxHeight: '600px', top: '-10%', left: '-10%' }}
+          animate={{
+            scale: [1, 1.1, 1],
+            x: [0, 50, 0],
+            y: [0, 30, 0],
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute rounded-full mix-blend-multiply filter blur-[100px] opacity-[0.12] bg-[#06B6D4]"
+          style={{ width: '35vw', height: '35vw', maxWidth: '500px', maxHeight: '500px', top: '20%', right: '-5%' }}
+          animate={{
+            scale: [1, 1.2, 1],
+            x: [0, -40, 0],
+            y: [0, -50, 0],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        />
+        <motion.div
+          className="absolute rounded-full mix-blend-multiply filter blur-[120px] opacity-[0.10] bg-[#8B5CF6]"
+          style={{ width: '40vw', height: '40vw', maxWidth: '550px', maxHeight: '550px', bottom: '-20%', left: '20%' }}
+          animate={{
+            scale: [1, 1.15, 1],
+            x: [0, 60, 0],
+            y: [0, -40, 0],
+          }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 4 }}
+        />
+
+        {/* 5. Minimalist Concentric Radar Rings */}
+        <div className="absolute top-[20%] right-[20%] flex items-center justify-center opacity-40 pointer-events-none">
+          <motion.div className="absolute border border-blue-400 rounded-full w-[150px] h-[150px] sm:w-[200px] sm:h-[200px]"
+            animate={{ scale: [1, 2.5], opacity: [0.6, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeOut" }}
+          />
+          <motion.div className="absolute border border-blue-400 rounded-full w-[150px] h-[150px] sm:w-[200px] sm:h-[200px]"
+            animate={{ scale: [1, 2.5], opacity: [0.6, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeOut", delay: 1.33 }}
+          />
+          <motion.div className="absolute border border-blue-400 rounded-full w-[150px] h-[150px] sm:w-[200px] sm:h-[200px]"
+            animate={{ scale: [1, 2.5], opacity: [0.6, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeOut", delay: 2.66 }}
+          />
+          <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-500 rounded-full shadow-[0_0_12px_#3B82F6] animate-pulse" />
+        </div>
+
+      </div>
+
+      {/* ══════════════════════════════════
+          MAIN CONTENT
+      ══════════════════════════════════ */}
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 max-w-[1400px] relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-4 items-center
+          pt-20 sm:pt-24 md:pt-32 pb-4 sm:pb-6"
+        >
+
+          {/* ═══ LEFT — Copy ═══ */}
+          <motion.div
+            initial={{ opacity: 0, y: 36 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 flex flex-col"
+          >
+
             {/* Badge */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.88 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-blue-400/30 bg-blue-500/10 backdrop-blur-md mb-8 shadow-[0_0_30px_rgba(37,99,235,0.25)]"
+              transition={{ delay: 0.08, duration: 0.55 }}
+              className="inline-flex items-center gap-2 self-start mb-5 sm:mb-6
+                rounded-full px-4 py-1.5
+                bg-white border border-blue-200
+                shadow-[0_2px_16px_rgba(11,46,168,0.10)]"
             >
-              <span className="flex h-2 w-2 rounded-full bg-blue-400 animate-pulse shadow-[0_0_10px_rgba(96,165,250,1)]" />
-              <span className="text-[11px] font-bold tracking-[0.22em] uppercase text-blue-200">India&apos;s #1 Creator Monetisation Platform</span>
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-60" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600" />
+              </span>
+              <span className="text-[10px] sm:text-[11px] font-black tracking-[0.20em] uppercase text-[#0B2EA8]">
+                India&apos;s #1 Creator Monetisation Platform
+              </span>
             </motion.div>
 
-            {/* Headline */}
-            <h1 className="text-[13vw] sm:text-7xl md:text-8xl lg:text-[60px] xl:text-[76px] font-black font-heading tracking-tighter mb-6 leading-[0.88] w-full">
-              <span className="text-white drop-shadow-2xl">DON&apos;T JUST<br/>CREATE.</span>
-              <br/>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-sky-300 to-blue-200 drop-shadow-[0_0_40px_rgba(96,165,250,0.5)]">
-                MONETIZE WITH US.
-              </span>
+            {/* ── Headline ── */}
+            <h1 className="font-black font-heading leading-[0.9] tracking-[-0.03em]
+              text-[38px] xs:text-[44px] sm:text-[56px] md:text-[68px] lg:text-[76px] xl:text-[84px]"
+            >
+              {/* Line 1 */}
+              <motion.span
+                initial={{ opacity: 0, x: -24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.15, duration: 0.6 }}
+                className="block text-[#0A1A4E]"
+              >
+                DON&apos;T JUST
+              </motion.span>
+
+              {/* Line 2 — with shimmer underline */}
+              <motion.span
+                initial={{ opacity: 0, x: -24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.22, duration: 0.6 }}
+                className="block relative text-[#0B2EA8] w-fit"
+              >
+                CREATE.
+                <motion.span
+                  initial={{ scaleX: 0, opacity: 0 }}
+                  animate={{ scaleX: 1, opacity: 1 }}
+                  transition={{ delay: 0.7, duration: 0.8, ease: [0.16,1,0.3,1] }}
+                  className="absolute -bottom-1 left-0 h-[4px] sm:h-[5px] w-full origin-left rounded-full
+                    bg-gradient-to-r from-[#0B2EA8] via-cyan-400 to-sky-300"
+                />
+              </motion.span>
+
+              {/* Lines 3+4 — animated shimmer */}
+              <motion.span
+                initial={{ opacity: 0, x: -24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.30, duration: 0.6 }}
+                className="block mt-2"
+              >
+                <span className="text-shimmer">MONETIZE</span>
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, x: -24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.38, duration: 0.6 }}
+                className="block -mt-1 sm:-mt-2"
+              >
+                <span className="text-shimmer">WITH US.</span>
+              </motion.span>
             </h1>
 
-            <p className="text-lg sm:text-xl md:text-2xl text-blue-100/85 font-semibold mb-4 tracking-tight w-full">
-              Turn your content into a scalable income.
-            </p>
-            <p className="text-base sm:text-lg text-white/40 mb-10 leading-relaxed max-w-xl font-medium w-full mx-auto lg:mx-0">
-              Curious Media helps creators move beyond brand deals to earn consistently—across every platform.
-            </p>
+            {/* ── Sublines ── */}
+            <div className="mt-4 sm:mt-6 max-w-2xl flex flex-col gap-1.5">
+              <motion.p
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.44, duration: 0.6 }}
+                className="text-base sm:text-lg md:text-xl font-black text-[#0B2EA8] leading-tight tracking-tight uppercase sm:whitespace-nowrap"
+              >
+                Turn your content into a scalable income.
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.50, duration: 0.6 }}
+                className="text-sm sm:text-base md:text-[17px] text-slate-500 font-medium leading-relaxed"
+              >
+                Curious Media helps creators move beyond brand deals to earn
+                consistently—across every platform.
+              </motion.p>
+            </div>
 
-            {/* CTA Button */}
-            <Link
-              href={`/${locale}/contact`}
-              id="hero-cta-primary"
-              className="group relative inline-flex items-center justify-center gap-3 rounded-full px-8 py-4 text-white font-black text-base md:text-lg tracking-wide overflow-hidden shadow-[0_0_40px_rgba(37,99,235,0.60)] hover:shadow-[0_0_65px_rgba(59,130,246,0.80)] transition-all duration-300 hover:scale-105"
+            {/* ── Features pills ── */}
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.56, duration: 0.6 }}
+              className="mt-7 flex flex-wrap gap-2"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-500" />
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-sky-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <span className="relative z-10">Get Started</span>
-              <ArrowRight className="relative z-10 w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
-            </Link>
+              {["Brand Deals", "Content Monetization", "Talent Management", "Creator Growth"].map((feat) => (
+                <div key={feat} className="inline-flex items-center gap-1.5 px-3.5 py-1.5
+                  rounded-full bg-blue-50 border border-blue-100 text-[11px] font-bold text-[#0B2EA8]"
+                >
+                  <CheckCircle className="w-3 h-3 text-blue-400" />
+                  {feat}
+                </div>
+              ))}
+            </motion.div>
+
+            {/* ── CTA ── */}
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.62, duration: 0.6 }}
+              className="mt-9 sm:mt-10 flex items-center gap-4 flex-wrap"
+            >
+              <Link
+                href={`/${locale}/contact`}
+                id="hero-cta-primary"
+                className="group relative inline-flex items-center gap-2.5 rounded-full
+                  px-7 sm:px-9 py-3.5 sm:py-4
+                  text-white font-black text-sm sm:text-base tracking-wide overflow-hidden
+                  shadow-[0_8px_28px_rgba(11,46,168,0.30)]
+                  hover:shadow-[0_16px_48px_rgba(11,46,168,0.45)]
+                  hover:scale-[1.03] transition-all duration-300"
+              >
+                {/* Animated gradient bg */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0B2EA8] via-blue-500 to-[#0B2EA8]
+                  bg-[size:200%] hover:bg-right-center transition-all duration-700
+                  group-hover:bg-[position:100%]" />
+                <span className="relative z-10">Get Started</span>
+                <ArrowRight className="relative z-10 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+
+              <Link
+                href={`/${locale}/about`}
+                className="inline-flex items-center gap-2 rounded-full
+                  border-2 border-slate-200
+                  px-7 sm:px-9 py-3.5 sm:py-4
+                  text-slate-600 font-bold text-sm sm:text-base tracking-wide
+                  hover:border-[#0B2EA8] hover:text-[#0B2EA8] hover:bg-blue-50
+                  hover:scale-[1.02] transition-all duration-300"
+              >
+                Explore More
+              </Link>
+            </motion.div>
+
           </motion.div>
 
-          {/* ── RIGHT (VIDEO) ── */}
+          {/* ═══ RIGHT — Phone ═══ */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-            className="w-full lg:w-[46%] flex justify-center lg:justify-end"
+            initial={{ opacity: 0, scale: 0.92, y: 24 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ delay: 0.12, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 flex justify-center items-center relative py-14 sm:py-16"
           >
-            <div className="w-full max-w-[600px] aspect-[4/5] sm:aspect-square lg:aspect-[4/5] rounded-[3rem] relative overflow-hidden group border-2 border-blue-400/20 shadow-[0_30px_100px_rgba(4,13,33,0.9),0_0_80px_rgba(37,99,235,0.15)] hover:border-blue-400/50 hover:-translate-y-3 hover:shadow-[0_40px_120px_rgba(4,13,33,0.9),0_0_100px_rgba(37,99,235,0.30)] transition-all duration-700">
-              
-              {/* Playing Video */}
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover scale-[1.02] group-hover:scale-105 transition-transform duration-1000"
+            {/* Glow layers behind phone */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-52 h-52 sm:w-72 sm:h-72 rounded-full
+                bg-gradient-to-br from-blue-200/50 via-cyan-100/30 to-violet-200/30 blur-[70px]" />
+            </div>
+
+            {/* Floating metric cards */}
+            {floatingCards.map((card, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: i === 1 ? 16 : -16 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: card.delay, duration: 0.65 }}
+                className={`absolute ${card.pos} z-20 ${card.floatClass}`}
               >
-                <source src="https://cdn.pixabay.com/video/2020/07/22/45314-442938804_large.mp4" type="video/mp4" />
-              </video>
-
-              {/* Edge Gradients / Vignette */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#040D21] via-transparent to-transparent opacity-80" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-transparent mix-blend-overlay" />
-              <div className="absolute inset-0 border-[0.5px] border-white/20 rounded-[3rem] pointer-events-none" />
-
-              {/* Live Status Badge */}
-              <div className="absolute top-6 right-6 flex items-center gap-2 bg-black/40 backdrop-blur-md rounded-full px-4 py-2 border border-white/10 shadow-lg">
-                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_rgba(239,68,68,0.9)]" />
-                <span className="text-[10px] text-white font-black uppercase tracking-[0.2em]">Live Stream</span>
-              </div>
-
-              {/* Overlay Text inside video container */}
-              <div className="absolute bottom-8 left-8 right-8">
-                <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-4 shadow-xl">
-                  <span className="text-white font-black uppercase tracking-[0.2em] text-[9px]">Global Network</span>
+                <div className="bg-white/90 backdrop-blur-md rounded-2xl border border-slate-100
+                  shadow-[0_8px_32px_rgba(11,46,168,0.12),0_2px_8px_rgba(0,0,0,0.06)]
+                  px-3 sm:px-4 py-2.5 sm:py-3 flex items-center gap-2.5 min-w-[130px] sm:min-w-[155px]"
+                >
+                  <div className={`w-8 h-8 rounded-xl ${card.iconBg} flex items-center justify-center shrink-0 shadow-md`}>
+                    {card.icon}
+                  </div>
+                  <div>
+                    <p className="text-[8px] sm:text-[9px] font-black uppercase tracking-widest text-slate-400">{card.label}</p>
+                    <p className={`text-xs sm:text-sm font-black ${card.valueColor}`}>{card.value}</p>
+                  </div>
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight tracking-tight drop-shadow-xl">
-                  Connecting Brands <br/>
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-sky-200">With Audiences.</span>
-                </h3>
+              </motion.div>
+            ))}
+
+            {/* Phone */}
+            <div className="relative z-10 w-[185px] sm:w-[225px] md:w-[255px] lg:w-[245px] xl:w-[270px]">
+              {/* Halo ring */}
+              <div className="absolute -inset-4 rounded-[3.5rem]
+                bg-gradient-to-br from-blue-300/30 via-cyan-200/20 to-violet-300/20 blur-[20px]" />
+              {/* Device */}
+              <div className="relative rounded-[2.6rem] border-[9px] sm:border-[10px] border-[#1a1a2e] bg-[#1a1a2e]
+                shadow-[0_40px_90px_rgba(11,46,168,0.28),0_0_0_1px_rgba(0,0,0,0.15)] p-[3px]"
+              >
+                {/* Dynamic Island */}
+                <div className="absolute top-2 left-1/2 -translate-x-1/2
+                  w-[30%] h-[20px] bg-[#1a1a2e] rounded-full z-30
+                  flex items-center justify-center gap-1"
+                >
+                  <div className="w-2 h-2 rounded-full bg-[#2a2a3e]" />
+                </div>
+                {/* Screen */}
+                <div className="aspect-[9/19.5] rounded-[2.2rem] overflow-hidden relative bg-[#030918]">
+                  <img
+                    src="/images/hero-mobile-ui.png"
+                    alt="Curious Media App Interface"
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  {/* Screen gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#030918]/90 via-transparent to-transparent" />
+
+                  {/* Floating screen widget */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.9, duration: 0.6 }}
+                    className="absolute bottom-4 left-3 right-3
+                      rounded-2xl overflow-hidden
+                      bg-white/10 backdrop-blur-xl border border-white/20
+                      px-3 sm:px-4 py-3"
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                      <p className="text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-cyan-300 font-black">Global Network</p>
+                    </div>
+                    <h3 className="text-sm sm:text-[15px] font-black text-white leading-tight">
+                      Connecting Brands<br />With Audiences.
+                    </h3>
+                    <div className="mt-2 h-[2px] w-full rounded-full bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-400 opacity-60" />
+                  </motion.div>
+                </div>
               </div>
+              {/* Ground shadow */}
+              <div className="mt-2 mx-10 h-5 bg-blue-900/10 blur-xl rounded-full" />
             </div>
           </motion.div>
 
         </div>
       </div>
 
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#040D21] to-transparent z-20 pointer-events-none" />
+      {/* ── Wave Divider ── */}
+      <div className="w-full overflow-hidden leading-none -mt-2">
+        <svg viewBox="0 0 1440 52" fill="none" xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none" className="w-full h-10 sm:h-12 md:h-14">
+          <path d="M0,26 C360,52 1080,0 1440,26 L1440,52 L0,52 Z" fill="#F8FAFF"/>
+        </svg>
+      </div>
     </section>
   );
 }

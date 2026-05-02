@@ -34,7 +34,7 @@ export function Navbar({ dict, locale }: NavProps) {
       ],
     },
     { name: dict.nav.studio,                         href: `/${locale}/studio`   },
-    { name: dict.nav.records || "Curious Records",   href: `/${locale}/records`  },
+    { name: dict.nav.records || "Curious Music",   href: `/${locale}/records`  },
     { name: dict.nav.products,                       href: `/${locale}/products` },
     { name: dict.nav.about   || "About",             href: `/${locale}/about`    },
   ];
@@ -49,12 +49,12 @@ export function Navbar({ dict, locale }: NavProps) {
       <div className="container mx-auto px-4 md:px-8">
         <div className={`flex items-center justify-between rounded-2xl transition-all duration-500 ${
           scrolled
-            ? "bg-[#040D21]/80 backdrop-blur-3xl px-6 py-3 border border-blue-500/20 shadow-[0_4px_40px_rgba(37,99,235,0.15),0_0_0_1px_rgba(37,99,235,0.08)]"
-            : "bg-transparent px-4 py-2"
+            ? "bg-white/95 backdrop-blur-xl px-6 py-3 border border-blue-100 shadow-[0_4px_40px_rgba(37,99,235,0.12)]"
+            : "bg-white/80 backdrop-blur-xl px-4 py-2 border border-blue-100"
         }`}>
 
           {/* Logo */}
-          <Link href={`/${locale}`} className="group relative text-xl md:text-2xl font-black font-heading tracking-tighter text-white z-10 shrink-0">
+          <Link href={`/${locale}`} className="group relative text-xl md:text-2xl font-black font-heading tracking-tighter text-[#0B2EA8] z-10 shrink-0">
             CURIOUS
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-sky-300">.</span>
             <span className="absolute -bottom-0.5 left-0 w-0 h-[2px] bg-gradient-to-r from-blue-400 to-sky-300 group-hover:w-full transition-all duration-300 rounded-full" />
@@ -74,7 +74,7 @@ export function Navbar({ dict, locale }: NavProps) {
                   <Link
                     href={link.href}
                     className={`relative z-10 text-sm font-semibold transition-all duration-300 flex items-center gap-1.5 ${
-                      isActive ? "text-white" : "text-white/55 hover:text-white"
+                      isActive ? "text-[#0B2EA8]" : "text-blue-700/60 hover:text-[#0B2EA8]"
                     }`}
                   >
                     {link.name}
@@ -105,12 +105,12 @@ export function Navbar({ dict, locale }: NavProps) {
 
                   {hasDropdown && (
                     <div className="absolute top-full left-0 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                      <div className="bg-[#071428]/95 backdrop-blur-3xl rounded-2xl p-2 border border-blue-400/15 shadow-[0_20px_60px_rgba(4,13,33,0.9)] min-w-[170px]">
+                      <div className="bg-white rounded-2xl p-2 border border-blue-100 shadow-[0_20px_60px_rgba(37,99,235,0.12)] min-w-[170px]">
                         {link.dropdown!.map((sub) => (
                           <Link
                             key={sub.href}
                             href={sub.href}
-                            className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-sm font-semibold text-white/55 hover:text-white hover:bg-blue-500/12 transition-all duration-200 group/sub"
+                            className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-sm font-semibold text-blue-700/70 hover:text-[#0B2EA8] hover:bg-blue-50 transition-all duration-200 group/sub"
                           >
                             <span className="w-1.5 h-1.5 rounded-full bg-blue-400/40 group-hover/sub:bg-blue-400 transition-colors shrink-0" />
                             {sub.name}
@@ -128,14 +128,14 @@ export function Navbar({ dict, locale }: NavProps) {
           <div className="hidden md:flex items-center gap-3 z-10 shrink-0">
             <Link
               href={pathname.replace(`/${locale}`, `/${locale === 'en' ? 'hi' : 'en'}`)}
-              className="px-3 py-1.5 rounded-full border border-blue-400/20 text-white/45 hover:text-white hover:border-blue-400/40 hover:bg-blue-500/10 transition-all text-xs font-bold uppercase tracking-wider"
+              className="px-3 py-1.5 rounded-full border border-blue-200 text-blue-700 hover:text-[#0B2EA8] hover:bg-blue-50 transition-all text-xs font-bold uppercase tracking-wider"
             >
               {locale === 'en' ? 'HI' : 'EN'}
             </Link>
             <Link
               href={`/${locale}/contact`}
               id="nav-contact-btn"
-              className="group relative px-6 py-2.5 rounded-full text-white text-sm font-bold overflow-hidden shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_40px_rgba(37,99,235,0.7)] transition-all duration-300"
+            className="group relative px-6 py-2.5 rounded-full text-white text-sm font-bold overflow-hidden transition-all duration-300"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-500" />
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-sky-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -146,7 +146,7 @@ export function Navbar({ dict, locale }: NavProps) {
           {/* Mobile toggle */}
           <button
             id="mobile-menu-btn"
-            className="md:hidden text-white/70 hover:text-white z-10 relative transition-colors"
+            className="md:hidden text-blue-700 hover:text-[#0B2EA8] z-10 relative transition-colors"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -168,7 +168,7 @@ export function Navbar({ dict, locale }: NavProps) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -15, scale: 0.97 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="md:hidden absolute top-[72px] left-4 right-4 bg-[#071428]/97 backdrop-blur-3xl p-6 rounded-3xl border border-blue-400/15 flex flex-col gap-1.5 shadow-[0_20px_80px_rgba(4,13,33,0.95)] z-50"
+            className="md:hidden absolute top-[72px] left-4 right-4 bg-white p-6 rounded-3xl border border-blue-100 flex flex-col gap-1.5 shadow-[0_20px_80px_rgba(37,99,235,0.15)] z-50"
           >
             {navLinks.map((link) => (
               <div key={link.name}>
@@ -176,7 +176,7 @@ export function Navbar({ dict, locale }: NavProps) {
                   href={link.href}
                   onClick={() => setIsOpen(false)}
                   className={`text-base font-bold py-3 px-4 rounded-xl transition-all flex items-center justify-between ${
-                    pathname.includes(link.href) ? 'bg-blue-500/15 text-white' : 'text-white/60 hover:text-white hover:bg-white/5'
+                    pathname.includes(link.href) ? 'bg-blue-50 text-[#0B2EA8]' : 'text-blue-700/70 hover:text-[#0B2EA8] hover:bg-blue-50'
                   }`}
                 >
                   {link.name}
@@ -188,7 +188,7 @@ export function Navbar({ dict, locale }: NavProps) {
                         key={sub.href}
                         href={sub.href}
                         onClick={() => setIsOpen(false)}
-                        className="text-sm font-semibold py-2 px-3 rounded-lg text-white/40 hover:text-blue-300 hover:bg-blue-500/10 transition-all"
+                        className="text-sm font-semibold py-2 px-3 rounded-lg text-blue-700/70 hover:text-[#0B2EA8] hover:bg-blue-50 transition-all"
                       >
                         {sub.name}
                       </Link>
@@ -197,11 +197,11 @@ export function Navbar({ dict, locale }: NavProps) {
                 )}
               </div>
             ))}
-            <div className="flex gap-3 mt-4 pt-4 border-t border-white/8">
+            <div className="flex gap-3 mt-4 pt-4 border-t border-blue-100">
               <Link
                 href={pathname.replace(`/${locale}`, `/${locale === 'en' ? 'hi' : 'en'}`)}
                 onClick={() => setIsOpen(false)}
-                className="flex-1 py-3 text-center rounded-xl border border-blue-400/20 text-white/60 font-bold uppercase hover:bg-blue-500/10 text-sm transition-all"
+                className="flex-1 py-3 text-center rounded-xl border border-blue-200 text-blue-700 font-bold uppercase hover:bg-blue-50 text-sm transition-all"
               >
                 {locale === 'en' ? 'हिन्दी' : 'English'}
               </Link>
