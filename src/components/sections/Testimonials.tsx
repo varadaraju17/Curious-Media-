@@ -38,7 +38,7 @@ export function Testimonials({ dict }: { dict: any }) {
   ];
 
   return (
-    <section className="py-24 md:py-36 bg-[#F8FAFF] relative overflow-hidden">
+    <section className="py-24 md:py-36 bg-white relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
       <div className="absolute inset-0 bg-[linear-gradient(rgba(11,46,168,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(11,46,168,0.025)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
@@ -68,19 +68,25 @@ export function Testimonials({ dict }: { dict: any }) {
           </motion.h2>
         </div>
 
-        {/* Testimonial Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        </div>
+      {/* Horizontal Scroll Testimonials */}
+      <div className="w-full relative z-10">
+        {/* Edge fades */}
+        <div className="absolute inset-y-0 left-0 w-8 md:w-20 bg-gradient-to-r from-white to-transparent z-20 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-8 md:w-20 bg-gradient-to-l from-white to-transparent z-20 pointer-events-none" />
+
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 px-4 md:px-8 xl:px-[calc((100%-1400px)/2+2rem)] pb-12 pt-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {testimonials.map((t, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1, duration: 0.6, ease: "easeOut" }}
-              className="group relative flex flex-col bg-white rounded-3xl border border-blue-100 p-8 overflow-hidden
-                shadow-[0_4px_24px_rgba(11,46,168,0.06)]
-                hover:shadow-[0_20px_60px_rgba(11,46,168,0.14)]
-                hover:-translate-y-2 transition-all duration-400"
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: Math.min(idx * 0.1, 0.3), duration: 0.6, ease: "easeOut" }}
+              className="flex-none w-[85vw] sm:w-[60vw] md:w-[45vw] lg:w-[400px] snap-center group relative flex flex-col bg-white/80 backdrop-blur-md rounded-[32px] border border-blue-100/50 p-8 md:p-10 overflow-hidden
+                shadow-[0_8px_32px_rgba(11,46,168,0.04)]
+                hover:shadow-[0_24px_64px_rgba(11,46,168,0.12)]
+                hover:-translate-y-2 transition-all duration-500 ease-out"
             >
               {/* Top accent line */}
               <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${t.gradient}`} />
@@ -100,7 +106,7 @@ export function Testimonials({ dict }: { dict: any }) {
               </div>
 
               {/* Quote text */}
-              <p className="text-blue-900/75 text-base leading-relaxed mb-auto grow font-medium">
+              <p className="text-[#0B2EA8]/80 text-lg md:text-xl italic leading-relaxed mb-auto grow font-medium tracking-tight">
                 &ldquo;{t.quote}&rdquo;
               </p>
 
@@ -110,8 +116,8 @@ export function Testimonials({ dict }: { dict: any }) {
                   {t.initials}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h4 className="text-[#0B2EA8] font-bold text-sm leading-tight truncate">{t.name}</h4>
-                  <p className="text-blue-800/50 text-xs font-medium truncate">{t.role}</p>
+                  <h4 className="text-[#0B2EA8] font-black text-base leading-tight truncate tracking-tight">{t.name}</h4>
+                  <p className="text-blue-600/60 text-xs font-bold uppercase tracking-wider mt-0.5 truncate">{t.role}</p>
                 </div>
                 <span className={`text-[9px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full ${t.tagColor} border border-current/20 shrink-0`}>
                   ✓ Verified
@@ -122,6 +128,7 @@ export function Testimonials({ dict }: { dict: any }) {
               <div className={`absolute -bottom-8 -right-8 w-36 h-36 bg-gradient-to-br ${t.gradient} opacity-0 group-hover:opacity-5 blur-[40px] rounded-full transition-opacity duration-500`} />
             </motion.div>
           ))}
+          <div className="flex-none w-4 md:w-8" />
         </div>
       </div>
     </section>

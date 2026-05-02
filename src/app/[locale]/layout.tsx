@@ -3,6 +3,7 @@ import { Inter, Outfit } from "next/font/google";
 import { Providers } from "@/components/providers";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import "../globals.css";
 import { locales, Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
@@ -44,6 +45,7 @@ export default async function LocaleLayout(
           <Navbar dict={dict} locale={locale as Locale} />
           {props.children}
           <Footer dict={dict} locale={locale as Locale} />
+          <FloatingWhatsApp />
         </Providers>
       </body>
     </html>

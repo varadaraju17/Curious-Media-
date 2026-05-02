@@ -19,10 +19,10 @@ export default async function Home(props: { params: Promise<{ locale: string }> 
     <>
       <Hero dict={dict} locale={locale} />
       <Marquee type="brands" dict={dict} />
-      <Divisions dict={dict} locale={locale} />
       <Marquee type="content" dict={dict} title={dict.marquee.content_partners} />
       <BrandWin dict={dict} />
       <CaseStudies dict={dict} />
+      <Divisions dict={dict} locale={locale} />
       <Testimonials dict={dict} />
       <ContactSection dict={dict} />
     </>

@@ -234,7 +234,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
 
             {/* ── Headline ── */}
             <h1 className="font-black font-heading leading-[0.9] tracking-[-0.03em]
-              text-[38px] xs:text-[44px] sm:text-[56px] md:text-[68px] lg:text-[76px] xl:text-[84px]"
+              text-[42px] sm:text-[56px] md:text-[68px] lg:text-[76px] xl:text-[84px]"
             >
               {/* Line 1 */}
               <motion.span

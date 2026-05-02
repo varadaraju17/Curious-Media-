@@ -59,8 +59,8 @@
     },
     "products": {
       "title": "Curious Products",
-      "subtitle": "Tech & Platforms",
-      "desc": "We build the software and platforms that power the creator economy, including Curious OS for real-time campaign tracking and ROI."
+      "subtitle": "AI Tech & Platform",
+      "desc": "We build cutting-edge AI tools — AI image generators, video synthesis engines, and automation platforms that supercharge creative output for brands and creators."
     },
     "music": {
       "title": "Curious Music",
@@ -93,7 +93,7 @@
   "brand_win": {
     "badge": "Our Promise",
     "title_1": "How Brands",
-    "title_2": "Win.",
+    "title_2": "Win With Us.",
     "description": "We don't just promise results — we contractually commit to them. Every campaign is backed by our performance guarantee.",
     "commit": "WE Commit",
     "reach": {
