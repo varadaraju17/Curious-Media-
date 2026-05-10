@@ -27,6 +27,7 @@ export function Navbar({ dict, locale }: NavProps) {
   const navLinks = [
     {
       name: dict.nav.media,
+      href: `/${locale}/creators`,
       dropdown: [
         { name: dict.nav.creators || "Creators", href: `/${locale}/creators` },
         { name: dict.nav.brands   || "Brands",   href: `/${locale}/brands` },
