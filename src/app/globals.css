@@ -103,3 +103,28 @@
 ::-webkit-scrollbar-track { background: #eff6ff; }
 ::-webkit-scrollbar-thumb { background: #1d4ed8; border-radius: 10px; }
 
+
+@keyframes marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee-fast {
+  animation: marquee-left 25s linear infinite;
+}
+
+.animate-marquee-slow {
+  animation: marquee-left 60s linear infinite;
+}
+
+.pause-animation {
+  animation-play-state: paused;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

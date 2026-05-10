@@ -27,7 +27,6 @@ export function Navbar({ dict, locale }: NavProps) {
   const navLinks = [
     {
       name: dict.nav.media,
-      href: `/${locale}/media`,
       dropdown: [
         { name: dict.nav.creators || "Creators", href: `/${locale}/creators` },
         { name: dict.nav.brands   || "Brands",   href: `/${locale}/brands` },
@@ -63,27 +62,45 @@ export function Navbar({ dict, locale }: NavProps) {
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-1 relative z-10" onMouseLeave={() => setHoveredLink(null)}>
             {navLinks.map((link) => {
-              const isActive = pathname.includes(link.href) && (link.href !== `/${locale}` || pathname === `/${locale}`);
+              const isChildActive = link.dropdown?.some(sub => pathname.includes(sub.href));
+              const isActive = (link.href && pathname.includes(link.href) && (link.href !== `/${locale}` || pathname === `/${locale}`)) || isChildActive;
               const hasDropdown = !!link.dropdown;
+              
+              const content = (
+                <>
+                  {link.name}
+                  {hasDropdown && (
+                    <svg className="w-3 h-3 opacity-40 group-hover:opacity-80 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  )}
+                </>
+              );
+
               return (
                 <div
                   key={link.name}
                   className="relative px-4 py-2 group"
                   onMouseEnter={() => setHoveredLink(link.name)}
                 >
-                  <Link
-                    href={link.href}
-                    className={`relative z-10 text-[13px] md:text-sm font-bold tracking-wide transition-colors duration-300 flex items-center gap-1.5 ${
-                      isActive ? "text-[#0B2EA8]" : "text-slate-600 hover:text-[#0B2EA8]"
-                    }`}
-                  >
-                    {link.name}
-                    {hasDropdown && (
-                      <svg className="w-3 h-3 opacity-40 group-hover:opacity-80 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                      </svg>
-                    )}
-                  </Link>
+                  {link.href ? (
+                    <Link
+                      href={link.href}
+                      className={`relative z-10 text-[13px] md:text-sm font-bold tracking-wide transition-colors duration-300 flex items-center gap-1.5 ${
+                        isActive ? "text-[#0B2EA8]" : "text-slate-600 hover:text-[#0B2EA8]"
+                      }`}
+                    >
+                      {content}
+                    </Link>
+                  ) : (
+                    <div
+                      className={`relative z-10 text-[13px] md:text-sm font-bold tracking-wide transition-colors duration-300 flex items-center gap-1.5 cursor-pointer ${
+                        isActive ? "text-[#0B2EA8]" : "text-slate-600 hover:text-[#0B2EA8]"
+                      }`}
+                    >
+                      {content}
+                    </div>
+                  )}
 
                   {isActive && (
                     <motion.div
@@ -160,33 +177,48 @@ export function Navbar({ dict, locale }: NavProps) {
             transition={{ duration: 0.2, ease: "easeOut" }}
             className="md:hidden absolute top-[80px] left-4 right-4 bg-white p-6 rounded-3xl border border-blue-100 flex flex-col gap-1 shadow-[0_12px_40px_rgba(11,46,168,0.1)] z-50"
           >
-            {navLinks.map((link) => (
-              <div key={link.name}>
-                <Link
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className={`text-base font-bold py-3 px-4 rounded-xl transition-all flex items-center justify-between ${
-                    pathname.includes(link.href) ? 'bg-blue-50 text-[#0B2EA8]' : 'text-slate-600 hover:text-[#0B2EA8] hover:bg-blue-50/50'
-                  }`}
-                >
-                  {link.name}
-                </Link>
-                {link.dropdown && (
-                  <div className="ml-4 mt-1 flex flex-col gap-0.5 border-l-2 border-slate-100 pl-4">
-                    {link.dropdown.map((sub) => (
-                      <Link
-                        key={sub.href}
-                        href={sub.href}
-                        onClick={() => setIsOpen(false)}
-                        className="text-sm font-semibold py-2.5 px-3 rounded-lg text-slate-600 hover:text-[#0B2EA8] hover:bg-blue-50/50 transition-all"
-                      >
-                        {sub.name}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
+            {navLinks.map((link) => {
+              const isChildActive = link.dropdown?.some(sub => pathname.includes(sub.href));
+              const isActive = (link.href && pathname.includes(link.href)) || isChildActive;
+
+              return (
+                <div key={link.name}>
+                  {link.href ? (
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`text-base font-bold py-3 px-4 rounded-xl transition-all flex items-center justify-between ${
+                        isActive ? 'bg-blue-50 text-[#0B2EA8]' : 'text-slate-600 hover:text-[#0B2EA8] hover:bg-blue-50/50'
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <div
+                      className={`text-base font-bold py-3 px-4 rounded-xl transition-all flex items-center justify-between cursor-pointer ${
+                        isActive ? 'bg-blue-50 text-[#0B2EA8]' : 'text-slate-600 hover:text-[#0B2EA8] hover:bg-blue-50/50'
+                      }`}
+                    >
+                      {link.name}
+                    </div>
+                  )}
+                  {link.dropdown && (
+                    <div className="ml-4 mt-1 flex flex-col gap-0.5 border-l-2 border-slate-100 pl-4">
+                      {link.dropdown.map((sub) => (
+                        <Link
+                          key={sub.href}
+                          href={sub.href}
+                          onClick={() => setIsOpen(false)}
+                          className="text-sm font-semibold py-2.5 px-3 rounded-lg text-slate-600 hover:text-[#0B2EA8] hover:bg-blue-50/50 transition-all"
+                        >
+                          {sub.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
             <div className="flex gap-3 mt-4 pt-4 border-t border-blue-100">
               <Link
                 href={pathname.replace(`/${locale}`, `/${locale === 'en' ? 'hi' : 'en'}`)}

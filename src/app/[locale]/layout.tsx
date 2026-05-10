@@ -7,6 +7,7 @@ import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import "../globals.css";
 import { locales, Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -46,6 +47,7 @@ export default async function LocaleLayout(
           {props.children}
           <Footer dict={dict} locale={locale as Locale} />
           <FloatingWhatsApp />
+          <SpeedInsights />
         </Providers>
       </body>
     </html>
