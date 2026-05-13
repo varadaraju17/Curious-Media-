@@ -204,6 +204,12 @@ function WorkflowSteps() {
         <p className="mt-6 md:mt-8 text-slate-500 text-lg md:text-2xl font-medium max-w-md leading-relaxed">
           A straightforward partnership designed for maximum growth and complete transparency.
         </p>
+
+        {/* Step counter pill */}
+        <div className="mt-10 inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-blue-50 border border-blue-100">
+          <span className="text-3xl font-black text-[#0B2EA8] leading-none">{WORKFLOW.length}</span>
+          <span className="text-xs font-black uppercase tracking-[0.2em] text-[#0B2EA8]/70">Partnership<br/>Steps</span>
+        </div>
       </div>
 
       {/* Right Column: Vertical List of Steps */}
@@ -214,15 +220,31 @@ function WorkflowSteps() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: i * 0.1 }}
-            className="group flex flex-col gap-4 py-12 border-b border-slate-100 last:border-0"
+            transition={{ duration: 0.6, delay: i * 0.08 }}
+            className="group flex gap-6 py-10 border-b border-slate-100 last:border-0 hover:pl-2 transition-all duration-300"
           >
-            <h3 className="text-3xl md:text-4xl font-black text-[#0A1A4E] uppercase tracking-tighter leading-none group-hover:text-[#0B2EA8] transition-colors duration-300">
-              {item.title}
-            </h3>
-            <p className="text-slate-500 text-lg md:text-xl lg:text-2xl leading-relaxed font-medium">
-              {item.desc}
-            </p>
+            {/* Step number */}
+            <div className="flex flex-col items-center gap-2 shrink-0 pt-1">
+              <div className="w-9 h-9 rounded-xl bg-slate-100 group-hover:bg-[#0B2EA8] flex items-center justify-center transition-colors duration-300">
+                <span className="text-xs font-black text-slate-400 group-hover:text-white transition-colors duration-300">{String(i + 1).padStart(2, '0')}</span>
+              </div>
+              <div className="w-px flex-1 bg-slate-100 group-hover:bg-blue-200 transition-colors duration-300 min-h-[2rem]" />
+            </div>
+
+            {/* Content */}
+            <div className="flex flex-col gap-3 pb-2">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-blue-50 group-hover:bg-blue-100 flex items-center justify-center text-[#0B2EA8] transition-colors duration-300">
+                  {item.icon}
+                </div>
+                <h3 className="text-2xl md:text-3xl font-black text-[#0A1A4E] uppercase tracking-tighter leading-none group-hover:text-[#0B2EA8] transition-colors duration-300">
+                  {item.title}
+                </h3>
+              </div>
+              <p className="text-slate-500 text-base md:text-lg leading-relaxed font-medium">
+                {item.desc}
+              </p>
+            </div>
           </motion.div>
         ))}
       </div>
@@ -234,28 +256,33 @@ function FAQAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <div className="space-y-4 max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto">
       {FAQS.map((faq, i) => (
         <motion.div 
           key={i} 
           initial={false}
-          className={`border-2 rounded-[2rem] bg-white overflow-hidden transition-all duration-300 ${
-            openIndex === i 
-              ? 'border-[#0B2EA8] shadow-[0_15px_50px_rgba(11,46,168,0.12)] scale-[1.01]' 
-              : 'border-slate-100 hover:border-blue-200 hover:bg-slate-50/50'
+          className={`border-b transition-all duration-300 ${
+            i === 0 ? 'border-t border-slate-100' : 'border-slate-100'
           }`}
         >
           <button 
             onClick={() => setOpenIndex(openIndex === i ? null : i)}
-            className="w-full p-6 md:p-8 flex items-center justify-between text-left focus:outline-none"
+            className="w-full py-7 md:py-8 flex items-center justify-between text-left focus:outline-none gap-6 group"
           >
-            <span className="text-xl md:text-2xl font-black text-[#0A1A4E] pr-8">{faq.q}</span>
-            <span className={`w-14 h-14 shrink-0 rounded-full flex items-center justify-center transition-all duration-500 ${
+            <div className="flex items-center gap-4">
+              <span className={`text-xs font-black tabular-nums shrink-0 transition-colors duration-300 ${
+                openIndex === i ? 'text-[#0B2EA8]' : 'text-slate-300 group-hover:text-slate-400'
+              }`}>{String(i + 1).padStart(2, '0')}</span>
+              <span className={`text-xl md:text-2xl font-black transition-colors duration-300 ${
+                openIndex === i ? 'text-[#0B2EA8]' : 'text-[#0A1A4E] group-hover:text-[#0B2EA8]'
+              }`}>{faq.q}</span>
+            </div>
+            <span className={`w-10 h-10 shrink-0 rounded-xl flex items-center justify-center transition-all duration-500 ${
               openIndex === i 
-                ? "bg-[#0A1A4E] text-white rotate-45 shadow-lg shadow-blue-900/20" 
-                : "bg-blue-50 text-[#0B2EA8] hover:bg-blue-100"
+                ? 'bg-[#0B2EA8] text-white rotate-45' 
+                : 'bg-slate-100 text-slate-400 group-hover:bg-blue-50 group-hover:text-[#0B2EA8]'
             }`}>
-              <X className={`w-6 h-6 transition-transform duration-500 ${openIndex === i ? "" : "rotate-45"}`} />
+              <X className="w-5 h-5" />
             </span>
           </button>
           <AnimatePresence>
@@ -267,8 +294,10 @@ function FAQAccordion() {
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 className="overflow-hidden"
               >
-                <div className="p-6 md:p-8 pt-0 text-slate-500 text-lg md:text-xl font-medium leading-relaxed">
-                  {faq.a}
+                <div className="pl-10 pb-8 pr-16">
+                  <p className="text-slate-500 text-lg md:text-xl font-medium leading-relaxed border-l-2 border-[#0B2EA8] pl-5">
+                    {faq.a}
+                  </p>
                 </div>
               </motion.div>
             )}
@@ -347,20 +376,12 @@ export default function CreatorsPage() {
     <main className="flex-1 w-full bg-white min-h-screen relative overflow-x-hidden pt-24">
       
       {/* ─── HERO SECTION ─── */}
-      <section className="relative overflow-hidden pt-20 pb-32 lg:pt-32 lg:pb-40 bg-white">
+      <section className="relative overflow-hidden pt-24 pb-32 lg:pt-40 lg:pb-48 bg-white">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {/* Abstract Grid & Glow */}
-          <motion.div 
-            className="absolute inset-0 opacity-40"
-            style={{
-              backgroundImage: "linear-gradient(rgba(11,46,168,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(11,46,168,0.06) 1px, transparent 1px)",
-              backgroundSize: "60px 60px",
-              maskImage: "radial-gradient(ellipse 80% 80% at 50% 0%, #000 20%, transparent 100%)",
-              WebkitMaskImage: "radial-gradient(ellipse 80% 80% at 50% 0%, #000 20%, transparent 100%)"
-            }}
-          />
-          <div className="absolute top-[-10%] right-[-10%] w-[800px] h-[800px] bg-blue-400/20 blur-[150px] rounded-full mix-blend-multiply pointer-events-none animate-pulse duration-[8000ms]" />
-          <div className="absolute top-[20%] left-[-10%] w-[600px] h-[600px] bg-cyan-300/20 blur-[150px] rounded-full mix-blend-multiply pointer-events-none" />
+          {/* Enhanced Grid & Glow */}
+          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "linear-gradient(#0A1A4E 1px, transparent 1px), linear-gradient(90deg, #0A1A4E 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+          <div className="absolute top-[-20%] right-[-10%] w-[900px] h-[900px] bg-gradient-to-bl from-blue-400/20 to-transparent blur-[150px] rounded-full pointer-events-none animate-pulse duration-[8000ms]" />
+          <div className="absolute top-[20%] left-[-10%] w-[700px] h-[700px] bg-gradient-to-tr from-cyan-300/20 to-transparent blur-[150px] rounded-full pointer-events-none" />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -369,18 +390,21 @@ export default function CreatorsPage() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-blue-50/80 backdrop-blur-sm border border-blue-200 mb-12 shadow-[0_8px_16px_rgba(11,46,168,0.06)]"
+              className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-blue-50/50 backdrop-blur-md border border-blue-200/50 mb-12 shadow-[0_8px_30px_rgba(11,46,168,0.06)]"
             >
-              <TrendingUp className="w-5 h-5 text-[#0B2EA8]" />
+              <div className="relative flex items-center justify-center">
+                <span className="absolute w-3 h-3 rounded-full bg-emerald-400 animate-ping opacity-50" />
+                <span className="relative w-2 h-2 rounded-full bg-emerald-500" />
+              </div>
               <span className="text-xs font-black tracking-[0.25em] uppercase text-[#0B2EA8]">Creator Capital & Growth</span>
             </motion.div>
 
-            <h1 className="flex flex-col gap-1 md:gap-2 mb-8 md:mb-12 w-full overflow-hidden">
+            <h1 className="flex flex-col mb-10 w-full overflow-hidden">
               <motion.span
                 initial={{ opacity: 0, y: 60, rotateX: -20 }}
                 animate={{ opacity: 1, y: 0, rotateX: 0 }}
                 transition={{ delay: 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                className="text-4xl sm:text-7xl md:text-8xl lg:text-[130px] font-black font-heading tracking-tighter leading-[0.85] text-[#0A1A4E] uppercase drop-shadow-sm"
+                className="text-[3.5rem] sm:text-7xl md:text-8xl lg:text-[140px] font-black font-heading tracking-tighter leading-[0.85] text-[#0A1A4E] uppercase drop-shadow-sm"
               >
                 WE EARN
               </motion.span>
@@ -388,7 +412,7 @@ export default function CreatorsPage() {
                 initial={{ opacity: 0, y: 60, rotateX: -20 }}
                 animate={{ opacity: 1, y: 0, rotateX: 0 }}
                 transition={{ delay: 0.25, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                className="text-4xl sm:text-7xl md:text-8xl lg:text-[130px] font-black font-heading tracking-tighter leading-[0.85] text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-500 uppercase pb-4"
+                className="text-[3.5rem] sm:text-7xl md:text-8xl lg:text-[140px] font-black font-heading tracking-tighter leading-[0.85] text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-500 uppercase pb-4"
               >
                 WHEN YOU EARN.
               </motion.span>
@@ -407,15 +431,15 @@ export default function CreatorsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="flex flex-wrap justify-center gap-6"
             >
               <Link 
                 href={`/${locale}/contact`}
-                className="group relative inline-flex items-center gap-4 px-14 py-7 text-white font-black uppercase tracking-[0.2em] text-sm rounded-full overflow-hidden transition-all hover:scale-[1.03] shadow-[0_15px_30px_rgba(11,46,168,0.30)] hover:shadow-[0_20px_40px_rgba(11,46,168,0.45)] bg-[#0B2EA8]"
+                className="group relative inline-flex items-center gap-4 px-12 py-6 text-white font-black uppercase tracking-[0.2em] text-sm rounded-full overflow-hidden transition-all duration-500 hover:scale-[1.02] bg-[#0A1A4E] shadow-[0_20px_40px_rgba(10,26,78,0.25)] hover:shadow-[0_20px_60px_rgba(11,46,168,0.4)] hover:bg-[#0B2EA8]"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0B2EA8] via-blue-500 to-[#0B2EA8] bg-[size:200%] hover:bg-right-center transition-all duration-700 group-hover:bg-[position:100%]" />
-                <span className="relative z-10">Partner With Us</span>
-                <ArrowRight className="relative z-10 w-5 h-5 transition-transform duration-300 group-hover:translate-x-2" />
+                <span className="relative z-10 group-hover:text-cyan-300 transition-colors duration-500">Partner With Us</span>
+                <div className="relative z-10 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-cyan-400 group-hover:text-[#0A1A4E] transition-all duration-500">
+                  <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-0.5" />
+                </div>
               </Link>
             </motion.div>
           </div>
@@ -468,8 +492,14 @@ export default function CreatorsPage() {
       </section>
 
       {/* ─── REVENUE IMPACT SECTION ─── */}
-      <section className="py-40 px-4 md:px-8 relative bg-white overflow-hidden">
-        <div className="container mx-auto max-w-7xl">
+      <section className="py-32 md:py-40 px-4 md:px-8 relative bg-[#0A1A4E] overflow-hidden">
+        {/* Background glows */}
+        <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-cyan-400/10 rounded-full blur-[120px] pointer-events-none -mr-64 -mt-64" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/15 rounded-full blur-[120px] pointer-events-none -ml-48 -mb-48" />
+        {/* Subtle grid */}
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
+
+        <div className="container mx-auto max-w-7xl relative z-10">
            <div className="relative text-center">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -478,36 +508,39 @@ export default function CreatorsPage() {
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                 className="relative z-10 flex flex-col items-center"
               >
-                <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-50 border border-blue-100 mb-10 shadow-sm">
-                  <BarChart3 className="w-4 h-4 text-[#0B2EA8]" />
-                  <span className="text-xs font-black tracking-[0.2em] uppercase text-[#0B2EA8]">Total Impact Generated</span>
+                <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 border border-white/20 mb-10 backdrop-blur-sm">
+                  <BarChart3 className="w-4 h-4 text-cyan-300" />
+                  <span className="text-xs font-black tracking-[0.2em] uppercase text-cyan-200">Total Impact Generated</span>
                 </div>
 
-                <div className="relative mb-12 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
-                  <h2 className="text-4xl sm:text-6xl md:text-[120px] lg:text-[180px] font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] to-sky-400 leading-none drop-shadow-sm py-2">
+                <div className="relative mb-10 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6">
+                  <h2 className="text-3xl sm:text-5xl md:text-8xl lg:text-[130px] font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-200 to-cyan-400 leading-none py-2">
                     1,00,00,00,000
                   </h2>
-                  <span className="text-3xl md:text-6xl lg:text-8xl font-black text-[#0B2EA8]">Rs</span>
+                  <span className="text-2xl md:text-4xl lg:text-6xl font-black text-cyan-400">Rs</span>
                 </div>
                 
-                <p className="text-xl md:text-4xl text-slate-400 font-bold max-w-4xl mx-auto leading-tight mb-16 md:mb-24 uppercase tracking-tighter">
+                <p className="text-lg md:text-2xl text-blue-200/70 font-medium max-w-3xl mx-auto leading-relaxed mb-20">
                   Through intelligent monetization across platforms and formats for creators and IP owners.
                 </p>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24 w-full max-w-5xl mx-auto">
-                  <div className="flex flex-col items-center justify-center gap-4 p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] bg-slate-50 border border-slate-100 shadow-sm">
-                    <span className="text-6xl md:text-[120px] font-black font-heading text-[#0A1A4E] leading-none">
+                {/* Divider */}
+                <div className="w-full h-px bg-white/10 mb-20 max-w-3xl mx-auto" />
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl mx-auto">
+                  <div className="flex flex-col items-center justify-center gap-3 p-8 md:p-12 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-500">
+                    <span className="text-6xl md:text-[100px] font-black font-heading text-transparent bg-clip-text bg-gradient-to-b from-white to-cyan-300 leading-none">
                       <AnimatedNumber value={70} suffix="+" />
                     </span>
-                    <span className="text-[10px] md:text-sm font-black uppercase tracking-[0.3em] text-[#0B2EA8]">
+                    <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-blue-200/70">
                       Active Channels
                     </span>
                   </div>
-                  <div className="flex flex-col items-center justify-center gap-4 p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] bg-slate-50 border border-slate-100 shadow-sm">
-                    <span className="text-6xl md:text-[120px] font-black font-heading text-[#0A1A4E] leading-none">
+                  <div className="flex flex-col items-center justify-center gap-3 p-8 md:p-12 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-500">
+                    <span className="text-6xl md:text-[100px] font-black font-heading text-transparent bg-clip-text bg-gradient-to-b from-white to-cyan-300 leading-none">
                       <AnimatedNumber value={30} suffix="+" />
                     </span>
-                    <span className="text-[10px] md:text-sm font-black uppercase tracking-[0.3em] text-[#0B2EA8]">
+                    <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-blue-200/70">
                       Global Platforms
                     </span>
                   </div>
@@ -527,15 +560,15 @@ export default function CreatorsPage() {
       {/* ─── FAQ SECTION ─── */}
       <section className="py-32 px-4 md:px-8 bg-white border-t border-slate-100">
         <div className="container mx-auto max-w-7xl">
-          <div className="text-center mb-20">
-            <div className="w-20 h-20 mx-auto rounded-[2rem] bg-gradient-to-br from-[#0A1A4E] to-[#0B2EA8] flex items-center justify-center shadow-[0_20px_40px_rgba(11,46,168,0.2)] mb-8">
-              <HelpCircle className="w-10 h-10 text-white" />
+          <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-20">
+            <div>
+              <h2 className="text-4xl md:text-6xl lg:text-7xl font-black font-heading tracking-tighter text-[#0A1A4E] leading-none uppercase">
+                Who We <br className="hidden md:block"/>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-cyan-500">Work With</span>
+              </h2>
             </div>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black font-heading tracking-tighter mb-6 text-[#0A1A4E] leading-none uppercase">
-              Who We Work With
-            </h2>
-            <p className="text-slate-500 text-xl font-medium max-w-2xl mx-auto mb-10">
-              Got questions about eligibility? Here is everything you need to know about partnering with us.
+            <p className="text-slate-500 text-xl font-medium max-w-sm leading-relaxed">
+              Got questions about eligibility? Everything you need to know about partnering with us.
             </p>
           </div>
 
@@ -546,58 +579,63 @@ export default function CreatorsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="mt-40 p-10 md:p-16 lg:p-24 rounded-[3rem] md:rounded-[5rem] bg-gradient-to-br from-[#0A1A4E] via-[#0B2EA8] to-blue-900 text-white relative overflow-hidden shadow-[0_40px_100px_rgba(11,46,168,0.3)] border border-blue-400/20"
+            className="mt-20 rounded-[3rem] md:rounded-[4rem] bg-[#0A1A4E] relative overflow-hidden shadow-[0_40px_120px_rgba(10,26,78,0.35)]"
           >
-            {/* Animated Background Accents */}
-            <div className="absolute top-0 right-0 w-full h-full">
-              <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-cyan-400/20 rounded-full blur-[120px] animate-pulse duration-[10000ms]"></div>
-              <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] bg-blue-400/20 rounded-full blur-[120px] animate-pulse duration-[7000ms]"></div>
+            {/* Ambient background */}
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute top-[-30%] right-[-10%] w-[900px] h-[900px] bg-blue-500/20 rounded-full blur-[130px]" />
+              <div className="absolute bottom-[-30%] left-[-10%] w-[700px] h-[700px] bg-cyan-400/15 rounded-full blur-[130px]" />
+              <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
             </div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
-              {/* Text Side */}
-              <div className="text-center lg:text-left">
-                <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/10 border border-white/20 mb-8 backdrop-blur-md">
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-xs font-black tracking-[0.25em] uppercase text-blue-50">Partner With Us</span>
+
+            {/* Top strip: headline */}
+            <div className="relative z-10 px-10 md:px-16 lg:px-24 pt-16 md:pt-20 pb-12 border-b border-white/10">
+              <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-8">
+                <div>
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 mb-6 backdrop-blur-sm">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="text-[10px] font-black tracking-[0.3em] uppercase text-emerald-200">Now Onboarding</span>
+                  </div>
+                  <h3 className="text-4xl md:text-6xl lg:text-[80px] font-black font-heading tracking-tighter leading-[0.88] uppercase">
+                    <span className="text-white">Ready to unlock</span><br/>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-200 to-white">your potential?</span>
+                  </h3>
                 </div>
-                <h3 className="text-4xl md:text-6xl lg:text-[90px] font-black font-heading mb-8 tracking-tighter leading-[0.9] uppercase text-white drop-shadow-[0_10px_20px_rgba(0,0,0,0.4)]">
-                  Ready to unlock <br className="hidden md:block"/> 
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-white to-sky-200">your potential?</span>
-                </h3>
-                <p className="text-blue-100/90 text-lg md:text-2xl max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
+                <p className="text-blue-200/70 text-lg md:text-xl font-medium max-w-sm leading-relaxed lg:text-right">
                   Join India&apos;s leading creators and maximize the value of your content library today.
                 </p>
               </div>
+            </div>
 
-              {/* Action Buttons Side */}
-              <div className="flex flex-col gap-6 w-full max-w-md mx-auto lg:mr-0">
-                <Link 
-                  href={`/${locale}/contact`}
-                  className="group relative flex items-center justify-between w-full p-8 rounded-3xl bg-white text-[#0A1A4E] hover:bg-blue-50 transition-all duration-500 shadow-xl hover:scale-[1.03]"
-                >
-                  <div className="flex flex-col text-left">
-                    <span className="font-black text-2xl md:text-3xl uppercase tracking-tight mb-1">Get In Touch</span>
-                    <span className="text-sm font-bold text-slate-500 uppercase tracking-widest">Start a conversation</span>
-                  </div>
-                  <div className="w-14 h-14 shrink-0 rounded-full bg-blue-100 text-[#0B2EA8] flex items-center justify-center group-hover:bg-[#0B2EA8] group-hover:text-white transition-all duration-500">
-                    <ArrowRight className="w-7 h-7 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </Link>
+            {/* Bottom grid: action tiles */}
+            <div className="relative z-10 px-10 md:px-16 lg:px-24 py-12 md:py-16 grid grid-cols-1 md:grid-cols-3 gap-4">
+              {/* Primary CTA */}
+              <Link
+                href={`/${locale}/contact`}
+                className="group col-span-1 md:col-span-2 flex items-center justify-between p-8 rounded-2xl bg-white text-[#0A1A4E] hover:bg-blue-50 transition-all duration-500 hover:scale-[1.02] shadow-[0_0_60px_rgba(255,255,255,0.08)]"
+              >
+                <div className="flex flex-col gap-1">
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#0B2EA8]/60">Start a conversation</span>
+                  <span className="text-3xl md:text-4xl font-black uppercase tracking-tight">Get In Touch</span>
+                </div>
+                <div className="w-14 h-14 shrink-0 rounded-2xl bg-[#0B2EA8]/10 flex items-center justify-center text-[#0B2EA8] group-hover:bg-[#0B2EA8] group-hover:text-white transition-all duration-500">
+                  <ArrowRight className="w-7 h-7 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </Link>
 
-                <a 
-                  href="mailto:info@curiousmedia.in"
-                  className="group flex items-center gap-6 w-full p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all duration-500"
-                >
-                  <div className="w-14 h-14 shrink-0 rounded-full bg-white/10 flex items-center justify-center text-blue-200 group-hover:scale-110 transition-transform">
-                    <Mail className="w-7 h-7" />
-                  </div>
-                  <div className="flex flex-col text-left">
-                    <span className="text-xs font-bold text-blue-200/70 uppercase tracking-widest mb-1">Email Us Directly</span>
-                    <span className="font-bold text-xl md:text-2xl text-white break-all">info@curiousmedia.in</span>
-                  </div>
-                </a>
-              </div>
+              {/* Email CTA */}
+              <a
+                href="mailto:info@curiousmedia.in"
+                className="group flex flex-col justify-between p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-500"
+              >
+                <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-cyan-300 group-hover:scale-110 transition-transform duration-300 mb-6">
+                  <Mail className="w-6 h-6" />
+                </div>
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-300/60 mb-1">Email Us Directly</p>
+                  <p className="font-bold text-lg text-white break-all leading-tight">info@curiousmedia.in</p>
+                </div>
+              </a>
             </div>
           </motion.div>
         </div>
