@@ -70,43 +70,35 @@ function CreatorLogoCard({ creator }: { creator: typeof CREATORS_DATA[0] }) {
 
   return (
     <motion.div
-      whileHover={{ scale: 0.98, y: -5 }}
+      whileHover={{ scale: 0.98, y: -4 }}
       transition={{ duration: 0.3 }}
-      className="relative h-[480px] w-[85vw] sm:w-[400px] md:w-[450px] lg:w-[31vw] shrink-0 rounded-[2.5rem] overflow-hidden group shadow-[0_15px_40px_rgb(0,0,0,0.06)] hover:shadow-[0_25px_50px_rgba(11,46,168,0.12)] bg-white border border-slate-100 mx-4 flex flex-col"
+      className="relative h-[340px] w-[75vw] sm:w-[260px] md:w-[280px] lg:w-[22.5vw] shrink-0 rounded-3xl overflow-hidden group shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(11,46,168,0.12)] bg-white border border-slate-100 flex flex-col mx-2 md:mx-3 cursor-pointer"
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0B2EA8]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
-      {/* Image Section - Fully Clear */}
-      <div className="relative flex-1 bg-slate-50 overflow-hidden">
+      {/* Image Section - Slightly Zoomed Out (Contain) */}
+      <div className="relative flex-1 bg-[#F8FAFC] overflow-hidden group-hover:bg-blue-50/50 transition-colors duration-500">
         {err < srcs.length ? (
           <img 
             src={srcs[err]} 
             alt={creator.name} 
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            className="w-full h-full object-contain p-3 transition-transform duration-700 group-hover:scale-105"
             onError={() => setErr(p => p + 1)}
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-[#0A1A4E] font-black text-9xl uppercase tracking-tighter bg-gradient-to-br from-blue-50 to-slate-100">
+          <div className="w-full h-full flex items-center justify-center text-[#0A1A4E] font-black text-6xl uppercase tracking-tighter bg-gradient-to-br from-blue-50 to-slate-100">
             {creator.name.substring(0, 2)}
           </div>
         )}
       </div>
 
-      {/* Premium Content Area */}
-      <div className="h-[140px] bg-white p-8 flex items-center justify-between border-t border-slate-100 z-30 shrink-0 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#0B2EA8] to-blue-400 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out" />
-        <div className="flex flex-col">
-          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#0B2EA8] mb-2 flex items-center gap-1.5">
-            <CheckCircle2 className="w-3.5 h-3.5" /> Verified Partner
-          </span>
-          <h3 className="text-2xl lg:text-3xl font-black text-[#0A1A4E] uppercase tracking-tighter leading-none mb-1">
+      {/* Spotter-Inspired Clean Content Area */}
+      <div className="bg-white p-5 md:p-6 flex items-center justify-between z-30 shrink-0 relative overflow-hidden group-hover:bg-[#0B2EA8] transition-colors duration-500">
+        <div className="flex flex-col z-10 relative">
+          <h3 className="text-xl md:text-2xl font-black text-[#0A1A4E] group-hover:text-white uppercase tracking-tight leading-none transition-colors duration-500 line-clamp-1">
             {creator.name}
           </h3>
-          <span className="text-slate-500 font-medium text-sm">
-            {creator.domain}
-          </span>
         </div>
-        <div className="w-14 h-14 shrink-0 rounded-full bg-slate-50 border border-slate-100 text-[#0A1A4E] flex items-center justify-center group-hover:bg-[#0B2EA8] group-hover:text-white group-hover:border-[#0B2EA8] transition-all duration-500 group-hover:rotate-[-45deg] shadow-sm">
-          <ArrowRight className="w-6 h-6" />
+        <div className="w-10 h-10 shrink-0 rounded-full bg-slate-50 group-hover:bg-white/20 text-[#0A1A4E] group-hover:text-white flex items-center justify-center transition-all duration-500 group-hover:rotate-[-45deg] relative z-10">
+          <ArrowRight className="w-5 h-5" />
         </div>
       </div>
     </motion.div>
@@ -196,73 +188,43 @@ function AnimatedNumber({ value, suffix = "", prefix = "" }: { value: number, su
   return <span ref={ref}>{prefix}0{suffix}</span>;
 }
 
-function WorkflowTabs() {
-  const [activeTab, setActiveTab] = useState(0);
-
+function WorkflowSteps() {
   return (
-    <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
-      {/* Tab Navigation */}
-      <div className="w-full lg:w-5/12 flex flex-col gap-2 relative">
-        <div className="absolute left-[27px] top-8 bottom-8 w-px bg-slate-200 hidden lg:block" />
-        {WORKFLOW.map((item, i) => (
-          <button
-            key={i}
-            onClick={() => setActiveTab(i)}
-            className={`text-left p-5 rounded-2xl transition-all duration-500 flex items-center gap-6 relative z-10 overflow-hidden group ${
-              activeTab === i 
-                ? "bg-[#0B2EA8] text-white shadow-[0_20px_40px_rgba(11,46,168,0.2)] scale-[1.02]" 
-                : "bg-white text-slate-500 hover:bg-blue-50 border border-slate-100 hover:border-blue-200"
-            }`}
-          >
-            {activeTab === i && (
-              <motion.div 
-                layoutId="active-tab-bg" 
-                className="absolute inset-0 bg-gradient-to-r from-[#0B2EA8] to-blue-600 z-0"
-                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-              />
-            )}
-            <div className={`w-10 h-10 shrink-0 rounded-full flex items-center justify-center font-black relative z-10 transition-colors duration-300 ${
-              activeTab === i ? "bg-white/20 text-white" : "bg-slate-100 text-slate-400 group-hover:bg-blue-100 group-hover:text-[#0B2EA8]"
-            }`}>
-              {i + 1}
-            </div>
-            <span className={`font-bold text-lg relative z-10 transition-colors duration-300 ${
-              activeTab === i ? "text-white" : "text-[#0A1A4E]"
-            }`}>
-              {item.title}
-            </span>
-          </button>
-        ))}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-32 items-start">
+      {/* Left Column: Sticky Title */}
+      <div className="md:sticky top-40 py-10">
+        <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-blue-100 mb-8 shadow-sm">
+          <Zap className="w-4 h-4 text-[#0B2EA8]" />
+          <span className="text-[11px] font-black tracking-[0.2em] uppercase text-[#0B2EA8]">The Process</span>
+        </div>
+        <h2 className="text-4xl md:text-7xl lg:text-[100px] font-black font-heading tracking-tighter leading-[0.85] uppercase">
+          HOW IT <br className="hidden lg:block"/> 
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-500 pb-2">WORKS.</span>
+        </h2>
+        <p className="mt-6 md:mt-8 text-slate-500 text-lg md:text-2xl font-medium max-w-md leading-relaxed">
+          A straightforward partnership designed for maximum growth and complete transparency.
+        </p>
       </div>
 
-      {/* Tab Content */}
-      <div className="w-full lg:w-7/12 flex lg:sticky top-32">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, x: 40, scale: 0.95 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, x: -40, scale: 0.95 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full bg-white p-8 md:p-14 rounded-[2.5rem] md:rounded-[3rem] shadow-[0_20px_80px_rgba(11,46,168,0.08)] border border-blue-50 flex flex-col justify-center relative overflow-hidden"
+      {/* Right Column: Vertical List of Steps */}
+      <div className="flex flex-col py-10">
+        {WORKFLOW.map((item, i) => (
+          <motion.div 
+            key={i}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: i * 0.1 }}
+            className="group flex flex-col gap-4 py-12 border-b border-slate-100 last:border-0"
           >
-            {/* Decorative background element */}
-            <div className="absolute -top-24 -right-24 w-64 h-64 bg-blue-50 rounded-full blur-[60px] pointer-events-none" />
-            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-sky-50 rounded-full blur-[60px] pointer-events-none" />
-            
-            <div className="relative z-10">
-              <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-blue-50 to-blue-100 text-[#0B2EA8] rounded-2xl flex items-center justify-center mb-6 md:mb-8 border border-blue-200/50 shadow-inner">
-                {WORKFLOW[activeTab].icon}
-              </div>
-              <h3 className="text-3xl md:text-4xl lg:text-6xl font-black text-[#0A1A4E] mb-4 md:mb-6 leading-tight tracking-tighter">
-                {WORKFLOW[activeTab].title}
-              </h3>
-              <p className="text-slate-500 text-lg md:text-xl lg:text-2xl leading-relaxed font-medium">
-                {WORKFLOW[activeTab].desc}
-              </p>
-            </div>
+            <h3 className="text-3xl md:text-4xl font-black text-[#0A1A4E] uppercase tracking-tighter leading-none group-hover:text-[#0B2EA8] transition-colors duration-300">
+              {item.title}
+            </h3>
+            <p className="text-slate-500 text-lg md:text-xl lg:text-2xl leading-relaxed font-medium">
+              {item.desc}
+            </p>
           </motion.div>
-        </AnimatePresence>
+        ))}
       </div>
     </div>
   );
@@ -413,12 +375,12 @@ export default function CreatorsPage() {
               <span className="text-xs font-black tracking-[0.25em] uppercase text-[#0B2EA8]">Creator Capital & Growth</span>
             </motion.div>
 
-            <h1 className="flex flex-col gap-2 mb-8 md:mb-12 w-full">
+            <h1 className="flex flex-col gap-1 md:gap-2 mb-8 md:mb-12 w-full overflow-hidden">
               <motion.span
                 initial={{ opacity: 0, y: 60, rotateX: -20 }}
                 animate={{ opacity: 1, y: 0, rotateX: 0 }}
                 transition={{ delay: 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                className="text-5xl sm:text-7xl md:text-8xl lg:text-[130px] font-black font-heading tracking-tighter leading-[0.85] text-[#0A1A4E] uppercase drop-shadow-sm"
+                className="text-4xl sm:text-7xl md:text-8xl lg:text-[130px] font-black font-heading tracking-tighter leading-[0.85] text-[#0A1A4E] uppercase drop-shadow-sm"
               >
                 WE EARN
               </motion.span>
@@ -426,7 +388,7 @@ export default function CreatorsPage() {
                 initial={{ opacity: 0, y: 60, rotateX: -20 }}
                 animate={{ opacity: 1, y: 0, rotateX: 0 }}
                 transition={{ delay: 0.25, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                className="text-5xl sm:text-7xl md:text-8xl lg:text-[130px] font-black font-heading tracking-tighter leading-[0.85] text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-500 uppercase pb-4"
+                className="text-4xl sm:text-7xl md:text-8xl lg:text-[130px] font-black font-heading tracking-tighter leading-[0.85] text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-500 uppercase pb-4"
               >
                 WHEN YOU EARN.
               </motion.span>
@@ -436,9 +398,9 @@ export default function CreatorsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-xl md:text-3xl text-slate-500 max-w-4xl mx-auto mb-16 font-medium leading-relaxed"
+              className="text-lg md:text-2xl text-slate-500 max-w-4xl mx-auto mb-16 font-medium leading-relaxed"
             >
-              Curious Media unlocks the full monetization potential of your content library across platforms, powered by Asia&apos;s largest distribution network.
+              Curious Media unlocks the full monetization potential of your content library <br className="hidden md:block"/> across platforms, powered by Asia&apos;s largest distribution network.
             </motion.p>
 
             <motion.div
@@ -508,11 +470,7 @@ export default function CreatorsPage() {
       {/* ─── REVENUE IMPACT SECTION ─── */}
       <section className="py-40 px-4 md:px-8 relative bg-white overflow-hidden">
         <div className="container mx-auto max-w-7xl">
-           <div className="relative p-12 md:p-24 text-center overflow-hidden border border-slate-100 shadow-[0_30px_100px_rgba(11,46,168,0.08)] rounded-[4rem] bg-white">
-              {/* Background Glows inside container */}
-              <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-blue-100 via-blue-50 to-transparent rounded-full blur-[80px] -mr-48 -mt-48 pointer-events-none"></div>
-              <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-cyan-100 via-sky-50 to-transparent rounded-full blur-[80px] -ml-48 -mb-48 pointer-events-none"></div>
-              
+           <div className="relative text-center">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -520,33 +478,39 @@ export default function CreatorsPage() {
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                 className="relative z-10 flex flex-col items-center"
               >
-                <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-50 border border-emerald-200 mb-10 shadow-sm">
-                  <BarChart3 className="w-4 h-4 text-emerald-600" />
-                  <span className="text-xs font-black tracking-[0.2em] uppercase text-emerald-600">Total Impact Generated</span>
+                <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-50 border border-blue-100 mb-10 shadow-sm">
+                  <BarChart3 className="w-4 h-4 text-[#0B2EA8]" />
+                  <span className="text-xs font-black tracking-[0.2em] uppercase text-[#0B2EA8]">Total Impact Generated</span>
                 </div>
 
-                <div className="relative mb-8">
-                  <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-[140px] font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-[#0B2EA8] to-cyan-600 leading-none whitespace-nowrap drop-shadow-sm pb-4">
-                    <AnimatedNumber value={1000000000} />
+                <div className="relative mb-12 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
+                  <h2 className="text-4xl sm:text-6xl md:text-[120px] lg:text-[180px] font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] to-sky-400 leading-none drop-shadow-sm py-2">
+                    1,00,00,00,000
                   </h2>
-                  <div className="absolute -right-6 md:-right-16 lg:-right-24 top-0 md:top-4 lg:top-8 text-2xl md:text-4xl lg:text-6xl font-black text-[#0B2EA8] opacity-80">
-                    Rs
-                  </div>
+                  <span className="text-3xl md:text-6xl lg:text-8xl font-black text-[#0B2EA8]">Rs</span>
                 </div>
                 
-                <p className="text-2xl md:text-3xl text-slate-500 font-bold max-w-3xl mx-auto leading-relaxed mb-16">
+                <p className="text-xl md:text-4xl text-slate-400 font-bold max-w-4xl mx-auto leading-tight mb-16 md:mb-24 uppercase tracking-tighter">
                   Through intelligent monetization across platforms and formats for creators and IP owners.
                 </p>
                 
-                <div className="h-px w-full max-w-lg mx-auto bg-gradient-to-r from-transparent via-slate-200 to-transparent mb-16"></div>
-                
-                <div className="flex flex-col items-center justify-center gap-3">
-                   <span className="text-7xl font-black font-heading text-[#0A1A4E]">
-                     <AnimatedNumber value={70} suffix="+" />
-                   </span>
-                   <span className="text-sm font-black uppercase tracking-[0.3em] text-slate-400 bg-slate-50 px-4 py-2 rounded-full border border-slate-100">
-                     From Active Channels
-                   </span>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24 w-full max-w-5xl mx-auto">
+                  <div className="flex flex-col items-center justify-center gap-4 p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] bg-slate-50 border border-slate-100 shadow-sm">
+                    <span className="text-6xl md:text-[120px] font-black font-heading text-[#0A1A4E] leading-none">
+                      <AnimatedNumber value={70} suffix="+" />
+                    </span>
+                    <span className="text-[10px] md:text-sm font-black uppercase tracking-[0.3em] text-[#0B2EA8]">
+                      Active Channels
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center justify-center gap-4 p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] bg-slate-50 border border-slate-100 shadow-sm">
+                    <span className="text-6xl md:text-[120px] font-black font-heading text-[#0A1A4E] leading-none">
+                      <AnimatedNumber value={30} suffix="+" />
+                    </span>
+                    <span className="text-[10px] md:text-sm font-black uppercase tracking-[0.3em] text-[#0B2EA8]">
+                      Global Platforms
+                    </span>
+                  </div>
                 </div>
               </motion.div>
            </div>
@@ -556,20 +520,7 @@ export default function CreatorsPage() {
       {/* ─── STICKY EDITORIAL LAYOUT: HOW IT WORKS ─── */}
       <section className="py-24 md:py-40 px-4 md:px-8 bg-slate-50/50 border-t border-slate-100 relative">
         <div className="container mx-auto max-w-7xl relative z-10">
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-blue-100 mb-6 shadow-sm">
-              <Zap className="w-4 h-4 text-[#0B2EA8]" />
-              <span className="text-[11px] font-black tracking-[0.2em] uppercase text-[#0B2EA8]">The Process</span>
-            </div>
-            <h2 className="text-4xl md:text-6xl lg:text-[80px] font-black font-heading tracking-tighter mb-6 text-[#0A1A4E] leading-none uppercase">
-              HOW IT WORKS.
-            </h2>
-            <p className="text-slate-500 text-xl font-medium max-w-2xl mx-auto">
-              A straightforward partnership designed for maximum growth and complete transparency.
-            </p>
-          </div>
-          
-          <WorkflowTabs />
+          <WorkflowSteps />
         </div>
       </section>
 
@@ -590,66 +541,60 @@ export default function CreatorsPage() {
 
           <FAQAccordion />
           
-          {/* ─── FINAL PREMIUM CTA ─── */}
           <motion.div 
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="mt-40 p-12 md:p-16 lg:p-24 rounded-[4rem] bg-[#0A1A4E] text-white relative overflow-hidden shadow-[0_30px_100px_rgba(10,26,78,0.4)] border border-blue-900/50"
+            className="mt-40 p-10 md:p-16 lg:p-24 rounded-[3rem] md:rounded-[5rem] bg-gradient-to-br from-[#0A1A4E] via-[#0B2EA8] to-blue-900 text-white relative overflow-hidden shadow-[0_40px_100px_rgba(11,46,168,0.3)] border border-blue-400/20"
           >
-            {/* Background Orbs & Effects */}
-            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-blue-500/30 to-purple-500/30 rounded-full blur-[120px] pointer-events-none -mr-48 -mt-48 mix-blend-screen"></div>
-            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-cyan-400/20 rounded-full blur-[120px] pointer-events-none -ml-48 -mb-48"></div>
+            {/* Animated Background Accents */}
+            <div className="absolute top-0 right-0 w-full h-full">
+              <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-cyan-400/20 rounded-full blur-[120px] animate-pulse duration-[10000ms]"></div>
+              <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] bg-blue-400/20 rounded-full blur-[120px] animate-pulse duration-[7000ms]"></div>
+            </div>
             
-            {/* Floating Graphic Accents */}
-            <div className="absolute top-16 left-16 animate-pulse duration-1000">
-              <div className="w-4 h-4 rounded-full bg-blue-400/80 shadow-[0_0_20px_rgba(96,165,250,0.8)]"></div>
-            </div>
-            <div className="absolute bottom-24 right-24">
-              <Rocket className="w-40 h-40 text-white/[0.03] -rotate-12" />
-            </div>
-
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
               {/* Text Side */}
               <div className="text-center lg:text-left">
-                <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 border border-white/20 mb-8 backdrop-blur-md shadow-lg">
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
-                  <span className="text-xs font-black tracking-[0.2em] uppercase text-blue-50">Partner With Us</span>
+                <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/10 border border-white/20 mb-8 backdrop-blur-md">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="text-xs font-black tracking-[0.25em] uppercase text-blue-50">Partner With Us</span>
                 </div>
-                <h3 className="text-4xl md:text-5xl lg:text-[80px] font-black font-heading mb-6 md:mb-8 tracking-tighter leading-[0.9]">
-                  Ready to unlock <br className="hidden md:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-cyan-300">your potential?</span>
+                <h3 className="text-4xl md:text-6xl lg:text-[90px] font-black font-heading mb-8 tracking-tighter leading-[0.9] uppercase text-white drop-shadow-[0_10px_20px_rgba(0,0,0,0.4)]">
+                  Ready to unlock <br className="hidden md:block"/> 
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-white to-sky-200">your potential?</span>
                 </h3>
-                <p className="text-blue-100/80 text-lg md:text-xl lg:text-2xl max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
+                <p className="text-blue-100/90 text-lg md:text-2xl max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
                   Join India&apos;s leading creators and maximize the value of your content library today.
                 </p>
               </div>
 
               {/* Action Buttons Side */}
-              <div className="flex flex-col gap-4 md:gap-6 w-full max-w-lg mx-auto lg:mr-0">
+              <div className="flex flex-col gap-6 w-full max-w-md mx-auto lg:mr-0">
                 <Link 
                   href={`/${locale}/contact`}
-                  className="group relative flex items-center justify-between w-full p-6 md:p-8 rounded-[2rem] bg-white text-[#0A1A4E] hover:bg-blue-50 transition-all duration-500 shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_20px_60px_rgba(255,255,255,0.2)] hover:scale-[1.02]"
+                  className="group relative flex items-center justify-between w-full p-8 rounded-3xl bg-white text-[#0A1A4E] hover:bg-blue-50 transition-all duration-500 shadow-xl hover:scale-[1.03]"
                 >
                   <div className="flex flex-col text-left">
                     <span className="font-black text-2xl md:text-3xl uppercase tracking-tight mb-1">Get In Touch</span>
-                    <span className="text-xs md:text-sm font-bold text-slate-500 uppercase tracking-widest">Start a conversation</span>
+                    <span className="text-sm font-bold text-slate-500 uppercase tracking-widest">Start a conversation</span>
                   </div>
-                  <div className="w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-blue-100 flex items-center justify-center group-hover:bg-[#0B2EA8] group-hover:text-white transition-colors duration-500">
-                    <ArrowRight className="w-6 h-6 md:w-8 md:h-8 group-hover:translate-x-1 transition-transform" />
+                  <div className="w-14 h-14 shrink-0 rounded-full bg-blue-100 text-[#0B2EA8] flex items-center justify-center group-hover:bg-[#0B2EA8] group-hover:text-white transition-all duration-500">
+                    <ArrowRight className="w-7 h-7 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </Link>
 
                 <a 
                   href="mailto:info@curiousmedia.in"
-                  className="group flex items-center gap-4 md:gap-6 w-full p-6 md:p-8 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all duration-500 hover:border-white/20"
+                  className="group flex items-center gap-6 w-full p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all duration-500"
                 >
-                  <div className="w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-white/10 flex items-center justify-center text-blue-300 group-hover:scale-110 transition-transform duration-500">
-                    <Mail className="w-6 h-6 md:w-8 md:h-8" />
+                  <div className="w-14 h-14 shrink-0 rounded-full bg-white/10 flex items-center justify-center text-blue-200 group-hover:scale-110 transition-transform">
+                    <Mail className="w-7 h-7" />
                   </div>
                   <div className="flex flex-col text-left">
-                    <span className="text-xs md:text-sm font-bold text-blue-200/70 uppercase tracking-widest mb-1">Email Us Directly</span>
-                    <span className="font-bold text-lg md:text-2xl text-white break-all">info@curiousmedia.in</span>
+                    <span className="text-xs font-bold text-blue-200/70 uppercase tracking-widest mb-1">Email Us Directly</span>
+                    <span className="font-bold text-xl md:text-2xl text-white break-all">info@curiousmedia.in</span>
                   </div>
                 </a>
               </div>
