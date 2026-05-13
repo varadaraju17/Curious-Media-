@@ -157,7 +157,7 @@ export default function BrandsPage() {
       </section>
 
       {/* ─── SPOTTER-STYLE STATS SECTION ─── */}
-      <section className="py-32 md:py-40 bg-[#0A1A4E] relative overflow-hidden">
+      <section className="py-20 md:py-24 bg-[#0A1A4E] relative overflow-hidden flex items-center min-h-screen md:min-h-0">
         {/* Background glows */}
         <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-blue-500/20 rounded-full blur-[120px] pointer-events-none -mr-48 -mt-48" />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-400/10 rounded-full blur-[120px] pointer-events-none -ml-48 -mb-48" />
@@ -166,48 +166,48 @@ export default function BrandsPage() {
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
 
           {/* Section Header */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start mb-12">
             <div>
-              <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 border border-white/20 mb-8 backdrop-blur-sm">
-                <BarChart3 className="w-4 h-4 text-cyan-300" />
-                <span className="text-[11px] font-black tracking-[0.2em] uppercase text-cyan-200">The Scale of Impact</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 mb-6 backdrop-blur-sm">
+                <BarChart3 className="w-3.5 h-3.5 text-cyan-300" />
+                <span className="text-[10px] font-black tracking-[0.2em] uppercase text-cyan-200">The Scale of Impact</span>
               </div>
-              <h2 className="text-4xl md:text-6xl lg:text-[90px] font-black font-heading tracking-tighter leading-[0.85] uppercase">
+              <h2 className="text-4xl md:text-5xl lg:text-[70px] font-black font-heading tracking-tighter leading-[0.85] uppercase">
                 <span className="text-white">WE WIN</span><br/>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-cyan-300 to-sky-200">WHEN YOU WIN.</span>
               </h2>
             </div>
-            <div className="flex flex-col justify-end gap-8">
-              <div className="space-y-5">
-                <p className="text-blue-100 text-xl md:text-2xl font-semibold leading-relaxed">
+            <div className="flex flex-col justify-end gap-6">
+              <div className="space-y-4">
+                <p className="text-blue-100 text-lg md:text-xl font-semibold leading-relaxed">
                   We see every campaign as how we can register this thing in the target audience&apos;s mind...
                 </p>
-                <p className="text-blue-200/60 text-lg md:text-xl font-medium leading-relaxed">
+                <p className="text-blue-200/60 text-base md:text-lg font-medium leading-relaxed">
                   No fancy decks. No over-commitment. Just real results delivered from our network.
                 </p>
-                <p className="text-blue-200/60 text-lg md:text-xl font-medium leading-relaxed">
+                <p className="text-blue-200/60 text-base md:text-lg font-medium leading-relaxed">
                   We always try to integrate every product &amp; messaging so smoothly so it looks like organic marketing.
                 </p>
               </div>
               <Link
                 href={`/${locale}/contact`}
-                className="group inline-flex items-center gap-4 text-cyan-300 font-black uppercase tracking-[0.2em] text-sm hover:gap-6 transition-all w-fit border-b-2 border-cyan-300/40 hover:border-cyan-300 pb-1"
+                className="group inline-flex items-center gap-3 text-cyan-300 font-black uppercase tracking-[0.2em] text-xs hover:gap-5 transition-all w-fit border-b border-cyan-300/40 hover:border-cyan-300 pb-1 mt-2"
               >
                 Get in touch
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </div>
 
           {/* Divider */}
-          <div className="w-full h-px bg-white/10 mb-16" />
+          <div className="w-full h-px bg-white/10 mb-10" />
 
           {/* Stat Cards - on dark bg */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {[
               { bg: "rgba(255,255,255,0.06)", border: "rgba(255,255,255,0.12)", accent: "#60A5FA", label: "Viewership Delivered", stat: "10+", unit: "Billion", tag: "Annual Reach" },
               { bg: "rgba(255,255,255,0.06)", border: "rgba(255,255,255,0.12)", accent: "#38BDF8", label: "Distribution Network", stat: "900+", unit: "Million", tag: "Pan India Network" },
-              { bg: "rgba(255,255,255,0.06)", border: "rgba(255,255,255,0.12)", accent: "#A78BFA", label: "Influencers Network", stat: "15,000+", unit: "", tag: "Pan India" },
+              { bg: "rgba(255,255,255,0.06)", border: "rgba(255,255,255,0.12)", accent: "#A78BFA", label: "Influencers Network", stat: "15K+", unit: "", tag: "Pan India" },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -215,31 +215,31 @@ export default function BrandsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ delay: i * 0.12, duration: 0.7, ease: "easeOut" }}
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                whileHover={{ y: -6, transition: { duration: 0.3 } }}
                 className="relative rounded-3xl overflow-hidden backdrop-blur-sm"
                 style={{ backgroundColor: item.bg, border: `1px solid ${item.border}` }}
               >
-                <div className="p-8 md:p-10">
+                <div className="p-6 md:p-8 flex flex-col h-full justify-between">
                   {/* Top tag */}
-                  <div className="flex justify-between items-start mb-10">
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${item.accent}20` }}>
-                      <BarChart3 className="w-5 h-5" style={{ color: item.accent }} />
+                  <div className="flex justify-between items-start mb-6">
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${item.accent}20` }}>
+                      <BarChart3 className="w-4 h-4" style={{ color: item.accent }} />
                     </div>
-                    <span className="text-xs font-black uppercase tracking-[0.2em]" style={{ color: item.accent, opacity: 0.8 }}>{item.tag}</span>
+                    <span className="text-[10px] font-black uppercase tracking-[0.2em]" style={{ color: item.accent, opacity: 0.8 }}>{item.tag}</span>
                   </div>
 
                   {/* Big stat */}
-                  <div className="mb-2">
-                    <p className="text-5xl md:text-7xl lg:text-[80px] font-black font-heading tracking-tighter leading-none" style={{ color: item.accent }}>
+                  <div className="mb-4">
+                    <p className="text-4xl md:text-5xl lg:text-[60px] font-black font-heading tracking-tighter leading-none" style={{ color: item.accent }}>
                       {item.stat}
                     </p>
                     {item.unit && (
-                      <p className="text-xl md:text-2xl font-black mt-1" style={{ color: item.accent, opacity: 0.6 }}>{item.unit}</p>
+                      <p className="text-lg md:text-xl font-black mt-2" style={{ color: item.accent, opacity: 0.6 }}>{item.unit}</p>
                     )}
                   </div>
 
                   {/* Label */}
-                  <p className="text-xs font-black uppercase tracking-[0.2em] mt-6" style={{ color: item.accent, opacity: 0.5 }}>
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] mt-auto pt-4 border-t border-white/5" style={{ color: item.accent, opacity: 0.5 }}>
                     {item.label}
                   </p>
                 </div>
