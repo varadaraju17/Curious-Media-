@@ -61,7 +61,7 @@ function BrandLogo({ item, type, size = "md" }: { item: { name: string; domain: 
     <motion.div
       whileHover={{ scale: 1.08, y: -6 }}
       transition={{ type: "spring", stiffness: 400, damping: 22 }}
-      className="group flex flex-col items-center gap-2 px-4 md:px-6 relative"
+      className="group flex flex-col items-center gap-2 px-2 md:px-3 relative"
       title={item.name}
     >
       <div className={`${sizeMap[size]} relative flex items-center justify-center rounded-2xl overflow-hidden shrink-0
@@ -72,7 +72,7 @@ function BrandLogo({ item, type, size = "md" }: { item: { name: string; domain: 
       >
         {err < srcs.length ? (
           <img src={srcs[err]} alt="" aria-hidden="true"
-            className="w-full h-full object-contain p-3 select-none transition-transform duration-400 group-hover:scale-110"
+            className="w-full h-full object-contain p-1 select-none transition-transform duration-400 group-hover:scale-110"
             loading="lazy" onError={() => setErr(p => p + 1)}
           />
         ) : (
@@ -101,7 +101,7 @@ export function Marquee({ type, dict, title }: MarqueeProps) {
   return (
     <section
       aria-label={`${isBrands ? "Trusted By Visionary Brands" : "Trusted by the Best in Content"} — Curious Media`}
-      className="relative bg-white overflow-hidden py-20 md:py-28"
+      className="relative bg-white overflow-hidden py-12 md:py-16"
     >
       {/* Top/bottom borders */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
@@ -191,7 +191,7 @@ export function Marquee({ type, dict, title }: MarqueeProps) {
         {/* Strip A — left to right */}
         <div className="flex overflow-x-hidden py-4">
           <motion.div
-            className="flex items-end"
+            className="flex items-start"
             animate={{ x: ["0%", "-50%"] }}
             transition={{ repeat: Infinity, ease: "linear", duration: isBrands ? 55 : 35 }}
             style={{ width: "max-content" }}
@@ -206,7 +206,7 @@ export function Marquee({ type, dict, title }: MarqueeProps) {
         {isBrands && stripB.length > 0 && (
           <div className="flex overflow-x-hidden py-4">
             <motion.div
-              className="flex items-end"
+              className="flex items-start"
               animate={{ x: ["-50%", "0%"] }}
               transition={{ repeat: Infinity, ease: "linear", duration: 65 }}
               style={{ width: "max-content" }}
