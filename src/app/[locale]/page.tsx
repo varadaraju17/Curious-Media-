@@ -1,5 +1,5 @@
 import { getDictionary } from "@/i18n/dictionaries";
-import { Locale } from "@/i18n/config";
+import { Locale, locales } from "@/i18n/config";
 
 // Sections
 import { Hero } from "@/components/sections/Hero";
@@ -9,6 +9,10 @@ import { BrandWin } from "@/components/sections/BrandWin";
 import { CaseStudies } from "@/components/sections/CaseStudies";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { ContactSection } from "@/components/sections/ContactSection";
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 
 export default async function Home(props: { params: Promise<{ locale: string }> }) {
   const params = await props.params;

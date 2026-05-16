@@ -1,9 +1,8 @@
 "use client";
 
-import { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import emailjs from '@emailjs/browser';
-import { Send, MessageCircle, MapPin, Mail, Loader2, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Mail, Phone, MapPin, Sparkles, Send, MessageCircle } from "lucide-react";
+import { useState, useRef } from "react";
 
 export default function ContactPage() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -13,135 +12,161 @@ export default function ContactPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-
-    if (formRef.current) {
-      // NOTE: Replace with your actual EmailJS Service ID, Template ID, and Public Key
-      // emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formRef.current, 'YOUR_PUBLIC_KEY')
-      
-      // Simulating network request for placeholder
-      setTimeout(() => {
-        setLoading(false);
-        setSuccess(true);
-        formRef.current?.reset();
-        setTimeout(() => setSuccess(false), 5000);
-      }, 1500);
-    }
+    setTimeout(() => {
+      setLoading(false);
+      setSuccess(true);
+      formRef.current?.reset();
+      setTimeout(() => setSuccess(false), 5000);
+    }, 1500);
   };
 
   return (
-    <main className="flex-1 w-full bg-white min-h-screen">
-      <section className="pt-40 pb-20 px-4 md:px-8 border-b border-white/5 relative overflow-hidden">
-        <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-accent/20 blur-[150px] rounded-full pointer-events-none"></div>
+    <main className="min-h-screen w-full bg-white relative overflow-hidden pt-24">
+      
+      {/* ─── DYNAMIC BACKGROUND (HOME PAGE HERO STYLE) ─── */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden bg-white">
+        {/* Dynamic Panning Grid */}
+        <motion.div 
+          className="absolute inset-0 [mask-image:radial-gradient(ellipse_80%_60%_at_50%_40%,#000_30%,transparent_100%)]"
+          style={{
+            backgroundImage: "linear-gradient(rgba(11,46,168,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(11,46,168,0.06) 1px, transparent 1px)",
+            backgroundSize: "60px 60px"
+          }}
+          animate={{ backgroundPosition: ["0px 0px", "60px 60px"] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+        />
 
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="flex flex-col md:flex-row justify-between mb-16">
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="max-w-2xl mb-12 md:mb-0"
-            >
-              <h1 className="text-5xl md:text-7xl font-bold font-heading mb-6 tracking-tight">
-                Let's Make <br/> <span className="text-gradient">History.</span>
-              </h1>
-              <p className="text-xl text-white/70">
-                Whether you're a visionary brand looking for unmatched ROI, or an elite creator ready to conquer the internet. We're ready.
-              </p>
-            </motion.div>
-            
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="glass p-8 rounded-3xl md:min-w-[400px]"
-            >
-              <h3 className="text-2xl font-bold font-heading mb-6">Direct Channels</h3>
-              <div className="space-y-6">
-                <a href="mailto:hello@curiousmedia.com" className="flex items-center gap-4 text-white/70 hover:text-white transition-colors group">
-                  <div className="w-12 h-12 rounded-full glass flex items-center justify-center group-hover:bg-white/10 transition-colors">
-                    <Mail className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                     <p className="text-sm uppercase tracking-wider font-bold mb-1">Email</p>
-                     <p className="text-lg">hello@curiousmedia.com</p>
-                  </div>
-                </a>
-                
-                {/*  NOTE: Replace with your actual WhatsApp number e.g. https://wa.me/1234567890 */}
-                <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-white/70 hover:text-white transition-colors group">
-                  <div className="w-12 h-12 rounded-full glass flex items-center justify-center group-hover:bg-green-500/20 transition-colors">
-                    <MessageCircle className="w-5 h-5 text-green-400" />
-                  </div>
-                  <div>
-                     <p className="text-sm uppercase tracking-wider font-bold mb-1">WhatsApp</p>
-                     <p className="text-lg">Message via WhatsApp</p>
-                  </div>
-                </a>
+        {/* Abstract Flowing Lines */}
+        <svg className="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+          <motion.path
+            d="M-200,600 C200,400 400,800 800,500 C1200,200 1400,400 1600,400"
+            fill="none" stroke="#0B2EA8" strokeWidth="2"
+            initial={{ pathLength: 0, pathOffset: 1 }}
+            animate={{ pathLength: 1, pathOffset: 0 }}
+            transition={{ duration: 10, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" }}
+          />
+        </svg>
 
-                <div className="flex items-center gap-4 text-white/70 group">
-                  <div className="w-12 h-12 rounded-full glass flex items-center justify-center">
-                    <MapPin className="w-5 h-5 text-accent" />
-                  </div>
-                  <div>
-                     <p className="text-sm uppercase tracking-wider font-bold mb-1">HQ</p>
-                     <p className="text-lg">Mumbai, India</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+        {/* Cinematic Glowing Orbs */}
+        <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-blue-100/50 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[10%] left-[-10%] w-[500px] h-[500px] bg-cyan-100/40 rounded-full blur-[120px]" />
+      </div>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="glass p-8 md:p-12 rounded-3xl"
+      <div className="container mx-auto px-4 md:px-8 max-w-[1400px] relative z-10 py-12 md:py-24">
+        <div className="flex flex-col lg:flex-row gap-16 xl:gap-24 items-center">
+
+          {/* LEFT CONTENT */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full lg:w-1/2 flex flex-col"
           >
-            <h2 className="text-3xl font-bold font-heading mb-8">Send an Inquiry</h2>
-            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-bold uppercase tracking-wider text-white/50 mb-2">Full Name</label>
-                  <input type="text" name="user_name" required className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-4 text-white outline-none focus:border-primary transition-colors" placeholder="John Doe" />
-                </div>
-                <div>
-                  <label className="block text-sm font-bold uppercase tracking-wider text-white/50 mb-2">Email Address</label>
-                  <input type="email" name="user_email" required className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-4 text-white outline-none focus:border-primary transition-colors" placeholder="john@example.com" />
-                </div>
-              </div>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0B2EA8] mb-8 w-fit shadow-[0_8px_30px_rgba(11,46,168,0.2)]">
+              <Sparkles className="w-3.5 h-3.5 text-white animate-pulse" />
+              <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white">Let&apos;s Connect</span>
+            </div>
+
+            <h1 className="text-6xl md:text-8xl lg:text-[100px] font-black font-heading tracking-tighter leading-[0.85] text-[#0A1A4E] mb-6 uppercase">
+              Get in <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-400">touch.</span>
+            </h1>
+
+            <p className="text-xl md:text-2xl text-slate-500 font-bold mb-10 leading-tight italic max-w-md">
+              Only if you&apos;re ready to turn <span className="text-[#0B2EA8] not-italic">clicks into clients.</span>
+            </p>
+
+            <div className="flex flex-col gap-6 mb-12">
+              {[
+                { icon: <Mail className="w-5 h-5" />, label: "Email", val: "hello@curiousmedia.in", href: "mailto:hello@curiousmedia.in" },
+                { icon: <MessageCircle className="w-5 h-5" />, label: "WhatsApp", val: "Chat with us", href: "https://wa.me/919999999999" },
+                { icon: <MapPin className="w-5 h-5" />, label: "HQ", val: "Mumbai, India", href: "#" },
+              ].map((item, i) => (
+                <motion.a
+                  key={i}
+                  href={item.href}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 * i + 0.5 }}
+                  className="group flex items-center gap-5 p-2 transition-all hover:translate-x-2"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-white border border-blue-100 flex items-center justify-center text-[#0B2EA8] shadow-sm group-hover:bg-[#0B2EA8] group-hover:text-white transition-all duration-300">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <p className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400">{item.label}</p>
+                    <p className="text-lg font-black text-[#0A1A4E]">{item.val}</p>
+                  </div>
+                </motion.a>
+              ))}
+            </div>
+
+            {/* Social Pills */}
+            <div className="flex flex-wrap gap-3">
+              {["Instagram", "YouTube", "LinkedIn", "X"].map((social) => (
+                <a key={social} href="#" className="px-5 py-2 rounded-full bg-slate-50 border border-slate-200 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:bg-[#0B2EA8] hover:text-white hover:border-[#0B2EA8] transition-all">
+                  {social}
+                </a>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* RIGHT FORM */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, x: 50 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full lg:w-1/2"
+          >
+            <div className="bg-white/70 backdrop-blur-2xl rounded-[3rem] border border-blue-50 p-8 md:p-14 shadow-[0_40px_100px_rgba(11,46,168,0.12)]">
+              <h3 className="text-2xl font-black font-heading tracking-tight text-[#0A1A4E] mb-8 uppercase">Send an Inquiry</h3>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-bold uppercase tracking-wider text-white/50 mb-2">Company / Brand</label>
-                  <input type="text" name="user_company" className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-4 text-white outline-none focus:border-primary transition-colors" placeholder="Optional" />
+              <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="flex flex-col gap-2">
+                    <label className="text-[9px] font-black uppercase tracking-widest text-[#0B2EA8] ml-4">Name</label>
+                    <input type="text" required placeholder="Full Name" className="bg-white border border-slate-100 rounded-2xl px-6 py-4 outline-none focus:border-[#0B2EA8] transition-all font-bold text-sm shadow-sm" />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <label className="text-[9px] font-black uppercase tracking-widest text-[#0B2EA8] ml-4">Email</label>
+                    <input type="email" required placeholder="Email Address" className="bg-white border border-slate-100 rounded-2xl px-6 py-4 outline-none focus:border-[#0B2EA8] transition-all font-bold text-sm shadow-sm" />
+                  </div>
                 </div>
-                <div>
-                  <label className="block text-sm font-bold uppercase tracking-wider text-white/50 mb-2">Inquiry Type</label>
-                  <select name="inquiry_type" className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-4 text-white outline-none focus:border-primary transition-colors appearance-none">
-                    <option value="brand_deal">Brand Campaign</option>
-                    <option value="talent">Talent Representation</option>
-                    <option value="studio">Studio / Production</option>
-                    <option value="other">Other</option>
+
+                <div className="flex flex-col gap-2">
+                  <label className="text-[9px] font-black uppercase tracking-widest text-[#0B2EA8] ml-4">Subject</label>
+                  <select className="bg-white border border-slate-100 rounded-2xl px-6 py-4 outline-none focus:border-[#0B2EA8] transition-all font-bold text-sm shadow-sm appearance-none cursor-pointer">
+                    <option>Brand Campaign</option>
+                    <option>Creator Management</option>
+                    <option>Studio Production</option>
+                    <option>General Inquiry</option>
                   </select>
                 </div>
-              </div>
 
-              <div>
-                <label className="block text-sm font-bold uppercase tracking-wider text-white/50 mb-2">Message</label>
-                <textarea name="message" required rows={5} className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-4 text-white outline-none focus:border-primary transition-colors resize-none" placeholder="Tell us about your goals..."></textarea>
-              </div>
+                <div className="flex flex-col gap-2">
+                  <label className="text-[9px] font-black uppercase tracking-widest text-[#0B2EA8] ml-4">Message</label>
+                  <textarea required rows={4} placeholder="Tell us about your goals..." className="bg-white border border-slate-100 rounded-3xl px-6 py-5 outline-none focus:border-[#0B2EA8] transition-all font-bold text-sm shadow-sm resize-none" />
+                </div>
 
-              <button 
-                type="submit" 
-                disabled={loading || success}
-                className="w-full py-4 rounded-full bg-primary text-white font-bold hover:bg-primary-dark transition-colors flex items-center justify-center gap-2 disabled:opacity-70"
-              >
-                {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : success ? <CheckCircle2 className="w-5 h-5 text-green-400" /> : <><Send className="w-5 h-5"/> Send Inquiry</>}
-              </button>
-              {success && <p className="text-green-400 text-center text-sm mt-4 font-bold">Message sent successfully! We'll be in touch shortly.</p>}
-            </form>
+                <button type="submit" disabled={loading} className="group relative w-full flex items-center justify-center gap-3 overflow-hidden rounded-full py-6 bg-[#0A1A4E] text-white font-black tracking-[0.2em] uppercase text-sm shadow-[0_20px_40px_rgba(11,46,168,0.25)] hover:scale-[1.02] transition-all duration-500">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#0B2EA8] via-blue-500 to-[#0B2EA8] bg-[size:200%] group-hover:bg-right-center transition-all duration-700" />
+                  <span className="relative z-10 flex items-center gap-3">
+                    {loading ? "Sending..." : success ? "Message Sent!" : "Submit Inquiry"}
+                    {!loading && !success && <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}
+                  </span>
+                </button>
+              </form>
+            </div>
           </motion.div>
         </div>
-      </section>
+      </div>
+
+      {/* Decorative Wave Bottom */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none rotate-180 opacity-40">
+        <svg viewBox="0 0 1440 120" fill="none" preserveAspectRatio="none" className="w-full h-24">
+          <path d="M0,64 C480,128 960,0 1440,64 L1440,120 L0,120 Z" fill="#F8FAFF"/>
+        </svg>
+      </div>
     </main>
   );
 }

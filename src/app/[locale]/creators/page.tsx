@@ -32,19 +32,19 @@ const CREATORS_DATA = [
   { name: "Bala JI Tele Films", slug: "balaji-telefilms", domain: "balajitelefilms.com" },
   { name: "TVF", slug: "tvf", domain: "theviralfever.com" },
   { name: "Girliyapa", slug: "girliyapa", domain: "girliyapa.com" },
-  { name: "Timeliner", slug: "timeliner", domain: "thetimeliner.com" },
+  { name: "Timeliners", slug: "timeliner", domain: "thetimeliner.com" },
   { name: "TSP", slug: "tsp", domain: "thescreenpatti.com" },
   { name: "Realhit", slug: "real-hit", domain: "realhit.in" },
-  { name: "Katting", slug: "katting", domain: "katting.com" },
+  { name: "Kutingg", slug: "katting", domain: "katting.com" },
   { name: "The Blunt", slug: "the-blunt", domain: "theblunt.in" },
   { name: "Shushant Sinha", slug: "shushant-sinha", domain: "shushantsinha.com" },
-  { name: "Rohita Bamola", slug: "rohita-bamola", domain: "youtube.com" },
-  { name: "YUVA", slug: "yuvaa", domain: "yuvaa.co.in" },
+  { name: "Rohit Bamola", slug: "rohita-bamola", domain: "youtube.com" },
+  { name: "Yuvaa", slug: "yuvaa", domain: "yuvaa.co.in" },
   { name: "Content Cube", slug: "content-cube", domain: "contentcube.in" },
-  { name: "Defence Detective", slug: "defence-detective", domain: "youtube.com" },
+  { name: "Defence detective", slug: "defence-detective", domain: "youtube.com" },
   { name: "Hasley", slug: "hasley", domain: "hasleyindia.com" },
   { name: "Skull Tales", slug: "skull-tales", domain: "youtube.com" },
-  { name: "Lifeadda", slug: "lifeadda", domain: "lifeadda.in" },
+  { name: "Lifeada", slug: "lifeadda", domain: "lifeadda.in" },
   { name: "Ironman", slug: "ironman", domain: "ironman.com" },
   { name: "Nagina Sethi", slug: "nagina-sethi", domain: "youtube.com" },
   { name: "Sadhna TV", slug: "sadhna-tv", domain: "sadhnatv.com" },
@@ -90,15 +90,11 @@ function CreatorLogoCard({ creator }: { creator: typeof CREATORS_DATA[0] }) {
         )}
       </div>
 
-      {/* Spotter-Inspired Clean Content Area */}
-      <div className="bg-white p-5 md:p-6 flex items-center justify-between z-30 shrink-0 relative overflow-hidden group-hover:bg-[#0B2EA8] transition-colors duration-500">
+      <div className="bg-white p-5 md:p-6 flex items-center justify-center z-30 shrink-0 relative overflow-hidden group-hover:bg-[#0B2EA8] transition-colors duration-500">
         <div className="flex flex-col z-10 relative">
-          <h3 className="text-xl md:text-2xl font-black text-[#0A1A4E] group-hover:text-white uppercase tracking-tight leading-none transition-colors duration-500 line-clamp-1">
+          <h3 className="text-xl md:text-2xl font-black text-[#0A1A4E] group-hover:text-white uppercase tracking-tight leading-none transition-colors duration-500 text-center">
             {creator.name}
           </h3>
-        </div>
-        <div className="w-10 h-10 shrink-0 rounded-full bg-slate-50 group-hover:bg-white/20 text-[#0A1A4E] group-hover:text-white flex items-center justify-center transition-all duration-500 group-hover:rotate-[-45deg] relative z-10">
-          <ArrowRight className="w-5 h-5" />
         </div>
       </div>
     </motion.div>
@@ -404,7 +400,7 @@ export default function CreatorsPage() {
                 initial={{ opacity: 0, y: 60, rotateX: -20 }}
                 animate={{ opacity: 1, y: 0, rotateX: 0 }}
                 transition={{ delay: 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                className="text-[3.5rem] sm:text-7xl md:text-8xl lg:text-[140px] font-black font-heading tracking-tighter leading-[0.85] text-[#0A1A4E] uppercase drop-shadow-sm"
+                className="text-[3.5rem] sm:text-7xl md:text-8xl lg:text-[140px] font-black font-heading tracking-tighter leading-[0.85] text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase pb-2 drop-shadow-sm"
               >
                 WE EARN
               </motion.span>
@@ -412,7 +408,7 @@ export default function CreatorsPage() {
                 initial={{ opacity: 0, y: 60, rotateX: -20 }}
                 animate={{ opacity: 1, y: 0, rotateX: 0 }}
                 transition={{ delay: 0.25, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                className="text-[3.5rem] sm:text-7xl md:text-8xl lg:text-[140px] font-black font-heading tracking-tighter leading-[0.85] text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-500 uppercase pb-4"
+                className="text-[3.5rem] sm:text-7xl md:text-8xl lg:text-[140px] font-black font-heading tracking-tighter leading-[0.85] text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase pb-4"
               >
                 WHEN YOU EARN.
               </motion.span>
@@ -461,7 +457,7 @@ export default function CreatorsPage() {
                 <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#0B2EA8]">Our Partners</span>
               </motion.div>
               <h2 className="text-4xl md:text-5xl lg:text-7xl font-black font-heading tracking-tighter text-[#0A1A4E] leading-[0.9] uppercase mt-2">
-                Trusted by 30+ <br className="hidden md:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-cyan-500">Leading Creators.</span>
+                Trusted by 50+ <br className="hidden md:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-cyan-500">Leading Creators.</span>
               </h2>
             </div>
             <div className="text-slate-500 font-bold text-lg max-w-sm md:text-right leading-relaxed">
@@ -492,61 +488,50 @@ export default function CreatorsPage() {
       </section>
 
       {/* ─── REVENUE IMPACT SECTION ─── */}
-      <section className="py-20 md:py-24 relative bg-[#0A1A4E] overflow-hidden flex items-center min-h-screen md:min-h-0">
-        {/* Background glows */}
-        <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-cyan-400/10 rounded-full blur-[120px] pointer-events-none -mr-64 -mt-64" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/15 rounded-full blur-[120px] pointer-events-none -ml-48 -mb-48" />
-        {/* Subtle grid */}
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
+      <section className="py-24 md:py-32 relative bg-[#0A1A4E] overflow-hidden min-h-screen flex items-center">
+        {/* Background Decor */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none -mr-48 -mt-48" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-400/5 blur-[120px] rounded-full pointer-events-none -ml-48 -mb-48" />
 
-        <div className="container mx-auto max-w-7xl relative z-10">
-           <div className="relative text-center">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                className="relative z-10 flex flex-col items-center"
-              >
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 mb-6 backdrop-blur-sm">
-                  <BarChart3 className="w-3.5 h-3.5 text-cyan-300" />
-                  <span className="text-[10px] font-black tracking-[0.2em] uppercase text-cyan-200">Total Impact Generated</span>
-                </div>
+        <div className="container mx-auto px-4 max-w-6xl relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="flex flex-col items-start"
+          >
+            {/* Top Section: Large Number */}
+            <div className="w-full mb-8">
+              <span className="text-3xl md:text-5xl font-black text-white/40 block mb-2 uppercase tracking-tight">RS</span>
+              <h2 className="text-[3.5rem] xs:text-[4.5rem] sm:text-[7rem] md:text-[8.5rem] lg:text-[10rem] font-black leading-[0.8] tracking-tighter uppercase">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-cyan-400">1 Billion</span>
+                <span className="text-cyan-400 text-[0.6em] align-top mt-4">+</span>
+              </h2>
+            </div>
 
-                <div className="relative mb-6 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
-                  <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-[90px] font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-200 to-cyan-400 leading-none py-2">
-                    1,00,00,00,000
-                  </h2>
-                  <span className="text-2xl md:text-3xl lg:text-5xl font-black text-cyan-400">Rs</span>
-                </div>
-                
-                <p className="text-base md:text-xl text-blue-200/70 font-medium max-w-2xl mx-auto leading-relaxed mb-10">
-                  Through intelligent monetization across platforms and formats for creators and IP owners.
+            {/* Divider Line */}
+            <div className="w-full h-px bg-white/10 mb-10" />
+
+            {/* Bottom Section: Split Content */}
+            <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-10 md:gap-20">
+              <div className="max-w-4xl text-left">
+                <p className="text-lg md:text-2xl text-white font-black leading-tight uppercase tracking-tight">
+                  THROUGH MONETIZATION ACROSS PLATFORMS AND FORMATS <br />
+                  FOR CREATOR AND IP OWNER.
                 </p>
-                
-                {/* Divider */}
-                <div className="w-full h-px bg-white/10 mb-10 max-w-3xl mx-auto" />
+              </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 w-full max-w-3xl mx-auto">
-                  <div className="flex flex-col items-center justify-center gap-2 p-6 md:p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-500">
-                    <span className="text-5xl md:text-[70px] font-black font-heading text-transparent bg-clip-text bg-gradient-to-b from-white to-cyan-300 leading-none">
-                      <AnimatedNumber value={70} suffix="+" />
-                    </span>
-                    <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-blue-200/70">
-                      Active Channels
-                    </span>
-                  </div>
-                  <div className="flex flex-col items-center justify-center gap-2 p-6 md:p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-500">
-                    <span className="text-5xl md:text-[70px] font-black font-heading text-transparent bg-clip-text bg-gradient-to-b from-white to-cyan-300 leading-none">
-                      <AnimatedNumber value={30} suffix="+" />
-                    </span>
-                    <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-blue-200/70">
-                      Global Platforms
-                    </span>
-                  </div>
+              <div className="flex flex-col items-start md:items-end">
+                <div className="text-6xl md:text-8xl lg:text-[100px] font-black text-white leading-none mb-2">
+                  <AnimatedNumber value={70} suffix="+" />
                 </div>
-              </motion.div>
-           </div>
+                <span className="text-sm md:text-base font-black text-cyan-400/60 uppercase tracking-[0.3em]">
+                  From channels
+                </span>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 

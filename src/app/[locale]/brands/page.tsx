@@ -114,9 +114,7 @@ export default function BrandsPage() {
                   initial={{ opacity: 0, y: 60, rotateX: -20 }}
                   animate={{ opacity: 1, y: 0, rotateX: 0 }}
                   transition={{ delay: i * 0.15, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                  className={`text-[3.5rem] sm:text-6xl md:text-7xl lg:text-[110px] font-black font-heading tracking-tighter leading-[0.85] uppercase drop-shadow-sm ${
-                    i === 2 ? "text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-500 pb-4" : "text-[#0A1A4E]"
-                  }`}
+                  className="text-[3.5rem] sm:text-6xl md:text-7xl lg:text-[110px] font-black font-heading tracking-tighter leading-[0.85] text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase drop-shadow-sm pb-2"
                 >
                   {text}
                 </motion.span>
