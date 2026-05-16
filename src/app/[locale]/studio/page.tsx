@@ -495,7 +495,7 @@ export default function StudioPage() {
       {/* ─── PORTFOLIO (One Scroll, One Line with Random Photos) ─── */}
       <section className="py-10 md:py-14 bg-white relative">
         <div className="container mx-auto px-4 max-w-[1400px] relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-6 md:mb-8">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-6 md:mb-8">
             <div>
               <h2 className="text-sm font-black uppercase tracking-[0.3em] text-[#0B2EA8] mb-4">Our Work</h2>
               <h3 className="text-4xl md:text-6xl lg:text-[70px] font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase leading-none pb-2">

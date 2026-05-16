@@ -8,7 +8,7 @@ interface FooterProps { dict: any; locale: Locale; }
 export function Footer({ dict, locale }: FooterProps) {
   const links = {
     platform: [
-      { href: `/${locale}/media`,    label: dict.nav.media },
+      { href: `/${locale}/creators`, label: dict.nav.media },
       { href: `/${locale}/studio`,   label: dict.nav.studio },
       { href: `/${locale}/records`,  label: dict.nav.records || "Curious Music" },
       { href: `/${locale}/products`, label: dict.nav.products },
