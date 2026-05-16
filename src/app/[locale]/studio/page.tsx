@@ -148,17 +148,6 @@ export default function StudioPage() {
                 The one stop shop for all your production needs!!
               </motion.p>
               
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
-                className="mb-10"
-              >
-                <h3 className="text-lg md:text-xl font-bold text-[#0A1A4E] mb-2 uppercase tracking-wider">Videography</h3>
-                <p className="text-base md:text-lg text-slate-500 font-medium leading-relaxed">
-                  From full-scale ad films to high-ROI video creatives across Instagram, YouTube, TikTok, and social media management—we handle it all, start to finish, so you can focus on growing your brand and revenue.
-                </p>
-              </motion.div>
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -204,6 +193,56 @@ export default function StudioPage() {
               </div>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* ─── VIDEOGRAPHY SECTION ─── */}
+      <section className="py-24 md:py-36 bg-white relative border-t border-slate-100 overflow-hidden">
+        {/* Subtle Background Elements */}
+        <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-gradient-to-bl from-blue-100/40 to-transparent blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: "linear-gradient(#0A1A4E 1px, transparent 1px), linear-gradient(90deg, #0A1A4E 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
+
+        <div className="container mx-auto px-4 max-w-7xl relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8 }}
+            className="mb-16 md:mb-24"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 mb-6">
+              <Video className="w-4 h-4 text-[#0B2EA8]" />
+              <span className="text-[10px] font-black tracking-[0.2em] uppercase text-[#0B2EA8]">Our Expertise</span>
+            </div>
+            <h2 className="text-4xl md:text-6xl lg:text-[70px] font-black font-heading tracking-tighter text-[#0A1A4E] uppercase mb-8">
+              Videography
+            </h2>
+            <p className="text-xl md:text-3xl text-slate-500 font-medium max-w-5xl mx-auto leading-relaxed">
+              From full-scale ad films to high-ROI video creatives across Instagram, YouTube, TikTok, and social media management—we handle it all, start to finish, so you can focus on growing your brand and revenue.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="relative w-full max-w-5xl mx-auto aspect-video rounded-[2rem] md:rounded-[3rem] p-3 md:p-5 bg-gradient-to-b from-slate-100 to-slate-200 shadow-[0_40px_100px_rgba(11,46,168,0.15)] overflow-hidden"
+          >
+            <div className="w-full h-full bg-black rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden relative group cursor-pointer">
+              <video 
+                autoPlay loop muted playsInline 
+                className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-1000"
+              >
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-technology-lines-and-dots-in-blue-27158-large.mp4" type="video/mp4" />
+              </video>
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-all duration-500 flex items-center justify-center">
+                 <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center scale-90 group-hover:scale-110 transition-transform duration-500 shadow-2xl border border-white/30">
+                   <Play className="w-8 h-8 md:w-10 md:h-10 text-white ml-2" />
+                 </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
