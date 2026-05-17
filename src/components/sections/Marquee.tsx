@@ -145,11 +145,11 @@ export function Marquee({ type, dict, title }: MarqueeProps) {
             >
               {isBrands ? (
                 <>{dict.marquee.brands_title_1}<br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-400">{dict.marquee.brands_title_2}</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-400">{dict.marquee.brands_title_2}</span>
                 </>
               ) : (
                 <>{dict.marquee.content_title_1}<br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-400">{dict.marquee.content_title_2}</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-400">{dict.marquee.content_title_2}</span>
                 </>
               )}
             </motion.h2>

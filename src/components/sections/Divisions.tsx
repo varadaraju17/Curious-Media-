@@ -19,7 +19,7 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
       borderGlow: "group-hover:shadow-[0_0_0_1px_rgba(11,46,168,0.4),0_32px_80px_rgba(11,46,168,0.25)]",
       accentText: "text-blue-300",
       tagBg: "bg-blue-500/20 text-blue-200 border-white/10",
-      href: `/${locale}/media`,
+      href: `/${locale}/creators`,
       num: "01",
       tag: dict.divisions.media.subtitle,
     },
@@ -107,7 +107,7 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
               className="text-4xl md:text-6xl lg:text-[68px] font-black font-heading tracking-tighter leading-[0.95] text-[#0B2EA8] uppercase"
             >
               {dict.divisions.title_1}<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-violet-500 to-sky-400">{dict.divisions.title_2}</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-400">{dict.divisions.title_2}</span>
             </motion.h2>
           </div>
 

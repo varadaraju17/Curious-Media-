@@ -1,151 +1,181 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, TrendingUp, Play, Disc, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, Users, Target, MessageSquare, Zap, BarChart3 } from "lucide-react";
+import Link from "next/link";
 
 export default function ServicesPage() {
   const services = [
     {
-      id: "media",
-      title: "Curious Media",
-      desc: "Grow faster. Earn smarter.",
-      extended: "Data-driven strategies and premium ad network capabilities powering massive scale and consistent monetization for the world's leading digital creators.",
-      icon: <TrendingUp className="w-14 h-14" />,
-      gradient: "from-blue-600 to-blue-400",
-      glowColor: "rgba(37,99,235,0.35)",
-      textGrad: "from-blue-400 to-sky-300",
+      num: "01",
+      title: "Meme Marketing",
+      subtitle: "Memes that live rent-free in minds.",
+      desc: "We create memes that travel fast, hit hard, and stay in your audience’s mind—scaled across millions through our distribution engine.",
+      metric: "900M+",
+      metricLabel: "reach through distribution network",
+      icon: <MessageSquare className="w-8 h-8" />,
+      gradient: "from-blue-600 to-cyan-400",
+      accent: "blue",
     },
     {
-      id: "studios",
-      title: "Curious Studios",
-      desc: "Offline to digital, amplified with ads.",
-      extended: "High-end content production facilities bridging the gap between traditional broadcasting and the modern digital consumption ecosystem.",
-      icon: <Play className="w-14 h-14" />,
-      gradient: "from-indigo-500 to-purple-400",
-      glowColor: "rgba(99,102,241,0.35)",
-      textGrad: "from-indigo-400 to-purple-300",
+      num: "02",
+      title: "Influencer Marketing",
+      subtitle: "Not just creators. Growth partners.",
+      desc: "We match your brand with creators who don’t just talk—they influence, engage, and convert at scale.",
+      metric: "15K+",
+      metricLabel: "influencers across India",
+      icon: <Users className="w-8 h-8" />,
+      gradient: "from-indigo-600 to-blue-400",
+      accent: "indigo",
     },
     {
-      id: "records",
-      title: "Curious Music",
-      desc: "Discovering talent. Building artists. Creating stars.",
-      extended: "A dedicated label focused on unearthing raw musical talent and transforming them into global superstars through unrivaled promotion and production.",
-      icon: <Disc className="w-14 h-14" />,
-      gradient: "from-violet-500 to-pink-400",
-      glowColor: "rgba(139,92,246,0.35)",
-      textGrad: "from-violet-400 to-pink-300",
-    },
-    {
-      id: "products",
-      title: "Curious Products",
-      desc: "Today we are building for the future.",
-      extended: "Engineering the next generation of creator tools, analytics platforms, and immersive digital tech to redefine how audiences interact online.",
-      icon: <Sparkles className="w-14 h-14" />,
-      gradient: "from-sky-500 to-cyan-400",
-      glowColor: "rgba(14,165,233,0.35)",
-      textGrad: "from-sky-400 to-cyan-300",
+      num: "03",
+      title: "Content Marketing",
+      subtitle: "Seamless storytelling that stays with your audience.",
+      desc: "We craft unique, platform-native content that blends your brand naturally into what people love to watch.",
+      metric: "100M+",
+      metricLabel: "subscribers in creator network",
+      icon: <Target className="w-8 h-8" />,
+      gradient: "from-violet-600 to-indigo-400",
+      accent: "violet",
     },
   ];
 
   return (
-    <main className="min-h-screen bg-white pt-32 pb-24 relative overflow-hidden">
-      {/* Page glows */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-600/15 blur-[220px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-indigo-800/8 blur-[200px] rounded-full pointer-events-none" />
+    <main className="min-h-screen bg-white relative overflow-hidden pt-24 md:pt-32">
+      
+      {/* ─── DYNAMIC BACKGROUND ─── */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <motion.div 
+          className="absolute inset-0 [mask-image:radial-gradient(ellipse_80%_60%_at_50%_40%,#000_30%,transparent_100%)]"
+          style={{
+            backgroundImage: "linear-gradient(rgba(11,46,168,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(11,46,168,0.06) 1px, transparent 1px)",
+            backgroundSize: "60px 60px"
+          }}
+          animate={{ backgroundPosition: ["0px 0px", "60px 60px"] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+        />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/40 blur-[120px] rounded-full" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-100/30 blur-[120px] rounded-full" />
+      </div>
 
-      <div className="container mx-auto px-4 md:px-8 max-w-[1400px] relative z-10">
-
-        {/* Header */}
-        <div className="flex flex-col items-center text-center mb-24 md:mb-40">
+      <div className="container mx-auto px-4 md:px-8 max-w-[1400px] relative z-10 py-12 md:py-24">
+        
+        {/* ─── HEADER ─── */}
+        <div className="text-center mb-24 md:mb-32">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-400/25 bg-blue-500/10 backdrop-blur-sm mb-8"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white border border-blue-100 mb-8 shadow-sm"
           >
-            <span className="flex h-2 w-2 rounded-full bg-blue-400 animate-pulse shadow-[0_0_10px_rgba(96,165,250,0.8)]" />
-            <span className="text-xs font-bold tracking-[0.2em] uppercase text-blue-200">The Ecosystem</span>
+            <Sparkles className="w-4 h-4 text-[#0B2EA8]" />
+            <span className="text-[10px] font-black tracking-[0.25em] uppercase text-[#0B2EA8]">Our Capabilities</span>
           </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.1 }}
-            className="text-6xl md:text-8xl lg:text-[120px] font-black font-heading tracking-tighter mb-8 leading-none text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/40"
-          >
-            OUR SERVICES.
-          </motion.h1>
+          <h1 className="text-5xl md:text-7xl lg:text-[100px] font-black font-heading tracking-tighter leading-[0.85] text-[#0A1A4E] uppercase mb-8">
+            Expertise that <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-400">Scales Brands.</span>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="text-xl md:text-2xl text-white/40 max-w-3xl font-medium tracking-tight leading-relaxed"
-          >
-            Four specialized divisions. One unified vision. Discover how Curious Media powers the future of digital storytelling.
-          </motion.p>
+          <p className="text-xl md:text-2xl text-slate-500 font-medium max-w-3xl mx-auto leading-relaxed">
+            We don&apos;t just run campaigns; we build distribution engines that drive cultural impact and measurable growth.
+          </p>
         </div>
 
-        {/* Services */}
-        <div className="flex flex-col gap-8 md:gap-12">
+        {/* ─── SERVICES GRID ─── */}
+        <div className="grid grid-cols-1 gap-12 md:gap-20">
           {services.map((svc, idx) => (
             <motion.div
-              key={svc.id}
-              initial={{ opacity: 0, y: 60 }}
+              key={svc.num}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.9, ease: "easeOut" }}
-              className={`group flex flex-col ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-10 lg:gap-20 p-8 md:p-12 lg:p-16 rounded-[3rem] border border-blue-400/10 relative overflow-hidden transition-all duration-600 hover:border-blue-400/25`}
-              style={{ background: "linear-gradient(135deg, #0B1D3A 0%, #071428 60%, #040D21 100%)", boxShadow: "0 20px 80px rgba(4,13,33,0.7)" }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className={`group flex flex-col ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-12 lg:gap-24`}
             >
-              {/* Hover glow */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-[3rem]"
-                style={{ background: `radial-gradient(ellipse at ${idx % 2 !== 0 ? '80%' : '20%'} 50%, ${svc.glowColor} 0%, transparent 70%)` }}
-              />
-              {/* Grid texture */}
-              <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:50px_50px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-              {/* Icon side */}
-              <div className="w-full lg:w-5/12 flex items-center justify-center relative z-10">
-                <div className={`relative w-48 h-48 md:w-64 md:h-64 rounded-[3rem] bg-gradient-to-br ${svc.gradient} p-[2px] group-hover:scale-105 transition-transform duration-700`}
-                  style={{ boxShadow: `0 0 80px ${svc.glowColor}` }}
-                >
-                  <div className="w-full h-full rounded-[calc(3rem-2px)] bg-[#071428] flex items-center justify-center relative overflow-hidden">
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                      style={{ background: `linear-gradient(135deg, ${svc.glowColor} 0%, transparent 70%)` }}
-                    />
-                    <div className={`text-transparent bg-clip-text bg-gradient-to-br ${svc.textGrad} relative z-10 group-hover:scale-110 transition-transform duration-500`}>
-                      {svc.icon}
+              {/* Visual Side */}
+              <div className="w-full lg:w-1/2">
+                <div className="relative aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl border border-blue-50">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${svc.gradient} opacity-10`} />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="relative">
+                      <motion.div
+                        animate={{ scale: [1, 1.1, 1], rotate: [0, 5, 0] }}
+                        transition={{ duration: 6, repeat: Infinity }}
+                        className={`w-32 h-32 md:w-48 md:h-48 rounded-[2.5rem] bg-white shadow-2xl flex items-center justify-center text-[#0B2EA8]`}
+                      >
+                        {svc.icon}
+                      </motion.div>
+                      <div className="absolute -top-6 -right-6 w-16 h-16 md:w-24 md:h-24 rounded-3xl bg-white border border-blue-50 shadow-xl flex items-center justify-center">
+                        <Zap className="w-8 h-8 text-yellow-500" />
+                      </div>
                     </div>
+                  </div>
+                  {/* Floating Stats Card */}
+                  <div className="absolute bottom-8 left-8 right-8 bg-white/80 backdrop-blur-xl rounded-3xl p-6 md:p-8 border border-white shadow-xl">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-[#0B2EA8] mb-2">Impact Delivered</p>
+                    <p className={`text-4xl md:text-5xl font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r ${svc.gradient}`}>
+                      {svc.metric}
+                    </p>
+                    <p className="text-xs md:text-sm font-bold text-slate-500 uppercase tracking-wide mt-1">
+                      {svc.metricLabel}
+                    </p>
                   </div>
                 </div>
               </div>
 
-              {/* Content side */}
-              <div className="w-full lg:w-7/12 flex flex-col text-center lg:text-left relative z-10">
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black font-heading tracking-tighter mb-3 text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-blue-200 transition-all duration-500">
+              {/* Content Side */}
+              <div className="w-full lg:w-1/2 flex flex-col items-start text-left">
+                <div className="flex items-center gap-4 mb-6">
+                  <span className="text-4xl font-black text-[#0B2EA8]/10">{svc.num}</span>
+                  <div className="h-px w-12 bg-[#0B2EA8]/10" />
+                  <span className="text-xs font-black uppercase tracking-widest text-[#0B2EA8]">Service Profile</span>
+                </div>
+                
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black font-heading tracking-tighter leading-none mb-4 text-[#0A1A4E] uppercase">
                   {svc.title}
                 </h2>
-                <h3 className={`text-lg md:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${svc.textGrad} mb-6 tracking-tight`}>
-                  {svc.desc}
+                <h3 className="text-xl md:text-2xl font-bold text-[#0B2EA8] mb-6 leading-tight">
+                  {svc.subtitle}
                 </h3>
-                <p className="text-base md:text-lg text-white/40 mb-10 leading-relaxed font-medium max-w-lg mx-auto lg:mx-0 group-hover:text-white/60 transition-colors duration-500">
-                  {svc.extended}
+                <p className="text-lg text-slate-500 font-medium mb-10 leading-relaxed">
+                  {svc.desc}
                 </p>
-                <div className="flex justify-center lg:justify-start">
-                  <button className="group/btn relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full px-8 py-4 text-white font-bold tracking-widest uppercase transition-all hover:scale-105">
+
+                <div className="flex flex-wrap items-center gap-6">
+                  <Link
+                    href="/en/contact"
+                    className={`group/btn relative inline-flex items-center gap-3 px-8 py-4 rounded-full text-white font-black uppercase tracking-widest text-sm overflow-hidden transition-all duration-300 hover:scale-105 shadow-xl shadow-blue-900/10`}
+                  >
                     <div className={`absolute inset-0 bg-gradient-to-r ${svc.gradient}`} />
-                    <div className="absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 bg-white/10" />
-                    <span className="relative z-10 text-xs md:text-sm">Learn More</span>
+                    <span className="relative z-10">Start Campaign</span>
                     <ArrowRight className="relative z-10 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                  </Link>
+                  <button className="text-[#0B2EA8] font-black uppercase tracking-widest text-sm flex items-center gap-2 hover:gap-3 transition-all">
+                    Read more <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
-
       </div>
+
+      {/* ─── FINAL CTA ─── */}
+      <section className="py-24 md:py-32 bg-[#F8FAFF] relative overflow-hidden mt-20">
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h2 className="text-4xl md:text-6xl font-black font-heading tracking-tighter text-[#0A1A4E] uppercase mb-8">
+            Ready to <span className="text-[#0B2EA8]">Dominate?</span>
+          </h2>
+          <Link
+            href="/en/contact"
+            className="inline-flex items-center gap-4 px-12 py-6 bg-[#0A1A4E] text-white rounded-full font-black uppercase tracking-[0.2em] text-sm hover:scale-105 transition-all shadow-2xl shadow-blue-900/20"
+          >
+            Get started now <ArrowRight className="w-5 h-5" />
+          </Link>
+        </div>
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
+      </section>
     </main>
   );
 }
