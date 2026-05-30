@@ -115,7 +115,7 @@ export default function StudioPage() {
       value: "14.5×",
       valueColor: "text-[#0B2EA8]",
       delay: 0.55,
-      pos: "left-0 sm:-left-6 top-8 sm:top-14",
+      pos: "left-[-40px] sm:left-[-70px] top-[15%]",
       floatClass: "float-card",
     },
     {
@@ -125,7 +125,7 @@ export default function StudioPage() {
       value: "70+",
       valueColor: "text-violet-600",
       delay: 0.65,
-      pos: "right-0 sm:-right-4 top-4 sm:top-8",
+      pos: "right-[-30px] sm:right-[-60px] top-[45%]",
       floatClass: "float-card-slow",
     },
     {
@@ -135,7 +135,7 @@ export default function StudioPage() {
       value: "100M+",
       valueColor: "text-[#0B2EA8]",
       delay: 0.75,
-      pos: "left-0 sm:-left-6 bottom-8 sm:bottom-14",
+      pos: "left-[-30px] sm:left-[-60px] bottom-[15%]",
       floatClass: "float-card",
     },
   ];
@@ -240,98 +240,54 @@ export default function StudioPage() {
               </motion.div>
             </div>
 
-            {/* Right Content - Cinematic Studio Monitor UI */}
+            {/* Right Content - Cinematic Pure Viewport Glass UI */}
             <motion.div
               initial={{ opacity: 0, scale: 0.92, y: 24 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-5 flex justify-center items-center relative py-14 perspective-[1200px]"
             >
+              {/* Brand Cohesive Aura Glow (Royal Blue / Sky Blue Blur) */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-gradient-to-br from-blue-400/30 via-cyan-300/20 to-violet-400/20 blur-[80px]" />
+                <div className="w-[400px] h-[400px] rounded-full bg-gradient-to-br from-blue-500/15 via-[#0B2EA8]/10 to-cyan-300/10 blur-[100px] animate-pulse" style={{ animationDuration: '8s' }} />
               </div>
 
-              {/* Floating Cards (Repositioned for horizontal layout) */}
-              {floatingCards.map((card, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: card.delay, duration: 0.65 }}
-                  className={`absolute ${i === 0 ? '-left-8 -top-4' : i === 1 ? '-right-6 -bottom-6' : 'right-0 -top-10'} z-30 ${card.floatClass}`}
-                >
-                  <div className="bg-white/90 backdrop-blur-xl rounded-2xl border border-white shadow-[0_12px_40px_rgba(11,46,168,0.15)] px-4 py-3 flex items-center gap-3 min-w-[160px] transform hover:scale-105 transition-transform cursor-default">
-                    <div className={`w-9 h-9 rounded-[14px] ${card.iconBg} flex items-center justify-center shrink-0 shadow-lg`}>
-                      {card.icon}
-                    </div>
-                    <div>
-                      <p className="text-[9px] font-black uppercase tracking-widest text-slate-400">{card.label}</p>
-                      <p className={`text-sm font-black ${card.valueColor}`}>{card.value}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-
-              {/* Cinematic 16:9 Studio Monitor */}
+              {/* Master Console Viewport (Frosted White Crystal Bezel with 3D Hover Tilt - Pure Video Display) */}
               <motion.div 
-                animate={{ rotateY: [-5, 5, -5], rotateX: [2, -2, 2] }}
-                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                className="relative z-10 w-full max-w-[500px] transform-gpu"
+                whileHover={{ rotateY: -8, rotateX: 6, scale: 1.03 }}
+                animate={{ y: [0, -10, 0] }}
+                transition={{ 
+                  y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+                  rotateY: { duration: 0.5, ease: "easeOut" },
+                  rotateX: { duration: 0.5, ease: "easeOut" },
+                  scale: { duration: 0.5, ease: "easeOut" }
+                }}
+                className="relative z-10 w-full max-w-[340px] sm:max-w-[380px] md:max-w-[400px] aspect-[9/16] max-h-[75vh] p-3 rounded-[2.5rem] border border-white/60 hover:border-[#0B2EA8]/35 bg-white/30 backdrop-blur-2xl shadow-[0_30px_70px_rgba(11,46,168,0.15),0_0_20px_rgba(11,46,168,0.04),inset_0_2px_4px_rgba(255,255,255,0.4)] overflow-hidden transition-all duration-500 transform-gpu"
                 style={{ transformStyle: "preserve-3d" }}
               >
-                {/* Glow behind monitor */}
-                <div className="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-cyan-400 via-blue-500 to-violet-500 blur-xl opacity-40" />
                 
-                {/* Monitor Bezel */}
-                <div className="relative rounded-3xl border border-white/20 bg-white/10 backdrop-blur-2xl shadow-[0_40px_100px_rgba(11,46,168,0.3)] p-3 overflow-hidden">
+                {/* CINEMATIC PURE VIDEO FIELD (Framed with crisp matching borders) */}
+                <div className="w-full h-full rounded-[2.2rem] overflow-hidden relative bg-[#F8FAFF] border border-[#0B2EA8]/10 shadow-[inset_0_1px_4px_rgba(11,46,168,0.06)]">
                   
-                  {/* Top UI Bar */}
-                  <div className="flex items-center justify-between mb-3 px-2">
-                    <div className="flex gap-1.5">
-                      <div className="w-2.5 h-2.5 rounded-full bg-red-400/80 shadow-[0_0_8px_rgba(248,113,113,0.6)]" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-emerald-400/80" />
-                    </div>
-                    <div className="flex items-center gap-2 bg-black/20 rounded-full px-3 py-1">
-                      <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-                      <span className="text-[9px] font-black uppercase tracking-[0.2em] text-white">REC 00:04:23</span>
-                    </div>
-                  </div>
+                  {/* 🎥 [VIDEO PATH CONFIGURATION] - YOUR VIDEO PLAYS HERE 🎥 */}
+                  <video 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline 
+                    webkit-playsinline="true"
+                    x5-playsinline="true"
+                    preload="auto"
+                    className="absolute inset-0 w-full h-full object-cover opacity-95 transition-transform duration-[1200ms] group-hover:scale-[1.03] will-change-transform transform-gpu"
+                  >
+                    <source 
+                      src="/videos/studio-hero.mp4" 
+                      type="video/mp4" 
+                    />
+                  </video>
 
-                  {/* 16:9 Video Area */}
-                  <div className="aspect-video rounded-xl overflow-hidden relative bg-[#030918] group cursor-pointer border border-white/10 shadow-inner">
-                    <video 
-                      autoPlay loop muted playsInline 
-                      className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-1000"
-                    >
-                      <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-technology-lines-and-dots-in-blue-27158-large.mp4" type="video/mp4" />
-                    </video>
-                    
-                    {/* Play Button Overlay */}
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500 flex items-center justify-center">
-                      <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center scale-90 group-hover:scale-110 transition-transform duration-500 border border-white/30 shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-                        <Play className="w-6 h-6 text-white ml-1 shadow-sm" />
-                      </div>
-                    </div>
-
-                    {/* Bottom UI Overlay */}
-                    <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
-                      <div className="w-full">
-                        <div className="h-1 w-full bg-white/20 rounded-full overflow-hidden mb-2">
-                          <motion.div 
-                            className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 w-1/3"
-                            animate={{ width: ["0%", "100%"] }}
-                            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                          />
-                        </div>
-                        <div className="flex justify-between text-[8px] font-black text-white/70 uppercase tracking-widest">
-                          <span>Studio Cut V1</span>
-                          <span>4K Timeline</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
+
               </motion.div>
             </motion.div>
           </div>
@@ -382,7 +338,7 @@ export default function StudioPage() {
                 autoPlay loop muted playsInline preload="auto"
                 className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-1000"
               >
-                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4" type="video/mp4" />
+                <source src="/videos/studio-hero.mp4" type="video/mp4" />
               </video>
               <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/20 transition-all duration-500 flex items-center justify-center">
                  <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center scale-75 md:scale-100 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_40px_rgba(255,255,255,0.3)] border border-white/40">
