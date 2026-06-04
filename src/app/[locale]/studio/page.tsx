@@ -430,14 +430,16 @@ export default function StudioPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.6, delay: i * 0.2 }}
-                  className="relative bg-white/5 backdrop-blur-xl rounded-3xl p-10 border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.3)] hover:shadow-[0_30px_80px_rgba(6,182,212,0.15)] transition-all duration-300 group text-center flex flex-col items-center"
+                  className="relative bg-white rounded-3xl p-10 border-2 border-sky-400 shadow-[0_20px_50px_rgba(0,0,0,0.15)] hover:shadow-[0_30px_70px_rgba(56,189,248,0.25)] transition-all duration-300 group text-center flex flex-col items-center hover:scale-[1.02]"
                 >
-                  <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl flex items-center justify-center font-black text-[#0A1A4E] text-2xl shadow-[0_0_20px_rgba(34,211,238,0.4)] group-hover:scale-110 transition-transform duration-300">
+                  <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-16 h-16 bg-gradient-to-br from-sky-400 via-blue-500 to-[#0B2EA8] rounded-2xl flex items-center justify-center font-black text-white text-2xl shadow-[0_8px_20px_rgba(56,189,248,0.4)] group-hover:scale-110 transition-transform duration-300">
                     {step.step}
                   </div>
                   <div className="mt-8">
-                    <h4 className="text-2xl font-black font-heading text-white mb-4 uppercase tracking-tight">{step.title}</h4>
-                    <p className="text-white/70 font-medium leading-relaxed">
+                    <h4 className="text-2xl font-black font-heading text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-500 mb-4 uppercase tracking-tight">
+                      {step.title}
+                    </h4>
+                    <p className="text-slate-600 font-semibold leading-relaxed">
                       {step.desc}
                     </p>
                   </div>

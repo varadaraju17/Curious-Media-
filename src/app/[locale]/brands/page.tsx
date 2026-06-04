@@ -107,14 +107,18 @@ export default function BrandsPage() {
               <span className="text-xs font-black tracking-[0.25em] uppercase text-[#0B2EA8]">Brands & Agencies</span>
             </motion.div>
 
-            <h1 className="flex flex-col mb-10 w-full overflow-hidden gap-1 lg:gap-2">
+            <h1 className="flex flex-col mb-10 w-full overflow-hidden gap-2 lg:gap-4">
               {["BE SEEN.", "BE HEARD.", "BE REMEMBERED."].map((text, i) => (
                 <motion.span
                   key={i}
-                  initial={{ opacity: 0, y: 60, rotateX: -20 }}
-                  animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                  transition={{ delay: i * 0.15, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-[3.5rem] sm:text-6xl md:text-7xl lg:text-[110px] font-black font-heading tracking-tighter leading-[0.85] text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase drop-shadow-sm pb-2"
+                  initial={{ opacity: 0, scale: 0.85, y: 40 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ 
+                    delay: i * 0.35, 
+                    duration: 0.8, 
+                    ease: [0.34, 1.56, 0.64, 1]
+                  }}
+                  className="text-[3.5rem] sm:text-6xl md:text-7xl lg:text-[105px] font-black font-heading tracking-wide leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-[#0B2EA8] to-sky-400 uppercase drop-shadow-sm pb-2"
                 >
                   {text}
                 </motion.span>
@@ -170,9 +174,9 @@ export default function BrandsPage() {
                 <BarChart3 className="w-3.5 h-3.5 text-cyan-300" />
                 <span className="text-[10px] font-black tracking-[0.2em] uppercase text-cyan-200">The Scale of Impact</span>
               </div>
-              <h2 className="text-4xl md:text-5xl lg:text-[70px] font-black font-heading tracking-tighter leading-[0.85] uppercase">
-                <span className="text-white">WE WIN</span><br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-cyan-300 to-sky-200">WHEN YOU WIN.</span>
+              <h2 className="text-4xl md:text-5xl lg:text-[70px] font-black font-heading tracking-tighter leading-[0.95] uppercase">
+                <span className="text-white">Results That</span><br/>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-cyan-300 to-sky-200">Brands Can Measure.</span>
               </h2>
             </div>
             <div className="flex flex-col justify-end gap-6">
@@ -201,11 +205,11 @@ export default function BrandsPage() {
           <div className="w-full h-px bg-white/10 mb-10" />
 
           {/* Stat Cards - on dark bg */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {[
-              { bg: "rgba(255,255,255,0.06)", border: "rgba(255,255,255,0.12)", accent: "#60A5FA", label: "Viewership Delivered", stat: "10+", unit: "Billion", tag: "Annual Reach" },
-              { bg: "rgba(255,255,255,0.06)", border: "rgba(255,255,255,0.12)", accent: "#38BDF8", label: "Distribution Network", stat: "900+", unit: "Million", tag: "Pan India Network" },
-              { bg: "rgba(255,255,255,0.06)", border: "rgba(255,255,255,0.12)", accent: "#A78BFA", label: "Influencers Network", stat: "15K+", unit: "", tag: "Pan India" },
+              { num: 10, suffix: "B+", label: "Annual Views Delivered", tag: "Annual Reach" },
+              { num: 900, suffix: "M+", label: "Monthly Distribution Reach", tag: "Pan India Network" },
+              { num: 15, suffix: "K+", label: "Verified Creator Network", tag: "Pan India" },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -213,31 +217,27 @@ export default function BrandsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ delay: i * 0.12, duration: 0.7, ease: "easeOut" }}
-                whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                className="relative rounded-3xl overflow-hidden backdrop-blur-sm"
-                style={{ backgroundColor: item.bg, border: `1px solid ${item.border}` }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="relative rounded-[2rem] overflow-hidden bg-white/95 border-2 border-blue-200/50 backdrop-blur-xl shadow-2xl transition-all duration-300"
               >
-                <div className="p-6 md:p-8 flex flex-col h-full justify-between">
+                <div className="p-8 md:p-10 flex flex-col h-full justify-between min-h-[250px]">
                   {/* Top tag */}
-                  <div className="flex justify-between items-start mb-6">
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${item.accent}20` }}>
-                      <BarChart3 className="w-4 h-4" style={{ color: item.accent }} />
+                  <div className="flex justify-between items-center mb-6">
+                    <span className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400">{item.tag}</span>
+                    <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-[#0B2EA8]">
+                      <BarChart3 className="w-4 h-4" />
                     </div>
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em]" style={{ color: item.accent, opacity: 0.8 }}>{item.tag}</span>
                   </div>
 
-                  {/* Big stat */}
-                  <div className="mb-4">
-                    <p className="text-4xl md:text-5xl lg:text-[60px] font-black font-heading tracking-tighter leading-none" style={{ color: item.accent }}>
-                      {item.stat}
+                  {/* Hero Metric: Big stat */}
+                  <div className="mb-2">
+                    <p className="text-5xl md:text-6xl lg:text-7xl font-black font-heading tracking-tighter leading-none text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-400 pb-1">
+                      <AnimatedNumber value={item.num} suffix={item.suffix} />
                     </p>
-                    {item.unit && (
-                      <p className="text-lg md:text-xl font-black mt-2" style={{ color: item.accent, opacity: 0.6 }}>{item.unit}</p>
-                    )}
                   </div>
 
                   {/* Label */}
-                  <p className="text-[10px] font-black uppercase tracking-[0.2em] mt-auto pt-4 border-t border-white/5" style={{ color: item.accent, opacity: 0.5 }}>
+                  <p className="text-sm md:text-base font-black text-[#0A1A4E] uppercase tracking-wide mt-auto pt-4 border-t border-slate-100">
                     {item.label}
                   </p>
                 </div>
@@ -271,7 +271,7 @@ export default function BrandsPage() {
               </p>
 
               {/* Methods counter */}
-              <div className="mt-10 flex items-center gap-4">
+              <div className="mt-10 hidden md:flex items-center gap-4">
                 {COLLABS.map((c, i) => (
                   <div key={i} className="flex flex-col gap-1.5">
                     <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-[#0B2EA8]">
