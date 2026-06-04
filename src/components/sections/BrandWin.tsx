@@ -6,24 +6,34 @@ import { Eye, Heart, TrendingUp, ArrowRight, ShieldCheck } from "lucide-react";
 
 function CountUp({ target, suffix = "" }: { target: string; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true });
+  const inView = useInView(ref, { once: true, amount: 0.2 });
   const [display, setDisplay] = useState("0");
 
   useEffect(() => {
     if (!inView) return;
     const num = parseFloat(target.replace(/[^0-9.]/g, ""));
-    const isFloat = target.includes(".");
-    const duration = 1800;
-    const steps = 60;
-    let step = 0;
+    if (isNaN(num)) return;
+    const duration = 2000; // 2 seconds
+    const frameRate = 1000 / 60; // 60 FPS
+    const totalFrames = Math.round(duration / frameRate);
+    let frame = 0;
+
     const timer = setInterval(() => {
-      step++;
-      const progress = step / steps;
+      frame++;
+      const progress = frame / totalFrames;
+      // cubic ease out
       const eased = 1 - Math.pow(1 - progress, 3);
       const current = num * eased;
+
+      const isFloat = target.includes(".");
       setDisplay(isFloat ? current.toFixed(1) : Math.floor(current).toString());
-      if (step >= steps) clearInterval(timer);
-    }, duration / steps);
+
+      if (frame >= totalFrames) {
+        clearInterval(timer);
+        setDisplay(target);
+      }
+    }, frameRate);
+
     return () => clearInterval(timer);
   }, [inView, target]);
 
@@ -128,9 +138,12 @@ export function BrandWin({ dict }: { dict: any }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.12, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="group relative rounded-[2.5rem] border border-white/10 overflow-hidden bg-white/5 backdrop-blur-xl
-                hover:bg-white/[0.08] hover:border-white/20 hover:-translate-y-2 transition-all duration-500 cursor-default p-6 md:p-8 shadow-2xl"
+              className="group relative rounded-[2.5rem] border border-white/20 overflow-hidden bg-white/10 backdrop-blur-md
+                hover:bg-white/[0.15] hover:border-cyan-400/50 hover:shadow-[0_20px_50px_rgba(59,130,246,0.15)] hover:-translate-y-2 transition-all duration-500 cursor-default p-6 md:p-8 shadow-2xl"
             >
+              {/* Highlight line top */}
+              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
               {/* Number Badge */}
               <div className="flex items-center justify-between mb-6">
                 <span className="text-4xl font-black text-white/10">{item.num}</span>
@@ -153,16 +166,16 @@ export function BrandWin({ dict }: { dict: any }) {
               </h3>
 
               {/* Description */}
-              <p className="text-sm md:text-base text-white/50 leading-relaxed mb-6 min-h-[3rem]">
+              <p className="text-sm md:text-base text-white/70 leading-relaxed mb-6 min-h-[3rem]">
                 {item.desc}
               </p>
 
               {/* Stat block */}
-              <div className="mt-auto pt-8 border-t border-white/5">
+              <div className="mt-auto pt-8 border-t border-white/10">
                 <p className="text-3xl md:text-4xl font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-cyan-400">
                   <CountUp target={item.statRaw} suffix={item.statSuffix} />
                 </p>
-                <p className="text-[10px] font-bold text-white/30 uppercase tracking-widest mt-2">
+                <p className="text-[10px] font-bold text-white/50 uppercase tracking-widest mt-2">
                   {item.statLabel}
                 </p>
               </div>
