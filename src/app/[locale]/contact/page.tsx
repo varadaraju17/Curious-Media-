@@ -78,24 +78,27 @@ export default function ContactPage() {
 
             <div className="flex flex-col gap-6 mb-12">
               {[
-                { icon: <Mail className="w-5 h-5" />, label: "Email", val: "hello@curiousmedia.in", href: "mailto:hello@curiousmedia.in" },
-                { icon: <MessageCircle className="w-5 h-5" />, label: "WhatsApp", val: "Chat with us", href: "https://wa.me/919999999999" },
-                { icon: <MapPin className="w-5 h-5" />, label: "HQ", val: "Mumbai, India", href: "#" },
+                { icon: <Mail className="w-5 h-5" />, label: "Email", val: "info@curiousmedia.in", href: "mailto:info@curiousmedia.in" },
+                { icon: <MessageCircle className="w-5 h-5" />, label: "WhatsApp", val: "+91 83750 70191", href: "https://wa.me/918375070191" },
+                { icon: <MapPin className="w-5 h-5" />, label: "Operating Office", val: "Office 305, 3rd Floor, VDS Building, H-159, Sector-63, Noida - 201301", href: "https://maps.google.com/?q=Office+305,+3rd+Floor,+VDS+Building,+H-159,+Sector-63,+Noida+-+201301" },
+                { icon: <MapPin className="w-5 h-5" />, label: "Registered Address", val: "M-153, MP Enclave, Near Shastri Nagar, Ghaziabad, UP – 201002", href: "https://maps.google.com/?q=M-153,+MP+Enclave,+Near+Shastri+Nagar,+Ghaziabad,+Uttar+Pradesh+-+201002" },
               ].map((item, i) => (
                 <motion.a
                   key={i}
                   href={item.href}
+                  target={item.href.startsWith("http") ? "_blank" : undefined}
+                  rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 * i + 0.5 }}
-                  className="group flex items-center gap-5 p-2 transition-all hover:translate-x-2"
+                  className="group flex items-start gap-5 p-2 transition-all hover:translate-x-2"
                 >
-                  <div className="w-12 h-12 rounded-2xl bg-white border border-blue-100 flex items-center justify-center text-[#0B2EA8] shadow-sm group-hover:bg-[#0B2EA8] group-hover:text-white transition-all duration-300">
+                  <div className="w-12 h-12 rounded-2xl bg-white border border-blue-100 flex items-center justify-center text-[#0B2EA8] shadow-sm group-hover:bg-[#0B2EA8] group-hover:text-white transition-all duration-300 shrink-0">
                     {item.icon}
                   </div>
                   <div>
                     <p className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400">{item.label}</p>
-                    <p className="text-lg font-black text-[#0A1A4E]">{item.val}</p>
+                    <p className="text-sm font-black text-[#0A1A4E] leading-snug max-w-sm md:max-w-md">{item.val}</p>
                   </div>
                 </motion.a>
               ))}
@@ -103,9 +106,20 @@ export default function ContactPage() {
 
             {/* Social Pills */}
             <div className="flex flex-wrap gap-3">
-              {["Instagram", "YouTube", "LinkedIn", "X"].map((social) => (
-                <a key={social} href="#" className="px-5 py-2 rounded-full bg-slate-50 border border-slate-200 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:bg-[#0B2EA8] hover:text-white hover:border-[#0B2EA8] transition-all">
-                  {social}
+              {[
+                { label: "Instagram", href: "https://www.instagram.com/curiousmedia_official/" },
+                { label: "Facebook", href: "https://www.facebook.com/share/1cN9eyhvx2/?mibextid=wwXIfr" },
+                { label: "LinkedIn", href: "https://www.linkedin.com/company/curiousmediaa/" },
+                { label: "WhatsApp", href: "https://wa.me/918375070191" }
+              ].map((social) => (
+                <a 
+                  key={social.label} 
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2 rounded-full bg-slate-50 border border-slate-200 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:bg-[#0B2EA8] hover:text-white hover:border-[#0B2EA8] transition-all"
+                >
+                  {social.label}
                 </a>
               ))}
             </div>
