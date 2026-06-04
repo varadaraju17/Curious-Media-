@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Eye, TrendingUp, Users, Zap, RotateCw } from "lucide-react";
+import { ArrowUpRight, Eye, TrendingUp, Users, Zap, RotateCw, ArrowLeft, ArrowRight } from "lucide-react";
 
 const campaigns = [
   {
@@ -176,8 +176,18 @@ const campaigns = [
 ];
 
 export function CaseStudies({ dict }: { dict: any }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
   // Store the active image index for each campaign card
   const [activeImageIndexes, setActiveImageIndexes] = useState<number[]>(new Array(campaigns.length).fill(0));
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const firstChild = scrollRef.current.firstElementChild as HTMLElement;
+      const cardWidth = firstChild ? firstChild.offsetWidth + 32 : 400; // card width + gap
+      const scrollAmount = direction === "left" ? -cardWidth * 3 : cardWidth * 3;
+      scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
 
   const handleSwapImage = (cardIndex: number, e: React.MouseEvent) => {
     e.preventDefault();
@@ -221,10 +231,6 @@ export function CaseStudies({ dict }: { dict: any }) {
             <p className="text-lg text-slate-500 font-medium max-w-sm md:text-right leading-relaxed">
               {dict.case_studies.description}
             </p>
-            <button className="group inline-flex items-center gap-3 text-sm font-black uppercase tracking-widest text-[#0B2EA8] bg-white rounded-full px-8 py-4 hover:bg-[#0B2EA8] hover:text-white transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-[0_20px_40px_rgba(11,46,168,0.2)]">
-              {dict.case_studies.cta} 
-              <ArrowUpRight className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
-            </button>
           </div>
         </motion.div>
       </div>
@@ -235,7 +241,7 @@ export function CaseStudies({ dict }: { dict: any }) {
         <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-white to-transparent z-20 pointer-events-none" />
         <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-white to-transparent z-20 pointer-events-none" />
 
-        <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 px-4 md:px-8 xl:px-[calc((100%-1400px)/2+2rem)] pb-12 pt-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+        <div ref={scrollRef} className="flex overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 px-4 md:px-8 xl:px-[calc((100%-1400px)/2+2rem)] pb-12 pt-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {campaigns.map((campaign, i) => {
             const activeImageIndex = activeImageIndexes[i] ?? 0;
             const currentImg = campaign.images[activeImageIndex];
@@ -270,13 +276,6 @@ export function CaseStudies({ dict }: { dict: any }) {
                       />
                     </AnimatePresence>
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0A1A4E]/95 via-[#0A1A4E]/45 to-transparent" />
-                    <div className={`absolute inset-0 bg-gradient-to-br ${campaign.gradient} mix-blend-overlay opacity-0 group-hover:opacity-60 transition-opacity duration-700`} />
-                  </div>
-
-                  {/* Swap Indicator Badge */}
-                  <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/60 border border-white/10 text-[9px] font-black text-cyan-300 uppercase tracking-widest backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <RotateCw className="w-3 h-3 animate-spin" style={{ animationDuration: "3s" }} />
-                    Swap Visual
                   </div>
 
                   {/* Content */}
@@ -294,41 +293,27 @@ export function CaseStudies({ dict }: { dict: any }) {
                     {/* Bottom content */}
                     <div className="mt-auto relative">
                       
-                      {/* Hover Glow Behind Text */}
-                      <div className={`absolute bottom-0 left-0 w-full h-full bg-gradient-to-t ${campaign.gradient} opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-700 pointer-events-none`} />
-
                       {/* Title */}
                       <h3 className="text-3xl md:text-4xl font-black font-heading tracking-tight text-white mb-6 leading-none transition-transform duration-500 group-hover:-translate-y-1 drop-shadow-lg">
                         {campaign.title}
                       </h3>
 
                       {/* Premium Glassmorphic Metrics */}
-                      <div className={`rounded-3xl bg-white/10 border ${campaign.borderColor} backdrop-blur-xl shadow-xl divide-y divide-white/10 mb-6 group-hover:bg-white/20 transition-colors duration-500 overflow-hidden`}>
+                      <div className={`rounded-3xl bg-white/25 border border-white/30 backdrop-blur-xl shadow-xl divide-y divide-white/10 mb-6 group-hover:bg-white/35 transition-all duration-500 overflow-hidden`}>
                         {campaign.metrics.map((metric, j) => (
                           <div
                             key={j}
-                            className="flex items-center justify-between px-5 py-3.5 group-hover:bg-white/5 transition-colors duration-300"
+                            className="flex items-center justify-between px-5 py-3.5 group-hover:bg-white/10 transition-colors duration-300"
                           >
                             <div className="flex items-center gap-3">
-                              <span className={`${campaign.accentText} bg-black/20 p-1.5 rounded-lg`}>{metric.icon}</span>
-                              <span className="text-[10px] font-bold text-blue-100 uppercase tracking-[0.15em]">{metric.label}</span>
+                              <span className={`${campaign.accentText} bg-black/35 p-1.5 rounded-lg`}>{metric.icon}</span>
+                              <span className="text-[10px] font-black text-white uppercase tracking-[0.15em]">{metric.label}</span>
                             </div>
                             <span className="text-base font-black text-white filter drop-shadow-md">
                               {metric.value}
                             </span>
                           </div>
                         ))}
-                      </div>
-
-                      {/* CTA row */}
-                      <div className="flex items-center justify-between pt-4 border-t border-white/10 group/cta cursor-pointer">
-                        <span className="text-xs font-black text-white/50 uppercase tracking-widest group-hover/cta:text-white transition-colors duration-300">Click Card to Cycle Image</span>
-                        <motion.div
-                          whileHover={{ scale: 1.15 }}
-                          className={`w-10 h-10 rounded-full bg-gradient-to-br ${campaign.gradient} flex items-center justify-center text-white shadow-[0_0_20px_rgba(255,255,255,0.2)]`}
-                        >
-                          <ArrowUpRight className="w-4 h-4 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5 transition-transform" />
-                        </motion.div>
                       </div>
                     </div>
                   </div>
@@ -341,6 +326,22 @@ export function CaseStudies({ dict }: { dict: any }) {
           })}
           <div className="flex-none w-12" />
         </div>
+
+        {/* Navigation Arrows */}
+        <button
+          onClick={() => scroll("left")}
+          className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/90 border border-blue-100 flex items-center justify-center text-[#0B2EA8] shadow-2xl hover:bg-white hover:scale-110 active:scale-95 transition-all duration-300 group"
+          aria-label="Previous Campaigns"
+        >
+          <ArrowLeft className="w-5 h-5 md:w-6 md:h-6 group-hover:-translate-x-0.5 transition-transform" />
+        </button>
+        <button
+          onClick={() => scroll("right")}
+          className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/90 border border-blue-100 flex items-center justify-center text-[#0B2EA8] shadow-2xl hover:bg-white hover:scale-110 active:scale-95 transition-all duration-300 group"
+          aria-label="Next Campaigns"
+        >
+          <ArrowRight className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-0.5 transition-transform" />
+        </button>
       </div>
     </section>
   );

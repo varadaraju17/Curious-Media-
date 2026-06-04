@@ -161,7 +161,7 @@ export function BrandWin({ dict }: { dict: any }) {
               </div>
 
               {/* Title */}
-              <h3 className="text-3xl md:text-4xl font-black font-heading tracking-tighter leading-none mb-4 text-[#0A1A4E] uppercase">
+              <h3 className="text-3xl md:text-4xl font-black font-heading tracking-tighter leading-none mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-400 uppercase">
                 {item.value}
               </h3>
 
@@ -172,7 +172,7 @@ export function BrandWin({ dict }: { dict: any }) {
 
               {/* Stat block */}
               <div className="mt-auto pt-8 border-t border-blue-50">
-                <p className="text-3xl md:text-4xl font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-blue-500">
+                <p className="text-3xl md:text-4xl font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-400">
                   <CountUp target={item.statRaw} suffix={item.statSuffix} />
                 </p>
                 <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-2">

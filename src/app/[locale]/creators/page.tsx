@@ -40,7 +40,6 @@ const CREATORS_DATA = [
   { name: "Shushant Sinha", slug: "shushant-sinha", domain: "shushantsinha.com" },
   { name: "Rohit Bamola", slug: "rohita-bamola", domain: "youtube.com" },
   { name: "Yuvaa", slug: "yuvaa", domain: "yuvaa.co.in" },
-  { name: "Content Cube", slug: "content-cube", domain: "contentcube.in" },
   { name: "Defence detective", slug: "defence-detective", domain: "youtube.com" },
   { name: "Hasley", slug: "hasley", domain: "hasleyindia.com" },
   { name: "Skull Tales", slug: "skull-tales", domain: "youtube.com" },
@@ -503,7 +502,7 @@ export default function CreatorsPage() {
           >
             {/* Top Section: Large Number */}
             <div className="w-full mb-8">
-              <span className="text-3xl md:text-5xl font-black text-white/40 block mb-2 uppercase tracking-tight">RS</span>
+              <span className="text-3xl md:text-5xl font-black text-white/40 block mb-2 uppercase tracking-tight">₹</span>
               <h2 className="text-[3.5rem] xs:text-[4.5rem] sm:text-[7rem] md:text-[8.5rem] lg:text-[10rem] font-black leading-[0.8] tracking-tighter uppercase">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-cyan-400">1 Billion</span>
                 <span className="text-cyan-400 text-[0.6em] align-top mt-4">+</span>
@@ -581,7 +580,7 @@ export default function CreatorsPage() {
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                     <span className="text-[9px] font-black tracking-[0.2em] uppercase text-emerald-200">Now Onboarding</span>
                   </div>
-                  <h3 className="text-3xl md:text-5xl lg:text-[54px] font-black font-heading tracking-tighter leading-[0.88] uppercase">
+                  <h3 className="text-3xl md:text-5xl lg:text-[54px] font-black font-heading tracking-normal md:tracking-wide leading-tight md:leading-[1.15] uppercase">
                     <span className="text-white">Ready to unlock</span><br/>
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-200 to-white">your potential?</span>
                   </h3>
