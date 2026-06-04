@@ -138,50 +138,50 @@ export function BrandWin({ dict }: { dict: any }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.12, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="group relative rounded-[2.5rem] border border-white/20 overflow-hidden bg-white/10 backdrop-blur-md
-                hover:bg-white/[0.15] hover:border-cyan-400/50 hover:shadow-[0_20px_50px_rgba(59,130,246,0.15)] hover:-translate-y-2 transition-all duration-500 cursor-default p-6 md:p-8 shadow-2xl"
+              className="group relative rounded-[2.5rem] border border-blue-100 overflow-hidden bg-white
+                hover:border-[#0B2EA8]/30 hover:shadow-[0_24px_60px_rgba(11,46,168,0.18)] hover:-translate-y-2 transition-all duration-500 cursor-default p-6 md:p-8 shadow-xl"
             >
               {/* Highlight line top */}
-              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-blue-200/30 to-transparent" />
 
               {/* Number Badge */}
               <div className="flex items-center justify-between mb-6">
-                <span className="text-4xl font-black text-white/10">{item.num}</span>
-                <div className={`w-14 h-14 rounded-2xl ${item.iconBg} flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-500`}>
+                <span className="text-4xl font-black text-[#0B2EA8]/10">{item.num}</span>
+                <div className={`w-14 h-14 rounded-2xl ${item.iconBg} flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-500`}>
                   {item.icon}
                 </div>
               </div>
 
               {/* Commit label */}
               <div className="flex items-center gap-2 mb-3">
-                <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                <p className="text-[10px] font-black uppercase tracking-[0.35em] text-cyan-400/80">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#0B2EA8] animate-pulse" />
+                <p className="text-[10px] font-black uppercase tracking-[0.35em] text-[#0B2EA8]/80">
                   WE Commit
                 </p>
               </div>
 
               {/* Title */}
-              <h3 className="text-3xl md:text-4xl font-black font-heading tracking-tighter leading-none mb-4 text-white uppercase">
+              <h3 className="text-3xl md:text-4xl font-black font-heading tracking-tighter leading-none mb-4 text-[#0A1A4E] uppercase">
                 {item.value}
               </h3>
 
               {/* Description */}
-              <p className="text-sm md:text-base text-white/70 leading-relaxed mb-6 min-h-[3rem]">
+              <p className="text-sm md:text-base text-slate-600 font-medium leading-relaxed mb-6 min-h-[3rem]">
                 {item.desc}
               </p>
 
               {/* Stat block */}
-              <div className="mt-auto pt-8 border-t border-white/10">
-                <p className="text-3xl md:text-4xl font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-cyan-400">
+              <div className="mt-auto pt-8 border-t border-blue-50">
+                <p className="text-3xl md:text-4xl font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-blue-500">
                   <CountUp target={item.statRaw} suffix={item.statSuffix} />
                 </p>
-                <p className="text-[10px] font-bold text-white/50 uppercase tracking-widest mt-2">
+                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-2">
                   {item.statLabel}
                 </p>
               </div>
 
               {/* Glowing Corner */}
-              <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-blue-500/10 blur-[40px] rounded-full group-hover:bg-blue-500/20 transition-all duration-500" />
+              <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-blue-500/5 blur-[40px] rounded-full group-hover:bg-blue-500/10 transition-all duration-500" />
             </motion.div>
           ))}
         </div>
