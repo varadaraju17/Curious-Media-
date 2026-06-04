@@ -66,7 +66,7 @@ function BrandLogo({ item, type, size = "md" }: { item: { name: string; domain: 
     <motion.div
       whileHover={{ scale: 1.08, y: -6 }}
       transition={{ type: "spring", stiffness: 400, damping: 22 }}
-      className="group flex flex-col items-center gap-2.5 px-2 md:px-3 relative"
+      className="group flex flex-col items-center gap-2.5 px-2 md:px-3 relative shrink-0"
       title={item.name}
     >
       <div className={`${sizeMap[size]} relative flex items-center justify-center rounded-[2rem] overflow-hidden shrink-0
@@ -191,8 +191,8 @@ export function Marquee({ type, dict, title }: MarqueeProps) {
 
       {/* ══ LOGO STRIPS ══ */}
       {!isBrands ? (
-        <div className="container mx-auto px-4 md:px-8 max-w-[1200px] relative z-10 py-6" aria-hidden="true">
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-14">
+        <div className="container mx-auto px-4 md:px-8 max-w-[1250px] relative z-10 py-6" aria-hidden="true">
+          <div className="flex flex-row flex-nowrap items-center justify-start md:justify-center gap-6 md:gap-14 overflow-x-auto md:overflow-x-visible max-w-full pb-4 scrollbar-none">
             {items.map((item) => (
               <BrandLogo key={item.slug} item={item} type={type} size="xl" />
             ))}
