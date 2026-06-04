@@ -163,11 +163,11 @@ export function Marquee({ type, dict, title }: MarqueeProps) {
             className="flex flex-col items-start md:items-end gap-3 shrink-0"
           >
             <p
-              className="text-sm md:text-base text-blue-800/65 font-medium max-w-xs md:text-right leading-relaxed [&_strong]:text-[#0B2EA8] [&_strong]:font-bold"
+              className="text-sm md:text-base text-blue-800/65 font-medium max-w-sm md:text-right leading-relaxed [&_strong]:text-[#0B2EA8] [&_strong]:font-bold"
               dangerouslySetInnerHTML={{
                 __html: isBrands
-                  ? "The most trusted <strong>influencer marketing agency</strong> in <strong>Delhi, Mumbai, Bangalore & all metro cities</strong> — delivering guaranteed ROI."
-                  : "We co-create and amplify content with India's top digital studios — reaching <strong>millions of engaged viewers</strong>.",
+                  ? "<strong>India's Leading Influencer Marketing Agency</strong> for Creator Partnerships, Brand Campaigns, and Measurable Growth."
+                  : "We collaborate with India's top <strong>digital content studios</strong> to produce and distribute high-performing content across digital platforms.",
               }}
             />
             <div className="flex items-baseline gap-2 mt-1">

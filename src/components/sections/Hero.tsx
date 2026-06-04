@@ -345,7 +345,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
               </Link>
 
               <Link
-                href={`/${locale}/about`}
+                href={`/${locale}#campaigns`}
                 className="inline-flex items-center gap-2 rounded-full
                   border-2 border-slate-200
                   px-7 sm:px-9 py-3.5 sm:py-4
