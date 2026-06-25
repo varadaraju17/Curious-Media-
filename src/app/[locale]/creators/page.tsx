@@ -184,32 +184,78 @@ function AnimatedNumber({ value, suffix = "", prefix = "" }: { value: number, su
 }
 
 function WorkflowSteps() {
+  const { locale } = useParams();
+  const isHindi = locale === "hi";
+
+  const workflowData = WORKFLOW.map(item => {
+    if (!isHindi) return item;
+    const titleMap: Record<string, string> = {
+      "Transparent Terms": "पारदर्शी शर्तें",
+      "Enhanced Monetization": "बेहतर मुद्रीकरण (Monetization)",
+      "Room to Grow": "विकास की गुंजाइश",
+      "Our Involvement": "हमारी भागीदारी",
+      "Already Signed?": "पहले से हस्ताक्षरित?",
+      "Simple Revenue Share": "सरल राजस्व साझाकरण",
+      "Direct Payouts": "सीधा भुगतान"
+    };
+    const descMap: Record<string, string> = {
+      "We evaluate your content’s potential and structure a straightforward partnership. No hidden clauses. No ownership transfer. Your channel stays entirely yours.":
+        "हम आपकी सामग्री की क्षमता का मूल्यांकन करते हैं और एक सीधी साझेदारी की संरचना करते हैं। कोई छिपी हुई शर्तें नहीं। कोई स्वामित्व हस्तांतरण नहीं। आपका चैनल पूरी तरह से आपका रहेगा।",
+      "We go beyond basic revenue—unlocking higher CPMs, smarter distribution, and premium brand opportunities to maximize your earnings.":
+        "हम बुनियादी राजस्व से आगे बढ़ते हैं—आपकी कमाई को अधिकतम करने के लिए उच्च CPM, स्मार्ट वितरण और प्रीमियम ब्रांड के अवसरों को अनलॉक करते हैं।",
+      "Over 90% of creators choose to continue with us. Because we don’t just scale content—we grow with you.":
+        "90% से अधिक क्रिएटर हमारे साथ बने रहना चुनते हैं। क्योंकि हम केवल सामग्री का पैमाना नहीं बढ़ाते—हम आपके साथ बढ़ते हैं।",
+      "You stay fully in control of your content and creative direction. We focus only on making it earn more.":
+        "आप अपनी सामग्री और रचनात्मक दिशा पर पूरी तरह से नियंत्रण रखते हैं। हम केवल इसे अधिक कमाई करने पर ध्यान केंद्रित करते हैं।",
+      "No problem. We handle content monetization while your brand deals continue seamlessly with your existing agency.":
+        "कोई बात नहीं। हम कंटेंट मुद्रीकरण को संभालते हैं जबकि आपके ब्रांड सौदे आपकी मौजूदा एजेंसी के साथ निर्बाध रूप से चलते रहते हैं।",
+      "We earn only when you earn. A simple, fixed share applies only to the revenue we help generate—nothing more.":
+        "हम तभी कमाते हैं जब आप कमाते हैं। एक सरल, निश्चित हिस्सा केवल उसी राजस्व पर लागू होता है जिसे हम उत्पन्न करने में मदद करते हैं—और कुछ नहीं।",
+      "All earnings come directly to you. Our share is settled monthly through a clean, transparent invoicing process.":
+        "सभी कमाई सीधे आपके पास आती है। हमारा हिस्सा मासिक रूप से एक साफ, पारदर्शी चालान प्रक्रिया के माध्यम से तय किया जाता है।"
+    };
+    return {
+      ...item,
+      title: titleMap[item.title] || item.title,
+      desc: descMap[item.desc] || item.desc
+    };
+  });
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-32 items-start">
       {/* Left Column: Sticky Title */}
       <div className="md:sticky top-40 py-10">
         <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-blue-100 mb-8 shadow-sm">
           <Zap className="w-4 h-4 text-[#0B2EA8]" />
-          <span className="text-[11px] font-black tracking-[0.2em] uppercase text-[#0B2EA8]">The Process</span>
+          <span className="text-[11px] font-black tracking-[0.2em] uppercase text-[#0B2EA8]">
+            {isHindi ? "प्रक्रिया" : "The Process"}
+          </span>
         </div>
         <h2 className="text-4xl md:text-7xl lg:text-[100px] font-black font-heading tracking-tighter leading-[0.85] uppercase">
-          HOW IT <br className="hidden lg:block"/> 
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-500 pb-2">WORKS.</span>
+          {isHindi ? (
+            <>यह कैसे <br className="hidden lg:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-500 pb-2">काम करता है।</span></>
+          ) : (
+            <>HOW IT <br className="hidden lg:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-500 pb-2">WORKS.</span></>
+          )}
         </h2>
         <p className="mt-6 md:mt-8 text-slate-500 text-lg md:text-2xl font-medium max-w-md leading-relaxed">
-          A straightforward partnership designed for maximum growth and complete transparency.
+          {isHindi 
+            ? "अधिकतम वृद्धि और पूर्ण पारदर्शिता के लिए बनाई गई एक सीधी साझेदारी।"
+            : "A straightforward partnership designed for maximum growth and complete transparency."}
         </p>
-
+ 
         {/* Step counter pill */}
         <div className="mt-10 inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-blue-50 border border-blue-100">
-          <span className="text-3xl font-black text-[#0B2EA8] leading-none">{WORKFLOW.length}</span>
-          <span className="text-xs font-black uppercase tracking-[0.2em] text-[#0B2EA8]/70">Partnership<br/>Steps</span>
+          <span className="text-3xl font-black text-[#0B2EA8] leading-none">{workflowData.length}</span>
+          <span className="text-xs font-black uppercase tracking-[0.2em] text-[#0B2EA8]/70">
+            {isHindi ? <>साझेदारी<br/>के कदम</> : <>Partnership<br/>Steps</>}
+          </span>
         </div>
       </div>
-
+ 
       {/* Right Column: Vertical List of Steps */}
       <div className="flex flex-col py-10">
-        {WORKFLOW.map((item, i) => (
+        {workflowData.map((item, i) => (
           <motion.div 
             key={i}
             initial={{ opacity: 0, y: 30 }}
@@ -225,7 +271,7 @@ function WorkflowSteps() {
               </div>
               <div className="w-px flex-1 bg-slate-100 group-hover:bg-blue-200 transition-colors duration-300 min-h-[2rem]" />
             </div>
-
+ 
             {/* Content */}
             <div className="flex flex-col gap-3 pb-2">
               <div className="flex items-center gap-3">
@@ -248,11 +294,41 @@ function WorkflowSteps() {
 }
 
 function FAQAccordion() {
+  const { locale } = useParams();
+  const isHindi = locale === "hi";
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const faqsData = FAQS.map(item => {
+    if (!isHindi) return item;
+    const qMap: Record<string, string> = {
+      "Are Shorts creators eligible?": "क्या शॉर्ट्स क्रिएटर योग्य हैं?",
+      "What about podcasters or Twitch streamers?": "पॉडकास्टर्स या ट्विच स्ट्रीमर्स के बारे में क्या?",
+      "Which content verticals do you work with?": "आप किन कंटेंट वर्टिकल के साथ काम करते हैं?",
+      "Do creators need rights to their content?": "क्या क्रिएटर्स को अपनी सामग्री के अधिकारों की आवश्यकता है?",
+      "Not sure if your channel fits?": "यकीन नहीं है कि आपका चैनल फिट बैठता है?"
+    };
+    const aMap: Record<string, string> = {
+      "We love Shorts—but strong long-form YouTube content is essential for our partnerships.":
+        "हमें शॉर्ट्स पसंद हैं—लेकिन हमारी साझेदारी के लिए मजबूत लॉन्ग-फॉर्म यूट्यूब सामग्री आवश्यक है।",
+      "Absolutely. If you have strong YouTube viewership alongside it, you’re a great fit.":
+        "बिल्कुल। यदि आपके पास इसके साथ मजबूत यूट्यूब व्यूअरशिप है, तो आप एक बेहतरीन फिट हैं।",
+      "Almost all. From lifestyle to gaming, food to education—if it works on YouTube, we’re in.":
+        "लगभग सभी। लाइफस्थल से लेकर गेमिंग, फूड से लेकर एजुकेशन तक—अगर यह यूट्यूब पर चलता है, तो हम साथ हैं।",
+      "Yes, creators must own all rights to their content.":
+        "हाँ, रचनाकारों के पास अपनी सामग्री के सभी अधिकार होने चाहिए।",
+      "Send it over. We’ll take a look and give you an honest assessment.":
+        "इसे भेजें। हम एक नज़र डालेंगे और आपको एक ईमानदार मूल्यांकन देंगे।"
+    };
+    return {
+      ...item,
+      q: qMap[item.q] || item.q,
+      a: aMap[item.a] || item.a
+    };
+  });
 
   return (
     <div className="max-w-4xl mx-auto">
-      {FAQS.map((faq, i) => (
+      {faqsData.map((faq, i) => (
         <motion.div 
           key={i} 
           initial={false}
@@ -305,6 +381,7 @@ function FAQAccordion() {
 
 export default function CreatorsPage() {
   const { locale } = useParams();
+  const isHindi = locale === "hi";
   const [mounted, setMounted] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -391,7 +468,9 @@ export default function CreatorsPage() {
                 <span className="absolute w-3 h-3 rounded-full bg-emerald-400 animate-ping opacity-50" />
                 <span className="relative w-2 h-2 rounded-full bg-emerald-500" />
               </div>
-              <span className="text-xs font-black tracking-[0.25em] uppercase text-[#0B2EA8]">Creator Capital & Growth</span>
+              <span className="text-xs font-black tracking-[0.25em] uppercase text-[#0B2EA8]">
+                {isHindi ? "क्रिएटर कैपिटल और ग्रोथ" : "Creator Capital & Growth"}
+              </span>
             </motion.div>
 
             <h1 className="flex flex-col mb-10 w-full overflow-hidden">
@@ -401,7 +480,7 @@ export default function CreatorsPage() {
                 transition={{ delay: 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
                 className="text-[3.5rem] sm:text-7xl md:text-8xl lg:text-[140px] font-black font-heading tracking-tighter leading-[0.85] text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase pb-2 drop-shadow-sm"
               >
-                WE EARN
+                {isHindi ? "हमारी कमाई" : "WE EARN"}
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, y: 60, rotateX: -20 }}
@@ -409,7 +488,7 @@ export default function CreatorsPage() {
                 transition={{ delay: 0.25, duration: 1, ease: [0.16, 1, 0.3, 1] }}
                 className="text-[3.5rem] sm:text-7xl md:text-8xl lg:text-[140px] font-black font-heading tracking-tighter leading-[0.85] text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase pb-4"
               >
-                WHEN YOU EARN.
+                {isHindi ? "आपकी कमाई के साथ है।" : "WHEN YOU EARN."}
               </motion.span>
             </h1>
 
@@ -419,7 +498,9 @@ export default function CreatorsPage() {
               transition={{ delay: 0.4, duration: 0.8 }}
               className="text-lg md:text-2xl text-slate-500 max-w-4xl mx-auto mb-16 font-medium leading-relaxed"
             >
-              Curious Media unlocks the full monetization potential of your content library <br className="hidden md:block"/> across platforms, powered by Asia&apos;s largest distribution network.
+              {isHindi 
+                ? "क्यूरियस मीडिया आपके कंटेंट लाइब्रेरी की मुद्रीकरण (Monetization) क्षमता को सभी प्लेटफॉर्मों पर खोलता है, जो कि एशिया के सबसे बड़े वितरण नेटवर्क द्वारा संचालित है।"
+                : "Curious Media unlocks the full monetization potential of your content library across platforms, powered by Asia's largest distribution network."}
             </motion.p>
 
             <motion.div
@@ -431,7 +512,9 @@ export default function CreatorsPage() {
                 href={`/${locale}/contact`}
                 className="group relative inline-flex items-center gap-4 px-12 py-6 text-white font-black uppercase tracking-[0.2em] text-sm rounded-full overflow-hidden transition-all duration-500 hover:scale-[1.02] bg-[#0A1A4E] shadow-[0_20px_40px_rgba(10,26,78,0.25)] hover:shadow-[0_20px_60px_rgba(11,46,168,0.4)] hover:bg-[#0B2EA8]"
               >
-                <span className="relative z-10 group-hover:text-cyan-300 transition-colors duration-500">Partner With Us</span>
+                <span className="relative z-10 group-hover:text-cyan-300 transition-colors duration-500">
+                  {isHindi ? "हमारे भागीदार बनें" : "Partner With Us"}
+                </span>
                 <div className="relative z-10 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-cyan-400 group-hover:text-[#0A1A4E] transition-all duration-500">
                   <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-0.5" />
                 </div>
@@ -453,14 +536,22 @@ export default function CreatorsPage() {
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-blue-100 mb-6 shadow-sm"
               >
                 <span className="w-2.5 h-2.5 rounded-full bg-[#0B2EA8] animate-pulse" />
-                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#0B2EA8]">Our Partners</span>
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#0B2EA8]">
+                  {isHindi ? "हमारे भागीदार" : "Our Partners"}
+                </span>
               </motion.div>
               <h2 className="text-4xl md:text-5xl lg:text-7xl font-black font-heading tracking-tighter text-[#0A1A4E] leading-[0.9] uppercase mt-2">
-                Trusted by 50+ <br className="hidden md:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-cyan-500">Leading Creators.</span>
+                {isHindi ? (
+                  <>50+ प्रमुख क्रिएटर्स <br className="hidden md:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-cyan-500">द्वारा विश्वसनीय।</span></>
+                ) : (
+                  <>Trusted by 50+ <br className="hidden md:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-cyan-500">Leading Creators.</span></>
+                )}
               </h2>
             </div>
             <div className="text-slate-500 font-bold text-lg max-w-sm md:text-right leading-relaxed">
-              Join the elite network of digital creators maximizing their content's potential across platforms.
+              {isHindi 
+                ? "प्लेटफ़ॉर्म पर अपनी सामग्री की क्षमता को अधिकतम करने वाले डिजिटल क्रिएटर्स के विशिष्ट नेटवर्क में शामिल हों।"
+                : "Join the elite network of digital creators maximizing their content's potential across platforms."}
             </div>
           </div>
         </div>
@@ -504,29 +595,32 @@ export default function CreatorsPage() {
             <div className="w-full mb-8">
               <span className="text-3xl md:text-5xl font-black text-white/40 block mb-2 uppercase tracking-tight">₹</span>
               <h2 className="text-[3.5rem] xs:text-[4.5rem] sm:text-[7rem] md:text-[8.5rem] lg:text-[10rem] font-black leading-[0.8] tracking-tighter uppercase">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-cyan-400">1 Billion</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-cyan-400">
+                  {isHindi ? "1 मिलियन" : "1 Million"}
+                </span>
                 <span className="text-cyan-400 text-[0.6em] align-top mt-4">+</span>
               </h2>
             </div>
-
+ 
             {/* Divider Line */}
             <div className="w-full h-px bg-white/10 mb-10" />
-
+ 
             {/* Bottom Section: Split Content */}
             <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-10 md:gap-20">
               <div className="max-w-4xl text-left">
                 <p className="text-lg md:text-2xl text-white font-black leading-tight uppercase tracking-tight">
-                  THROUGH MONETIZATION ACROSS PLATFORMS AND FORMATS <br />
-                  FOR CREATOR AND IP OWNER.
+                  {isHindi 
+                    ? "क्रिएटर और आईपी ओनर के लिए सभी प्लेटफॉर्मों और प्रारूपों में मुद्रीकरण (Monetization) के माध्यम से।"
+                    : "THROUGH MONETIZATION ACROSS PLATFORMS AND FORMATS FOR CREATOR AND IP OWNER."}
                 </p>
               </div>
-
+ 
               <div className="flex flex-col items-start md:items-end">
                 <div className="text-6xl md:text-8xl lg:text-[100px] font-black text-white leading-none mb-2">
                   <AnimatedNumber value={70} suffix="+" />
                 </div>
                 <span className="text-sm md:text-base font-black text-cyan-400/60 uppercase tracking-[0.3em]">
-                  From channels
+                  {isHindi ? "चैनल्स से" : "From channels"}
                 </span>
               </div>
             </div>
@@ -547,12 +641,17 @@ export default function CreatorsPage() {
           <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-20">
             <div>
               <h2 className="text-4xl md:text-6xl lg:text-7xl font-black font-heading tracking-tighter text-[#0A1A4E] leading-none uppercase">
-                Who We <br className="hidden md:block"/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-cyan-500">Work With</span>
+                {isHindi ? (
+                  <>हम किसके <br className="hidden md:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-cyan-500">साथ काम करते हैं</span></>
+                ) : (
+                  <>Who We <br className="hidden md:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-cyan-500">Work With</span></>
+                )}
               </h2>
             </div>
             <p className="text-slate-500 text-xl font-medium max-w-sm leading-relaxed">
-              Got questions about eligibility? Everything you need to know about partnering with us.
+              {isHindi 
+                ? "पात्रता के बारे में प्रश्न हैं? हमारे साथ साझेदारी करने के बारे में वह सब कुछ जो आपको जानना आवश्यक है।"
+                : "Got questions about eligibility? Everything you need to know about partnering with us."}
             </p>
           </div>
 
@@ -578,15 +677,28 @@ export default function CreatorsPage() {
                 <div>
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 mb-4 backdrop-blur-sm">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    <span className="text-[9px] font-black tracking-[0.2em] uppercase text-emerald-200">Now Onboarding</span>
+                    <span className="text-[9px] font-black tracking-[0.2em] uppercase text-emerald-200">
+                      {isHindi ? "अभी ऑनबोर्डिंग चालू है" : "Now Onboarding"}
+                    </span>
                   </div>
                   <h3 className="text-3xl md:text-5xl lg:text-[54px] font-black font-heading tracking-normal md:tracking-wide leading-tight md:leading-[1.15] uppercase">
-                    <span className="text-white">Ready to unlock</span><br/>
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-200 to-white">your potential?</span>
+                    {isHindi ? (
+                      <>
+                        <span className="text-white">अपनी क्षमता को</span><br/>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-200 to-white">अनलॉक करने के लिए तैयार?</span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="text-white">Ready to unlock</span><br/>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-200 to-white">your potential?</span>
+                      </>
+                    )}
                   </h3>
                 </div>
                 <p className="text-blue-200/70 text-base md:text-lg font-medium max-w-sm leading-relaxed lg:text-right">
-                  Join India&apos;s leading creators and maximize the value of your content library today.
+                  {isHindi 
+                    ? "भारत के अग्रणी रचनाकारों में शामिल हों और आज ही अपने कंटेंट लाइब्रेरी के मूल्य को अधिकतम करें।"
+                    : "Join India's leading creators and maximize the value of your content library today."}
                 </p>
               </div>
             </div>
@@ -599,14 +711,18 @@ export default function CreatorsPage() {
                 className="group col-span-1 md:col-span-2 flex items-center justify-between p-6 rounded-2xl bg-white text-[#0A1A4E] hover:bg-blue-50 transition-all duration-500 hover:scale-[1.02] shadow-[0_0_60px_rgba(255,255,255,0.08)]"
               >
                 <div className="flex flex-col gap-1">
-                  <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#0B2EA8]/60">Start a conversation</span>
-                  <span className="text-2xl md:text-3xl font-black uppercase tracking-tight">Get In Touch</span>
+                  <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#0B2EA8]/60">
+                    {isHindi ? "बातचीत शुरू करें" : "Start a conversation"}
+                  </span>
+                  <span className="text-2xl md:text-3xl font-black uppercase tracking-tight">
+                    {isHindi ? "संपर्क में रहें" : "Get In Touch"}
+                  </span>
                 </div>
                 <div className="w-12 h-12 shrink-0 rounded-2xl bg-[#0B2EA8]/10 flex items-center justify-center text-[#0B2EA8] group-hover:bg-[#0B2EA8] group-hover:text-white transition-all duration-500">
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </Link>
-
+ 
               {/* Email CTA */}
               <a
                 href="mailto:info@curiousmedia.in"
@@ -616,7 +732,9 @@ export default function CreatorsPage() {
                   <Mail className="w-4 h-4" />
                 </div>
                 <div>
-                  <p className="text-[9px] font-black uppercase tracking-[0.2em] text-blue-300/60 mb-1">Email Us Directly</p>
+                  <p className="text-[9px] font-black uppercase tracking-[0.2em] text-blue-300/60 mb-1">
+                    {isHindi ? "हमें सीधे ईमेल करें" : "Email Us Directly"}
+                  </p>
                   <p className="font-bold text-base text-white break-all leading-tight">info@curiousmedia.in</p>
                 </div>
               </a>

@@ -2,16 +2,17 @@
   "nav": {
     "home": "Home",
     "media": "Curious Media",
-    "studio": "Curious Studio",
-    "products": "Curious Products",
+    "studio": "Curious Studios",
+    "products": "Curious Product",
     "creators": "Creators & IP Owners",
     "brands": "Brands",
-    "about": "About",
+    "about": "About us",
     "contact": "Contact",
-    "records": "Curious Music"
+    "records": "Curious Music",
+    "services": "Our Services"
   },
   "hero": {
-    "badge": "India's #1 Creator Monetisation Platform",
+    "badge": "India's #1 Creator Monetization Agency",
     "headline_line1": "DON'T JUST",
     "headline_line2": "CREATE.",
     "headline_line3": "MONETIZE",
@@ -19,7 +20,7 @@
     "subheading": "Turn your content into a scalable income.",
     "description": "Curious Media helps creators move beyond brand deals to earn consistently—across every platform.",
     "features": ["Influencer Marketing", "Creator Management", "Content Monetization", "Distribution", "Event Marketing", "Meme Marketing"],
-    "cta_primary": "Book a Strategy Call",
+    "cta_primary": "Start Your Growth Journey →",
     "cta_secondary": "View Campaigns",
     "cards": {
       "campaign": "Campaign Live",
@@ -37,9 +38,9 @@
   "marquee": {
     "brands_badge": "Brand Partners",
     "brands_title_1": "Trusted by the",
-    "brands_title_2": "world's best brands.",
-    "content_title_1": "Powered by",
-    "content_title_2": "India's top studios.",
+    "brands_title_2": "India top brands.",
+    "content_title_1": "Trusted by the",
+    "content_title_2": "Best in Content.",
     "content_partners": "Trusted by the Best in Content"
   },
   "divisions": {
@@ -53,12 +54,12 @@
       "desc": "Curious Media handles the business side of influence. We connect elite creators with global brands and manage complex marketing campaigns."
     },
     "studio": {
-      "title": "Curious Studio",
+      "title": "Curious Studios",
       "subtitle": "Production & Content",
       "desc": "Our state-of-the-art production studio delivers cinematic-quality videos, reels, and high-impact digital content for brands and creators."
     },
     "products": {
-      "title": "Curious Products",
+      "title": "Curious Product",
       "subtitle": "AI Tech & Platform",
       "desc": "We build cutting-edge AI tools — AI image generators, video synthesis engines, and automation platforms that supercharge creative output for brands and creators."
     },
@@ -88,10 +89,50 @@
     "email": "Email Us",
     "phone": "Call Us",
     "location": "Our Location",
-    "follow": "Follow Us"
+    "follow": "Follow Us",
+    "connect_badge": "Let's Connect",
+    "get_in_touch": "Get in touch.",
+    "get_in_touch_1": "Get in",
+    "get_in_touch_2": "touch.",
+    "clicks_clients": "Only if you're ready to turn clicks into clients.",
+    "direct_email": "Direct Email",
+    "whatsapp_phone": "WhatsApp / Phone",
+    "operating_office": "Operating Office",
+    "send_inquiry": "Send an Inquiry",
+    "send_message": "Send us a message",
+    "name": "Name",
+    "fullname_placeholder": "Full Name",
+    "email_label": "Email",
+    "email_placeholder": "Email Address",
+    "phone_label": "Phone",
+    "phone_placeholder": "+91 90000 00000",
+    "company_label": "Company / Website",
+    "company_placeholder": "yourbrand.com",
+    "subject_label": "Query / Subject",
+    "subject_placeholder": "Select a topic...",
+    "opt_brand": "Brand Campaign",
+    "opt_creator": "Creator Management",
+    "opt_studio": "Studio Production",
+    "opt_general": "General Inquiry",
+    "opt_brand_deal": "Brand Deals & Sponsorships",
+    "opt_content_mon": "Content Monetization",
+    "opt_talent_mgt": "Talent Management",
+    "message_label": "Message / Note",
+    "message_placeholder": "Tell us about your goals...",
+    "btn_sending": "Sending...",
+    "btn_sent": "Message Sent!",
+    "btn_submit": "Submit Inquiry",
+    "btn_submit_req": "Submit Request",
+    "validation_name": "Please enter your name.",
+    "validation_email": "Please enter a valid email address.",
+    "validation_phone": "Please enter a valid 10-digit phone number.",
+    "validation_message": "Please write a message.",
+    "validation_subject": "Please select a subject.",
+    "trusted_brands": "Trusted by 29+ brands across India"
   },
   "brand_win": {
     "badge": "Our Promise",
+    "perf_guarantee": "Performance Guarantee",
     "title_1": "How Brands",
     "title_2": "Win With Us.",
     "description": "We don't just promise results — we contractually commit to them. Every campaign is backed by our performance guarantee.",
@@ -113,7 +154,7 @@
     }
   },
   "footer": {
-    "tagline": "Grow Faster. Earn Smarter.",
+    "tagline": "Relax...you have us",
     "subtitle": "A premium media-tech platform empowering digital storytelling and powerful collaborations.",
     "platform": "Platform",
     "company": "Company",

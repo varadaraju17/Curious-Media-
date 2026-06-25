@@ -16,7 +16,7 @@ export function Footer({ dict, locale }: FooterProps) {
     company: [
       { href: `/${locale}/about`,    label: dict.nav.about || "About Us" },
       { href: `/${locale}/creators`, label: dict.nav.creators || "Creators" },
-      { href: `/${locale}/services`, label: "Our Services" },
+      { href: `/${locale}/services`, label: dict.nav.services || "Our Services" },
       { href: `/${locale}/contact`,  label: dict.nav.contact },
     ],
   };
@@ -30,10 +30,15 @@ export function Footer({ dict, locale }: FooterProps) {
 
           {/* Brand */}
           <div className="col-span-1 md:col-span-5">
-            <h2 className="text-4xl md:text-5xl font-black font-heading tracking-tighter text-[#0B2EA8] mb-1">
-              CURIOUS<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-sky-300">.</span>
-            </h2>
-            <p className="text-[10px] mb-5 font-black uppercase tracking-[0.28em] text-blue-600/60">{dict.footer.tagline}</p>
+            <Link href={`/${locale}`} className="inline-flex items-center gap-3 mb-4 group">
+              <img src="/images/logo.png" alt="Curious Media Logo" className="h-24 md:h-30 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+              <span className="text-lg md:text-xl font-black uppercase tracking-wider text-[#0A1A4E] group-hover:text-[#0B2EA8] transition-colors duration-300 font-heading">
+                Curious Media
+              </span>
+            </Link>
+            <p className="text-sm font-black text-[#0B2EA8] tracking-wider mb-3 font-heading uppercase italic">
+              {dict.footer.tagline || "Relax...you have us"}
+            </p>
             <p className="text-blue-800/60 max-w-xs mb-8 text-sm font-medium leading-relaxed">
               {dict.footer.subtitle}
             </p>
@@ -85,7 +90,7 @@ export function Footer({ dict, locale }: FooterProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="w-10 h-10 rounded-xl border border-blue-200 bg-white flex items-center justify-center
+                  className="w-10 h-10 rounded-none border border-blue-200 bg-white flex items-center justify-center
                     hover:bg-[#0B2EA8] hover:border-[#0B2EA8] hover:text-white
                     transition-all duration-300 cursor-pointer text-blue-500/60 hover:scale-110 shadow-sm"
                 >

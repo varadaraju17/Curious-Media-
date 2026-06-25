@@ -1,12 +1,202 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight, Play, Video, PenTool, Mic, Users, Layout, Share2, Star, Quote, TrendingUp, Camera, Zap } from "lucide-react";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, Play, Video, PenTool, Mic, Users, Layout, Share2, Star, Quote, TrendingUp, Camera, Zap, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
+function PortfolioCard({ src, alt, fallbackSrc, onSelect }: { src: string; alt: string; fallbackSrc: string; onSelect: () => void }) {
+  const [imgSrc, setImgSrc] = useState(src);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      onClick={onSelect}
+      className="flex-none w-[80vw] sm:w-[55vw] md:w-[40vw] lg:w-[460px] aspect-[4/3] bg-white border border-[#0B2EA8]/10 overflow-hidden relative group cursor-pointer shadow-[0_12px_36px_rgba(11,46,168,0.04)] hover:shadow-[0_30px_70px_rgba(11,46,168,0.15)] transition-all duration-500 rounded-none snap-center"
+    >
+      {/* Image */}
+      <img 
+        src={imgSrc} 
+        alt={alt}
+        className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+        onError={() => {
+          if (imgSrc !== fallbackSrc) {
+            setImgSrc(fallbackSrc);
+          }
+        }}
+      />
+      
+      {/* Premium Minimal Overlay & Icon */}
+      <div className="absolute inset-0 bg-[#0A1A4E]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+        {/* Sleek Minimalist White Circle with magnifying/plus icon */}
+        <div className="w-14 h-14 bg-white/20 backdrop-blur-md rounded-none border border-white/30 flex items-center justify-center opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500">
+          <svg className="w-6 h-6 text-white stroke-current stroke-[1.5]" fill="none" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+          </svg>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+const segments = [
+  {
+    id: "fb_products",
+    name: "F&B Products Shoots",
+    images: Array.from({ length: 8 }, (_, idx) => ({
+      src: `/images/studio/fb_products/img${idx + 1}.jpg`,
+      fallback: [
+        "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=600&q=80",
+      ][idx],
+      alt: `F&B Shoot #${idx + 1}`
+    }))
+  },
+  {
+    id: "lifestyle",
+    name: "Lifestyle Portrait Shoot",
+    images: Array.from({ length: 8 }, (_, idx) => ({
+      src: `/images/studio/lifestyle/img${idx + 1}.jpg`,
+      fallback: [
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80",
+      ][idx],
+      alt: `Lifestyle Portrait #${idx + 1}`
+    }))
+  },
+  {
+    id: "product_photos",
+    name: "Product Photoshoot",
+    images: Array.from({ length: 7 }, (_, idx) => ({
+      src: `/images/studio/product_photos/img${idx + 1}.jpg`,
+      fallback: [
+        "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=600&q=80",
+      ][idx],
+      alt: `Product Shoot #${idx + 1}`
+    }))
+  }
+];
+
 export default function StudioPage() {
   const { locale } = useParams();
+  const isHindi = locale === "hi";
+
+  const translate = (text: string) => {
+    if (!isHindi) return text;
+    const map: Record<string, string> = {
+      // General Header / Badges / Buttons
+      "Curious Studios": "क्यूरियस स्टूडियो",
+      "LET'S CREATE CONTENT": "आइए ऐसा कंटेंट बनाएं",
+      "THAT MAKES PEOPLE BUY": "जो लोगों को खरीदने पर मजबूर करे",
+      "The one stop shop for all your production needs!!": "आपकी सभी प्रोडक्शन आवश्यकताओं के लिए वन-स्टॉप शॉप!!",
+      "Book Your Shoot": "अपना शूट बुक करें",
+      
+      // Videography Section
+      "Videography": "वीडियोग्राफी",
+      "From full-scale ad films to high-ROI video creatives across Instagram, YouTube, TikTok, and social media management—we handle it all, start to finish, so you can focus on growing your brand and revenue.":
+        "इंस्टाग्राम, यूट्यूब, टिकटॉक और सोशल मीडिया प्रबंधन पर पूर्ण पैमाने की विज्ञापन फिल्मों से लेकर उच्च-आरओआई वीडियो क्रिएटिव तक—हम शुरुआत से अंत तक सब कुछ संभालते हैं, ताकि आप अपने ब्रांड और राजस्व को बढ़ाने पर ध्यान केंद्रित कर सकें।",
+      "Horizontal Mobile View": "क्षैतिज मोबाइल दृश्य",
+      
+      // What We Do
+      "What We Do": "हम क्या करते हैं",
+      "Inside Curious Studios": "क्यूरियस स्टूडियो के भीतर",
+      "Curious Studios sets a new benchmark in quality—every package is built to deliver excellence and includes:":
+        "क्यूरियस स्टूडियो गुणवत्ता में एक नया मानदंड स्थापित करता है—प्रत्येक पैकेज उत्कृष्टता प्रदान करने के लिए बनाया गया है और इसमें शामिल हैं:",
+
+      // Services Titles
+      "Ad Production": "विज्ञापन निर्माण",
+      "Creative Direction": "रचनात्मक दिशा",
+      "Editing & Audio": "संपादन और ऑडियो",
+      "Talent Hiring": "टैलेंट हायरिंग",
+      "Styled Sets": "स्टाइल्ड सेट्स",
+      "Social Media Management": "सोशल मीडिया मैनेजमेंट",
+
+      // Services Descriptions
+      "From big campaigns to quick-turn ads—we do it all. Flexible, scalable, and tailored to your brand—just like we’ve done for the leading name- Zomato.":
+        "बड़े अभियानों से लेकर त्वरित विज्ञापनों तक—हम सब कुछ करते हैं। लचीला, स्केलेबल और आपके ब्रांड के अनुकूल—ठीक वैसे ही जैसे हमने प्रमुख नाम- ज़ोमैटो के लिए किया है।",
+      "Don’t know where to start? We’ve got you. Our on-site creative experts shape your vision into content that performs.":
+        "पता नहीं कहाँ से शुरू करें? हम आपके साथ हैं। हमारे ऑन-साइट रचनात्मक विशेषज्ञ आपके दृष्टिकोण को ऐसे कंटेंट में ढालते हैं जो प्रदर्शन करता है।",
+      "Polished. Powerful. Platform-ready. End-to-end editing with revisions, sound design, and full rights—everything your content needs to stand out.":
+        "पॉलिश्ड। शक्तिशाली। प्लेटफॉर्म-रेडी। संशोधनों, ध्वनि डिजाइन और पूर्ण अधिकारों के साथ एंड-टू-एंड संपादन—वह सब कुछ जो आपके कंटेंट को अलग दिखाने के लिए चाहिए।",
+      "The right faces for your brand. Access a curated network of creators and performers to bring your story to life.":
+        "आपके ब्रांड के लिए सही चेहरे। अपनी कहानी को जीवंत करने के लिए रचनाकारों और कलाकारों के एक क्यूरेटेड नेटवर्क तक पहुँचें।",
+      "Every frame, on-brand. Thoughtfully designed sets with handpicked props to make your content visually stand out.":
+        "हर फ्रेम, ऑन-ब्रांड। आपके कंटेंट को विज़ुअली अलग दिखाने के लिए चुनिंदा प्रॉप्स के साथ सोच-समझकर डिज़ाइन किए गए सेट्स।",
+      "Content is just the start—we make it grow. From posting to performance tracking, we manage your social presence to drive reach, engagement, and results.":
+        "कंटेंट तो बस शुरुआत है—हम इसे बढ़ाते हैं। पोस्टिंग से लेकर परफॉर्मेंस ट्रैकिंग तक, हम रीच, जुड़ाव और परिणाम लाने के लिए आपकी सोशल उपस्थिति का प्रबंधन करते हैं।",
+
+      // How It Works
+      "Process": "प्रक्रिया",
+      "How It Works": "यह कैसे काम करता है",
+      "Your brand deserves high-performing content with thumb-stopping quality—built to stand out across every platform. Here's how we make it happen.":
+        "आपका ब्रांड थंब-स्टॉपिंग गुणवत्ता के साथ उच्च प्रदर्शन करने वाले कंटेंट का हकदार है—हर प्लेटफॉर्म पर अलग दिखने के लिए बनाया गया है। यहां बताया गया है कि हम इसे कैसे संभव बनाते हैं।",
+      "SELECT A PACKAGE": "एक पैकेज चुनें",
+      "Choose from flexible production packages tailored to your content, campaign, and growth goals.":
+        "अपने कंटेंट, अभियान और विकास लक्ष्यों के अनुरूप लचीले प्रोडक्शन पैकेजों में से चुनें।",
+      "BOOK YOUR SHOOT": "अपना शूट बुक करें",
+      "Send us your product or brief, and our team handles everything—from creative direction to production.":
+        "हमें अपना उत्पाद या ब्रीफ भेजें, और हमारी टीम रचनात्मक दिशा से लेकर प्रोडक्शन तक सब कुछ संभालती है।",
+      "WATCH YOUR CONTENT PERFORM": "अपने कंटेंट का प्रदर्शन देखें",
+      "Receive platform-ready content designed to grab attention, drive engagement, and grow your brand.":
+        "ध्यान आकर्षित करने, जुड़ाव बढ़ाने और आपके ब्रांड को विकसित करने के लिए डिज़ाइन किया गया प्लेटफॉर्म-रेडी कंटेंट प्राप्त करें।",
+
+      // Portfolio
+      "Our Work": "हमारा काम",
+      "Portfolio": "पोर्टफोलियो",
+      "Start Your Project": "अपना प्रोजेक्ट शुरू करें",
+      "Photos": "तस्वीरें",
+      "F&B Products Shoots": "F&B प्रोडक्ट्स शूट",
+      "Lifestyle Portrait Shoot": "लाइफस्टाइल पोर्ट्रेट शूट",
+      "Product Photoshoot": "प्रोडक्ट फोटोशूट",
+      
+      // Floating metrics
+      "Campaign ROI": "कैंपेन आरओआई (ROI)",
+      "Ad Films": "विज्ञापन फिल्में",
+      "Platform Reach": "प्लेटफॉर्म रीच",
+    };
+    return map[text] || text;
+  };
+
+  const [activeTab, setActiveTab] = useState("fb_products");
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  const rowRefs: Record<string, React.RefObject<HTMLDivElement | null>> = {
+    fb_products: useRef<HTMLDivElement>(null),
+    lifestyle: useRef<HTMLDivElement>(null),
+    product_photos: useRef<HTMLDivElement>(null),
+  };
+
+  const scrollRow = (id: string, direction: "left" | "right") => {
+    const el = rowRefs[id]?.current;
+    if (el) {
+      const scrollAmount = el.clientWidth * 0.75;
+      el.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth"
+      });
+    }
+  };
 
   const services = [
     {
@@ -70,7 +260,7 @@ export default function StudioPage() {
       name: "Sarah Jenkins",
       role: "CMO, TechNova",
       company: "TechNova",
-      quote: "Curious Studio's ad production was seamless. They took our concept and delivered a high-converting masterpiece in record time.",
+      quote: "Curious Studios's ad production was seamless. They took our concept and delivered a high-converting masterpiece in record time.",
       rating: 5,
       gradient: "from-blue-600 to-sky-400",
       initials: "SJ",
@@ -186,7 +376,7 @@ export default function StudioPage() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-60" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600" />
                 </span>
-                <span className="text-[11px] font-black tracking-[0.2em] uppercase text-[#0B2EA8]">Curious Studio</span>
+                <span className="text-[11px] font-black tracking-[0.2em] uppercase text-[#0B2EA8]">{translate("Curious Studios")}</span>
               </motion.div>
 
               <h1 className="flex flex-col mb-6 w-full font-black font-heading leading-[0.9] tracking-tighter text-[50px] sm:text-[60px] md:text-[76px] lg:text-[84px] uppercase">
@@ -196,7 +386,7 @@ export default function StudioPage() {
                   transition={{ delay: 0.15, duration: 0.6 }}
                   className="block text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 pb-2 drop-shadow-sm"
                 >
-                  LET&apos;S CREATE CONTENT
+                  {translate("LET'S CREATE CONTENT")}
                 </motion.span>
                 <motion.span
                   initial={{ opacity: 0, x: -24 }}
@@ -204,7 +394,7 @@ export default function StudioPage() {
                   transition={{ delay: 0.25, duration: 0.6 }}
                   className="block relative text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 w-fit pb-2"
                 >
-                  THAT MAKES PEOPLE BUY
+                  {translate("THAT MAKES PEOPLE BUY")}
                   <motion.span
                     initial={{ scaleX: 0, opacity: 0 }}
                     animate={{ scaleX: 1, opacity: 1 }}
@@ -220,7 +410,7 @@ export default function StudioPage() {
                 transition={{ delay: 0.4, duration: 0.6 }}
                 className="text-lg md:text-2xl font-black text-[#0B2EA8] mb-8 tracking-tight uppercase"
               >
-                The one stop shop for all your production needs!!
+                {translate("The one stop shop for all your production needs!!")}
               </motion.p>
               
               <motion.div
@@ -234,7 +424,7 @@ export default function StudioPage() {
                   className="group relative inline-flex items-center gap-2.5 rounded-full px-8 py-4 text-white font-black uppercase text-sm tracking-widest overflow-hidden shadow-[0_8px_28px_rgba(11,46,168,0.30)] hover:shadow-[0_16px_48px_rgba(11,46,168,0.45)] hover:scale-[1.03] transition-all duration-300"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-[#0B2EA8] via-blue-500 to-[#0B2EA8] bg-[size:200%] hover:bg-right-center transition-all duration-700 group-hover:bg-[position:100%]" />
-                  <span className="relative z-10">Book Your Shoot</span>
+                  <span className="relative z-10">{translate("Book Your Shoot")}</span>
                   <ArrowRight className="relative z-10 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </motion.div>
@@ -269,7 +459,6 @@ export default function StudioPage() {
                 {/* CINEMATIC PURE VIDEO FIELD (Framed with crisp matching borders) */}
                 <div className="w-full h-full rounded-[2.2rem] overflow-hidden relative bg-[#F8FAFF] border border-[#0B2EA8]/10 shadow-[inset_0_1px_4px_rgba(11,46,168,0.06)]">
                   
-                  {/* 🎥 [VIDEO PATH CONFIGURATION] - YOUR VIDEO PLAYS HERE 🎥 */}
                   <video 
                     autoPlay 
                     loop 
@@ -313,10 +502,10 @@ export default function StudioPage() {
             className="mb-6 md:mb-8 shrink-0"
           >
             <h2 className="text-3xl md:text-5xl lg:text-[50px] font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase mb-3 py-1">
-              Videography
+              {translate("Videography")}
             </h2>
             <p className="text-base md:text-xl text-slate-500 font-medium max-w-4xl mx-auto leading-relaxed">
-              From full-scale ad films to high-ROI video creatives across Instagram, YouTube, TikTok, and social media management—we handle it all, start to finish, so you can focus on growing your brand and revenue.
+              {translate("From full-scale ad films to high-ROI video creatives across Instagram, YouTube, TikTok, and social media management—we handle it all, start to finish, so you can focus on growing your brand and revenue.")}
             </p>
           </motion.div>
 
@@ -334,23 +523,14 @@ export default function StudioPage() {
             </div>
 
             <div className="w-full h-full bg-black rounded-[1.2rem] md:rounded-[2.5rem] overflow-hidden relative group cursor-pointer">
-              <video 
-                autoPlay loop muted playsInline preload="auto"
-                className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-1000"
-              >
-                <source src="/videos/studio-hero.mp4" type="video/mp4" />
-              </video>
-              <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/20 transition-all duration-500 flex items-center justify-center">
-                 <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center scale-75 md:scale-100 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_40px_rgba(255,255,255,0.3)] border border-white/40">
-                   <Play className="w-6 h-6 md:w-10 md:h-10 text-white ml-1.5 md:ml-2" />
-                 </div>
-              </div>
+              {/* Video removed temporarily */}
+
 
               {/* Floating Tag inside screen */}
               <div className="absolute bottom-6 right-8 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 px-4 py-2 hidden md:block">
                  <div className="flex items-center gap-2">
                    <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                   <p className="text-[10px] uppercase tracking-[0.2em] text-white font-black">Horizontal Mobile View</p>
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-white font-black">{translate("Horizontal Mobile View")}</p>
                  </div>
               </div>
             </div>
@@ -369,12 +549,12 @@ export default function StudioPage() {
       <section className="py-24 md:py-36 bg-white relative">
         <div className="container mx-auto px-4 max-w-[1400px] relative z-10">
           <div className="text-center mb-16 md:mb-24">
-            <h2 className="text-sm font-black uppercase tracking-[0.3em] text-[#0B2EA8] mb-4">What We Do</h2>
+            <h2 className="text-sm font-black uppercase tracking-[0.3em] text-[#0B2EA8] mb-4">{translate("What We Do")}</h2>
             <h3 className="text-4xl md:text-5xl lg:text-7xl font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase mb-6 pb-2">
-              Inside Curious Studio
+              {translate("Inside Curious Studios")}
             </h3>
             <p className="text-lg md:text-xl text-slate-500 font-medium max-w-3xl mx-auto leading-relaxed">
-              Curious Studio sets a new benchmark in quality—every package is built to deliver excellence and includes:
+              {translate("Curious Studios sets a new benchmark in quality—every package is built to deliver excellence and includes:")}
             </p>
           </div>
 
@@ -392,9 +572,9 @@ export default function StudioPage() {
                 <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 shadow-md relative z-10`}>
                   {item.icon}
                 </div>
-                <h4 className="text-2xl font-black font-heading text-[#0A1A4E] mb-4 relative z-10">{item.title}</h4>
+                <h4 className="text-2xl font-black font-heading text-[#0A1A4E] mb-4 relative z-10">{translate(item.title)}</h4>
                 <p className="text-slate-500 font-medium leading-relaxed relative z-10">
-                  {item.desc}
+                  {translate(item.desc)}
                 </p>
               </motion.div>
             ))}
@@ -410,12 +590,12 @@ export default function StudioPage() {
         
         <div className="container mx-auto px-4 max-w-[1400px] relative z-10">
           <div className="text-center mb-20 md:mb-28">
-            <h2 className="text-sm font-black uppercase tracking-[0.3em] text-cyan-400 mb-4">Process</h2>
+            <h2 className="text-sm font-black uppercase tracking-[0.3em] text-cyan-400 mb-4">{translate("Process")}</h2>
             <h3 className="text-4xl md:text-5xl lg:text-[70px] font-black font-heading tracking-tighter text-white uppercase mb-6 leading-none">
-              How It Works
+              {translate("How It Works")}
             </h3>
             <p className="text-xl md:text-2xl text-white/70 font-medium max-w-4xl mx-auto leading-relaxed">
-              Your brand deserves high-performing content with thumb-stopping quality—built to stand out across every platform. Here's how we make it happen.
+              {translate("Your brand deserves high-performing content with thumb-stopping quality—built to stand out across every platform. Here's how we make it happen.")}
             </p>
           </div>
 
@@ -437,10 +617,10 @@ export default function StudioPage() {
                   </div>
                   <div className="mt-8">
                     <h4 className="text-2xl font-black font-heading text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-500 mb-4 uppercase tracking-tight">
-                      {step.title}
+                      {translate(step.title)}
                     </h4>
                     <p className="text-slate-600 font-semibold leading-relaxed">
-                      {step.desc}
+                      {translate(step.desc)}
                     </p>
                   </div>
                 </motion.div>
@@ -450,130 +630,128 @@ export default function StudioPage() {
         </div>
       </section>
 
-      {/* ─── PORTFOLIO (One Scroll, One Line with Random Photos) ─── */}
-      <section className="py-10 md:py-14 bg-white relative">
+      {/* ─── PORTFOLIO (Three Horizontal Scroll lines, one for each segment) ─── */}
+      <section className="py-24 md:py-32 bg-gradient-to-b from-[#F8FAFF] via-white to-[#F8FAFF] relative overflow-hidden">
         <div className="container mx-auto px-4 max-w-[1400px] relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-6 md:mb-8">
+          
+          {/* Header */}
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-6">
             <div>
-              <h2 className="text-sm font-black uppercase tracking-[0.3em] text-[#0B2EA8] mb-4">Our Work</h2>
+              <h2 className="text-sm font-black uppercase tracking-[0.3em] text-[#0B2EA8] mb-4">{translate("Our Work")}</h2>
               <h3 className="text-4xl md:text-6xl lg:text-[70px] font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase leading-none pb-2">
-                Portfolio
+                {translate("Portfolio")}
               </h3>
             </div>
-            <Link href="#" className="hidden md:inline-flex items-center gap-2 text-[#0B2EA8] font-black uppercase tracking-wider text-sm hover:gap-3 transition-all">
-              View All Work <ArrowRight className="w-4 h-4" />
+            <Link href={`/${locale}/contact`} className="inline-flex items-center gap-2.5 px-6 py-3 rounded-none bg-[#0A1A4E] text-white font-black uppercase tracking-wider text-xs hover:bg-[#0B2EA8] hover:scale-105 transition-all duration-300 shadow-md">
+              {translate("Start Your Project")} <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
-        </div>
-        
-        {/* Full width scroll container */}
-        <div className="w-full relative z-10">
-          <div className="absolute inset-y-0 left-0 w-8 md:w-32 bg-gradient-to-r from-white to-transparent z-20 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-8 md:w-32 bg-gradient-to-l from-white to-transparent z-20 pointer-events-none" />
 
-          <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 px-4 md:px-8 xl:px-[calc((100%-1400px)/2+1rem)] pb-12 pt-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-            {portfolioImages.map((src, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="flex-none w-[90vw] sm:w-[70vw] md:w-[60vw] lg:w-[650px] aspect-video bg-slate-100 rounded-[2rem] border border-slate-200 relative overflow-hidden group cursor-pointer shadow-sm hover:shadow-[0_20px_40px_rgba(11,46,168,0.15)] transition-all duration-500 snap-center"
-              >
-                <img 
-                  src={src} 
-                  alt={`Portfolio Studio ${i + 1}`}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1A4E]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
-                  <div className="w-16 h-16 rounded-full bg-white backdrop-blur-md flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-500 delay-100">
-                    <Play className="w-6 h-6 text-[#0B2EA8] ml-1" />
+          {/* Three Lines/Rows, one by one */}
+          <div className="flex flex-col gap-20 md:gap-28">
+            {segments.map((seg) => (
+              <div key={seg.id} className="relative w-full border-b border-slate-100/80 pb-16 last:border-b-0 last:pb-0">
+                
+                {/* Segment Title & Controls */}
+                <div className="px-1 mb-8 flex items-center justify-between">
+                  <div className="flex items-baseline gap-4">
+                    <h4 className="text-2xl md:text-3xl font-black font-heading text-[#0A1A4E] uppercase tracking-tight">
+                      {translate(seg.name)}
+                    </h4>
+                    <span className="text-[10px] font-black uppercase tracking-widest text-[#0B2EA8] bg-blue-50 px-2.5 py-1 border border-blue-100/30">
+                      {seg.images.length} {translate("Photos")}
+                    </span>
+                  </div>
+
+                  {/* Navigation Arrows (Square Design) */}
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => scrollRow(seg.id, "left")}
+                      className="w-10 h-10 border border-slate-200 bg-white flex items-center justify-center text-[#0A1A4E] hover:border-[#0B2EA8] hover:text-[#0B2EA8] transition-colors rounded-none shadow-sm active:scale-95"
+                      aria-label="Scroll Left"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={() => scrollRow(seg.id, "right")}
+                      className="w-10 h-10 border border-slate-200 bg-white flex items-center justify-center text-[#0A1A4E] hover:border-[#0B2EA8] hover:text-[#0B2EA8] transition-colors rounded-none shadow-sm active:scale-95"
+                      aria-label="Scroll Right"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
                   </div>
                 </div>
-              </motion.div>
+
+                {/* Horizontal Scroll Area */}
+                <div className="w-full relative">
+                  {/* Left & Right gradient overlays for smooth fade effect */}
+                  <div className="absolute inset-y-0 left-0 w-8 md:w-24 bg-gradient-to-r from-[#F8FAFF] via-transparent to-transparent z-10 pointer-events-none" />
+                  <div className="absolute inset-y-0 right-0 w-8 md:w-24 bg-gradient-to-l from-[#F8FAFF] via-transparent to-transparent z-10 pointer-events-none" />
+
+                  <div 
+                    ref={rowRefs[seg.id] as any}
+                    className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 pt-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                  >
+                    {seg.images.map((img, i) => (
+                      <PortfolioCard
+                        key={`${seg.id}-card-${i}`}
+                        src={img.src}
+                        fallbackSrc={img.fallback}
+                        alt={img.alt}
+                        onSelect={() => setSelectedImage(img.src)}
+                      />
+                    ))}
+                    <div className="flex-none w-12" /> {/* Right spacer */}
+                  </div>
+                </div>
+
+              </div>
             ))}
           </div>
+
         </div>
       </section>
 
-      {/* ─── TESTIMONIALS (Clean White/Blue Theme) ─── */}
-      <section className="py-24 md:py-36 bg-[#F8FAFF] relative overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(11,46,168,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(11,46,168,0.025)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
+      {/* ─── LIGHTBOX MODAL ─── */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 z-[1000] bg-black/95 backdrop-blur-md flex items-center justify-center p-4 md:p-8 cursor-zoom-out"
+          >
+            {/* Close Button (Square Design) */}
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 md:top-8 md:right-8 w-12 h-12 bg-white/10 hover:bg-white/20 border border-white/20 text-white flex items-center justify-center transition-colors rounded-none"
+              aria-label="Close Lightbox"
+            >
+              <svg className="w-6 h-6 stroke-current stroke-[1.5]" fill="none" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
 
-        <div className="container mx-auto px-4 md:px-8 max-w-[1400px] relative z-10">
-          <div className="text-center mb-16 md:mb-20">
+            {/* Image display */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0B2EA8] mb-5"
+              initial={{ scale: 0.95, y: 15 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 15 }}
+              transition={{ type: "spring", stiffness: 350, damping: 28 }}
+              className="relative max-w-5xl max-h-[85vh] aspect-auto overflow-hidden border border-white/10 bg-black/50"
+              onClick={(e) => e.stopPropagation()}
             >
-              <span className="flex h-1.5 w-1.5 rounded-full bg-blue-300 animate-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white">Words of Trust</span>
+              <img
+                src={selectedImage}
+                alt="Selected Portfolio Work"
+                className="w-auto h-auto max-w-full max-h-[85vh] object-contain select-none"
+              />
             </motion.div>
-            <motion.h2
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-4xl md:text-6xl lg:text-[68px] font-black font-heading tracking-tighter leading-[0.95] text-[#0A1A4E] uppercase"
-            >
-              Don't Just Take<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-400">Our Word For It</span>
-            </motion.h2>
-          </div>
-        </div>
-        
-        <div className="w-full relative z-10">
-          <div className="absolute inset-y-0 left-0 w-8 md:w-20 bg-gradient-to-r from-[#F8FAFF] to-transparent z-20 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-8 md:w-20 bg-gradient-to-l from-[#F8FAFF] to-transparent z-20 pointer-events-none" />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 px-4 md:px-8 xl:px-[calc((100%-1400px)/2+2rem)] pb-12 pt-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-            {testimonials.map((t, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, x: 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: Math.min(idx * 0.1, 0.3), duration: 0.6, ease: "easeOut" }}
-                className="flex-none w-[85vw] sm:w-[60vw] md:w-[45vw] lg:w-[400px] snap-center group relative flex flex-col bg-white backdrop-blur-md rounded-[32px] border border-blue-100/50 p-8 md:p-10 overflow-hidden
-                  shadow-[0_8px_32px_rgba(11,46,168,0.04)]
-                  hover:shadow-[0_24px_64px_rgba(11,46,168,0.12)]
-                  hover:-translate-y-2 transition-all duration-500 ease-out"
-              >
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${t.gradient}`} />
-                <div className="mb-6">
-                  <div className={`w-10 h-10 rounded-2xl bg-gradient-to-br ${t.gradient} flex items-center justify-center`}>
-                    <Quote className="w-4 h-4 text-white" />
-                  </div>
-                </div>
-                <div className="flex gap-1 mb-5">
-                  {[...Array(t.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-blue-400 text-blue-400" />
-                  ))}
-                </div>
-                <p className="text-[#0B2EA8]/80 text-lg md:text-xl italic leading-relaxed mb-auto grow font-medium tracking-tight">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                <div className="mt-8 pt-6 border-t border-blue-50 flex items-center gap-4">
-                  <div className={`w-11 h-11 rounded-2xl bg-gradient-to-br ${t.gradient} flex items-center justify-center text-white font-black text-sm shrink-0`}>
-                    {t.initials}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h4 className="text-[#0B2EA8] font-black text-base leading-tight truncate tracking-tight">{t.name}</h4>
-                    <p className="text-blue-600/60 text-xs font-bold uppercase tracking-wider mt-0.5 truncate">{t.role}</p>
-                  </div>
-                  <span className={`text-[9px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full ${t.tagColor} border border-current/20 shrink-0`}>
-                    ✓ Verified
-                  </span>
-                </div>
-                <div className={`absolute -bottom-8 -right-8 w-36 h-36 bg-gradient-to-br ${t.gradient} opacity-0 group-hover:opacity-5 blur-[40px] rounded-full transition-opacity duration-500`} />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
     </main>
   );
 }

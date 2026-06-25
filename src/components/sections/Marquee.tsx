@@ -44,6 +44,7 @@ const contentPartners = [
   { name: "Yuvaa",                  domain: "yuvaa.co.in",         slug: "yuvaa" },
   { name: "Real Hit",               domain: "realhit.in",          slug: "real-hit" },
   { name: "Content Ka Keeda",       domain: "graphy.com",          slug: "content-ka-keeda" },
+  { name: "TVF",                    domain: "theviralfever.com",   slug: "tvf" },
 ];
 
 function BrandLogo({ item, type, size = "md" }: { item: { name: string; domain: string; slug: string }; type: string; size?: "sm" | "md" | "lg" | "xl" }) {
@@ -173,16 +174,16 @@ export function Marquee({ type, dict, title }: MarqueeProps) {
               className="text-sm md:text-base text-blue-800/65 font-medium max-w-sm md:text-right leading-relaxed [&_strong]:text-[#0B2EA8] [&_strong]:font-bold"
               dangerouslySetInnerHTML={{
                 __html: isBrands
-                  ? "<strong>India's Leading Influencer Marketing Agency</strong> for Creator Partnerships, Brand Campaigns, and Measurable Growth."
-                  : "We collaborate with India's top <strong>digital content studios</strong> to produce and distribute high-performing content across digital platforms.",
+                  ? "<strong>India's Leading Influencer Marketing Agency for Creator Partnerships,</strong> Brand Campaigns, and Measurable Growth."
+                  : "Trusted by top content creators and media brands to manage content libraries, optimize distribution, and unlock new revenue opportunities.",
               }}
             />
             <div className="flex items-baseline gap-2 mt-1">
               <span className="text-3xl md:text-4xl font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-blue-500">
-                {isBrands ? "29+" : "6+"}
+                {isBrands ? "29+" : "7+"}
               </span>
               <span className="text-xs font-bold text-blue-800/50 uppercase tracking-widest">
-                {isBrands ? "Brand Partners" : "Studio Partners"}
+                {isBrands ? "Brand Partners" : "Content Partners"}
               </span>
             </div>
           </motion.div>

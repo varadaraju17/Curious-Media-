@@ -54,10 +54,11 @@ export function Navbar({ dict, locale }: NavProps) {
         <div className="flex items-center justify-between">
 
           {/* Logo */}
-          <Link href={`/${locale}`} className="group relative text-xl md:text-2xl font-black font-heading tracking-tighter text-[#0B2EA8] z-10 shrink-0">
-            CURIOUS
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-sky-300">.</span>
-            <span className="absolute -bottom-0.5 left-0 w-0 h-[2px] bg-gradient-to-r from-blue-400 to-sky-300 group-hover:w-full transition-all duration-300 rounded-full" />
+          <Link href={`/${locale}`} className="group relative z-10 shrink-0 flex items-center gap-3">
+            <img src="/images/logo.png" alt="Curious Media Logo" className="h-14 md:h-18 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+            <span className="text-lg md:text-xl font-black uppercase tracking-wider text-[#0A1A4E] group-hover:text-[#0B2EA8] transition-colors duration-300 font-heading">
+              Curious Media
+            </span>
           </Link>
 
           {/* Desktop Nav */}
@@ -105,8 +106,8 @@ export function Navbar({ dict, locale }: NavProps) {
 
                   {isActive && (
                     <motion.div
-                      layoutId="nav-underline"
-                      className="absolute bottom-0 left-4 right-4 h-[2px] bg-[#0B2EA8] rounded-full"
+                       layoutId="nav-underline"
+                      className="absolute bottom-0 left-4 right-4 h-[2px] bg-[#0B2EA8] rounded-none"
                       transition={{ type: "spring", stiffness: 400, damping: 30 }}
                     />
                   )}
@@ -138,15 +139,15 @@ export function Navbar({ dict, locale }: NavProps) {
               href={pathname.replace(`/${locale}`, `/${locale === 'en' ? 'hi' : 'en'}`)}
               className="px-4 py-2 rounded-full text-slate-600 hover:text-[#0B2EA8] hover:bg-blue-50 transition-all text-xs font-bold uppercase tracking-widest border border-slate-200"
             >
-              {locale === 'en' ? 'HI' : 'EN'}
+              {locale === 'en' ? 'हिन्दी' : 'English'}
             </Link>
             <Link
               href={`/${locale}/contact`}
               id="nav-contact-btn"
-            className="group relative px-6 py-2.5 rounded-full text-white text-sm font-bold overflow-hidden transition-all duration-300 shadow-[0_4px_14px_rgba(11,46,168,0.2)] hover:shadow-[0_6px_20px_rgba(11,46,168,0.3)] hover:-translate-y-0.5"
+              className="group relative px-6 py-2.5 rounded-full text-white text-sm font-bold overflow-hidden transition-all duration-300 shadow-[0_4px_14px_rgba(11,46,168,0.2)] hover:shadow-[0_6px_20px_rgba(11,46,168,0.3)] hover:-translate-y-0.5"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0B2EA8] to-blue-500" />
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-sky-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0B2EA8] to-blue-500 rounded-full" />
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-sky-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
               <span className="relative z-10">{dict.nav.contact}</span>
             </Link>
           </div>
@@ -188,7 +189,7 @@ export function Navbar({ dict, locale }: NavProps) {
                     <Link
                       href={link.href}
                       onClick={() => setIsOpen(false)}
-                      className={`text-base font-bold py-3 px-4 rounded-xl transition-all flex items-center justify-between ${
+                      className={`text-base font-bold py-3 px-4 rounded-none transition-all flex items-center justify-between ${
                         isActive ? 'bg-blue-50 text-[#0B2EA8]' : 'text-slate-600 hover:text-[#0B2EA8] hover:bg-blue-50/50'
                       }`}
                     >
@@ -196,7 +197,7 @@ export function Navbar({ dict, locale }: NavProps) {
                     </Link>
                   ) : (
                     <div
-                      className={`text-base font-bold py-3 px-4 rounded-xl transition-all flex items-center justify-between cursor-pointer ${
+                      className={`text-base font-bold py-3 px-4 rounded-none transition-all flex items-center justify-between cursor-pointer ${
                         isActive ? 'bg-blue-50 text-[#0B2EA8]' : 'text-slate-600 hover:text-[#0B2EA8] hover:bg-blue-50/50'
                       }`}
                     >
@@ -210,7 +211,7 @@ export function Navbar({ dict, locale }: NavProps) {
                           key={sub.href}
                           href={sub.href}
                           onClick={() => setIsOpen(false)}
-                          className="text-sm font-semibold py-2.5 px-3 rounded-lg text-slate-600 hover:text-[#0B2EA8] hover:bg-blue-50/50 transition-all"
+                          className="text-sm font-semibold py-2.5 px-3 rounded-none text-slate-600 hover:text-[#0B2EA8] hover:bg-blue-50/50 transition-all"
                         >
                           {sub.name}
                         </Link>
@@ -224,14 +225,14 @@ export function Navbar({ dict, locale }: NavProps) {
               <Link
                 href={pathname.replace(`/${locale}`, `/${locale === 'en' ? 'hi' : 'en'}`)}
                 onClick={() => setIsOpen(false)}
-                className="flex-1 py-3 text-center rounded-xl border border-blue-200 text-blue-700 font-bold uppercase hover:bg-blue-50 text-sm transition-all"
+                className="flex-1 py-3 text-center rounded-full border border-blue-200 text-blue-700 font-bold uppercase hover:bg-blue-50 text-sm transition-all"
               >
                 {locale === 'en' ? 'हिन्दी' : 'English'}
               </Link>
               <Link
                 href={`/${locale}/contact`}
                 onClick={() => setIsOpen(false)}
-                className="flex-1 py-3 text-center rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold text-sm shadow-[0_0_20px_rgba(37,99,235,0.45)]"
+                className="flex-1 py-3 text-center rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold text-sm shadow-[0_0_20px_rgba(37,99,235,0.45)]"
               >
                 {dict.nav.contact}
               </Link>

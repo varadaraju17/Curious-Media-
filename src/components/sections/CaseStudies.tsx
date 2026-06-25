@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Eye, TrendingUp, Users, Zap, RotateCw, ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowUpRight, Eye, TrendingUp, Users, Zap, RotateCw, ArrowLeft, ArrowRight, Award } from "lucide-react";
 
 const campaigns = [
   {
@@ -54,6 +54,7 @@ const campaigns = [
       { label: "Committed", value: "20M+", icon: <Eye className="w-3.5 h-3.5" /> },
       { label: "Delivered", value: "100M+", icon: <TrendingUp className="w-3.5 h-3.5" /> },
       { label: "Engagement", value: ">7%", icon: <Users className="w-3.5 h-3.5" /> },
+      { label: "Status", value: "🏆 Award-Winning Campaign", icon: <Award className="w-3.5 h-3.5" /> },
     ],
     slug: "travis-scott-india",
     images: [
@@ -176,6 +177,44 @@ const campaigns = [
 ];
 
 export function CaseStudies({ dict }: { dict: any }) {
+  const isHindi = dict.case_studies.badge !== "Proven Impact";
+  const translateText = (text: string) => {
+    if (!isHindi) return text;
+    const map: Record<string, string> = {
+      // Labels
+      "Committed": "प्रतिबद्ध",
+      "Delivered": "वितरित",
+      "Engagement": "जुड़ाव",
+      "Status": "स्थिति",
+      "Influencers": "इन्फ्लुएंसर्स",
+      "CPV": "सीपीवी (CPV)",
+      
+      // Values
+      "🏆 Award-Winning Campaign": "🏆 पुरस्कार विजेता अभियान",
+      
+      // Brands
+      "TVF": "टीवीएफ",
+      "Girliyapa": "गिर्लियापा",
+      "Travis Scott": "ट्रेविस स्कॉट",
+      "Balaji Telefilms": "बालाजी टेलीफिल्म्स",
+      "Influencer Marketing": "इन्फ्लुएंसर मार्केटिंग",
+      "Nykaa": "नायका",
+      "Motion Class": "मोशन क्लास",
+      "Alright": "ऑलराइट",
+      
+      // Titles
+      "Space Gen": "स्पेस जेन",
+      "Medical Dreams": "मेडिकल ड्रीम्स",
+      "India Tour": "इंडिया टूर",
+      "Pyaar ki Raahein": "प्यार की राहें",
+      "AstroTalk": "एस्ट्रोटॉक",
+      "Pink Sale": "पिंक सेल",
+      "Motion Class Campaign": "मोशन क्लास कैंपेन",
+      "Collage Days": "कोलाज डेज़"
+    };
+    return map[text] || text;
+  };
+
   const scrollRef = useRef<HTMLDivElement>(null);
   // Store the active image index for each campaign card
   const [activeImageIndexes, setActiveImageIndexes] = useState<number[]>(new Array(campaigns.length).fill(0));
@@ -286,18 +325,18 @@ export function CaseStudies({ dict }: { dict: any }) {
                       <span className="text-xs font-black tracking-[0.3em] text-white/40 uppercase font-heading">{campaign.num}</span>
                       <div className={`flex items-center gap-2 px-4 py-2 rounded-full border text-[10px] font-black uppercase tracking-widest ${campaign.tagBg} backdrop-blur-md shadow-lg`}>
                         <span className={`w-2 h-2 rounded-full bg-gradient-to-r ${campaign.gradient} shadow-[0_0_10px_rgba(255,255,255,0.5)]`} />
-                        {campaign.brand}
+                        {translateText(campaign.brand)}
                       </div>
                     </div>
-
+ 
                     {/* Bottom content */}
                     <div className="mt-auto relative">
                       
                       {/* Title */}
                       <h3 className="text-3xl md:text-4xl font-black font-heading tracking-tight text-white mb-6 leading-none transition-transform duration-500 group-hover:-translate-y-1 drop-shadow-lg">
-                        {campaign.title}
+                        {translateText(campaign.title)}
                       </h3>
-
+ 
                       {/* Premium Glassmorphic Metrics */}
                       <div className={`rounded-3xl bg-white/25 border border-white/30 backdrop-blur-xl shadow-xl divide-y divide-white/10 mb-6 group-hover:bg-white/35 transition-all duration-500 overflow-hidden`}>
                         {campaign.metrics.map((metric, j) => (
@@ -307,10 +346,10 @@ export function CaseStudies({ dict }: { dict: any }) {
                           >
                             <div className="flex items-center gap-3">
                               <span className={`${campaign.accentText} bg-black/35 p-1.5 rounded-lg`}>{metric.icon}</span>
-                              <span className="text-[10px] font-black text-white uppercase tracking-[0.15em]">{metric.label}</span>
+                              <span className="text-[10px] font-black text-white uppercase tracking-[0.15em]">{translateText(metric.label)}</span>
                             </div>
                             <span className="text-base font-black text-white filter drop-shadow-md">
-                              {metric.value}
+                              {translateText(metric.value)}
                             </span>
                           </div>
                         ))}

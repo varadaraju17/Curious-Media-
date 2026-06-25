@@ -9,6 +9,7 @@ import Image from "next/image";
 export default function ProductsComingSoonPage() {
   const params = useParams();
   const locale = params.locale as string;
+  const isHindi = locale === "hi";
 
   return (
     <main className="flex-1 w-full bg-white relative overflow-hidden min-h-screen flex flex-col items-center justify-center pt-24 pb-12">
@@ -27,7 +28,9 @@ export default function ProductsComingSoonPage() {
           className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-blue-50 border border-blue-100 mb-12 shadow-sm"
         >
           <ShoppingBag className="w-4 h-4 text-[#0B2EA8]" />
-          <span className="text-xs font-black tracking-[0.25em] uppercase text-[#0B2EA8]">Curious Products</span>
+          <span className="text-xs font-black tracking-[0.25em] uppercase text-[#0B2EA8]">
+            {isHindi ? "क्यूरियस प्रोडक्ट्स" : "Curious Product"}
+          </span>
         </motion.div>
 
         <motion.h1 
@@ -36,8 +39,17 @@ export default function ProductsComingSoonPage() {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="text-[3rem] sm:text-6xl md:text-8xl lg:text-[100px] font-black font-heading tracking-tighter leading-tight mb-8 uppercase"
         >
-          <span className="text-[#0A1A4E]">COMING </span>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-500">SOON.</span>
+          {isHindi ? (
+            <>
+              <span className="text-[#0A1A4E]">जल्द </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-500">आ रहा है।</span>
+            </>
+          ) : (
+            <>
+              <span className="text-[#0A1A4E]">COMING </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-500">SOON.</span>
+            </>
+          )}
         </motion.h1>
 
         <motion.p
@@ -46,7 +58,9 @@ export default function ProductsComingSoonPage() {
           transition={{ delay: 0.4, duration: 0.8 }}
           className="text-base md:text-xl text-slate-500 max-w-4xl mx-auto mb-12 font-medium leading-relaxed"
         >
-          Engineering the next frontier of AI Creative Tools. We are building powerful <br className="hidden md:block" /> AI agents to automate your poster creation, video production, and brand identity.
+          {isHindi 
+            ? "एआई क्रिएटिव टूल्स की अगली सीमा का निर्माण। हम आपकी पोस्टर निर्माण, वीडियो उत्पादन और ब्रांड पहचान को स्वचालित करने के लिए शक्तिशाली एआई एजेंट बना रहे हैं।"
+            : "Engineering the next frontier of AI Creative Tools. We are building powerful AI agents to automate your poster creation, video production, and brand identity."}
         </motion.p>
 
         {/* Poster Image */}
@@ -58,7 +72,7 @@ export default function ProductsComingSoonPage() {
         >
           <Image 
             src="/ai_products_coming_soon_poster_1778929928727.png" 
-            alt="Coming Soon AI Products" 
+            alt={isHindi ? "जल्द आ रहे एआई उत्पाद" : "Coming Soon AI Products"} 
             fill
             className="object-cover"
           />
@@ -76,14 +90,18 @@ export default function ProductsComingSoonPage() {
             className="group relative inline-flex items-center gap-4 px-10 py-5 bg-[#0A1A4E] text-white font-black uppercase tracking-[0.2em] text-sm rounded-full overflow-hidden transition-all duration-500 hover:scale-[1.02] shadow-[0_20px_40px_rgba(10,26,78,0.2)]"
           >
             <ArrowLeft className="w-4 h-4 transition-transform duration-500 group-hover:-translate-x-1" />
-            <span className="relative z-10">Back to Home</span>
+            <span className="relative z-10">
+              {isHindi ? "मुख्य पृष्ठ पर वापस" : "Back to Home"}
+            </span>
           </Link>
           
           <Link 
             href={`/${locale}/contact`}
             className="group relative inline-flex items-center gap-4 px-10 py-5 text-[#0A1A4E] font-black uppercase tracking-[0.2em] text-sm rounded-full border-2 border-[#0A1A4E] transition-all duration-500 hover:bg-[#0A1A4E] hover:text-white"
           >
-            <span className="relative z-10">Notify Me</span>
+            <span className="relative z-10">
+              {isHindi ? "मुझे सूचित करें" : "Notify Me"}
+            </span>
             <Clock className="w-4 h-4" />
           </Link>
         </motion.div>

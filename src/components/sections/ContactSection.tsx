@@ -2,8 +2,82 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Mail, Phone, MapPin } from "lucide-react";
+import { useState } from "react";
 
 export function ContactSection({ dict }: { dict: any }) {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    subject: "brand_deals",
+    message: "",
+  });
+
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const validate = () => {
+    const tempErrors: Record<string, string> = {};
+
+    if (!formData.name.trim()) {
+      tempErrors.name = dict.contact.validation_name;
+    }
+
+    if (!formData.email.trim()) {
+      tempErrors.email = dict.contact.validation_email;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      tempErrors.email = dict.contact.validation_email;
+    }
+
+    const cleanPhone = formData.phone.replace(/\D/g, "");
+    if (!formData.phone.trim()) {
+      tempErrors.phone = dict.contact.validation_phone;
+    } else if (cleanPhone.length !== 10) {
+      tempErrors.phone = dict.contact.validation_phone;
+    }
+
+    if (!formData.message.trim()) {
+      tempErrors.message = dict.contact.validation_message;
+    }
+
+    setErrors(tempErrors);
+    return Object.keys(tempErrors).length === 0;
+  };
+
+  const handleChange = (field: string, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    if (errors[field]) {
+      setErrors((prev) => {
+        const next = { ...prev };
+        delete next[field];
+        return next;
+      });
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validate()) return;
+
+    setLoading(true);
+    // Simulate API call
+    setTimeout(() => {
+      setLoading(false);
+      setSuccess(true);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        subject: "brand_deals",
+        message: "",
+      });
+      setErrors({});
+      setTimeout(() => setSuccess(false), 5000);
+    }, 1500);
+  };
   return (
     <>
       {/* ── Contact Form Section ── */}
@@ -47,7 +121,7 @@ export function ContactSection({ dict }: { dict: any }) {
                     <Mail className="w-4 h-4 text-[#0B2EA8] group-hover:text-white transition-colors duration-300" />
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase tracking-[0.2em] font-black text-blue-800/40 mb-0.5">Direct Email</p>
+                    <p className="text-[10px] uppercase tracking-[0.2em] font-black text-blue-800/40 mb-0.5">{dict.contact.direct_email}</p>
                     <p className="text-[#0B2EA8] font-bold text-sm">info@curiousmedia.in</p>
                   </div>
                 </a>
@@ -63,12 +137,12 @@ export function ContactSection({ dict }: { dict: any }) {
                     <Phone className="w-4 h-4 text-[#0B2EA8] group-hover:text-white transition-colors duration-300" />
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase tracking-[0.2em] font-black text-blue-800/40 mb-0.5">WhatsApp / Phone</p>
+                    <p className="text-[10px] uppercase tracking-[0.2em] font-black text-blue-800/40 mb-0.5">{dict.contact.whatsapp_phone}</p>
                     <p className="text-[#0B2EA8] font-bold text-sm">+91 83750 70191</p>
                   </div>
                 </a>
 
-                <a href="https://maps.google.com/?q=Office+305,+3rd+Floor,+VDS+Building,+H-159,+Sector-63,+Noida+-+201301"
+                <a href="https://maps.google.com/?q=Sector+63,+Noida+-+201301"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-start gap-4 p-5 rounded-2xl bg-white border border-blue-100
@@ -79,31 +153,15 @@ export function ContactSection({ dict }: { dict: any }) {
                     <MapPin className="w-4 h-4 text-[#0B2EA8] group-hover:text-white transition-colors duration-300" />
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase tracking-[0.2em] font-black text-blue-800/40 mb-0.5">Operating Office</p>
-                    <p className="text-[#0B2EA8] font-bold text-sm leading-snug">Office 305, 3rd Floor, VDS Building, H-159, Sector-63, Noida - 201301</p>
-                  </div>
-                </a>
-
-                <a href="https://maps.google.com/?q=M-153,+MP+Enclave,+Near+Shastri+Nagar,+Ghaziabad,+Uttar+Pradesh+-+201002"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-start gap-4 p-5 rounded-2xl bg-white border border-blue-100
-                    shadow-[0_2px_12px_rgba(11,46,168,0.05)]
-                    hover:shadow-[0_8px_30px_rgba(11,46,168,0.12)] hover:border-blue-300 hover:-translate-y-0.5 transition-all duration-300"
-                >
-                  <div className="w-11 h-11 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-[#0B2EA8] transition-colors duration-300 shrink-0">
-                    <MapPin className="w-4 h-4 text-[#0B2EA8] group-hover:text-white transition-colors duration-300" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] uppercase tracking-[0.2em] font-black text-blue-800/40 mb-0.5">Registered Address</p>
-                    <p className="text-[#0B2EA8] font-bold text-sm leading-snug">M-153, MP Enclave, Near Shastri Nagar, Ghaziabad, UP - 201002</p>
+                    <p className="text-[10px] uppercase tracking-[0.2em] font-black text-blue-800/40 mb-0.5">{dict.contact.operating_office}</p>
+                    <p className="text-[#0B2EA8] font-bold text-sm leading-snug">Sector 63, Noida- 201301</p>
                   </div>
                 </a>
               </div>
 
               {/* Social Proof */}
               <div className="rounded-2xl bg-[#F8FAFF] border border-blue-100 p-5">
-                <p className="text-[10px] font-black uppercase tracking-[0.25em] text-blue-800/40 mb-4">Trusted by 29+ brands across India</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.25em] text-blue-800/40 mb-4">{dict.contact.trusted_brands}</p>
                 <div className="flex items-center gap-3">
                   {["TVF", "Nykaa", "AstroTalk", "Lenskart", "ZEE5"].map((b) => (
                     <span key={b} className="text-[9px] font-black uppercase tracking-wider bg-white border border-blue-100 text-[#0B2EA8] px-2.5 py-1.5 rounded-full">
@@ -126,72 +184,126 @@ export function ContactSection({ dict }: { dict: any }) {
                 shadow-[0_8px_40px_rgba(11,46,168,0.08)]"
               >
                 <h3 className="text-xl font-black font-heading tracking-tight text-[#0B2EA8] mb-7">
-                  Send us a message
+                  {dict.contact.send_message}
                 </h3>
 
-                <form className="flex flex-col gap-5">
+                <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    {/* Name Input */}
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-[10px] uppercase tracking-[0.2em] font-black text-[#0B2EA8]">Name</label>
-                      <input type="text" id="contact-name" placeholder="John Doe"
-                        className="w-full bg-[#F8FAFF] border border-blue-100 rounded-2xl px-4 py-3.5 text-[#0B2EA8] text-sm font-medium placeholder:text-blue-800/25
-                          focus:outline-none focus:border-blue-400 focus:bg-white focus:shadow-[0_0_0_4px_rgba(11,46,168,0.08)] transition-all"
+                      <label className="text-[10px] uppercase tracking-[0.2em] font-black text-[#0B2EA8]">{dict.contact.name}</label>
+                      <input 
+                        type="text" 
+                        value={formData.name}
+                        onChange={(e) => handleChange("name", e.target.value)}
+                        placeholder={dict.contact.fullname_placeholder}
+                        className={`w-full bg-[#F8FAFF] border rounded-2xl px-4 py-3.5 text-[#0B2EA8] text-sm font-medium placeholder:text-blue-800/25
+                          focus:outline-none focus:border-blue-400 focus:bg-white focus:shadow-[0_0_0_4px_rgba(11,46,168,0.08)] transition-all ${
+                            errors.name ? "border-red-500 bg-red-50/10 focus:border-red-500" : "border-blue-100"
+                          }`}
                       />
+                      {errors.name && (
+                        <span className="text-[10px] text-red-500 font-bold ml-2">{errors.name}</span>
+                      )}
                     </div>
+
+                    {/* Email Input */}
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-[10px] uppercase tracking-[0.2em] font-black text-[#0B2EA8]">Email</label>
-                      <input type="email" id="contact-email" placeholder="john@example.com"
+                      <label className="text-[10px] uppercase tracking-[0.2em] font-black text-[#0B2EA8]">{dict.contact.email_label}</label>
+                      <input 
+                        type="email" 
+                        value={formData.email}
+                        onChange={(e) => handleChange("email", e.target.value)}
+                        placeholder={dict.contact.email_placeholder}
+                        className={`w-full bg-[#F8FAFF] border rounded-2xl px-4 py-3.5 text-[#0B2EA8] text-sm font-medium placeholder:text-blue-800/25
+                          focus:outline-none focus:border-blue-400 focus:bg-white focus:shadow-[0_0_0_4px_rgba(11,46,168,0.08)] transition-all ${
+                            errors.email ? "border-red-500 bg-red-50/10 focus:border-red-500" : "border-blue-100"
+                          }`}
+                      />
+                      {errors.email && (
+                        <span className="text-[10px] text-red-500 font-bold ml-2">{errors.email}</span>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    {/* Phone Input */}
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-[10px] uppercase tracking-[0.2em] font-black text-[#0B2EA8]">{dict.contact.phone_label}</label>
+                      <input 
+                        type="tel" 
+                        value={formData.phone}
+                        onChange={(e) => handleChange("phone", e.target.value)}
+                        placeholder={dict.contact.phone_placeholder}
+                        className={`w-full bg-[#F8FAFF] border rounded-2xl px-4 py-3.5 text-[#0B2EA8] text-sm font-medium placeholder:text-blue-800/25
+                          focus:outline-none focus:border-blue-400 focus:bg-white focus:shadow-[0_0_0_4px_rgba(11,46,168,0.08)] transition-all ${
+                            errors.phone ? "border-red-500 bg-red-50/10 focus:border-red-500" : "border-blue-100"
+                          }`}
+                      />
+                      {errors.phone && (
+                        <span className="text-[10px] text-red-500 font-bold ml-2">{errors.phone}</span>
+                      )}
+                    </div>
+
+                    {/* Company Input */}
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-[10px] uppercase tracking-[0.2em] font-black text-[#0B2EA8]">{dict.contact.company_label}</label>
+                      <input 
+                        type="text" 
+                        value={formData.company}
+                        onChange={(e) => handleChange("company", e.target.value)}
+                        placeholder={dict.contact.company_placeholder}
                         className="w-full bg-[#F8FAFF] border border-blue-100 rounded-2xl px-4 py-3.5 text-[#0B2EA8] text-sm font-medium placeholder:text-blue-800/25
                           focus:outline-none focus:border-blue-400 focus:bg-white focus:shadow-[0_0_0_4px_rgba(11,46,168,0.08)] transition-all"
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-[10px] uppercase tracking-[0.2em] font-black text-[#0B2EA8]">Phone</label>
-                      <input type="tel" id="contact-phone" placeholder="+91 90000 00000"
-                        className="w-full bg-[#F8FAFF] border border-blue-100 rounded-2xl px-4 py-3.5 text-[#0B2EA8] text-sm font-medium placeholder:text-blue-800/25
-                          focus:outline-none focus:border-blue-400 focus:bg-white focus:shadow-[0_0_0_4px_rgba(11,46,168,0.08)] transition-all"
-                      />
-                    </div>
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-[10px] uppercase tracking-[0.2em] font-black text-[#0B2EA8]">Company / Website</label>
-                      <input type="text" id="contact-company" placeholder="yourbrand.com"
-                        className="w-full bg-[#F8FAFF] border border-blue-100 rounded-2xl px-4 py-3.5 text-[#0B2EA8] text-sm font-medium placeholder:text-blue-800/25
-                          focus:outline-none focus:border-blue-400 focus:bg-white focus:shadow-[0_0_0_4px_rgba(11,46,168,0.08)] transition-all"
-                      />
-                    </div>
-                  </div>
-
+                  {/* Subject Selection */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] uppercase tracking-[0.2em] font-black text-[#0B2EA8]">Query / Subject</label>
-                    <select id="contact-subject"
+                    <label className="text-[10px] uppercase tracking-[0.2em] font-black text-[#0B2EA8]">{dict.contact.subject_label}</label>
+                    <select 
+                      value={formData.subject}
+                      onChange={(e) => handleChange("subject", e.target.value)}
                       className="w-full bg-[#F8FAFF] border border-blue-100 rounded-2xl px-4 py-3.5 text-[#0B2EA8] text-sm font-medium
                         focus:outline-none focus:border-blue-400 focus:bg-white focus:shadow-[0_0_0_4px_rgba(11,46,168,0.08)] transition-all appearance-none cursor-pointer"
                     >
-                      <option value="" disabled>Select a topic...</option>
-                      <option value="brand_deals">Brand Deals &amp; Sponsorships</option>
-                      <option value="content_monetization">Content Monetization</option>
-                      <option value="talent_management">Talent Management</option>
-                      <option value="general">General Inquiry</option>
+                      <option value="brand_deals">{dict.contact.opt_brand_deal}</option>
+                      <option value="content_monetization">{dict.contact.opt_content_mon}</option>
+                      <option value="talent_management">{dict.contact.opt_talent_mgt}</option>
+                      <option value="general">{dict.contact.opt_general}</option>
                     </select>
                   </div>
 
+                  {/* Message Input */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] uppercase tracking-[0.2em] font-black text-[#0B2EA8]">Write a note</label>
-                    <textarea id="contact-message" placeholder="Tell us about your goals..." rows={4}
-                      className="w-full bg-[#F8FAFF] border border-blue-100 rounded-2xl px-4 py-3.5 text-[#0B2EA8] text-sm font-medium placeholder:text-blue-800/25
-                        focus:outline-none focus:border-blue-400 focus:bg-white focus:shadow-[0_0_0_4px_rgba(11,46,168,0.08)] transition-all resize-none"
+                    <label className="text-[10px] uppercase tracking-[0.2em] font-black text-[#0B2EA8]">{dict.contact.message_label}</label>
+                    <textarea 
+                      value={formData.message}
+                      onChange={(e) => handleChange("message", e.target.value)}
+                      placeholder={dict.contact.message_placeholder} 
+                      rows={4}
+                      className={`w-full bg-[#F8FAFF] border rounded-2xl px-4 py-3.5 text-[#0B2EA8] text-sm font-medium placeholder:text-blue-800/25
+                        focus:outline-none focus:border-blue-400 focus:bg-white focus:shadow-[0_0_0_4px_rgba(11,46,168,0.08)] transition-all resize-none ${
+                          errors.message ? "border-red-500 bg-red-50/10 focus:border-red-500" : "border-blue-100"
+                        }`}
                     />
+                    {errors.message && (
+                      <span className="text-[10px] text-red-500 font-bold ml-2">{errors.message}</span>
+                    )}
                   </div>
 
-                  <button type="button" id="contact-submit"
-                    className="group relative w-full flex items-center justify-center gap-3 overflow-hidden rounded-2xl px-8 py-4 bg-[#0B2EA8] text-white font-black tracking-widest uppercase text-sm transition-all hover:scale-[1.01] hover:shadow-[0_12px_40px_rgba(11,46,168,0.35)] shadow-[0_4px_20px_rgba(11,46,168,0.25)]"
+                  {/* Submit Button */}
+                  <button 
+                    type="submit" 
+                    disabled={loading}
+                    className="group relative w-full flex items-center justify-center gap-3 overflow-hidden rounded-2xl px-8 py-4 bg-[#0B2EA8] text-white font-black tracking-widest uppercase text-sm transition-all hover:scale-[1.01] hover:shadow-[0_12px_40px_rgba(11,46,168,0.35)] shadow-[0_4px_20px_rgba(11,46,168,0.25)] disabled:opacity-80"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <span className="relative z-10">Submit Request</span>
-                    <ArrowRight className="relative z-10 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <span className="relative z-10 flex items-center gap-3">
+                      {loading ? dict.contact.btn_sending : success ? dict.contact.btn_sent : dict.contact.btn_submit_req}
+                      {!loading && !success && <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}
+                    </span>
                   </button>
                 </form>
               </div>
@@ -216,10 +328,10 @@ export function ContactSection({ dict }: { dict: any }) {
             className="mb-12"
           >
             <h2 className="text-5xl md:text-7xl lg:text-[90px] font-black font-heading tracking-tighter leading-none text-white mb-4">
-              Get in touch.
+              {dict.contact.get_in_touch}
             </h2>
             <p className="text-lg md:text-xl text-white/60 font-medium max-w-md mx-auto">
-              Only if you&apos;re ready to turn clicks into clients.
+              {dict.contact.clicks_clients}
             </p>
           </motion.div>
 

@@ -12,7 +12,7 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
       desc: dict.divisions.media.desc,
       icon: <TrendingUp className="w-5 h-5" />,
       statIcon: <BarChart3 className="w-3.5 h-3.5" />,
-      stat: "500+ Campaigns",
+      stat: locale === "hi" ? "500+ अभियान" : "500+ Campaigns",
       image: "/images/content/curious_media_1778392360428.png",
       gradient: "from-[#0B2EA8] to-blue-500",
       glowColor: "rgba(11,46,168,0.35)",
@@ -28,7 +28,7 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
       desc: dict.divisions.studio.desc,
       icon: <Film className="w-5 h-5" />,
       statIcon: <Play className="w-3.5 h-3.5" />,
-      stat: "4K Production",
+      stat: locale === "hi" ? "4K प्रोडक्शन" : "4K Production",
       image: "/images/content/curious_studio_1778392924817.png",
       gradient: "from-indigo-700 to-violet-500",
       glowColor: "rgba(99,102,241,0.35)",
@@ -44,7 +44,7 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
       desc: dict.divisions.music.desc,
       icon: <Music2 className="w-5 h-5" />,
       statIcon: <Disc className="w-3.5 h-3.5" />,
-      stat: "Top Charts",
+      stat: locale === "hi" ? "टॉप चार्ट्स" : "Top Charts",
       image: "/images/content/curious_music_1778392942223.png",
       gradient: "from-violet-700 to-fuchsia-500",
       glowColor: "rgba(139,92,246,0.35)",
@@ -60,7 +60,7 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
       desc: dict.divisions.products.desc,
       icon: <Sparkles className="w-5 h-5" />,
       statIcon: <BarChart3 className="w-3.5 h-3.5" />,
-      stat: "AI-Powered Tools",
+      stat: locale === "hi" ? "AI-संचालित टूल्स" : "AI-Powered Tools",
       image: "/images/content/curious_products_1778392374896.png",
       gradient: "from-sky-600 to-cyan-400",
       glowColor: "rgba(14,165,233,0.35)",
@@ -186,7 +186,9 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
 
                     {/* CTA row */}
                     <div className={`mt-5 pt-4 border-t border-white/10 flex items-center justify-between`}>
-                      <span className="text-xs font-bold text-white/35 uppercase tracking-widest group-hover:text-white/60 transition-colors duration-300">Explore</span>
+                      <span className="text-xs font-bold text-white/35 uppercase tracking-widest group-hover:text-white/60 transition-colors duration-300">
+                        {locale === "hi" ? "देखें" : "Explore"}
+                      </span>
                       <motion.div
                         whileHover={{ scale: 1.15 }}
                         className={`w-9 h-9 rounded-full bg-gradient-to-br ${div.gradient} flex items-center justify-center text-white shadow-lg`}

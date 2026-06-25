@@ -344,17 +344,6 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                 <ArrowRight className="relative z-10 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
 
-              <Link
-                href={`/${locale}#campaigns`}
-                className="inline-flex items-center gap-2 rounded-full
-                  border-2 border-slate-200
-                  px-7 sm:px-9 py-3.5 sm:py-4
-                  text-slate-600 font-bold text-sm sm:text-base tracking-wide
-                  hover:border-[#0B2EA8] hover:text-[#0B2EA8] hover:bg-blue-50
-                  hover:scale-[1.02] transition-all duration-300"
-              >
-                {dict.hero.cta_secondary}
-              </Link>
             </motion.div>
 
           </motion.div>

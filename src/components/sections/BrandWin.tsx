@@ -43,39 +43,39 @@ function CountUp({ target, suffix = "" }: { target: string; suffix?: string }) {
 export function BrandWin({ dict }: { dict: any }) {
   const commitments = [
     {
-      value: "Reach.",
+      value: dict.brand_win.reach.title,
       icon: <Eye className="w-6 h-6" />,
-      desc: "Guaranteed viewership delivered to your exact target audience, every single time.",
+      desc: dict.brand_win.reach.desc,
       gradient: "from-white via-blue-100 to-cyan-400",
       iconBg: "bg-blue-600",
       stat: "4.2B+",
       statRaw: "4.2",
       statSuffix: "B+",
-      statLabel: "Total Views Delivered",
+      statLabel: dict.brand_win.reach.stat_label,
       num: "01",
     },
     {
-      value: "Engagement.",
+      value: dict.brand_win.engagement.title,
       icon: <Heart className="w-6 h-6" />,
-      desc: "Real, authentic interactions that build brand love and community — not just numbers.",
+      desc: dict.brand_win.engagement.desc,
       gradient: "from-white via-blue-100 to-cyan-400",
       iconBg: "bg-blue-500",
       stat: "5%+",
       statRaw: "5",
       statSuffix: "%+",
-      statLabel: "Avg. Engagement Rate",
+      statLabel: dict.brand_win.engagement.stat_label,
       num: "02",
     },
     {
-      value: "Viewership.",
+      value: dict.brand_win.viewership.title,
       icon: <TrendingUp className="w-6 h-6" />,
-      desc: "We over-deliver — always. Our track record speaks in millions of verified views.",
+      desc: dict.brand_win.viewership.desc,
       gradient: "from-white via-blue-100 to-cyan-400",
       iconBg: "bg-blue-400",
       stat: "110M+",
       statRaw: "110",
       statSuffix: "M+",
-      statLabel: "Views on Best Campaign",
+      statLabel: dict.brand_win.viewership.stat_label,
       num: "03",
     },
   ];
@@ -101,7 +101,9 @@ export function BrandWin({ dict }: { dict: any }) {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 mb-6"
           >
             <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
-            <span className="text-[10px] font-black uppercase tracking-[0.28em] text-cyan-400">Performance Guarantee</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.28em] text-cyan-400">
+              {dict.brand_win.perf_guarantee || "Performance Guarantee"}
+            </span>
           </motion.div>
 
           <motion.h2
@@ -111,9 +113,9 @@ export function BrandWin({ dict }: { dict: any }) {
             transition={{ delay: 0.06 }}
             className="text-4xl md:text-5xl lg:text-[68px] font-black font-heading tracking-tighter leading-[0.9] text-white mb-4 uppercase"
           >
-            How Brands <br />
+            {dict.brand_win.title_1} <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-cyan-400">
-              Win With Us.
+              {dict.brand_win.title_2}
             </span>
           </motion.h2>
 
@@ -124,8 +126,7 @@ export function BrandWin({ dict }: { dict: any }) {
             transition={{ delay: 0.12 }}
             className="text-lg md:text-xl text-white/60 font-medium max-w-3xl mx-auto leading-relaxed"
           >
-            We don&apos;t just promise results — we contractually commit to them. <br className="hidden md:block" />
-            Every campaign is backed by our performance guarantee.
+            {dict.brand_win.description}
           </motion.p>
         </div>
 
@@ -156,7 +157,7 @@ export function BrandWin({ dict }: { dict: any }) {
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-1.5 h-1.5 rounded-full bg-[#0B2EA8] animate-pulse" />
                 <p className="text-[10px] font-black uppercase tracking-[0.35em] text-[#0B2EA8]/80">
-                  WE Commit
+                  {dict.brand_win.commit || "WE Commit"}
                 </p>
               </div>
 

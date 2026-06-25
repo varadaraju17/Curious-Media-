@@ -33,6 +33,7 @@ function AnimatedNumber({ value, suffix = "", prefix = "" }: { value: number, su
 
 export default function BrandsPage() {
   const { locale } = useParams();
+  const isHindi = locale === "hi";
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -42,40 +43,64 @@ export default function BrandsPage() {
   if (!mounted) return null;
 
   const STATS = [
-    { label: "Viewership Delivered in a Year", num: 10, suffix: "+", unit: "Billion", icon: <BarChart3 className="w-6 h-6" /> },
-    { label: "Distribution Network PAN India", num: 900, suffix: "+", unit: "Million", icon: <Globe2 className="w-6 h-6" /> },
-    { label: "Influencers Network Pan India", num: 15000, suffix: "+", unit: "", icon: <Users className="w-6 h-6" /> },
+    { 
+      label: isHindi ? "एक वर्ष में वितरित कुल दृश्य" : "Viewership Delivered in a Year", 
+      num: 10, 
+      suffix: "+", 
+      unit: isHindi ? "बिलियन" : "Billion", 
+      icon: <BarChart3 className="w-6 h-6" /> 
+    },
+    { 
+      label: isHindi ? "वितरण नेटवर्क (संपूर्ण भारत)" : "Distribution Network PAN India", 
+      num: 900, 
+      suffix: "+", 
+      unit: isHindi ? "मिलियन" : "Million", 
+      icon: <Globe2 className="w-6 h-6" /> 
+    },
+    { 
+      label: isHindi ? "इन्फ्लुएंसर्स नेटवर्क (संपूर्ण भारत)" : "Influencers Network Pan India", 
+      num: 15000, 
+      suffix: "+", 
+      unit: "", 
+      icon: <Users className="w-6 h-6" /> 
+    },
   ];
 
   const COLLABS = [
     {
       id: 1,
-      title: "Meme Marketing",
-      subtitle: "Memes that live rent-free in minds.",
-      desc: "We create memes that travel fast, hit hard, and stay in your audience’s mind—scaled across millions through our distribution engine.",
-      metric: "Distribution Network – 900M+",
-      metricStat: "+900M",
-      metricLabel: "reach through distribution network",
+      title: isHindi ? "मीम मार्केटिंग" : "Meme Marketing",
+      subtitle: isHindi ? "ऐसे मीम्स जो दिमाग में घर कर जाते हैं।" : "Memes that live rent-free in minds.",
+      desc: isHindi 
+        ? "हम ऐसे मीम्स बनाते हैं जो तेजी से वायरल होते हैं, गहरा प्रभाव छोड़ते हैं और आपके दर्शकों के दिमाग में बने रहते हैं—हमारे वितरण इंजन के माध्यम से लाखों लोगों तक पहुंचाए जाते हैं।"
+        : "We create memes that travel fast, hit hard, and stay in your audience’s mind—scaled across millions through our distribution engine.",
+      metricLabelTop: isHindi ? "वितरण नेटवर्क" : "Distribution Network",
+      metricStat: "900M+",
+      metricLabelBottom: "",
       icon: <Sparkles className="w-10 h-10" />
     },
     {
       id: 2,
-      title: "Influencer Marketing",
-      subtitle: "Not just creators. Growth partners.",
-      desc: "We match your brand with creators who don’t just talk—they influence, engage, and convert at scale.",
-      metric: "Influencer Network – 15,000+ Pan India",
-      metricStat: "15K+",
-      metricLabel: "influencers across India",
+      title: isHindi ? "इन्फ्लुएंसर मार्केटिंग" : "Influencer Marketing",
+      subtitle: isHindi ? "सिर्फ क्रिएटर नहीं, बल्कि ग्रोथ पार्टनर।" : "Not just creators. Growth partners.",
+      desc: isHindi 
+        ? "हम आपके ब्रांड को उन क्रिएटर्स से जोड़ते हैं जो केवल बात नहीं करते—वे बड़े पैमाने पर प्रभावित करते हैं, जुड़ाव बनाते हैं और रूपांतरण लाते हैं।"
+        : "We match your brand with creators who don’t just talk—they influence, engage, and convert at scale.",
+      metricLabelTop: isHindi ? "इन्फ्लुएंसर नेटवर्क –" : "Influencer Network –",
+      metricStat: "15k+",
+      metricLabelBottom: isHindi ? "संपूर्ण भारत" : "Pan India",
       icon: <Users className="w-10 h-10" />
     },
     {
       id: 3,
-      title: "Content Marketing",
-      subtitle: "Seamless storytelling that stays with your audience.",
-      desc: "We craft unique, platform-native content that blends your brand naturally into what people love to watch.",
-      metric: "Creator Reach – 100M+ Subscribers",
+      title: isHindi ? "कंटेंट मार्केटिंग" : "Content Marketing",
+      subtitle: isHindi ? "सहज कहानी कहना जो आपके दर्शकों के साथ बनी रहती है।" : "Seamless storytelling that stays with your audience.",
+      desc: isHindi 
+        ? "हम अद्वितीय, प्लेटफ़ॉर्म-अनुकूल सामग्री तैयार करते हैं जो आपके ब्रांड को स्वाभाविक रूप से उन चीज़ों में मिला देती है जिन्हें लोग देखना पसंद करते हैं।"
+        : "We craft unique, platform-native content that blends your brand naturally into what people love to watch.",
+      metricLabelTop: isHindi ? "क्रिएटर रीच –" : "Creator Reach –",
       metricStat: "100M+",
-      metricLabel: "subscribers in creator network",
+      metricLabelBottom: isHindi ? "सब्सक्राइबर्स" : "Subscribers",
       icon: <Target className="w-10 h-10" />
     },
   ];
@@ -104,11 +129,13 @@ export default function BrandsPage() {
                 <span className="absolute w-3 h-3 rounded-full bg-blue-500 animate-ping opacity-50" />
                 <span className="relative w-2 h-2 rounded-full bg-blue-600" />
               </div>
-              <span className="text-xs font-black tracking-[0.25em] uppercase text-[#0B2EA8]">Brands & Agencies</span>
+              <span className="text-xs font-black tracking-[0.25em] uppercase text-[#0B2EA8]">
+                {isHindi ? "ब्रांड्स और एजेंसियां" : "Brands & Agencies"}
+              </span>
             </motion.div>
 
             <h1 className="flex flex-col mb-10 w-full overflow-hidden gap-2 lg:gap-4">
-              {["BE SEEN.", "BE HEARD.", "BE REMEMBERED."].map((text, i) => (
+              {(isHindi ? ["दिखें।", "सुने जाएं।", "याद रखे जाएं।"] : ["BE SEEN.", "BE HEARD.", "BE REMEMBERED."]).map((text, i) => (
                 <motion.span
                   key={i}
                   initial={{ opacity: 0, scale: 0.85, y: 40 }}
@@ -131,7 +158,9 @@ export default function BrandsPage() {
               transition={{ delay: 0.6, duration: 0.8 }}
               className="text-lg md:text-2xl text-slate-500 max-w-4xl mx-auto mb-16 font-medium leading-relaxed"
             >
-              We win when you win. Partner with India&apos;s largest distribution network to turn every campaign into a cultural phenomenon.
+              {isHindi 
+                ? "हम तभी जीतते हैं जब आप जीतते हैं। हर अभियान को एक सांस्कृतिक घटना में बदलने के लिए भारत के सबसे बड़े वितरण नेटवर्क के साथ साझेदारी करें।"
+                : "We win when you win. Partner with India's largest distribution network to turn every campaign into a cultural phenomenon."}
             </motion.p>
 
             <motion.div
@@ -143,7 +172,9 @@ export default function BrandsPage() {
                 href={`/${locale}/contact`}
                 className="group relative inline-flex items-center gap-4 px-12 py-6 text-white font-black uppercase tracking-[0.2em] text-sm rounded-full overflow-hidden transition-all duration-500 hover:scale-[1.02] bg-[#0A1A4E] shadow-[0_20px_40px_rgba(10,26,78,0.25)] hover:shadow-[0_20px_60px_rgba(11,46,168,0.4)] hover:bg-[#0B2EA8]"
               >
-                <span className="relative z-10 group-hover:text-cyan-300 transition-colors duration-500">Get in touch</span>
+                <span className="relative z-10 group-hover:text-cyan-300 transition-colors duration-500">
+                  {isHindi ? "संपर्क में रहें" : "Get in touch"}
+                </span>
                 <div className="relative z-10 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-cyan-400 group-hover:text-[#0A1A4E] transition-all duration-500">
                   <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-0.5" />
                 </div>
@@ -172,30 +203,47 @@ export default function BrandsPage() {
             <div>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 mb-6 backdrop-blur-sm">
                 <BarChart3 className="w-3.5 h-3.5 text-cyan-300" />
-                <span className="text-[10px] font-black tracking-[0.2em] uppercase text-cyan-200">The Scale of Impact</span>
+                <span className="text-[10px] font-black tracking-[0.2em] uppercase text-cyan-200">
+                  {isHindi ? "प्रभाव का पैमाना" : "The Scale of Impact"}
+                </span>
               </div>
               <h2 className="text-4xl md:text-5xl lg:text-[70px] font-black font-heading tracking-tighter leading-[0.95] uppercase">
-                <span className="text-white">Results That</span><br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-cyan-300 to-sky-200">Brands Can Measure.</span>
+                {isHindi ? (
+                  <>
+                    <span className="text-white">परिणाम जिन्हें</span><br/>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-cyan-300 to-sky-200">ब्रांड माप सकते हैं।</span>
+                  </>
+                ) : (
+                  <>
+                    <span className="text-white">Results That</span><br/>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-cyan-300 to-sky-200">Brands Can Measure.</span>
+                  </>
+                )}
               </h2>
             </div>
             <div className="flex flex-col justify-end gap-6">
               <div className="space-y-4">
                 <p className="text-blue-100 text-lg md:text-xl font-semibold leading-relaxed">
-                  We see every campaign as how we can register this thing in the target audience&apos;s mind...
+                  {isHindi 
+                    ? "हम हर अभियान को इस रूप में देखते हैं कि हम इसे लक्षित दर्शकों के दिमाग में कैसे दर्ज कर सकते हैं..."
+                    : "We see every campaign as how we can register this thing in the target audience's mind..."}
                 </p>
                 <p className="text-blue-200/60 text-base md:text-lg font-medium leading-relaxed">
-                  No fancy decks. No over-commitment. Just real results delivered from our network.
+                  {isHindi 
+                    ? "कोई दिखावटी डेक नहीं। कोई अति-प्रतिबद्धता नहीं। हमारे नेटवर्क से वितरित केवल वास्तविक परिणाम।"
+                    : "No fancy decks. No over-commitment. Just real results delivered from our network."}
                 </p>
                 <p className="text-blue-200/60 text-base md:text-lg font-medium leading-relaxed">
-                  We always try to integrate every product &amp; messaging so smoothly so it looks like organic marketing.
+                  {isHindi 
+                    ? "हम हमेशा हर उत्पाद और संदेश को इतनी सहजता से एकीकृत करने का प्रयास करते हैं ताकि वह बिल्कुल ऑर्गेनिक मार्केटिंग जैसा दिखे।"
+                    : "We always try to integrate every product & messaging so smoothly so it looks like organic marketing."}
                 </p>
               </div>
               <Link
                 href={`/${locale}/contact`}
                 className="group inline-flex items-center gap-3 text-cyan-300 font-black uppercase tracking-[0.2em] text-xs hover:gap-5 transition-all w-fit border-b border-cyan-300/40 hover:border-cyan-300 pb-1 mt-2"
               >
-                Get in touch
+                {isHindi ? "संपर्क में रहें" : "Get in touch"}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
@@ -207,9 +255,9 @@ export default function BrandsPage() {
           {/* Stat Cards - on dark bg */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {[
-              { num: 10, suffix: "B+", label: "Annual Views Delivered", tag: "Annual Reach" },
-              { num: 900, suffix: "M+", label: "Monthly Distribution Reach", tag: "Pan India Network" },
-              { num: 15, suffix: "K+", label: "Verified Creator Network", tag: "Pan India" },
+              { num: 10, suffix: "B+", label: isHindi ? "वार्षिक वितरित दृश्य" : "Annual Views Delivered", tag: isHindi ? "वार्षिक पहुंच" : "Annual Reach" },
+              { num: 900, suffix: "M+", label: isHindi ? "मासिक वितरण पहुंच" : "Monthly Distribution Reach", tag: isHindi ? "अखिल भारतीय नेटवर्क" : "Pan India Network" },
+              { num: 15, suffix: "K+", label: isHindi ? "सत्यापित क्रिएटर नेटवर्क" : "Verified Creator Network", tag: isHindi ? "संपूर्ण भारत" : "Pan India" },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -260,27 +308,22 @@ export default function BrandsPage() {
             <div className="md:sticky top-40 py-10">
               <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-blue-100 mb-8 shadow-sm">
                 <ZapIcon className="w-4 h-4 text-[#0B2EA8]" />
-                <span className="text-[11px] font-black tracking-[0.2em] uppercase text-[#0B2EA8]">Methodology</span>
+                <span className="text-[11px] font-black tracking-[0.2em] uppercase text-[#0B2EA8]">
+                  {isHindi ? "कार्यप्रणाली" : "Methodology"}
+                </span>
               </div>
               <h2 className="text-4xl md:text-7xl lg:text-[100px] font-black font-heading tracking-tighter leading-[0.85] uppercase">
-                WAYS TO <br className="hidden lg:block" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-500">COLLAB.</span>
+                {isHindi ? (
+                  <>सहयोग के <br className="hidden lg:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-500">तरीके।</span></>
+                ) : (
+                  <>WAYS TO <br className="hidden lg:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-500">COLLAB.</span></>
+                )}
               </h2>
               <p className="mt-6 text-slate-500 text-lg md:text-2xl font-medium max-w-md leading-relaxed">
-                Three powerful, integrated methods designed to scale your brand reach and drive conversions.
+                {isHindi 
+                  ? "ब्रांड की पहुंच बढ़ाने और रूपांतरण बढ़ाने के लिए डिज़ाइन किए गए तीन शक्तिशाली, एकीकृत तरीके।"
+                  : "Three powerful, integrated methods designed to scale your brand reach and drive conversions."}
               </p>
-
-              {/* Methods counter */}
-              <div className="mt-10 hidden md:flex items-center gap-4">
-                {COLLABS.map((c, i) => (
-                  <div key={i} className="flex flex-col gap-1.5">
-                    <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-[#0B2EA8]">
-                      {c.icon}
-                    </div>
-                    <span className="text-[9px] font-black uppercase tracking-[0.15em] text-slate-400 leading-tight max-w-[40px]">{c.title.split(' ')[0]}</span>
-                  </div>
-                ))}
-              </div>
             </div>
 
             {/* Right: Scrolling Cards */}
@@ -304,11 +347,8 @@ export default function BrandsPage() {
 
                   {/* Content */}
                   <div className="flex flex-col gap-4 pb-2 flex-1">
-                    {/* Icon + Title + Subtitle */}
+                    {/* Title + Subtitle */}
                     <div className="flex items-start gap-3">
-                      <div className="w-9 h-9 shrink-0 rounded-lg bg-blue-50 group-hover:bg-blue-100 flex items-center justify-center text-[#0B2EA8] transition-colors duration-300">
-                        {item.icon}
-                      </div>
                       <div>
                         <h3 className="text-2xl md:text-3xl font-black text-[#0A1A4E] uppercase tracking-tighter leading-none group-hover:text-[#0B2EA8] transition-colors duration-300">
                           {item.title}
@@ -330,9 +370,9 @@ export default function BrandsPage() {
                       <div className="relative bg-white border border-slate-100 rounded-2xl px-6 py-4 self-start shadow-sm overflow-hidden group-hover:border-blue-100 transition-colors duration-300">
                         {/* Accent bar */}
                         <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#0B2EA8] to-cyan-400 rounded-l-2xl" />
-                        <span className="text-[9px] font-black uppercase tracking-[0.25em] text-slate-400 block mb-1">For a brand campaign</span>
+                        {item.metricLabelTop && <span className="text-[9px] font-black uppercase tracking-[0.25em] text-slate-400 block mb-1">{item.metricLabelTop}</span>}
                         <span className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-cyan-500 leading-none block">{item.metricStat}</span>
-                        <span className="text-[10px] font-bold text-slate-400 mt-1 block">{item.metricLabel}</span>
+                        {item.metricLabelBottom && <span className="text-[10px] font-bold text-slate-400 mt-1 block">{item.metricLabelBottom}</span>}
                       </div>
 
                       {/* Read more link */}
@@ -340,7 +380,7 @@ export default function BrandsPage() {
                         href={`/${locale}/contact`}
                         className="group/link inline-flex items-center gap-2 text-[#0B2EA8] font-black text-xs uppercase tracking-[0.25em] transition-all pb-1 border-b-2 border-[#0B2EA8]/20 hover:border-[#0B2EA8] hover:gap-4"
                       >
-                        Read more
+                        {isHindi ? "अधिक जानें" : "Know more"}
                         <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
                       </Link>
                     </div>
@@ -375,15 +415,28 @@ export default function BrandsPage() {
                 <div>
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 mb-4 backdrop-blur-sm">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    <span className="text-[9px] font-black tracking-[0.2em] uppercase text-emerald-200">Now Onboarding</span>
+                    <span className="text-[9px] font-black tracking-[0.2em] uppercase text-emerald-200">
+                      {isHindi ? "अभी ऑनबोर्डिंग चालू है" : "Now Onboarding"}
+                    </span>
                   </div>
                   <h3 className="text-3xl md:text-5xl lg:text-[54px] font-black font-heading tracking-tighter leading-[0.88] uppercase">
-                    <span className="text-white">Ready to scale</span><br/>
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-cyan-200 to-white">your brand?</span>
+                    {isHindi ? (
+                      <>
+                        <span className="text-white">अपने ब्रांड को</span>{' '}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-cyan-200 to-white">स्केल करने के लिए तैयार?</span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="text-white">Ready to scale</span>{' '}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-cyan-200 to-white">your brand?</span>
+                      </>
+                    )}
                   </h3>
                 </div>
                 <p className="text-blue-200/70 text-base md:text-lg font-medium max-w-sm leading-relaxed lg:text-right">
-                  Join industry leaders and turn every campaign into a cultural phenomenon today.
+                  {isHindi 
+                    ? "उद्योग के दिग्गजों में शामिल हों और आज ही हर अभियान को एक सांस्कृतिक घटना में बदलें।"
+                    : "Join industry leaders and turn every campaign into a cultural phenomenon today."}
                 </p>
               </div>
             </div>
@@ -396,14 +449,18 @@ export default function BrandsPage() {
                 className="group col-span-1 md:col-span-2 flex items-center justify-between p-6 rounded-2xl bg-white text-[#0A1A4E] hover:bg-blue-50 transition-all duration-500 hover:scale-[1.02] shadow-[0_0_60px_rgba(255,255,255,0.08)]"
               >
                 <div className="flex flex-col gap-1">
-                  <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#0B2EA8]/60">Start a conversation</span>
-                  <span className="text-2xl md:text-3xl font-black uppercase tracking-tight">Partner With Us</span>
+                  <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#0B2EA8]/60">
+                    {isHindi ? "बातचीत शुरू करें" : "Start a conversation"}
+                  </span>
+                  <span className="text-2xl md:text-3xl font-black uppercase tracking-tight">
+                    {isHindi ? "हमारे साथ साझेदारी करें" : "Partner With Us"}
+                  </span>
                 </div>
                 <div className="w-12 h-12 shrink-0 rounded-2xl bg-[#0B2EA8]/10 flex items-center justify-center text-[#0B2EA8] group-hover:bg-[#0B2EA8] group-hover:text-white transition-all duration-500">
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </Link>
-
+ 
               {/* Email CTA */}
               <a
                 href="mailto:info@curiousmedia.in"
@@ -413,7 +470,9 @@ export default function BrandsPage() {
                   <Mail className="w-4 h-4" />
                 </div>
                 <div>
-                  <p className="text-[9px] font-black uppercase tracking-[0.2em] text-blue-300/60 mb-1">Email Us Directly</p>
+                  <p className="text-[9px] font-black uppercase tracking-[0.2em] text-blue-300/60 mb-1">
+                    {isHindi ? "हमें सीधे ईमेल करें" : "Email Us Directly"}
+                  </p>
                   <p className="font-bold text-base text-white break-all leading-tight">info@curiousmedia.in</p>
                 </div>
               </a>
