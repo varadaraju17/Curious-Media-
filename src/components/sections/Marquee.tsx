@@ -40,11 +40,11 @@ const brands = [
 const contentPartners = [
   { name: "Balaji Telefilms",       domain: "balajitelefilms.com", slug: "balaji-telefilms" },
   { name: "Balaji Motion Pictures", domain: "balajitelefilms.com", slug: "balaji-motion-pictures" },
+  { name: "TVF",                    domain: "theviralfever.com",   slug: "tvf" },
   { name: "Rajat Pawar",            domain: "youtube.com",         slug: "rajat-pawar" },
   { name: "Yuvaa",                  domain: "yuvaa.co.in",         slug: "yuvaa" },
   { name: "Real Hit",               domain: "realhit.in",          slug: "real-hit" },
   { name: "Content Ka Keeda",       domain: "graphy.com",          slug: "content-ka-keeda" },
-  { name: "TVF",                    domain: "theviralfever.com",   slug: "tvf" },
 ];
 
 function BrandLogo({ item, type, size = "md" }: { item: { name: string; domain: string; slug: string }; type: string; size?: "sm" | "md" | "lg" | "xl" }) {

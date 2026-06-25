@@ -13,15 +13,19 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
       icon: <TrendingUp className="w-5 h-5" />,
       statIcon: <BarChart3 className="w-3.5 h-3.5" />,
       stat: locale === "hi" ? "500+ अभियान" : "500+ Campaigns",
-      image: "/images/content/curious_media_1778392360428.png",
+      // Logo used as the background
+      bgImage: "/images/logo.png",
+      bgStyle: "bg-contain bg-center bg-no-repeat",
+      cardBg: "bg-white",
       gradient: "from-[#0B2EA8] to-blue-500",
-      glowColor: "rgba(11,46,168,0.35)",
-      borderGlow: "group-hover:shadow-[0_0_0_1px_rgba(11,46,168,0.4),0_32px_80px_rgba(11,46,168,0.25)]",
-      accentText: "text-blue-300",
-      tagBg: "bg-blue-500/20 text-blue-200 border-white/10",
+      borderGlow: "hover:shadow-[0_0_0_2px_rgba(11,46,168,0.3),0_24px_60px_rgba(11,46,168,0.15)]",
+      accentText: "text-[#0B2EA8]",
+      statTagCls: "bg-blue-50 text-[#0B2EA8] border-blue-100",
       href: `/${locale}/creators`,
       num: "01",
       tag: dict.divisions.media.subtitle,
+      comingSoon: false,
+      darkCard: false,
     },
     {
       title: dict.divisions.studio.title,
@@ -29,15 +33,19 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
       icon: <Film className="w-5 h-5" />,
       statIcon: <Play className="w-3.5 h-3.5" />,
       stat: locale === "hi" ? "4K प्रोडक्शन" : "4K Production",
-      image: "/images/content/curious_studio_1778392924817.png",
+      // Logo used as the background
+      bgImage: "/images/logo_studios.jpg",
+      bgStyle: "bg-contain bg-center bg-no-repeat",
+      cardBg: "bg-white",
       gradient: "from-indigo-700 to-violet-500",
-      glowColor: "rgba(99,102,241,0.35)",
-      borderGlow: "group-hover:shadow-[0_0_0_1px_rgba(99,102,241,0.4),0_32px_80px_rgba(99,102,241,0.25)]",
-      accentText: "text-indigo-300",
-      tagBg: "bg-indigo-500/20 text-indigo-200 border-white/10",
+      borderGlow: "hover:shadow-[0_0_0_2px_rgba(99,102,241,0.3),0_24px_60px_rgba(99,102,241,0.15)]",
+      accentText: "text-indigo-700",
+      statTagCls: "bg-indigo-50 text-indigo-700 border-indigo-100",
       href: `/${locale}/studio`,
       num: "02",
       tag: dict.divisions.studio.subtitle,
+      comingSoon: false,
+      darkCard: false,
     },
     {
       title: dict.divisions.music.title,
@@ -45,15 +53,18 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
       icon: <Music2 className="w-5 h-5" />,
       statIcon: <Disc className="w-3.5 h-3.5" />,
       stat: locale === "hi" ? "टॉप चार्ट्स" : "Top Charts",
-      image: "/images/content/curious_music_1778392942223.png",
+      bgImage: null,
+      bgStyle: "",
+      cardBg: "bg-white",
       gradient: "from-violet-700 to-fuchsia-500",
-      glowColor: "rgba(139,92,246,0.35)",
-      borderGlow: "group-hover:shadow-[0_0_0_1px_rgba(139,92,246,0.4),0_32px_80px_rgba(139,92,246,0.25)]",
-      accentText: "text-violet-300",
-      tagBg: "bg-violet-500/20 text-violet-200 border-white/10",
+      borderGlow: "hover:shadow-[0_0_0_2px_rgba(139,92,246,0.3),0_24px_60px_rgba(139,92,246,0.15)]",
+      accentText: "text-violet-700",
+      statTagCls: "bg-violet-50 text-violet-700 border-violet-100",
       href: `/${locale}/records`,
       num: "03",
       tag: dict.divisions.music.subtitle,
+      comingSoon: true,
+      darkCard: false,
     },
     {
       title: dict.divisions.products.title,
@@ -61,15 +72,18 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
       icon: <Sparkles className="w-5 h-5" />,
       statIcon: <BarChart3 className="w-3.5 h-3.5" />,
       stat: locale === "hi" ? "AI-संचालित टूल्स" : "AI-Powered Tools",
-      image: "/images/content/curious_products_1778392374896.png",
+      bgImage: null,
+      bgStyle: "",
+      cardBg: "bg-white",
       gradient: "from-sky-600 to-cyan-400",
-      glowColor: "rgba(14,165,233,0.35)",
-      borderGlow: "group-hover:shadow-[0_0_0_1px_rgba(14,165,233,0.4),0_32px_80px_rgba(14,165,233,0.25)]",
-      accentText: "text-sky-300",
-      tagBg: "bg-sky-500/20 text-sky-200 border-white/10",
+      borderGlow: "hover:shadow-[0_0_0_2px_rgba(14,165,233,0.3),0_24px_60px_rgba(14,165,233,0.15)]",
+      accentText: "text-sky-600",
+      statTagCls: "bg-sky-50 text-sky-700 border-sky-100",
       href: `/${locale}/products`,
       num: "04",
       tag: dict.divisions.products.subtitle,
+      comingSoon: true,
+      darkCard: false,
     },
   ];
 
@@ -80,7 +94,7 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_80%_60%,rgba(99,102,241,0.04),transparent)] pointer-events-none" />
       {/* Grid overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(11,46,168,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(11,46,168,0.03)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
-      {/* Top divider */}
+      {/* Top/bottom divider */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
 
@@ -131,32 +145,51 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className={`relative h-full flex flex-col rounded-3xl overflow-hidden border border-white/10
-                  shadow-[0_8px_32px_rgba(0,0,0,0.4)]
+                className={`relative h-full flex flex-col rounded-3xl overflow-hidden
+                  border border-blue-100
+                  shadow-[0_4px_24px_rgba(11,46,168,0.08)]
                   ${div.borderGlow}
+                  ${div.cardBg}
                   hover:-translate-y-2 transition-all duration-500`}
               >
-                {/* Full-bleed image */}
-                <div className="absolute inset-0">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110"
-                    style={{ backgroundImage: `url(${div.image})` }}
-                  />
-                  {/* Dark overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/20" />
-                  {/* Accent color tint */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${div.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
-                </div>
+                {/* ── LOGO cards (Media & Studio) — logo IS the background ── */}
+                {div.bgImage && (
+                  <>
+                    {/* Logo as full-card background, contained & centered */}
+                    <div
+                      className={`absolute inset-0 ${div.bgStyle} transition-transform duration-700 ease-out group-hover:scale-105`}
+                      style={{ backgroundImage: `url(${div.bgImage})` }}
+                    />
+                    {/* Subtle white vignette at bottom so text stays readable */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent" />
+                    {/* Light blue tint on hover */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${div.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
+                  </>
+                )}
 
-                {/* Content */}
+                {/* ── COMING SOON cards (Music & Product) — white bg + centred text ── */}
+                {div.comingSoon && (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 pointer-events-none">
+                    {/* Pulsing dot */}
+                    <span className={`w-3 h-3 rounded-full bg-gradient-to-br ${div.gradient} animate-ping opacity-75`} />
+                    <p className="text-2xl md:text-3xl font-black font-heading tracking-tight text-[#0A1A4E] text-center leading-tight px-4">
+                      {locale === "hi" ? "जल्द आ\nरहा है" : "Coming\nSoon"}
+                    </p>
+                    <span className={`text-[9px] font-black uppercase tracking-[0.25em] ${div.accentText} text-center`}>
+                      {div.tag}
+                    </span>
+                  </div>
+                )}
+
+                {/* Content overlay (bottom section) */}
                 <div className="relative z-10 flex flex-col h-full min-h-[360px] p-6">
 
-                  {/* Top row: number + stat */}
+                  {/* Top row: number + stat badge */}
                   <div className="flex items-center justify-between mb-auto">
-                    <span className="text-[10px] font-black tracking-[0.3em] text-white/30 uppercase">
+                    <span className="text-[10px] font-black tracking-[0.3em] text-[#0B2EA8]/30 uppercase">
                       {div.num}
                     </span>
-                    <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-[10px] font-bold ${div.tagBg} backdrop-blur-md`}>
+                    <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-[10px] font-bold ${div.statTagCls} backdrop-blur-md`}>
                       {div.statIcon}
                       <span>{div.stat}</span>
                     </div>
@@ -175,18 +208,18 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-2xl font-black font-heading tracking-tight text-white mb-2 leading-tight">
+                    <h3 className="text-2xl font-black font-heading tracking-tight text-[#0A1A4E] mb-2 leading-tight">
                       {div.title}
                     </h3>
 
-                    {/* Description — reveals on hover */}
-                    <p className="text-sm text-white/50 leading-relaxed line-clamp-2 group-hover:text-white/75 transition-colors duration-300">
+                    {/* Description */}
+                    <p className="text-sm text-[#0A1A4E]/50 leading-relaxed line-clamp-2 group-hover:text-[#0A1A4E]/75 transition-colors duration-300">
                       {div.desc}
                     </p>
 
                     {/* CTA row */}
-                    <div className={`mt-5 pt-4 border-t border-white/10 flex items-center justify-between`}>
-                      <span className="text-xs font-bold text-white/35 uppercase tracking-widest group-hover:text-white/60 transition-colors duration-300">
+                    <div className="mt-5 pt-4 border-t border-blue-100 flex items-center justify-between">
+                      <span className="text-xs font-bold text-[#0B2EA8]/40 uppercase tracking-widest group-hover:text-[#0B2EA8]/70 transition-colors duration-300">
                         {locale === "hi" ? "देखें" : "Explore"}
                       </span>
                       <motion.div
@@ -199,7 +232,7 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
                   </div>
                 </div>
 
-                {/* Animated bottom gradient bar */}
+                {/* Bottom gradient accent bar */}
                 <div className={`absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r ${div.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
               </motion.div>
             </Link>

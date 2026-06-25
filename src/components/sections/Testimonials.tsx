@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star, Quote } from "lucide-react";
-import { useState } from "react";
+import { Star, Quote, ArrowLeft, ArrowRight } from "lucide-react";
+import { useState, useRef } from "react";
 
 function TestimonialCard({ t, idx, isHindi }: { t: any; idx: number; isHindi: boolean }) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -76,6 +76,18 @@ function TestimonialCard({ t, idx, isHindi }: { t: any; idx: number; isHindi: bo
 
 export function Testimonials({ dict }: { dict: any }) {
   const isHindi = dict.testimonials.badge !== "Client Experiences";
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const firstChild = scrollRef.current.firstElementChild as HTMLElement;
+      const cardWidth = firstChild ? firstChild.offsetWidth + 16 : 420;
+      const isMobile = window.innerWidth < 768;
+      const count = isMobile ? 1 : 2;
+      const amount = direction === "left" ? -cardWidth * count : cardWidth * count;
+      scrollRef.current.scrollBy({ left: amount, behavior: "smooth" });
+    }
+  };
 
   const rawTestimonials = [
     {
@@ -189,11 +201,47 @@ export function Testimonials({ dict }: { dict: any }) {
         <div className="absolute inset-y-0 left-0 w-8 md:w-20 bg-gradient-to-r from-white to-transparent z-20 pointer-events-none" />
         <div className="absolute inset-y-0 right-0 w-8 md:w-20 bg-gradient-to-l from-white to-transparent z-20 pointer-events-none" />
 
-        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 px-4 md:px-8 xl:px-[calc((100%-1400px)/2+2rem)] pb-12 pt-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+        <div ref={scrollRef} className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 px-4 md:px-8 xl:px-[calc((100%-1400px)/2+2rem)] pb-12 pt-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {testimonials.map((t, idx) => (
             <TestimonialCard key={idx} t={t} idx={idx} isHindi={isHindi} />
           ))}
           <div className="flex-none w-4 md:w-8" />
+        </div>
+
+        {/* Desktop Navigation Arrows — overlaid */}
+        <button
+          onClick={() => scroll("left")}
+          className="hidden md:flex absolute left-6 top-1/2 -translate-y-1/2 z-30 w-14 h-14 rounded-full bg-white border border-blue-100 items-center justify-center text-[#0B2EA8] shadow-2xl hover:bg-blue-50 hover:scale-110 active:scale-95 transition-all duration-300 group"
+          aria-label="Previous Testimonials"
+        >
+          <ArrowLeft className="w-6 h-6 group-hover:-translate-x-0.5 transition-transform" />
+        </button>
+        <button
+          onClick={() => scroll("right")}
+          className="hidden md:flex absolute right-6 top-1/2 -translate-y-1/2 z-30 w-14 h-14 rounded-full bg-white border border-blue-100 items-center justify-center text-[#0B2EA8] shadow-2xl hover:bg-blue-50 hover:scale-110 active:scale-95 transition-all duration-300 group"
+          aria-label="Next Testimonials"
+        >
+          <ArrowRight className="w-6 h-6 group-hover:translate-x-0.5 transition-transform" />
+        </button>
+
+        {/* Mobile Navigation Arrows — bottom pill bar */}
+        <div className="md:hidden flex items-center justify-center gap-4 mt-2 pb-2">
+          <button
+            onClick={() => scroll("left")}
+            className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#0B2EA8] text-white shadow-lg active:scale-95 transition-all duration-200"
+            aria-label="Previous Testimonials"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span className="text-xs font-black uppercase tracking-widest">Prev</span>
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#0B2EA8] text-white shadow-lg active:scale-95 transition-all duration-200"
+            aria-label="Next Testimonials"
+          >
+            <span className="text-xs font-black uppercase tracking-widest">Next</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
       </div>
     </section>

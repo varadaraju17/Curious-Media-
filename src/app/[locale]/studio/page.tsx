@@ -663,21 +663,23 @@ export default function StudioPage() {
                     </span>
                   </div>
 
-                  {/* Navigation Arrows (Square Design) */}
-                  <div className="flex items-center gap-2">
+                  {/* Desktop Navigation — pill buttons */}
+                  <div className="hidden md:flex items-center gap-3">
                     <button
                       onClick={() => scrollRow(seg.id, "left")}
-                      className="w-10 h-10 border border-slate-200 bg-white flex items-center justify-center text-[#0A1A4E] hover:border-[#0B2EA8] hover:text-[#0B2EA8] transition-colors rounded-none shadow-sm active:scale-95"
+                      className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-blue-100 text-[#0B2EA8] font-black text-xs uppercase tracking-widest shadow-md hover:bg-blue-50 hover:scale-105 active:scale-95 transition-all duration-200 group"
                       aria-label="Scroll Left"
                     >
-                      <ChevronLeft className="w-4 h-4" />
+                      <ChevronLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
+                      Prev
                     </button>
                     <button
                       onClick={() => scrollRow(seg.id, "right")}
-                      className="w-10 h-10 border border-slate-200 bg-white flex items-center justify-center text-[#0A1A4E] hover:border-[#0B2EA8] hover:text-[#0B2EA8] transition-colors rounded-none shadow-sm active:scale-95"
+                      className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#0B2EA8] text-white font-black text-xs uppercase tracking-widest shadow-md hover:bg-blue-700 hover:scale-105 active:scale-95 transition-all duration-200 group"
                       aria-label="Scroll Right"
                     >
-                      <ChevronRight className="w-4 h-4" />
+                      Next
+                      <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                     </button>
                   </div>
                 </div>
@@ -705,12 +707,33 @@ export default function StudioPage() {
                   </div>
                 </div>
 
+                {/* Mobile Navigation — pill bar below each row */}
+                <div className="md:hidden flex items-center justify-center gap-3 mt-4">
+                  <button
+                    onClick={() => scrollRow(seg.id, "left")}
+                    className="flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-blue-100 text-[#0B2EA8] font-black text-xs uppercase tracking-widest shadow-md active:scale-95 transition-all duration-200"
+                    aria-label="Scroll Left"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                    Prev
+                  </button>
+                  <button
+                    onClick={() => scrollRow(seg.id, "right")}
+                    className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#0B2EA8] text-white font-black text-xs uppercase tracking-widest shadow-md active:scale-95 transition-all duration-200"
+                    aria-label="Scroll Right"
+                  >
+                    Next
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+
               </div>
             ))}
           </div>
 
         </div>
       </section>
+
 
       {/* ─── LIGHTBOX MODAL ─── */}
       <AnimatePresence>

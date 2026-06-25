@@ -222,8 +222,11 @@ export function CaseStudies({ dict }: { dict: any }) {
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
       const firstChild = scrollRef.current.firstElementChild as HTMLElement;
-      const cardWidth = firstChild ? firstChild.offsetWidth + 32 : 400; // card width + gap
-      const scrollAmount = direction === "left" ? -cardWidth * 3 : cardWidth * 3;
+      const cardWidth = firstChild ? firstChild.offsetWidth + 24 : 400;
+      // On mobile scroll 1 card, on desktop scroll 3
+      const isMobile = window.innerWidth < 768;
+      const count = isMobile ? 1 : 3;
+      const scrollAmount = direction === "left" ? -cardWidth * count : cardWidth * count;
       scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
@@ -366,21 +369,41 @@ export function CaseStudies({ dict }: { dict: any }) {
           <div className="flex-none w-12" />
         </div>
 
-        {/* Navigation Arrows */}
+        {/* Desktop Navigation Arrows — overlaid */}
         <button
           onClick={() => scroll("left")}
-          className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/90 border border-blue-100 flex items-center justify-center text-[#0B2EA8] shadow-2xl hover:bg-white hover:scale-110 active:scale-95 transition-all duration-300 group"
+          className="hidden md:flex absolute left-6 lg:left-10 top-1/2 -translate-y-1/2 z-30 w-14 h-14 rounded-full bg-white border border-blue-100 items-center justify-center text-[#0B2EA8] shadow-2xl hover:bg-blue-50 hover:scale-110 active:scale-95 transition-all duration-300 group"
           aria-label="Previous Campaigns"
         >
-          <ArrowLeft className="w-5 h-5 md:w-6 md:h-6 group-hover:-translate-x-0.5 transition-transform" />
+          <ArrowLeft className="w-6 h-6 group-hover:-translate-x-0.5 transition-transform" />
         </button>
         <button
           onClick={() => scroll("right")}
-          className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/90 border border-blue-100 flex items-center justify-center text-[#0B2EA8] shadow-2xl hover:bg-white hover:scale-110 active:scale-95 transition-all duration-300 group"
+          className="hidden md:flex absolute right-6 lg:right-10 top-1/2 -translate-y-1/2 z-30 w-14 h-14 rounded-full bg-white border border-blue-100 items-center justify-center text-[#0B2EA8] shadow-2xl hover:bg-blue-50 hover:scale-110 active:scale-95 transition-all duration-300 group"
           aria-label="Next Campaigns"
         >
-          <ArrowRight className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-0.5 transition-transform" />
+          <ArrowRight className="w-6 h-6 group-hover:translate-x-0.5 transition-transform" />
         </button>
+
+        {/* Mobile Navigation Arrows — bottom pill bar */}
+        <div className="md:hidden flex items-center justify-center gap-4 mt-2 pb-2">
+          <button
+            onClick={() => scroll("left")}
+            className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#0B2EA8] text-white shadow-lg active:scale-95 transition-all duration-200"
+            aria-label="Previous Campaigns"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span className="text-xs font-black uppercase tracking-widest">Prev</span>
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#0B2EA8] text-white shadow-lg active:scale-95 transition-all duration-200"
+            aria-label="Next Campaigns"
+          >
+            <span className="text-xs font-black uppercase tracking-widest">Next</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
       </div>
     </section>
   );

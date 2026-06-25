@@ -388,335 +388,235 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section 
-        id="timeline" 
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        className="relative min-h-[105vh] bg-[#f8fafc] border-y border-slate-100 py-16 md:py-24 overflow-hidden font-sans"
-        style={{
-          backgroundImage: "radial-gradient(rgba(11, 46, 168, 0.05) 1.2px, transparent 1.2px), linear-gradient(to right, rgba(11, 46, 168, 0.01) 1px, transparent 1px), linear-gradient(to bottom, rgba(11, 46, 168, 0.01) 1px, transparent 1px)",
-          backgroundSize: "40px 40px"
-        }}
+      <section
+        id="timeline"
+        className="relative py-24 md:py-36 bg-white border-y border-slate-100 overflow-hidden"
       >
-        <style>{`
-          @keyframes dashedFlow {
-            to {
-              stroke-dashoffset: -24;
-            }
-          }
-          .dashed-center-line {
-            animation: dashedFlow 0.9s linear infinite;
-          }
-          .flash-rec {
-            animation: flash 1.5s infinite;
-          }
-          @keyframes flash {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-          }
-        `}</style>
+        {/* Subtle grid background */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(11,46,168,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(11,46,168,0.03)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
 
-        {/* Ambient background glows */}
-        <div className="absolute top-1/4 left-1/4 w-[450px] h-[450px] bg-blue-100/55 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/4 w-[450px] h-[450px] bg-cyan-50/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="container mx-auto px-4 md:px-8 max-w-[1100px] relative z-10">
 
-        <div className="container mx-auto px-4 md:px-8 max-w-[1300px] relative z-10">
-          
-          {/* Header */}
-          <div className="max-w-3xl mx-auto text-center mb-16 relative">
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#0B2EA8] font-mono block mb-3">
-              {isHindi ? "[ हमारी विरासत ]" : "[ OUR LEGACY ]"}
-            </span>
-            <h2 className="text-4xl md:text-5xl font-black font-heading uppercase tracking-tighter text-[#0A1A4E] mb-4 leading-none">
-              {isHindi ? (
-                <>यहाँ से यात्रा <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-400">शुरू होती है</span></>
-              ) : (
-                <>HERE THE JOURNEY <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-400">BEGINS</span></>
-              )}
-            </h2>
-            <p className="text-sm text-slate-500 font-semibold leading-relaxed max-w-xl mx-auto mb-6">
-              {isHindi 
-                ? "एक छोटी सी कैफे बातचीत से शुरू होकर, क्यूरियस मीडिया एक साहसी रचनात्मक शक्ति बन गया जो ऑनलाइन कहानियों को गति देता है।"
-                : "Born from a small café conversation, Curious Media grew into a bold creative force shaping how stories move online."}
-            </p>
+          {/* Section Header */}
+          <div className="text-center mb-20 md:mb-28">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0B2EA8] mb-5"
+            >
+              <span className="flex h-1.5 w-1.5 rounded-full bg-blue-300 animate-pulse" />
+              <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white">
+                {isHindi ? "हमारी विरासत" : "Our Legacy"}
+              </span>
+            </motion.div>
+            <motion.h2
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.06 }}
+              className="text-4xl md:text-6xl lg:text-[68px] font-black font-heading tracking-tighter leading-[0.95] text-[#0B2EA8] uppercase"
+            >
+              {isHindi ? "यहाँ से यात्रा" : "HERE THE"}<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-400">
+                {isHindi ? "शुरू होती है" : "JOURNEY BEGINS"}
+              </span>
+            </motion.h2>
           </div>
-          
-             {/* Main Desktop/Tablet Grid & Mobile Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch max-w-6xl mx-auto">
-            
-            {/* Left Column: Photo & Details (visible on all screens, flex layout on desktop/tablet) */}
-            <div className="lg:col-span-7 xl:col-span-8 flex flex-col justify-center">
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-gradient-to-br from-[#0B2EA8]/85 via-[#06143c]/95 to-[#020512]/98 p-8 md:p-10 border border-blue-500/30 backdrop-blur-xl shadow-[0_24px_80px_rgba(11,46,168,0.45)] shadow-cyan-500/5 rounded-[2.5rem] relative overflow-hidden h-full">
-                
-                {/* Glowing border sweep line */}
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#0ea5e9]/65 to-transparent pointer-events-none" />
 
-                {/* Cyber blueprint grid background */}
-                <div className="absolute inset-0 bg-[radial-gradient(rgba(14,165,233,0.12)_1px,transparent_1px)] bg-[size:24px_24px] opacity-45 pointer-events-none" />
+          {/* Vertical Timeline */}
+          <div className="relative">
 
-                {/* Neon blue/cyan decorative corner indicators */}
-                <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-cyan-400/35 pointer-events-none" />
-                <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-cyan-400/35 pointer-events-none" />
-                <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-cyan-400/35 pointer-events-none" />
-                <div className="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-cyan-400/35 pointer-events-none" />
+            {/* Center vertical line */}
+            <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-blue-200 to-transparent hidden md:block" />
 
-                {/* Ambient card glows */}
-                <div className="absolute top-0 right-0 w-48 h-48 bg-cyan-400/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="flex flex-col gap-0">
+              {journeyTimeline.map((item, i) => {
+                const isLeft = i % 2 === 0;   // 2023 left, 2025 left
+                const isActive = activeIndex === i;
 
-                {/* Polaroid Photo on left (md:col-span-5) */}
-                <div className="md:col-span-5 flex justify-center items-center relative z-10">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={`photo-${activeIndex}`}
-                      initial={{ opacity: 0, scale: 0.95, y: 15 }}
-                      animate={{ opacity: 1, scale: 1, y: 0 }}
-                      exit={{ opacity: 0, scale: 0.95, y: -15 }}
-                      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                      className="w-full max-w-[240px] aspect-[4/5] rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.55)] border-2 border-cyan-400/30 bg-slate-950 relative group"
-                    >
-                      <img 
-                        src={journeyTimeline[activeIndex].image} 
-                        alt={`Curious Media in ${journeyTimeline[activeIndex].year}`} 
-                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 rounded-[2rem] opacity-95 group-hover:opacity-100"
-                        onError={(e) => {
-                          e.currentTarget.src = "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&w=600&q=80";
-                        }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none rounded-[2rem]" />
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
-
-                {/* Details on right (md:col-span-7) */}
-                <div className="md:col-span-7 flex flex-col justify-center relative z-10">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={`info-${activeIndex}`}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -20 }}
-                      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                      className="w-full flex flex-col items-center text-center md:items-start md:text-left"
-                    >
-                      {/* Glowing Milestone Tag */}
-                      <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/25 text-cyan-300 text-[10px] font-black uppercase tracking-[0.2em] mb-4 select-none">
-                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_#22d3ee]" />
-                        {isHindi ? "क्यूरियस मील का पत्थर" : "Curious Milestone"}
-                      </div>
- 
-                      {/* Year with glowing gradient text */}
-                      <h2 className="text-6xl md:text-7xl font-black font-heading bg-gradient-to-r from-white via-blue-100 to-cyan-300 bg-clip-text text-transparent leading-none tracking-tighter mb-4 select-none drop-shadow-[0_0_20px_rgba(14,165,233,0.35)]">
-                        {journeyTimeline[activeIndex].year}
-                      </h2>
-                      
-                      <p className="text-slate-200 font-medium text-sm md:text-base leading-relaxed max-w-[420px]">
-                        {translate(journeyTimeline[activeIndex].desc)}
-                      </p>
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
-
-                {/* Sleek bottom progress bar */}
-                {isPlaying && (
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-slate-950/50 overflow-hidden">
-                    <div 
-                      className="h-full bg-gradient-to-r from-blue-500 via-cyan-400 to-sky-300 transition-all duration-75 relative"
-                      style={{ width: `${autoplayProgress}%` }}
-                    >
-                      {/* Glowing dot tip */}
-                      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-white shadow-[0_0_8px_#fff] animate-pulse" />
-                    </div>
-                  </div>
-                )}
-
-              </div>
-            </div>
-
-            {/* Right Column: Road Timeline (Vertical on desktop/tablet, transitions to horizontal selector on mobile) */}
-            <div className="lg:col-span-5 xl:col-span-4 flex flex-col justify-center items-center">
-              
-              {/* Desktop Road Viewport (hidden on mobile) */}
-              <div className="hidden lg:block relative w-full h-[580px] select-none">
-                
-                {/* SVG Vertical Highway & Blueprint Guidelines */}
-                <div className="absolute inset-0 z-0">
-                  <svg 
-                    viewBox="0 0 200 600" 
-                    fill="none" 
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-full h-full"
-                    preserveAspectRatio="none"
+                return (
+                  <motion.div
+                    key={item.year}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-60px" }}
+                    transition={{ delay: i * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    className="relative"
                   >
-                    <defs>
-                      <linearGradient id="roadGradientVertical" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#0B2EA8" stopOpacity="0.4" />
-                        <stop offset="35%" stopColor="#0ea5e9" stopOpacity="0.7" />
-                        <stop offset="65%" stopColor="#0ea5e9" stopOpacity="0.7" />
-                        <stop offset="100%" stopColor="#0B2EA8" stopOpacity="0.4" />
-                      </linearGradient>
-                    </defs>
+                    {/* Desktop layout — alternating sides */}
+                    <div className={`hidden md:grid grid-cols-2 gap-0 items-start min-h-[160px] ${isActive ? "mb-0" : "mb-0"}`}>
 
-                    {/* Vertical Blueprint Guidelines */}
-                    <line x1="30" y1="0" x2="30" y2="600" stroke="rgba(11, 46, 168, 0.04)" strokeDasharray="4 4" />
-                    <line x1="100" y1="0" x2="100" y2="600" stroke="rgba(11, 46, 168, 0.04)" strokeDasharray="4 4" />
-                    <line x1="170" y1="0" x2="170" y2="600" stroke="rgba(11, 46, 168, 0.04)" strokeDasharray="4 4" />
-                    
-                    {/* Horizontal Blueprint Guidelines */}
-                    <line x1="0" y1="60" x2="200" y2="60" stroke="rgba(11, 46, 168, 0.04)" strokeDasharray="4 4" />
-                    <line x1="0" y1="220" x2="200" y2="220" stroke="rgba(11, 46, 168, 0.04)" strokeDasharray="4 4" />
-                    <line x1="0" y1="380" x2="200" y2="380" stroke="rgba(11, 46, 168, 0.04)" strokeDasharray="4 4" />
-                    <line x1="0" y1="540" x2="200" y2="540" stroke="rgba(11, 46, 168, 0.04)" strokeDasharray="4 4" />
-
-                    {/* SVG Vector Path (Vertical curvy road) */}
-                    <path 
-                      d="M 100,60 C 20,130 10,180 30,220 C 60,280 140,320 170,380 C 190,420 180,480 100,540" 
-                      stroke="url(#roadGradientVertical)" 
-                      strokeWidth="36" 
-                      strokeLinecap="square"
-                      opacity="0.25"
-                    />
-                    <path 
-                      d="M 100,60 C 20,130 10,180 30,220 C 60,280 140,320 170,380 C 190,420 180,480 100,540" 
-                      stroke="#0A1A4E" 
-                      strokeWidth="28" 
-                      strokeLinecap="square"
-                    />
-                    <path 
-                      d="M 100,60 C 20,130 10,180 30,220 C 60,280 140,320 170,380 C 190,420 180,480 100,540" 
-                      stroke="#ffffff" 
-                      strokeWidth="1.5" 
-                      strokeLinecap="square"
-                      strokeDasharray="8 8"
-                      className="dashed-center-line"
-                    />
-                  </svg>
-                </div>
-
-                {/* Pins and Labels relative to vertical road */}
-                {(() => {
-                  const verticalPinPositions = [
-                    { left: "50%", top: "10%", rotate: 0, year: "2023", labelAlign: "right" },
-                    { left: "15%", top: "36.7%", rotate: 0, year: "2024", labelAlign: "left" },
-                    { left: "85%", top: "63.3%", rotate: 0, year: "2025", labelAlign: "right" },
-                    { left: "50%", top: "90%", rotate: 0, year: "2026", labelAlign: "left" },
-                  ];
-                  return (
-                    <>
-                      {/* Static Year Labels */}
-                      {verticalPinPositions.map((pos, i) => {
-                        const isActive = activeIndex === i;
-                        return (
-                          <div
-                            key={`year-label-v-${i}`}
-                            className="absolute pointer-events-auto cursor-pointer select-none z-10"
-                            style={{ left: pos.left, top: pos.top }}
-                            onMouseEnter={() => selectMilestone(i, false)}
-                            onClick={() => selectMilestone(i, false)}
+                      {/* LEFT SIDE */}
+                      <div className={`flex ${isLeft ? "justify-end pr-10" : "justify-start pl-10"} py-10`}>
+                        {isLeft ? (
+                          /* Year label on left side */
+                          <button
+                            onClick={() => selectMilestone(i, true)}
+                            className={`group flex flex-col items-end gap-2 focus:outline-none`}
                           >
-                            <span 
-                              className={`absolute font-black font-mono text-xs tracking-wider px-3.5 py-1.5 rounded-full border shadow-lg transition-all duration-300 ${
-                                pos.labelAlign === "left"
-                                  ? "right-8 -translate-y-1/2"
-                                  : "left-8 -translate-y-1/2"
-                              } ${
-                                isActive 
-                                  ? "text-white bg-[#0B2EA8] border-[#0ea5e9] shadow-[#0ea5e9]/20 scale-110" 
-                                  : "text-slate-500 bg-white border-slate-200 shadow-md hover:border-[#0ea5e9] hover:text-[#0B2EA8]"
-                              }`}
-                            >
-                              {pos.year}
+                            <span className={`font-black font-heading tracking-tighter transition-all duration-300 leading-none select-none ${
+                              isActive
+                                ? "text-[72px] md:text-[88px] text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-400"
+                                : "text-[56px] md:text-[72px] text-[#0A1A4E]/20 group-hover:text-[#0A1A4E]/40"
+                            }`}>
+                              {item.year}
                             </span>
-                          </div>
-                        );
-                      })}
+                            {!isActive && (
+                              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0B2EA8]/40 group-hover:text-[#0B2EA8]/70 transition-colors">
+                                {isHindi ? "क्लिक करें" : "Click to view"}
+                              </span>
+                            )}
+                          </button>
+                        ) : (
+                          /* Photo revealed on left when this right-year is active */
+                          <AnimatePresence>
+                            {isActive && (
+                              <motion.div
+                                initial={{ opacity: 0, scale: 0.9, x: -20 }}
+                                animate={{ opacity: 1, scale: 1, x: 0 }}
+                                exit={{ opacity: 0, scale: 0.9, x: -20 }}
+                                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                                className="w-full max-w-[380px] aspect-[4/3] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(11,46,168,0.15)] border border-blue-100"
+                              >
+                                <img
+                                  src={item.image}
+                                  alt={`Curious Media ${item.year}`}
+                                  className="w-full h-full object-cover"
+                                  onError={(e) => {
+                                    e.currentTarget.src = "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&w=600&q=80";
+                                  }}
+                                />
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        )}
+                      </div>
 
-                      {/* Inactive Pins */}
-                      {verticalPinPositions.map((pos, i) => {
-                        const isActive = activeIndex === i;
-                        if (isActive) return null;
-                        return (
-                          <div
-                            key={`static-pin-v-${i}`}
-                            className="absolute z-10 cursor-pointer group pointer-events-auto"
-                            style={{ left: pos.left, top: pos.top, transform: "translate(-50%, -50%)" }}
-                            onMouseEnter={() => selectMilestone(i, false)}
-                            onClick={() => selectMilestone(i, false)}
-                          >
-                            <div className="w-5 h-5 bg-white border border-slate-200 shadow-sm rounded-full flex items-center justify-center group-hover:border-cyan-400 group-hover:scale-110 transition-all duration-300">
-                              <div className="w-2 h-2 bg-slate-400 group-hover:bg-[#0ea5e9] rounded-full" />
-                            </div>
-                          </div>
-                        );
-                      })}
-
-                      {/* Active traveling pin logo */}
-                      <motion.div
-                        className="absolute z-20 flex flex-col items-center cursor-default pointer-events-auto"
-                        animate={{
-                          left: verticalPinPositions[activeIndex].left,
-                          top: verticalPinPositions[activeIndex].top
-                        }}
-                        transition={{ type: "spring", stiffness: 90, damping: 15 }}
-                      >
-                        <div className="relative" style={{ transform: "translate(-50%, -95%)" }}>
-                          <DropletPinLogo className="w-14 h-16" />
-                          <div className="absolute inset-x-0 bottom-0 top-[30%] rounded-full border-2 border-cyan-400/40 opacity-40 animate-ping pointer-events-none" />
-                        </div>
-                      </motion.div>
-                    </>
-                  );
-                })()}
-
-              </div>
-
-              {/* Mobile/Tablet Horizontal Selector (visible on lg:hidden, replacing SVG road) */}
-              <div className="lg:hidden flex flex-col items-center mt-8 w-full max-w-[340px] mx-auto">
-                <span className="text-[9px] font-black uppercase tracking-[0.25em] text-[#0B2EA8] font-mono mb-4">
-                  {isHindi ? "मील का पत्थर चुनें" : "Select Milestone"}
-                </span>
-                <div className="relative w-full flex items-center justify-between px-2">
-                  <div className="absolute left-6 right-6 h-[2px] bg-slate-800 top-1/2 -translate-y-1/2 z-0" />
-                  {journeyTimeline.map((item, i) => {
-                    const isActive = activeIndex === i;
-                    return (
-                      <button
-                        key={`mobile-tab-${i}`}
-                        onClick={() => selectMilestone(i, false)}
-                        className="relative z-10 flex flex-col items-center focus:outline-none"
-                      >
+                      {/* Center dot */}
+                      <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-10">
                         <motion.div
                           animate={{
-                            scale: isActive ? 1.2 : 1,
-                            backgroundColor: isActive ? "#0B2EA8" : "#0f172a",
-                            borderColor: isActive ? "#0ea5e9" : "#334155",
+                            scale: isActive ? 1.4 : 1,
+                            backgroundColor: isActive ? "#0B2EA8" : "#CBD5E1",
                           }}
-                          className="w-8 h-8 rounded-full border bg-[#0f172a] flex items-center justify-center shadow-md transition-all duration-300"
-                        >
-                          {isActive ? (
-                            <div className="w-2 h-2 bg-white rounded-full" />
-                          ) : (
-                            <div className="w-1.5 h-1.5 bg-slate-600 rounded-full" />
-                          )}
-                        </motion.div>
-                        <span className={`text-xs font-black mt-2 transition-colors duration-300 ${
-                          isActive ? "text-cyan-400" : "text-slate-500"
+                          className="w-4 h-4 rounded-full border-2 border-white shadow-md transition-all duration-400"
+                        />
+                        {isActive && (
+                          <div className="absolute inset-0 rounded-full bg-[#0B2EA8]/30 animate-ping" />
+                        )}
+                      </div>
+
+                      {/* RIGHT SIDE */}
+                      <div className={`flex ${isLeft ? "justify-start pl-10" : "justify-end pr-10"} py-10`}>
+                        {!isLeft ? (
+                          /* Year label on right side */
+                          <button
+                            onClick={() => selectMilestone(i, true)}
+                            className="group flex flex-col items-start gap-2 focus:outline-none"
+                          >
+                            <span className={`font-black font-heading tracking-tighter transition-all duration-300 leading-none select-none ${
+                              isActive
+                                ? "text-[72px] md:text-[88px] text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-400"
+                                : "text-[56px] md:text-[72px] text-[#0A1A4E]/20 group-hover:text-[#0A1A4E]/40"
+                            }`}>
+                              {item.year}
+                            </span>
+                            {!isActive && (
+                              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0B2EA8]/40 group-hover:text-[#0B2EA8]/70 transition-colors">
+                                {isHindi ? "क्लिक करें" : "Click to view"}
+                              </span>
+                            )}
+                          </button>
+                        ) : (
+                          /* Photo revealed on right when this left-year is active */
+                          <AnimatePresence>
+                            {isActive && (
+                              <motion.div
+                                initial={{ opacity: 0, scale: 0.9, x: 20 }}
+                                animate={{ opacity: 1, scale: 1, x: 0 }}
+                                exit={{ opacity: 0, scale: 0.9, x: 20 }}
+                                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                                className="w-full max-w-[380px] aspect-[4/3] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(11,46,168,0.15)] border border-blue-100"
+                              >
+                                <img
+                                  src={item.image}
+                                  alt={`Curious Media ${item.year}`}
+                                  className="w-full h-full object-cover"
+                                  onError={(e) => {
+                                    e.currentTarget.src = "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&w=600&q=80";
+                                  }}
+                                />
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Mobile layout — stacked single column */}
+                    <div className="md:hidden flex flex-col items-center py-6 gap-4">
+                      <button
+                        onClick={() => selectMilestone(i, true)}
+                        className="focus:outline-none"
+                      >
+                        <span className={`font-black font-heading tracking-tighter transition-all duration-300 leading-none block text-center ${
+                          isActive
+                            ? "text-[64px] text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-400"
+                            : "text-[48px] text-[#0A1A4E]/25"
                         }`}>
                           {item.year}
                         </span>
                       </button>
-                    );
-                  })}
-                </div>
-              </div>
 
+                      {/* Mobile: vertical connector dot */}
+                      <div className="relative">
+                        <motion.div
+                          animate={{ scale: isActive ? 1.3 : 1, backgroundColor: isActive ? "#0B2EA8" : "#CBD5E1" }}
+                          className="w-3 h-3 rounded-full border-2 border-white shadow"
+                        />
+                      </div>
+
+                      <AnimatePresence>
+                        {isActive && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.4 }}
+                            className="w-full overflow-hidden"
+                          >
+                            <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border border-blue-100">
+                              <img
+                                src={item.image}
+                                alt={`Curious Media ${item.year}`}
+                                className="w-full h-full object-cover"
+                                onError={(e) => {
+                                  e.currentTarget.src = "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&w=600&q=80";
+                                }}
+                              />
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+
+                      {/* Mobile vertical line connector */}
+                      {i < journeyTimeline.length - 1 && (
+                        <div className="w-px h-8 bg-gradient-to-b from-blue-200 to-transparent" />
+                      )}
+                    </div>
+
+                  </motion.div>
+                );
+              })}
             </div>
-
           </div>
-
-          {/* Bottom controls removed for clean, automated, and road hover navigation */}
 
         </div>
       </section>
+
 
       {/* ─── MEET THE TEAM (LEADERSHIP BOARD - WHITE & BLUE) ─── */}
       <section className="py-20 md:py-24 bg-white text-[#0A1A4E] border-t border-slate-100">
