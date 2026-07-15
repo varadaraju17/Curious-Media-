@@ -114,15 +114,15 @@ export default function StudioPage() {
       
       // Videography Section
       "Videography": "वीडियोग्राफी",
-      "From full-scale ad films to high-ROI video creatives across Instagram, YouTube, TikTok, and social media management—we handle it all, start to finish, so you can focus on growing your brand and revenue.":
-        "इंस्टाग्राम, यूट्यूब, टिकटॉक और सोशल मीडिया प्रबंधन पर पूर्ण पैमाने की विज्ञापन फिल्मों से लेकर उच्च-आरओआई वीडियो क्रिएटिव तक—हम शुरुआत से अंत तक सब कुछ संभालते हैं, ताकि आप अपने ब्रांड और राजस्व को बढ़ाने पर ध्यान केंद्रित कर सकें।",
+      "From full-scale ad films to high-ROI video creatives across Instagram, YouTube, TikTok, and social media management-we handle it all, start to finish, so you can focus on growing your brand and revenue.":
+        "इंस्टाग्राम, यूट्यूब, टिकटॉक और सोशल मीडिया प्रबंधन पर पूर्ण पैमाने की विज्ञापन फिल्मों से लेकर उच्च-आरओआई वीडियो क्रिएटिव तक-हम शुरुआत से अंत तक सब कुछ संभालते हैं, ताकि आप अपने ब्रांड और राजस्व को बढ़ाने पर ध्यान केंद्रित कर सकें।",
       "Horizontal Mobile View": "क्षैतिज मोबाइल दृश्य",
       
       // What We Do
       "What We Do": "हम क्या करते हैं",
       "Inside Curious Studios": "क्यूरियस स्टूडियो के भीतर",
-      "Curious Studios sets a new benchmark in quality—every package is built to deliver excellence and includes:":
-        "क्यूरियस स्टूडियो गुणवत्ता में एक नया मानदंड स्थापित करता है—प्रत्येक पैकेज उत्कृष्टता प्रदान करने के लिए बनाया गया है और इसमें शामिल हैं:",
+      "Curious Studios sets a new benchmark in quality-every package is built to deliver excellence and includes:":
+        "क्यूरियस स्टूडियो गुणवत्ता में एक नया मानदंड स्थापित करता है-प्रत्येक पैकेज उत्कृष्टता प्रदान करने के लिए बनाया गया है और इसमें शामिल हैं:",
 
       // Services Titles
       "Ad Production": "विज्ञापन निर्माण",
@@ -133,29 +133,29 @@ export default function StudioPage() {
       "Social Media Management": "सोशल मीडिया मैनेजमेंट",
 
       // Services Descriptions
-      "From big campaigns to quick-turn ads—we do it all. Flexible, scalable, and tailored to your brand—just like we’ve done for the leading name- Zomato.":
-        "बड़े अभियानों से लेकर त्वरित विज्ञापनों तक—हम सब कुछ करते हैं। लचीला, स्केलेबल और आपके ब्रांड के अनुकूल—ठीक वैसे ही जैसे हमने प्रमुख नाम- ज़ोमैटो के लिए किया है।",
+      "From big campaigns to quick-turn ads-we do it all. Flexible, scalable, and tailored to your brand-just like we’ve done for the leading name- Zomato.":
+        "बड़े अभियानों से लेकर त्वरित विज्ञापनों तक-हम सब कुछ करते हैं। लचीला, स्केलेबल और आपके ब्रांड के अनुकूल-ठीक वैसे ही जैसे हमने प्रमुख नाम- ज़ोमैटो के लिए किया है।",
       "Don’t know where to start? We’ve got you. Our on-site creative experts shape your vision into content that performs.":
         "पता नहीं कहाँ से शुरू करें? हम आपके साथ हैं। हमारे ऑन-साइट रचनात्मक विशेषज्ञ आपके दृष्टिकोण को ऐसे कंटेंट में ढालते हैं जो प्रदर्शन करता है।",
-      "Polished. Powerful. Platform-ready. End-to-end editing with revisions, sound design, and full rights—everything your content needs to stand out.":
-        "पॉलिश्ड। शक्तिशाली। प्लेटफॉर्म-रेडी। संशोधनों, ध्वनि डिजाइन और पूर्ण अधिकारों के साथ एंड-टू-एंड संपादन—वह सब कुछ जो आपके कंटेंट को अलग दिखाने के लिए चाहिए।",
+      "Polished. Powerful. Platform-ready. End-to-end editing with revisions, sound design, and full rights-everything your content needs to stand out.":
+        "पॉलिश्ड। शक्तिशाली। प्लेटफॉर्म-रेडी। संशोधनों, ध्वनि डिजाइन और पूर्ण अधिकारों के साथ एंड-टू-एंड संपादन-वह सब कुछ जो आपके कंटेंट को अलग दिखाने के लिए चाहिए।",
       "The right faces for your brand. Access a curated network of creators and performers to bring your story to life.":
         "आपके ब्रांड के लिए सही चेहरे। अपनी कहानी को जीवंत करने के लिए रचनाकारों और कलाकारों के एक क्यूरेटेड नेटवर्क तक पहुँचें।",
       "Every frame, on-brand. Thoughtfully designed sets with handpicked props to make your content visually stand out.":
         "हर फ्रेम, ऑन-ब्रांड। आपके कंटेंट को विज़ुअली अलग दिखाने के लिए चुनिंदा प्रॉप्स के साथ सोच-समझकर डिज़ाइन किए गए सेट्स।",
-      "Content is just the start—we make it grow. From posting to performance tracking, we manage your social presence to drive reach, engagement, and results.":
-        "कंटेंट तो बस शुरुआत है—हम इसे बढ़ाते हैं। पोस्टिंग से लेकर परफॉर्मेंस ट्रैकिंग तक, हम रीच, जुड़ाव और परिणाम लाने के लिए आपकी सोशल उपस्थिति का प्रबंधन करते हैं।",
+      "Content is just the start-we make it grow. From posting to performance tracking, we manage your social presence to drive reach, engagement, and results.":
+        "कंटेंट तो बस शुरुआत है-हम इसे बढ़ाते हैं। पोस्टिंग से लेकर परफॉर्मेंस ट्रैकिंग तक, हम रीच, जुड़ाव और परिणाम लाने के लिए आपकी सोशल उपस्थिति का प्रबंधन करते हैं।",
 
       // How It Works
       "Process": "प्रक्रिया",
       "How It Works": "यह कैसे काम करता है",
-      "Your brand deserves high-performing content with thumb-stopping quality—built to stand out across every platform. Here's how we make it happen.":
-        "आपका ब्रांड थंब-स्टॉपिंग गुणवत्ता के साथ उच्च प्रदर्शन करने वाले कंटेंट का हकदार है—हर प्लेटफॉर्म पर अलग दिखने के लिए बनाया गया है। यहां बताया गया है कि हम इसे कैसे संभव बनाते हैं।",
+      "Your brand deserves high-performing content with thumb-stopping quality-built to stand out across every platform. Here's how we make it happen.":
+        "आपका ब्रांड थंब-स्टॉपिंग गुणवत्ता के साथ उच्च प्रदर्शन करने वाले कंटेंट का हकदार है-हर प्लेटफॉर्म पर अलग दिखने के लिए बनाया गया है। यहां बताया गया है कि हम इसे कैसे संभव बनाते हैं।",
       "SELECT A PACKAGE": "एक पैकेज चुनें",
       "Choose from flexible production packages tailored to your content, campaign, and growth goals.":
         "अपने कंटेंट, अभियान और विकास लक्ष्यों के अनुरूप लचीले प्रोडक्शन पैकेजों में से चुनें।",
       "BOOK YOUR SHOOT": "अपना शूट बुक करें",
-      "Send us your product or brief, and our team handles everything—from creative direction to production.":
+      "Send us your product or brief, and our team handles everything-from creative direction to production.":
         "हमें अपना उत्पाद या ब्रीफ भेजें, और हमारी टीम रचनात्मक दिशा से लेकर प्रोडक्शन तक सब कुछ संभालती है।",
       "WATCH YOUR CONTENT PERFORM": "अपने कंटेंट का प्रदर्शन देखें",
       "Receive platform-ready content designed to grab attention, drive engagement, and grow your brand.":
@@ -201,7 +201,7 @@ export default function StudioPage() {
   const services = [
     {
       title: "Ad Production",
-      desc: "From big campaigns to quick-turn ads—we do it all. Flexible, scalable, and tailored to your brand—just like we’ve done for the leading name- Zomato.",
+      desc: "From big campaigns to quick-turn ads-we do it all. Flexible, scalable, and tailored to your brand-just like we’ve done for the leading name- Zomato.",
       icon: <Video className="w-6 h-6 text-white" />,
       gradient: "from-blue-500 to-cyan-400"
     },
@@ -213,7 +213,7 @@ export default function StudioPage() {
     },
     {
       title: "Editing & Audio",
-      desc: "Polished. Powerful. Platform-ready. End-to-end editing with revisions, sound design, and full rights—everything your content needs to stand out.",
+      desc: "Polished. Powerful. Platform-ready. End-to-end editing with revisions, sound design, and full rights-everything your content needs to stand out.",
       icon: <Mic className="w-6 h-6 text-white" />,
       gradient: "from-[#0B2EA8] to-blue-600"
     },
@@ -231,7 +231,7 @@ export default function StudioPage() {
     },
     {
       title: "Social Media Management",
-      desc: "Content is just the start—we make it grow. From posting to performance tracking, we manage your social presence to drive reach, engagement, and results.",
+      desc: "Content is just the start-we make it grow. From posting to performance tracking, we manage your social presence to drive reach, engagement, and results.",
       icon: <Share2 className="w-6 h-6 text-white" />,
       gradient: "from-sky-500 to-blue-400"
     },
@@ -246,7 +246,7 @@ export default function StudioPage() {
     {
       step: "02",
       title: "BOOK YOUR SHOOT",
-      desc: "Send us your product or brief, and our team handles everything—from creative direction to production.",
+      desc: "Send us your product or brief, and our team handles everything-from creative direction to production.",
     },
     {
       step: "03",
@@ -505,7 +505,7 @@ export default function StudioPage() {
               {translate("Videography")}
             </h2>
             <p className="text-base md:text-xl text-slate-500 font-medium max-w-4xl mx-auto leading-relaxed">
-              {translate("From full-scale ad films to high-ROI video creatives across Instagram, YouTube, TikTok, and social media management—we handle it all, start to finish, so you can focus on growing your brand and revenue.")}
+              {translate("From full-scale ad films to high-ROI video creatives across Instagram, YouTube, TikTok, and social media management-we handle it all, start to finish, so you can focus on growing your brand and revenue.")}
             </p>
           </motion.div>
 
@@ -554,7 +554,7 @@ export default function StudioPage() {
               {translate("Inside Curious Studios")}
             </h3>
             <p className="text-lg md:text-xl text-slate-500 font-medium max-w-3xl mx-auto leading-relaxed">
-              {translate("Curious Studios sets a new benchmark in quality—every package is built to deliver excellence and includes:")}
+              {translate("Curious Studios sets a new benchmark in quality-every package is built to deliver excellence and includes:")}
             </p>
           </div>
 
@@ -595,7 +595,7 @@ export default function StudioPage() {
               {translate("How It Works")}
             </h3>
             <p className="text-xl md:text-2xl text-white/70 font-medium max-w-4xl mx-auto leading-relaxed">
-              {translate("Your brand deserves high-performing content with thumb-stopping quality—built to stand out across every platform. Here's how we make it happen.")}
+              {translate("Your brand deserves high-performing content with thumb-stopping quality-built to stand out across every platform. Here's how we make it happen.")}
             </p>
           </div>
 
@@ -663,7 +663,7 @@ export default function StudioPage() {
                     </span>
                   </div>
 
-                  {/* Desktop Navigation — pill buttons */}
+                  {/* Desktop Navigation - pill buttons */}
                   <div className="hidden md:flex items-center gap-3">
                     <button
                       onClick={() => scrollRow(seg.id, "left")}
@@ -707,7 +707,7 @@ export default function StudioPage() {
                   </div>
                 </div>
 
-                {/* Mobile Navigation — pill bar below each row */}
+                {/* Mobile Navigation - pill bar below each row */}
                 <div className="md:hidden flex items-center justify-center gap-3 mt-4">
                   <button
                     onClick={() => scrollRow(seg.id, "left")}

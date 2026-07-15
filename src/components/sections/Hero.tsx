@@ -205,7 +205,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
           pt-20 sm:pt-24 md:pt-32 pb-4 sm:pb-6"
         >
 
-          {/* ═══ LEFT — Copy ═══ */}
+          {/* ═══ LEFT - Copy ═══ */}
           <motion.div
             initial={{ opacity: 0, y: 36 }}
             animate={{ opacity: 1, y: 0 }}
@@ -246,7 +246,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                 {dict.hero.headline_line1}
               </motion.span>
 
-              {/* Line 2 — with shimmer underline */}
+              {/* Line 2 - with shimmer underline */}
               <motion.span
                 initial={{ opacity: 0, x: -24 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -263,7 +263,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                 />
               </motion.span>
 
-              {/* Lines 3+4 — animated shimmer */}
+              {/* Lines 3+4 - animated shimmer */}
               <motion.span
                 initial={{ opacity: 0, x: -24 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -348,7 +348,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
 
           </motion.div>
 
-          {/* ═══ RIGHT — Phone ═══ */}
+          {/* ═══ RIGHT - Phone ═══ */}
           <motion.div
             initial={{ opacity: 0, scale: 0.92, y: 24 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}

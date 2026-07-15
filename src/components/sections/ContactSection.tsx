@@ -158,18 +158,6 @@ export function ContactSection({ dict }: { dict: any }) {
                   </div>
                 </a>
               </div>
-
-              {/* Social Proof */}
-              <div className="rounded-2xl bg-[#F8FAFF] border border-blue-100 p-5">
-                <p className="text-[10px] font-black uppercase tracking-[0.25em] text-blue-800/40 mb-4">{dict.contact.trusted_brands}</p>
-                <div className="flex items-center gap-3">
-                  {["TVF", "Nykaa", "AstroTalk", "Lenskart", "ZEE5"].map((b) => (
-                    <span key={b} className="text-[9px] font-black uppercase tracking-wider bg-white border border-blue-100 text-[#0B2EA8] px-2.5 py-1.5 rounded-full">
-                      {b}
-                    </span>
-                  ))}
-                </div>
-              </div>
             </motion.div>
 
             {/* RIGHT: Form */}

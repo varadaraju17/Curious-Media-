@@ -12,78 +12,70 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
       desc: dict.divisions.media.desc,
       icon: <TrendingUp className="w-5 h-5" />,
       statIcon: <BarChart3 className="w-3.5 h-3.5" />,
-      stat: locale === "hi" ? "500+ अभियान" : "500+ Campaigns",
-      // Logo used as the background
-      bgImage: "/images/logo.png",
-      bgStyle: "bg-contain bg-center bg-no-repeat",
-      cardBg: "bg-white",
+      stat: "500+ Campaigns",
+      // No image for cards 01 & 02 — uses solid white bg
+      image: null as string | null,
       gradient: "from-[#0B2EA8] to-blue-500",
-      borderGlow: "hover:shadow-[0_0_0_2px_rgba(11,46,168,0.3),0_24px_60px_rgba(11,46,168,0.15)]",
+      glowColor: "rgba(11,46,168,0.35)",
+      borderGlow: "group-hover:shadow-[0_20px_50px_rgba(11,46,168,0.08)]",
       accentText: "text-[#0B2EA8]",
-      statTagCls: "bg-blue-50 text-[#0B2EA8] border-blue-100",
+      tagBg: "bg-blue-50 text-[#0B2EA8] border-blue-100/50",
       href: `/${locale}/creators`,
       num: "01",
       tag: dict.divisions.media.subtitle,
       comingSoon: false,
-      darkCard: false,
     },
     {
       title: dict.divisions.studio.title,
       desc: dict.divisions.studio.desc,
       icon: <Film className="w-5 h-5" />,
       statIcon: <Play className="w-3.5 h-3.5" />,
-      stat: locale === "hi" ? "4K प्रोडक्शन" : "4K Production",
-      // Logo used as the background
-      bgImage: "/images/logo_studios.jpg",
-      bgStyle: "bg-contain bg-center bg-no-repeat",
-      cardBg: "bg-white",
+      stat: "4K Production",
+      image: null as string | null,
       gradient: "from-indigo-700 to-violet-500",
-      borderGlow: "hover:shadow-[0_0_0_2px_rgba(99,102,241,0.3),0_24px_60px_rgba(99,102,241,0.15)]",
-      accentText: "text-indigo-700",
-      statTagCls: "bg-indigo-50 text-indigo-700 border-indigo-100",
+      glowColor: "rgba(99,102,241,0.35)",
+      borderGlow: "group-hover:shadow-[0_20px_50px_rgba(99,102,241,0.08)]",
+      accentText: "text-indigo-600",
+      tagBg: "bg-indigo-50 text-indigo-600 border-indigo-100/50",
       href: `/${locale}/studio`,
       num: "02",
       tag: dict.divisions.studio.subtitle,
       comingSoon: false,
-      darkCard: false,
     },
     {
       title: dict.divisions.music.title,
       desc: dict.divisions.music.desc,
       icon: <Music2 className="w-5 h-5" />,
       statIcon: <Disc className="w-3.5 h-3.5" />,
-      stat: locale === "hi" ? "टॉप चार्ट्स" : "Top Charts",
-      bgImage: null,
-      bgStyle: "",
-      cardBg: "bg-white",
+      stat: "Top Charts",
+      // Cards 03 & 04 — show background image ONLY, no content overlay
+      image: "/images/content/curious_music_coming_soon.png" as string | null,
       gradient: "from-violet-700 to-fuchsia-500",
-      borderGlow: "hover:shadow-[0_0_0_2px_rgba(139,92,246,0.3),0_24px_60px_rgba(139,92,246,0.15)]",
-      accentText: "text-violet-700",
-      statTagCls: "bg-violet-50 text-violet-700 border-violet-100",
+      glowColor: "rgba(139,92,246,0.35)",
+      borderGlow: "group-hover:shadow-[0_32px_80px_rgba(139,92,246,0.25)]",
+      accentText: "text-violet-300",
+      tagBg: "bg-violet-500/20 text-violet-200 border-white/10",
       href: `/${locale}/records`,
       num: "03",
       tag: dict.divisions.music.subtitle,
       comingSoon: true,
-      darkCard: false,
     },
     {
       title: dict.divisions.products.title,
       desc: dict.divisions.products.desc,
       icon: <Sparkles className="w-5 h-5" />,
       statIcon: <BarChart3 className="w-3.5 h-3.5" />,
-      stat: locale === "hi" ? "AI-संचालित टूल्स" : "AI-Powered Tools",
-      bgImage: null,
-      bgStyle: "",
-      cardBg: "bg-white",
+      stat: "AI-Powered Tools",
+      image: "/images/content/curious_product_coming_soon.png" as string | null,
       gradient: "from-sky-600 to-cyan-400",
-      borderGlow: "hover:shadow-[0_0_0_2px_rgba(14,165,233,0.3),0_24px_60px_rgba(14,165,233,0.15)]",
-      accentText: "text-sky-600",
-      statTagCls: "bg-sky-50 text-sky-700 border-sky-100",
+      glowColor: "rgba(14,165,233,0.35)",
+      borderGlow: "group-hover:shadow-[0_32px_80px_rgba(14,165,233,0.25)]",
+      accentText: "text-sky-300",
+      tagBg: "bg-sky-500/20 text-sky-200 border-white/10",
       href: `/${locale}/products`,
       num: "04",
       tag: dict.divisions.products.subtitle,
       comingSoon: true,
-      darkCard: false,
     },
   ];
 
@@ -94,13 +86,13 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_80%_60%,rgba(99,102,241,0.04),transparent)] pointer-events-none" />
       {/* Grid overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(11,46,168,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(11,46,168,0.03)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
-      {/* Top/bottom divider */}
+      {/* Top / bottom dividers */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
 
       <div className="container mx-auto px-4 md:px-8 max-w-[1400px] relative z-10">
 
-        {/* Header */}
+        {/* ── Header ── */}
         <div className="mb-16 md:mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
             <motion.div
@@ -118,7 +110,7 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.05 }}
-              className="text-4xl md:text-6xl lg:text-[68px] font-black font-heading tracking-tighter leading-[0.95] text-[#0B2EA8] uppercase"
+              className="text-4xl md:text-6xl lg:text-[68px] font-black font-heading tracking-tight leading-[0.95] text-[#0B2EA8] uppercase"
             >
               {dict.divisions.title_1}<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-400">{dict.divisions.title_2}</span>
@@ -136,110 +128,99 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
           </motion.p>
         </div>
 
-        {/* Cards Grid */}
+        {/* ── Cards Grid ── */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-5">
-          {divisions.map((div, i) => (
-            <Link key={div.title} href={div.href} className="group cursor-pointer block h-full">
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className={`relative h-full flex flex-col rounded-3xl overflow-hidden
-                  border border-blue-100
-                  shadow-[0_4px_24px_rgba(11,46,168,0.08)]
-                  ${div.borderGlow}
-                  ${div.cardBg}
-                  hover:-translate-y-2 transition-all duration-500`}
-              >
-                {/* ── LOGO cards (Media & Studio) — logo IS the background ── */}
-                {div.bgImage && (
-                  <>
-                    {/* Logo as full-card background, contained & centered */}
-                    <div
-                      className={`absolute inset-0 ${div.bgStyle} transition-transform duration-700 ease-out group-hover:scale-105`}
-                      style={{ backgroundImage: `url(${div.bgImage})` }}
-                    />
-                    {/* Subtle white vignette at bottom so text stays readable */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent" />
-                    {/* Light blue tint on hover */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${div.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
-                  </>
-                )}
+          {divisions.map((div, i) => {
+            const isWhiteBg = !div.image;
 
-                {/* ── COMING SOON cards (Music & Product) — white bg + centred text ── */}
-                {div.comingSoon && (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 pointer-events-none">
-                    {/* Pulsing dot */}
-                    <span className={`w-3 h-3 rounded-full bg-gradient-to-br ${div.gradient} animate-ping opacity-75`} />
-                    <p className="text-2xl md:text-3xl font-black font-heading tracking-tight text-[#0A1A4E] text-center leading-tight px-4">
-                      {locale === "hi" ? "जल्द आ\nरहा है" : "Coming\nSoon"}
-                    </p>
-                    <span className={`text-[9px] font-black uppercase tracking-[0.25em] ${div.accentText} text-center`}>
-                      {div.tag}
-                    </span>
-                  </div>
-                )}
-
-                {/* Content overlay (bottom section) */}
-                <div className="relative z-10 flex flex-col h-full min-h-[360px] p-6">
-
-                  {/* Top row: number + stat badge */}
-                  <div className="flex items-center justify-between mb-auto">
-                    <span className="text-[10px] font-black tracking-[0.3em] text-[#0B2EA8]/30 uppercase">
-                      {div.num}
-                    </span>
-                    <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-[10px] font-bold ${div.statTagCls} backdrop-blur-md`}>
-                      {div.statIcon}
-                      <span>{div.stat}</span>
-                    </div>
+            return (
+              <Link key={div.title} href={div.href} className="group cursor-pointer block h-full">
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                  className={`relative h-full flex flex-col rounded-3xl overflow-hidden transition-all duration-500 min-h-[360px] ${
+                    isWhiteBg
+                      ? `bg-white border border-slate-100 ${div.borderGlow} hover:border-slate-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:-translate-y-2`
+                      : `border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] ${div.borderGlow} hover:-translate-y-2`
+                  }`}
+                >
+                  {/* ── Background layer ── */}
+                  <div className="absolute inset-0">
+                    {div.image ? (
+                      /* Cards 03 & 04: full-bleed photo */
+                      <div
+                        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
+                        style={{ backgroundImage: `url(${div.image})` }}
+                      />
+                    ) : (
+                      /* Cards 01 & 02: solid white background */
+                      <div className="absolute inset-0 bg-white" />
+                    )}
                   </div>
 
-                  {/* Bottom content block */}
-                  <div className="mt-auto pt-4">
-                    {/* Icon + tag */}
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className={`w-8 h-8 rounded-xl bg-gradient-to-br ${div.gradient} flex items-center justify-center text-white shadow-lg shrink-0`}>
-                        {div.icon}
+                  {/* ── Content (only cards 01 & 02) ── */}
+                  {!div.comingSoon && (
+                    <div className="relative z-10 flex flex-col h-full p-6">
+
+                      {/* Top row: number + stat pill */}
+                      <div className="flex items-center justify-between mb-auto">
+                        <span className="text-[10px] font-black tracking-[0.3em] text-slate-300 group-hover:text-slate-400 uppercase transition-colors duration-300">
+                          {div.num}
+                        </span>
+                        <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-[10px] font-bold ${div.tagBg} shadow-sm`}>
+                          {div.statIcon}
+                          <span>{div.stat}</span>
+                        </div>
                       </div>
-                      <span className={`text-[9px] font-black uppercase tracking-[0.22em] ${div.accentText}`}>
-                        {div.tag}
-                      </span>
+
+                      {/* Bottom block */}
+                      <div className="mt-auto pt-4">
+                        {/* Icon + tag row */}
+                        <div className="flex items-center gap-2 mb-3">
+                          <div className={`w-8 h-8 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center ${div.accentText} shadow-sm shrink-0`}>
+                            {div.icon}
+                          </div>
+                          <span className={`text-[9px] font-black uppercase tracking-[0.22em] ${div.accentText}`}>
+                            {div.tag}
+                          </span>
+                        </div>
+
+                        {/* Title */}
+                        <h3 className="text-2xl font-black font-heading tracking-tight text-[#0A1A4E] mb-2 leading-tight uppercase">
+                          {div.title}
+                        </h3>
+
+                        {/* Description */}
+                        <p className="text-sm text-slate-500 leading-relaxed line-clamp-2 group-hover:text-slate-700 transition-colors duration-300 font-medium">
+                          {div.desc}
+                        </p>
+
+                        {/* CTA row */}
+                        <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between">
+                          <span className="text-xs font-bold text-slate-400 uppercase tracking-widest group-hover:text-[#0B2EA8] transition-colors duration-300">
+                            Explore
+                          </span>
+                          <motion.div
+                            whileHover={{ scale: 1.15 }}
+                            className={`w-9 h-9 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center ${div.accentText} shadow-sm`}
+                          >
+                            <ArrowUpRight className="w-4 h-4" />
+                          </motion.div>
+                        </div>
+                      </div>
                     </div>
+                  )}
 
-                    {/* Title */}
-                    <h3 className="text-2xl font-black font-heading tracking-tight text-[#0A1A4E] mb-2 leading-tight">
-                      {div.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-sm text-[#0A1A4E]/50 leading-relaxed line-clamp-2 group-hover:text-[#0A1A4E]/75 transition-colors duration-300">
-                      {div.desc}
-                    </p>
-
-                    {/* CTA row */}
-                    <div className="mt-5 pt-4 border-t border-blue-100 flex items-center justify-between">
-                      <span className="text-xs font-bold text-[#0B2EA8]/40 uppercase tracking-widest group-hover:text-[#0B2EA8]/70 transition-colors duration-300">
-                        {locale === "hi" ? "देखें" : "Explore"}
-                      </span>
-                      <motion.div
-                        whileHover={{ scale: 1.15 }}
-                        className={`w-9 h-9 rounded-full bg-gradient-to-br ${div.gradient} flex items-center justify-center text-white shadow-lg`}
-                      >
-                        <ArrowUpRight className="w-4 h-4" />
-                      </motion.div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Bottom gradient accent bar */}
-                <div className={`absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r ${div.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-              </motion.div>
-            </Link>
-          ))}
+                  {/* Animated bottom gradient accent bar */}
+                  <div className={`absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r ${div.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                </motion.div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>
   );
-
 }

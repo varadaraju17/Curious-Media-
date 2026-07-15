@@ -38,13 +38,13 @@ const brands = [
 ];
 
 const contentPartners = [
-  { name: "Balaji Telefilms",       domain: "balajitelefilms.com", slug: "balaji-telefilms" },
-  { name: "Balaji Motion Pictures", domain: "balajitelefilms.com", slug: "balaji-motion-pictures" },
   { name: "TVF",                    domain: "theviralfever.com",   slug: "tvf" },
-  { name: "Rajat Pawar",            domain: "youtube.com",         slug: "rajat-pawar" },
+  { name: "Balaji Telefilms",       domain: "balajitelefilms.com", slug: "balaji-telefilms" },
   { name: "Yuvaa",                  domain: "yuvaa.co.in",         slug: "yuvaa" },
-  { name: "Real Hit",               domain: "realhit.in",          slug: "real-hit" },
   { name: "Content Ka Keeda",       domain: "graphy.com",          slug: "content-ka-keeda" },
+  { name: "Rajat Pawar",            domain: "youtube.com",         slug: "rajat-pawar" },
+  { name: "Real Hit",               domain: "realhit.in",          slug: "real-hit" },
+  { name: "Balaji Motion Pictures", domain: "balajitelefilms.com", slug: "balaji-motion-pictures" },
 ];
 
 function BrandLogo({ item, type, size = "md" }: { item: { name: string; domain: string; slug: string }; type: string; size?: "sm" | "md" | "lg" | "xl" }) {
@@ -108,7 +108,7 @@ export function Marquee({ type, dict, title }: MarqueeProps) {
 
   return (
     <section
-      aria-label={`${isBrands ? "Trusted By Visionary Brands" : "Trusted by the Best in Content"} — Curious Media`}
+      aria-label={`${isBrands ? "Trusted By Visionary Brands" : "Trusted by the Best in Content"} - Curious Media`}
       className="relative bg-white overflow-hidden py-12 md:py-16"
     >
       {/* Top/bottom borders */}
@@ -120,7 +120,7 @@ export function Marquee({ type, dict, title }: MarqueeProps) {
 
       {/* SEO */}
       <div className="sr-only">
-        <h2>{isBrands ? "Best Social Media Marketing Company in Delhi, Mumbai, Bangalore, Hyderabad, Chennai — Curious Media" : "India's Premium Content Partnership Network"}</h2>
+        <h2>{isBrands ? "Best Social Media Marketing Company in Delhi, Mumbai, Bangalore, Hyderabad, Chennai - Curious Media" : "India's Premium Content Partnership Network"}</h2>
         <ul>{items.map(i => <li key={i.slug}>{i.name}</li>)}</ul>
       </div>
 
@@ -180,7 +180,7 @@ export function Marquee({ type, dict, title }: MarqueeProps) {
             />
             <div className="flex items-baseline gap-2 mt-1">
               <span className="text-3xl md:text-4xl font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-blue-500">
-                {isBrands ? "29+" : "7+"}
+                {isBrands ? "30+" : "70+"}
               </span>
               <span className="text-xs font-bold text-blue-800/50 uppercase tracking-widest">
                 {isBrands ? "Brand Partners" : "Content Partners"}
@@ -195,7 +195,7 @@ export function Marquee({ type, dict, title }: MarqueeProps) {
         <div className="container mx-auto px-4 md:px-8 max-w-[1250px] relative z-10 py-6" aria-hidden="true">
           <div className="flex flex-row flex-nowrap items-center justify-start md:justify-center gap-6 md:gap-14 overflow-x-auto md:overflow-x-visible max-w-full pb-4 scrollbar-none">
             {items.map((item) => (
-              <BrandLogo key={item.slug} item={item} type={type} size="xl" />
+              <BrandLogo key={item.slug} item={item} type="content-partners" size="xl" />
             ))}
           </div>
         </div>
@@ -205,7 +205,7 @@ export function Marquee({ type, dict, title }: MarqueeProps) {
           <div className="absolute inset-y-0 left-0 w-20 md:w-48 bg-gradient-to-r from-white to-transparent z-20 pointer-events-none" />
           <div className="absolute inset-y-0 right-0 w-20 md:w-48 bg-gradient-to-l from-white to-transparent z-20 pointer-events-none" />
 
-          {/* Strip A — left to right */}
+          {/* Strip A - left to right */}
           <div className="flex overflow-x-hidden py-4">
             <motion.div
               className="flex items-start"
@@ -219,7 +219,7 @@ export function Marquee({ type, dict, title }: MarqueeProps) {
             </motion.div>
           </div>
 
-          {/* Strip B — right to left */}
+          {/* Strip B - right to left */}
           {stripB.length > 0 && (
             <div className="flex overflow-x-hidden py-4">
               <motion.div

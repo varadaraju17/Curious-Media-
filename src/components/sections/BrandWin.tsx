@@ -139,7 +139,7 @@ export function BrandWin({ dict }: { dict: any }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.12, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="group relative rounded-[2.5rem] border border-blue-100 overflow-hidden bg-white
+              className="group flex flex-col h-full relative rounded-[2.5rem] border border-blue-100 overflow-hidden bg-white
                 hover:border-[#0B2EA8]/30 hover:shadow-[0_24px_60px_rgba(11,46,168,0.18)] hover:-translate-y-2 transition-all duration-500 cursor-default p-6 md:p-8 shadow-xl"
             >
               {/* Highlight line top */}

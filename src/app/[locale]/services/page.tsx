@@ -20,13 +20,13 @@ export default function ServicesPage() {
         "हम केवल अभियान नहीं चलाते; हम वितरण इंजन बनाते हैं जो सांस्कृतिक प्रभाव और मापने योग्य विकास को संचालित करते हैं।",
       "Meme Marketing": "मीम मार्केटिंग",
       "Memes that live rent-free in minds.": "मीम्स जो दिमाग में बिना किराए के रहते हैं।",
-      "We create memes that travel fast, hit hard, and stay in your audience’s mind—scaled across millions through our distribution engine.":
-        "हम ऐसे मीम्स बनाते हैं जो तेज़ी से फैलते हैं, गहरा प्रभाव छोड़ते हैं, और आपके दर्शकों के दिमाग में बस जाते हैं—हमारे वितरण इंजन के माध्यम से लाखों लोगों तक पहुंचे।",
+      "We create memes that travel fast, hit hard, and stay in your audience’s mind-scaled across millions through our distribution engine.":
+        "हम ऐसे मीम्स बनाते हैं जो तेज़ी से फैलते हैं, गहरा प्रभाव छोड़ते हैं, और आपके दर्शकों के दिमाग में बस जाते हैं-हमारे वितरण इंजन के माध्यम से लाखों लोगों तक पहुंचे।",
       "reach through distribution network": "वितरण नेटवर्क के माध्यम से पहुंच",
       "Influencer Marketing": "इन्फ्लुएंसर मार्केटिंग",
       "Not just creators. Growth partners.": "केवल निर्माता नहीं। विकास भागीदार।",
-      "We match your brand with creators who don’t just talk—they influence, engage, and convert at scale.":
-        "हम आपके ब्रांड को ऐसे रचनाकारों से जोड़ते हैं जो केवल बात नहीं करते—वे बड़े पैमाने पर प्रभावित करते हैं, संलग्न करते हैं और ग्राहकों में बदलते हैं।",
+      "We match your brand with creators who don’t just talk-they influence, engage, and convert at scale.":
+        "हम आपके ब्रांड को ऐसे रचनाकारों से जोड़ते हैं जो केवल बात नहीं करते-वे बड़े पैमाने पर प्रभावित करते हैं, संलग्न करते हैं और ग्राहकों में बदलते हैं।",
       "influencers across India": "पूरे भारत में इन्फ्लुएंसर्स",
       "Content Marketing": "कंटेंट मार्केटिंग",
       "Seamless storytelling that stays with your audience.": "निर्बाध कहानी जो आपके दर्शकों के साथ बनी रहती है।",
@@ -48,7 +48,7 @@ export default function ServicesPage() {
       num: "01",
       title: "Meme Marketing",
       subtitle: "Memes that live rent-free in minds.",
-      desc: "We create memes that travel fast, hit hard, and stay in your audience’s mind—scaled across millions through our distribution engine.",
+      desc: "We create memes that travel fast, hit hard, and stay in your audience’s mind-scaled across millions through our distribution engine.",
       metric: "900M+",
       metricLabel: "reach through distribution network",
       icon: <MessageSquare className="w-8 h-8" />,
@@ -59,7 +59,7 @@ export default function ServicesPage() {
       num: "02",
       title: "Influencer Marketing",
       subtitle: "Not just creators. Growth partners.",
-      desc: "We match your brand with creators who don’t just talk—they influence, engage, and convert at scale.",
+      desc: "We match your brand with creators who don’t just talk-they influence, engage, and convert at scale.",
       metric: "15K+",
       metricLabel: "influencers across India",
       icon: <Users className="w-8 h-8" />,

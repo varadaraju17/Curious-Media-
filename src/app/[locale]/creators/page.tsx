@@ -25,21 +25,20 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 
 const CREATORS_DATA = [
+  { name: "TVF", slug: "tvf", domain: "theviralfever.com" },
+  { name: "Timeliners", slug: "timeliner", domain: "thetimeliner.com" },
+  { name: "TSP", slug: "tsp", domain: "thescreenpatti.com" },
+  { name: "Girliyapa", slug: "girliyapa", domain: "girliyapa.com" },
+  { name: "Realhit", slug: "real-hit", domain: "realhit.in" },
+  { name: "Kutingg", slug: "katting", domain: "katting.com" },
+  { name: "Yuvaa", slug: "yuvaa", domain: "yuvaa.co.in" },
   { name: "Content Ka Keeda", slug: "content-ka-keeda", domain: "graphy.com" },
   { name: "Devika Gupta", slug: "devika-gupta", domain: "youtube.com" },
   { name: "Rajat Pawar", slug: "rajat-pawar", domain: "youtube.com" },
   { name: "Bala JI Motion Picture", slug: "balaji-motion-pictures", domain: "balajitelefilms.com" },
   { name: "Bala JI Tele Films", slug: "balaji-telefilms", domain: "balajitelefilms.com" },
-  { name: "TVF", slug: "tvf", domain: "theviralfever.com" },
-  { name: "Girliyapa", slug: "girliyapa", domain: "girliyapa.com" },
-  { name: "Timeliners", slug: "timeliner", domain: "thetimeliner.com" },
-  { name: "TSP", slug: "tsp", domain: "thescreenpatti.com" },
-  { name: "Realhit", slug: "real-hit", domain: "realhit.in" },
-  { name: "Kutingg", slug: "katting", domain: "katting.com" },
   { name: "The Blunt", slug: "the-blunt", domain: "theblunt.in" },
-  { name: "Shushant Sinha", slug: "shushant-sinha", domain: "shushantsinha.com" },
   { name: "Rohit Bamola", slug: "rohita-bamola", domain: "youtube.com" },
-  { name: "Yuvaa", slug: "yuvaa", domain: "yuvaa.co.in" },
   { name: "Defence detective", slug: "defence-detective", domain: "youtube.com" },
   { name: "Hasley", slug: "hasley", domain: "hasleyindia.com" },
   { name: "Skull Tales", slug: "skull-tales", domain: "youtube.com" },
@@ -109,12 +108,12 @@ const WORKFLOW = [
   {
     icon: <TrendingUp className="w-6 h-6" />,
     title: "Enhanced Monetization",
-    desc: "We go beyond basic revenue—unlocking higher CPMs, smarter distribution, and premium brand opportunities to maximize your earnings."
+    desc: "We go beyond basic revenue-unlocking higher CPMs, smarter distribution, and premium brand opportunities to maximize your earnings."
   },
   {
     icon: <Rocket className="w-6 h-6" />,
     title: "Room to Grow",
-    desc: "Over 90% of creators choose to continue with us. Because we don’t just scale content—we grow with you."
+    desc: "Over 90% of creators choose to continue with us. Because we don’t just scale content-we grow with you."
   },
   {
     icon: <ShieldCheck className="w-6 h-6" />,
@@ -129,7 +128,7 @@ const WORKFLOW = [
   {
     icon: <BarChart3 className="w-6 h-6" />,
     title: "Simple Revenue Share",
-    desc: "We earn only when you earn. A simple, fixed share applies only to the revenue we help generate—nothing more."
+    desc: "We earn only when you earn. A simple, fixed share applies only to the revenue we help generate-nothing more."
   },
   {
     icon: <Zap className="w-6 h-6" />,
@@ -141,7 +140,7 @@ const WORKFLOW = [
 const FAQS = [
   {
     q: "Are Shorts creators eligible?",
-    a: "We love Shorts—but strong long-form YouTube content is essential for our partnerships."
+    a: "We love Shorts-but strong long-form YouTube content is essential for our partnerships."
   },
   {
     q: "What about podcasters or Twitch streamers?",
@@ -149,7 +148,7 @@ const FAQS = [
   },
   {
     q: "Which content verticals do you work with?",
-    a: "Almost all. From lifestyle to gaming, food to education—if it works on YouTube, we’re in."
+    a: "Almost all. From lifestyle to gaming, food to education-if it works on YouTube, we’re in."
   },
   {
     q: "Do creators need rights to their content?",
@@ -201,16 +200,16 @@ function WorkflowSteps() {
     const descMap: Record<string, string> = {
       "We evaluate your content’s potential and structure a straightforward partnership. No hidden clauses. No ownership transfer. Your channel stays entirely yours.":
         "हम आपकी सामग्री की क्षमता का मूल्यांकन करते हैं और एक सीधी साझेदारी की संरचना करते हैं। कोई छिपी हुई शर्तें नहीं। कोई स्वामित्व हस्तांतरण नहीं। आपका चैनल पूरी तरह से आपका रहेगा।",
-      "We go beyond basic revenue—unlocking higher CPMs, smarter distribution, and premium brand opportunities to maximize your earnings.":
-        "हम बुनियादी राजस्व से आगे बढ़ते हैं—आपकी कमाई को अधिकतम करने के लिए उच्च CPM, स्मार्ट वितरण और प्रीमियम ब्रांड के अवसरों को अनलॉक करते हैं।",
-      "Over 90% of creators choose to continue with us. Because we don’t just scale content—we grow with you.":
-        "90% से अधिक क्रिएटर हमारे साथ बने रहना चुनते हैं। क्योंकि हम केवल सामग्री का पैमाना नहीं बढ़ाते—हम आपके साथ बढ़ते हैं।",
+      "We go beyond basic revenue-unlocking higher CPMs, smarter distribution, and premium brand opportunities to maximize your earnings.":
+        "हम बुनियादी राजस्व से आगे बढ़ते हैं-आपकी कमाई को अधिकतम करने के लिए उच्च CPM, स्मार्ट वितरण और प्रीमियम ब्रांड के अवसरों को अनलॉक करते हैं।",
+      "Over 90% of creators choose to continue with us. Because we don’t just scale content-we grow with you.":
+        "90% से अधिक क्रिएटर हमारे साथ बने रहना चुनते हैं। क्योंकि हम केवल सामग्री का पैमाना नहीं बढ़ाते-हम आपके साथ बढ़ते हैं।",
       "You stay fully in control of your content and creative direction. We focus only on making it earn more.":
         "आप अपनी सामग्री और रचनात्मक दिशा पर पूरी तरह से नियंत्रण रखते हैं। हम केवल इसे अधिक कमाई करने पर ध्यान केंद्रित करते हैं।",
       "No problem. We handle content monetization while your brand deals continue seamlessly with your existing agency.":
         "कोई बात नहीं। हम कंटेंट मुद्रीकरण को संभालते हैं जबकि आपके ब्रांड सौदे आपकी मौजूदा एजेंसी के साथ निर्बाध रूप से चलते रहते हैं।",
-      "We earn only when you earn. A simple, fixed share applies only to the revenue we help generate—nothing more.":
-        "हम तभी कमाते हैं जब आप कमाते हैं। एक सरल, निश्चित हिस्सा केवल उसी राजस्व पर लागू होता है जिसे हम उत्पन्न करने में मदद करते हैं—और कुछ नहीं।",
+      "We earn only when you earn. A simple, fixed share applies only to the revenue we help generate-nothing more.":
+        "हम तभी कमाते हैं जब आप कमाते हैं। एक सरल, निश्चित हिस्सा केवल उसी राजस्व पर लागू होता है जिसे हम उत्पन्न करने में मदद करते हैं-और कुछ नहीं।",
       "All earnings come directly to you. Our share is settled monthly through a clean, transparent invoicing process.":
         "सभी कमाई सीधे आपके पास आती है। हमारा हिस्सा मासिक रूप से एक साफ, पारदर्शी चालान प्रक्रिया के माध्यम से तय किया जाता है।"
     };
@@ -278,7 +277,7 @@ function WorkflowSteps() {
                 <div className="w-8 h-8 rounded-lg bg-blue-50 group-hover:bg-blue-100 flex items-center justify-center text-[#0B2EA8] transition-colors duration-300">
                   {item.icon}
                 </div>
-                <h3 className="text-2xl md:text-3xl font-black text-[#0A1A4E] uppercase tracking-tighter leading-none group-hover:text-[#0B2EA8] transition-colors duration-300">
+                <h3 className="text-2xl md:text-3xl font-black text-[#0A1A4E] uppercase tracking-tight leading-none group-hover:text-[#0B2EA8] transition-colors duration-300">
                   {item.title}
                 </h3>
               </div>
@@ -308,12 +307,12 @@ function FAQAccordion() {
       "Not sure if your channel fits?": "यकीन नहीं है कि आपका चैनल फिट बैठता है?"
     };
     const aMap: Record<string, string> = {
-      "We love Shorts—but strong long-form YouTube content is essential for our partnerships.":
-        "हमें शॉर्ट्स पसंद हैं—लेकिन हमारी साझेदारी के लिए मजबूत लॉन्ग-फॉर्म यूट्यूब सामग्री आवश्यक है।",
+      "We love Shorts-but strong long-form YouTube content is essential for our partnerships.":
+        "हमें शॉर्ट्स पसंद हैं-लेकिन हमारी साझेदारी के लिए मजबूत लॉन्ग-फॉर्म यूट्यूब सामग्री आवश्यक है।",
       "Absolutely. If you have strong YouTube viewership alongside it, you’re a great fit.":
         "बिल्कुल। यदि आपके पास इसके साथ मजबूत यूट्यूब व्यूअरशिप है, तो आप एक बेहतरीन फिट हैं।",
-      "Almost all. From lifestyle to gaming, food to education—if it works on YouTube, we’re in.":
-        "लगभग सभी। लाइफस्थल से लेकर गेमिंग, फूड से लेकर एजुकेशन तक—अगर यह यूट्यूब पर चलता है, तो हम साथ हैं।",
+      "Almost all. From lifestyle to gaming, food to education-if it works on YouTube, we’re in.":
+        "लगभग सभी। लाइफस्थल से लेकर गेमिंग, फूड से लेकर एजुकेशन तक-अगर यह यूट्यूब पर चलता है, तो हम साथ हैं।",
       "Yes, creators must own all rights to their content.":
         "हाँ, रचनाकारों के पास अपनी सामग्री के सभी अधिकार होने चाहिए।",
       "Send it over. We’ll take a look and give you an honest assessment.":
@@ -594,11 +593,11 @@ export default function CreatorsPage() {
             {/* Top Section: Large Number */}
             <div className="w-full mb-8">
               <span className="text-3xl md:text-5xl font-black text-white/40 block mb-2 uppercase tracking-tight">₹</span>
-              <h2 className="text-[3.5rem] xs:text-[4.5rem] sm:text-[7rem] md:text-[8.5rem] lg:text-[10rem] font-black leading-[0.8] tracking-tighter uppercase">
+              <h2 className="text-[3.5rem] xs:text-[4.5rem] sm:text-[7rem] md:text-[8.5rem] lg:text-[10rem] font-black leading-[0.8] tracking-tighter uppercase flex items-start flex-wrap">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-cyan-400">
-                  {isHindi ? "1 मिलियन" : "1 Million"}
+                  {isHindi ? "10 लाख" : "1M"}
                 </span>
-                <span className="text-cyan-400 text-[0.6em] align-top mt-4">+</span>
+                <span className="text-cyan-400 text-[0.5em] leading-[0.8] ml-2">+</span>
               </h2>
             </div>
  

@@ -9,9 +9,9 @@ const campaigns = [
     title: "Space Gen",
     brand: "TVF",
     metrics: [
-      { label: "Committed", value: "70M+", icon: <Eye className="w-3.5 h-3.5" /> },
-      { label: "Delivered", value: "110M+", icon: <TrendingUp className="w-3.5 h-3.5" /> },
-      { label: "Engagement", value: ">5%", icon: <Users className="w-3.5 h-3.5" /> },
+      { label: "Committed views", value: "70M+", icon: <Eye className="w-3.5 h-3.5" /> },
+      { label: "Delivered views", value: "110M+", icon: <TrendingUp className="w-3.5 h-3.5" /> },
+      { label: "Engagement rate", value: ">5%", icon: <Users className="w-3.5 h-3.5" /> },
     ],
     slug: "space-gen",
     images: [
@@ -30,9 +30,9 @@ const campaigns = [
     title: "Medical Dreams",
     brand: "Girliyapa",
     metrics: [
-      { label: "Committed", value: "25M+", icon: <Eye className="w-3.5 h-3.5" /> },
-      { label: "Delivered", value: "70M+", icon: <TrendingUp className="w-3.5 h-3.5" /> },
-      { label: "Engagement", value: ">3%", icon: <Users className="w-3.5 h-3.5" /> },
+      { label: "Committed views", value: "25M+", icon: <Eye className="w-3.5 h-3.5" /> },
+      { label: "Delivered views", value: "70M+", icon: <TrendingUp className="w-3.5 h-3.5" /> },
+      { label: "Engagement rate", value: ">3%", icon: <Users className="w-3.5 h-3.5" /> },
     ],
     slug: "medical-dreams",
     images: [
@@ -50,11 +50,11 @@ const campaigns = [
   {
     title: "India Tour",
     brand: "Travis Scott",
+    award: true,
     metrics: [
-      { label: "Committed", value: "20M+", icon: <Eye className="w-3.5 h-3.5" /> },
-      { label: "Delivered", value: "100M+", icon: <TrendingUp className="w-3.5 h-3.5" /> },
-      { label: "Engagement", value: ">7%", icon: <Users className="w-3.5 h-3.5" /> },
-      { label: "Status", value: "🏆 Award-Winning Campaign", icon: <Award className="w-3.5 h-3.5" /> },
+      { label: "Committed views", value: "20M+", icon: <Eye className="w-3.5 h-3.5" /> },
+      { label: "Delivered views", value: "100M+", icon: <TrendingUp className="w-3.5 h-3.5" /> },
+      { label: "Engagement rate", value: ">7%", icon: <Users className="w-3.5 h-3.5" /> },
     ],
     slug: "travis-scott-india",
     images: [
@@ -73,9 +73,9 @@ const campaigns = [
     title: "Pyaar ki Raahein",
     brand: "Balaji Telefilms",
     metrics: [
-      { label: "Committed", value: "20M+", icon: <Eye className="w-3.5 h-3.5" /> },
-      { label: "Delivered", value: "45M+", icon: <TrendingUp className="w-3.5 h-3.5" /> },
-      { label: "Engagement", value: ">3%", icon: <Users className="w-3.5 h-3.5" /> },
+      { label: "Committed views", value: "20M+", icon: <Eye className="w-3.5 h-3.5" /> },
+      { label: "Delivered views", value: "45M+", icon: <TrendingUp className="w-3.5 h-3.5" /> },
+      { label: "Engagement rate", value: ">3%", icon: <Users className="w-3.5 h-3.5" /> },
     ],
     slug: "pyaar-ki-raahein",
     images: [
@@ -92,11 +92,11 @@ const campaigns = [
   },
   {
     title: "AstroTalk",
-    brand: "Influencer Marketing",
+    brand: "AstroTalk",
     metrics: [
-      { label: "Influencers", value: "50+", icon: <Users className="w-3.5 h-3.5" /> },
-      { label: "Delivered", value: "80M+", icon: <TrendingUp className="w-3.5 h-3.5" /> },
-      { label: "CPV", value: "₹0.10", icon: <Eye className="w-3.5 h-3.5" /> },
+      { label: "Influencers delivered", value: "200+", icon: <Users className="w-3.5 h-3.5" /> },
+      { label: "Committed views", value: "350M+", icon: <Eye className="w-3.5 h-3.5" /> },
+      { label: "CPV", value: "₹0.10", icon: <TrendingUp className="w-3.5 h-3.5" /> },
     ],
     slug: "astrotalk-influencer",
     images: [
@@ -115,8 +115,8 @@ const campaigns = [
     title: "Pink Sale",
     brand: "Nykaa",
     metrics: [
-      { label: "Influencers", value: "50+", icon: <Users className="w-3.5 h-3.5" /> },
-      { label: "Delivered", value: "55M+", icon: <TrendingUp className="w-3.5 h-3.5" /> },
+      { label: "Influencers delivered", value: "50+", icon: <Users className="w-3.5 h-3.5" /> },
+      { label: "Delivered views", value: "55M+", icon: <TrendingUp className="w-3.5 h-3.5" /> },
       { label: "CPV", value: "₹0.15", icon: <Eye className="w-3.5 h-3.5" /> },
     ],
     slug: "nykaa-pink-sale",
@@ -136,9 +136,9 @@ const campaigns = [
     title: "Motion Class Campaign",
     brand: "Motion Class",
     metrics: [
-      { label: "Committed", value: "20M+", icon: <Eye className="w-3.5 h-3.5" /> },
-      { label: "Delivered", value: "35M+", icon: <TrendingUp className="w-3.5 h-3.5" /> },
-      { label: "Engagement", value: ">3%", icon: <Users className="w-3.5 h-3.5" /> },
+      { label: "Committed views", value: "20M+", icon: <Eye className="w-3.5 h-3.5" /> },
+      { label: "Delivered views", value: "35M+", icon: <TrendingUp className="w-3.5 h-3.5" /> },
+      { label: "Engagement rate", value: ">3%", icon: <Users className="w-3.5 h-3.5" /> },
     ],
     slug: "motion-class-campaign",
     images: [
@@ -157,9 +157,9 @@ const campaigns = [
     title: "Collage Days",
     brand: "Alright",
     metrics: [
-      { label: "Committed", value: "12M+", icon: <Eye className="w-3.5 h-3.5" /> },
-      { label: "Delivered", value: "20M+", icon: <TrendingUp className="w-3.5 h-3.5" /> },
-      { label: "Engagement", value: ">3%", icon: <Users className="w-3.5 h-3.5" /> },
+      { label: "Committed views", value: "12M+", icon: <Eye className="w-3.5 h-3.5" /> },
+      { label: "Delivered views", value: "20M+", icon: <TrendingUp className="w-3.5 h-3.5" /> },
+      { label: "Engagement rate", value: ">3%", icon: <Users className="w-3.5 h-3.5" /> },
     ],
     slug: "collage-days",
     images: [
@@ -174,6 +174,63 @@ const campaigns = [
     tagBg: "bg-blue-500/20 text-blue-200 border-blue-400/30",
     num: "08",
   },
+  {
+    title: "Made in India",
+    brand: "Rusk Live",
+    metrics: [
+      { label: "Influencers delivered", value: "500+", icon: <Users className="w-3.5 h-3.5" /> },
+      { label: "Delivered reach", value: "100M+", icon: <Eye className="w-3.5 h-3.5" /> },
+      { label: "Engagement rate", value: "3%", icon: <TrendingUp className="w-3.5 h-3.5" /> },
+    ],
+    slug: "made-in-india",
+    images: [
+      "/images/posters/made-in-india.jpg"
+    ],
+    gradient: "from-amber-500 to-orange-400",
+    glowColor: "rgba(245,158,11,0.4)",
+    borderColor: "border-amber-400/50",
+    accentText: "text-amber-300",
+    tagBg: "bg-amber-500/20 text-amber-200 border-amber-400/30",
+    num: "09",
+  },
+  {
+    title: "Sunburn Delhi",
+    brand: "Black Coffee",
+    metrics: [
+      { label: "Influencers delivered", value: "100+", icon: <Users className="w-3.5 h-3.5" /> },
+      { label: "Delivered reach", value: "30M+", icon: <Eye className="w-3.5 h-3.5" /> },
+      { label: "Engagement rate", value: "2%", icon: <TrendingUp className="w-3.5 h-3.5" /> },
+    ],
+    slug: "sunburn-delhi",
+    images: [
+      "/images/posters/sunburn.jpg"
+    ],
+    gradient: "from-teal-500 to-emerald-400",
+    glowColor: "rgba(20,184,166,0.4)",
+    borderColor: "border-teal-400/50",
+    accentText: "text-teal-300",
+    tagBg: "bg-teal-500/20 text-teal-200 border-teal-400/30",
+    num: "10",
+  },
+  {
+    title: "Skill India",
+    brand: "MSDE",
+    metrics: [
+      { label: "Influencers delivered", value: "10", icon: <Users className="w-3.5 h-3.5" /> },
+      { label: "Delivered reach", value: "30M+", icon: <Eye className="w-3.5 h-3.5" /> },
+      { label: "Engagement rate", value: "3%", icon: <TrendingUp className="w-3.5 h-3.5" /> },
+    ],
+    slug: "skill-india",
+    images: [
+      "/images/posters/skill-india.jpg"
+    ],
+    gradient: "from-blue-400 to-cyan-300",
+    glowColor: "rgba(56,189,248,0.4)",
+    borderColor: "border-blue-300/50",
+    accentText: "text-blue-200",
+    tagBg: "bg-blue-400/20 text-blue-100 border-blue-300/30",
+    num: "11",
+  }
 ];
 
 export function CaseStudies({ dict }: { dict: any }) {
@@ -182,11 +239,11 @@ export function CaseStudies({ dict }: { dict: any }) {
     if (!isHindi) return text;
     const map: Record<string, string> = {
       // Labels
-      "Committed": "प्रतिबद्ध",
-      "Delivered": "वितरित",
-      "Engagement": "जुड़ाव",
-      "Status": "स्थिति",
-      "Influencers": "इन्फ्लुएंसर्स",
+      "Committed views": "प्रतिबद्ध व्यूज़",
+      "Delivered views": "वितरित व्यूज़",
+      "Delivered reach": "वितरित पहुंच",
+      "Engagement rate": "जुड़ाव दर",
+      "Influencers delivered": "वितरित इन्फ्लुएंसर्स",
       "CPV": "सीपीवी (CPV)",
       
       // Values
@@ -197,28 +254,31 @@ export function CaseStudies({ dict }: { dict: any }) {
       "Girliyapa": "गिर्लियापा",
       "Travis Scott": "ट्रेविस स्कॉट",
       "Balaji Telefilms": "बालाजी टेलीफिल्म्स",
-      "Influencer Marketing": "इन्फ्लुएंसर मार्केटिंग",
+      "AstroTalk": "एस्ट्रोटॉक",
       "Nykaa": "नायका",
       "Motion Class": "मोशन क्लास",
       "Alright": "ऑलराइट",
+      "Rusk Live": "रस्क लाइव",
+      "Black Coffee": "ब्लैक कॉफी",
+      "MSDE": "एमएसडीई (MSDE)",
       
       // Titles
       "Space Gen": "स्पेस जेन",
       "Medical Dreams": "मेडिकल ड्रीम्स",
       "India Tour": "इंडिया टूर",
       "Pyaar ki Raahein": "प्यार की राहें",
-      "AstroTalk": "एस्ट्रोटॉक",
+      "Influencer Marketing": "इन्फ्लुएंसर मार्केटिंग",
       "Pink Sale": "पिंक सेल",
       "Motion Class Campaign": "मोशन क्लास कैंपेन",
-      "Collage Days": "कोलाज डेज़"
+      "Collage Days": "कोलाज डेज़",
+      "Made in India": "मेड इन इंडिया",
+      "Sunburn Delhi": "सनबर्न दिल्ली",
+      "Skill India": "स्किल इंडिया"
     };
     return map[text] || text;
   };
 
   const scrollRef = useRef<HTMLDivElement>(null);
-  // Store the active image index for each campaign card
-  const [activeImageIndexes, setActiveImageIndexes] = useState<number[]>(new Array(campaigns.length).fill(0));
-
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
       const firstChild = scrollRef.current.firstElementChild as HTMLElement;
@@ -229,17 +289,6 @@ export function CaseStudies({ dict }: { dict: any }) {
       const scrollAmount = direction === "left" ? -cardWidth * count : cardWidth * count;
       scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
-  };
-
-  const handleSwapImage = (cardIndex: number, e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setActiveImageIndexes((prev) => {
-      const next = [...prev];
-      const imageCount = campaigns[cardIndex].images.length;
-      next[cardIndex] = (next[cardIndex] + 1) % imageCount;
-      return next;
-    });
   };
 
   return (
@@ -277,7 +326,7 @@ export function CaseStudies({ dict }: { dict: any }) {
         </motion.div>
       </div>
 
-      {/* Horizontal scroll — Cinematic Posters with interactive click-swap */}
+      {/* Horizontal scroll - Cinematic Posters with interactive click-swap */}
       <div className="w-full relative z-10">
         {/* Edge fades */}
         <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-white to-transparent z-20 pointer-events-none" />
@@ -285,8 +334,7 @@ export function CaseStudies({ dict }: { dict: any }) {
 
         <div ref={scrollRef} className="flex overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 px-4 md:px-8 xl:px-[calc((100%-1400px)/2+2rem)] pb-12 pt-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {campaigns.map((campaign, i) => {
-            const activeImageIndex = activeImageIndexes[i] ?? 0;
-            const currentImg = campaign.images[activeImageIndex];
+            const currentImg = campaign.images[0];
 
             return (
               <motion.div
@@ -295,41 +343,40 @@ export function CaseStudies({ dict }: { dict: any }) {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ delay: Math.min(i * 0.07, 0.4), duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="flex-none w-[85vw] sm:w-[55vw] md:w-[40vw] lg:w-[28vw] snap-center group cursor-pointer"
-                onClick={(e) => handleSwapImage(i, e)}
+                className="flex-none w-[85vw] sm:w-[55vw] md:w-[40vw] lg:w-[28vw] snap-center group select-none"
               >
                 <div
                   className={`relative flex flex-col rounded-[2.5rem] border ${campaign.borderColor} overflow-hidden bg-[#0A1A4E]
                     shadow-[0_10px_40px_rgba(0,0,0,0.1)]
                     hover:-translate-y-4 transition-all duration-700 min-h-[500px] md:min-h-[580px]`}
-                  style={{ boxShadow: `0 20px 60px ${campaign.glowColor}` }}
+                  style={{ boxShadow: `0 20px 60px ${campaign.glowColor}`, WebkitTapHighlightColor: 'transparent' }}
                 >
-                  {/* Full-bleed image with AnimatePresence for smooth swap */}
+                  {/* Full-bleed image styled to prevent zooming/cropping */}
                   <div className="absolute inset-0">
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={activeImageIndex}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 1.05 }}
-                        transition={{ duration: 0.4 }}
-                        className="absolute inset-0 bg-cover bg-center"
-                        style={{ backgroundImage: `url(${currentImg})` }}
-                      />
-                    </AnimatePresence>
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A1A4E]/95 via-[#0A1A4E]/45 to-transparent" />
+                    <div
+                      className="absolute inset-0 bg-[size:100%_auto] bg-no-repeat bg-top"
+                      style={{ backgroundImage: `url(${currentImg})` }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A1A4E]/95 via-[#0A1A4E]/40 to-transparent" />
                   </div>
 
                   {/* Content */}
                   <div className="relative z-10 flex flex-col h-full p-6 md:p-8 min-h-[500px] md:min-h-[580px]">
 
                     {/* Top row */}
-                    <div className="flex items-center justify-between mb-auto">
-                      <span className="text-xs font-black tracking-[0.3em] text-white/40 uppercase font-heading">{campaign.num}</span>
-                      <div className={`flex items-center gap-2 px-4 py-2 rounded-full border text-[10px] font-black uppercase tracking-widest ${campaign.tagBg} backdrop-blur-md shadow-lg`}>
-                        <span className={`w-2 h-2 rounded-full bg-gradient-to-r ${campaign.gradient} shadow-[0_0_10px_rgba(255,255,255,0.5)]`} />
-                        {translateText(campaign.brand)}
+                    <div className="flex flex-col gap-3 mb-auto">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-black tracking-[0.3em] text-white/40 uppercase font-heading">{campaign.num}</span>
+                        <div className={`flex items-center gap-2 px-4 py-2 rounded-full border text-[10px] font-black uppercase tracking-widest ${campaign.tagBg} backdrop-blur-md shadow-lg`}>
+                          <span className={`w-2 h-2 rounded-full bg-gradient-to-r ${campaign.gradient} shadow-[0_0_10px_rgba(255,255,255,0.5)]`} />
+                          {translateText(campaign.brand)}
+                        </div>
                       </div>
+                      {(campaign as any).award && (
+                        <div className="self-end px-3 py-1.5 rounded-full bg-amber-500/20 border border-amber-400/30 backdrop-blur-md shadow-lg">
+                          <span className="text-[9px] font-black uppercase tracking-widest text-amber-300">{translateText("🏆 Award-Winning Campaign")}</span>
+                        </div>
+                      )}
                     </div>
  
                     {/* Bottom content */}
@@ -369,7 +416,7 @@ export function CaseStudies({ dict }: { dict: any }) {
           <div className="flex-none w-12" />
         </div>
 
-        {/* Desktop Navigation Arrows — overlaid */}
+        {/* Desktop Navigation Arrows - overlaid */}
         <button
           onClick={() => scroll("left")}
           className="hidden md:flex absolute left-6 lg:left-10 top-1/2 -translate-y-1/2 z-30 w-14 h-14 rounded-full bg-white border border-blue-100 items-center justify-center text-[#0B2EA8] shadow-2xl hover:bg-blue-50 hover:scale-110 active:scale-95 transition-all duration-300 group"
@@ -385,7 +432,7 @@ export function CaseStudies({ dict }: { dict: any }) {
           <ArrowRight className="w-6 h-6 group-hover:translate-x-0.5 transition-transform" />
         </button>
 
-        {/* Mobile Navigation Arrows — bottom pill bar */}
+        {/* Mobile Navigation Arrows - bottom pill bar */}
         <div className="md:hidden flex items-center justify-center gap-4 mt-2 pb-2">
           <button
             onClick={() => scroll("left")}

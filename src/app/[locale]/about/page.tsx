@@ -174,11 +174,15 @@ export default function AboutPage() {
     }
   ];
 
-  const selectMilestone = (index: number, stopAutoplay = false) => {
+  const selectMilestone = (index: number, scrollIntoView = true) => {
     setActiveIndex(index);
     setAutoplayProgress(0);
-    if (stopAutoplay) {
-      setIsPlaying(false);
+    setIsPlaying(false);
+    if (scrollIntoView) {
+      const el = document.getElementById("timeline-row-" + index);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
     }
   };
 
@@ -187,38 +191,51 @@ export default function AboutPage() {
     if (!mounted) return;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") {
-        selectMilestone(activeIndex > 0 ? activeIndex - 1 : journeyTimeline.length - 1, false);
+        selectMilestone(activeIndex > 0 ? activeIndex - 1 : journeyTimeline.length - 1, true);
       } else if (e.key === "ArrowRight") {
-        selectMilestone(activeIndex < journeyTimeline.length - 1 ? activeIndex + 1 : 0, false);
+        selectMilestone(activeIndex < journeyTimeline.length - 1 ? activeIndex + 1 : 0, true);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [mounted, activeIndex, journeyTimeline.length]);
 
-  // Autoplay loop
+  // Scroll Spy to automatically activate milestones as user scrolls
   useEffect(() => {
-    if (!mounted || !isPlaying || isHovered) return;
-    
-    // Reset progress to 0 when starting/resuming or changing active index
-    setAutoplayProgress(0);
-    
-    const interval = 50; // ms
-    const duration = 3000; // 3 seconds autoplay gap
-    const totalSteps = duration / interval; // 60 steps
-    const step = 100 / totalSteps; // ~1.67
-    
-    const timer = setInterval(() => {
-      setAutoplayProgress((prev) => {
-        if (prev >= 100) {
-          setActiveIndex((idx) => (idx + 1) % journeyTimeline.length);
-          return 0;
+    if (!mounted) return;
+
+    const handleScrollSpy = () => {
+      const threshold = window.innerHeight * 0.45; // 45% from top of viewport
+      let activeIdx = 0;
+      let minDistance = Infinity;
+
+      for (let i = 0; i < journeyTimeline.length; i++) {
+        const el = document.getElementById("timeline-row-" + i);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          const distance = Math.abs(rect.top - threshold);
+          if (rect.top < threshold + 150 && distance < minDistance) {
+            minDistance = distance;
+            activeIdx = i;
+          }
         }
-        return prev + step;
-      });
-    }, interval);
-    return () => clearInterval(timer);
-  }, [mounted, isPlaying, isHovered, activeIndex, journeyTimeline.length]);
+      }
+
+      // Only update if index has changed and timeline section is visible
+      const timelineSection = document.getElementById("timeline");
+      if (timelineSection) {
+        const secRect = timelineSection.getBoundingClientRect();
+        if (secRect.top < window.innerHeight && secRect.bottom > 0) {
+          setActiveIndex(activeIdx);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScrollSpy, { passive: true });
+    handleScrollSpy(); // Run once on load
+
+    return () => window.removeEventListener("scroll", handleScrollSpy);
+  }, [mounted, journeyTimeline.length]);
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const target = e.currentTarget;
@@ -427,7 +444,11 @@ export default function AboutPage() {
           </div>
 
           {/* Vertical Timeline */}
-          <div className="relative">
+          <div 
+            className="relative"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
 
             {/* Center vertical line */}
             <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-blue-200 to-transparent hidden md:block" />
@@ -438,24 +459,21 @@ export default function AboutPage() {
                 const isActive = activeIndex === i;
 
                 return (
-                  <motion.div
+                  <div
+                    id={"timeline-row-" + i}
                     key={item.year}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-60px" }}
-                    transition={{ delay: i * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                     className="relative"
                   >
                     {/* Desktop layout — alternating sides */}
-                    <div className={`hidden md:grid grid-cols-2 gap-0 items-start min-h-[160px] ${isActive ? "mb-0" : "mb-0"}`}>
+                    <div className="hidden md:grid grid-cols-2 gap-0 items-start min-h-[380px]">
 
                       {/* LEFT SIDE */}
-                      <div className={`flex ${isLeft ? "justify-end pr-10" : "justify-start pl-10"} py-10`}>
+                      <div className="flex justify-end pr-8 md:pr-12 py-10">
                         {isLeft ? (
                           /* Year label on left side */
                           <button
                             onClick={() => selectMilestone(i, true)}
-                            className={`group flex flex-col items-end gap-2 focus:outline-none`}
+                            className="group flex flex-col items-end gap-2 focus:outline-none"
                           >
                             <span className={`font-black font-heading tracking-tighter transition-all duration-300 leading-none select-none ${
                               isActive
@@ -471,32 +489,58 @@ export default function AboutPage() {
                             )}
                           </button>
                         ) : (
-                          /* Photo revealed on left when this right-year is active */
-                          <AnimatePresence>
-                            {isActive && (
-                              <motion.div
-                                initial={{ opacity: 0, scale: 0.9, x: -20 }}
-                                animate={{ opacity: 1, scale: 1, x: 0 }}
-                                exit={{ opacity: 0, scale: 0.9, x: -20 }}
-                                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                                className="w-full max-w-[380px] aspect-[4/3] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(11,46,168,0.15)] border border-blue-100"
-                              >
-                                <img
-                                  src={item.image}
-                                  alt={`Curious Media ${item.year}`}
-                                  className="w-full h-full object-cover"
-                                  onError={(e) => {
-                                    e.currentTarget.src = "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&w=600&q=80";
-                                  }}
-                                />
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
+                          /* Timeline Card always rendered for layout stability, animated with opacity/scale */
+                          <motion.div
+                            animate={{
+                              opacity: isActive ? 1 : 0,
+                              scale: isActive ? 1 : 0.96,
+                              y: isActive ? 0 : 15,
+                            }}
+                            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                            className={`w-full max-w-[420px] rounded-[2rem] bg-white border border-slate-100 p-6 shadow-[0_20px_50px_rgba(11,46,168,0.06)] flex flex-col gap-4 text-left ${
+                              isActive ? "pointer-events-auto" : "pointer-events-none"
+                            }`}
+                          >
+                            {/* Photo */}
+                            <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden bg-slate-50 border border-slate-100 relative">
+                              <img
+                                src={item.image}
+                                alt={`Curious Media ${item.year}`}
+                                className="w-full h-full object-cover"
+                                onError={(e) => {
+                                  e.currentTarget.src = "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&w=600&q=80";
+                                }}
+                              />
+                            </div>
+                            {/* Details */}
+                            <div className="flex flex-col gap-1.5">
+                              <span className="text-[9px] font-black uppercase tracking-[0.25em] text-[#0B2EA8]">
+                                {item.subtitle}
+                              </span>
+                              <h4 className="text-xl font-black text-[#0A1A4E] uppercase tracking-tight">
+                                {item.title}
+                              </h4>
+                              <p className="text-sm text-slate-500 font-semibold leading-relaxed">
+                                {translate(item.desc)}
+                              </p>
+                              {/* Milestones list */}
+                              <div className="flex flex-wrap gap-2 mt-3">
+                                {item.milestones.map((ms, idx) => (
+                                  <span 
+                                    key={idx} 
+                                    className="text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full bg-blue-50 text-[#0B2EA8] border border-blue-100/30"
+                                  >
+                                    {ms}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          </motion.div>
                         )}
                       </div>
 
-                      {/* Center dot */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-10">
+                      {/* Center dot: Vertically anchored relative to year label center */}
+                      <div className="absolute left-1/2 -translate-x-1/2 top-[84px] -translate-y-1/2 z-10">
                         <motion.div
                           animate={{
                             scale: isActive ? 1.4 : 1,
@@ -510,7 +554,7 @@ export default function AboutPage() {
                       </div>
 
                       {/* RIGHT SIDE */}
-                      <div className={`flex ${isLeft ? "justify-start pl-10" : "justify-end pr-10"} py-10`}>
+                      <div className="flex justify-start pl-8 md:pl-12 py-10">
                         {!isLeft ? (
                           /* Year label on right side */
                           <button
@@ -531,32 +575,58 @@ export default function AboutPage() {
                             )}
                           </button>
                         ) : (
-                          /* Photo revealed on right when this left-year is active */
-                          <AnimatePresence>
-                            {isActive && (
-                              <motion.div
-                                initial={{ opacity: 0, scale: 0.9, x: 20 }}
-                                animate={{ opacity: 1, scale: 1, x: 0 }}
-                                exit={{ opacity: 0, scale: 0.9, x: 20 }}
-                                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                                className="w-full max-w-[380px] aspect-[4/3] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(11,46,168,0.15)] border border-blue-100"
-                              >
-                                <img
-                                  src={item.image}
-                                  alt={`Curious Media ${item.year}`}
-                                  className="w-full h-full object-cover"
-                                  onError={(e) => {
-                                    e.currentTarget.src = "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&w=600&q=80";
-                                  }}
-                                />
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
+                          /* Timeline Card always rendered for layout stability, animated with opacity/scale */
+                          <motion.div
+                            animate={{
+                              opacity: isActive ? 1 : 0,
+                              scale: isActive ? 1 : 0.96,
+                              y: isActive ? 0 : 15,
+                            }}
+                            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                            className={`w-full max-w-[420px] rounded-[2rem] bg-white border border-slate-100 p-6 shadow-[0_20px_50px_rgba(11,46,168,0.06)] flex flex-col gap-4 text-left ${
+                              isActive ? "pointer-events-auto" : "pointer-events-none"
+                            }`}
+                          >
+                            {/* Photo */}
+                            <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden bg-slate-50 border border-slate-100 relative">
+                              <img
+                                src={item.image}
+                                alt={`Curious Media ${item.year}`}
+                                className="w-full h-full object-cover"
+                                onError={(e) => {
+                                  e.currentTarget.src = "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&w=600&q=80";
+                                }}
+                              />
+                            </div>
+                            {/* Details */}
+                            <div className="flex flex-col gap-1.5">
+                              <span className="text-[9px] font-black uppercase tracking-[0.25em] text-[#0B2EA8]">
+                                {item.subtitle}
+                              </span>
+                              <h4 className="text-xl font-black text-[#0A1A4E] uppercase tracking-tight">
+                                {item.title}
+                              </h4>
+                              <p className="text-sm text-slate-500 font-semibold leading-relaxed">
+                                {translate(item.desc)}
+                              </p>
+                              {/* Milestones list */}
+                              <div className="flex flex-wrap gap-2 mt-3">
+                                {item.milestones.map((ms, idx) => (
+                                  <span 
+                                    key={idx} 
+                                    className="text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full bg-blue-50 text-[#0B2EA8] border border-blue-100/30"
+                                  >
+                                    {ms}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          </motion.div>
                         )}
                       </div>
                     </div>
 
-                    {/* Mobile layout — stacked single column */}
+                    {/* Mobile layout - stacked single column with opacity transition, no layout shift */}
                     <div className="md:hidden flex flex-col items-center py-6 gap-4">
                       <button
                         onClick={() => selectMilestone(i, true)}
@@ -579,28 +649,53 @@ export default function AboutPage() {
                         />
                       </div>
 
-                      <AnimatePresence>
-                        {isActive && (
-                          <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.4 }}
-                            className="w-full overflow-hidden"
-                          >
-                            <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border border-blue-100">
-                              <img
-                                src={item.image}
-                                alt={`Curious Media ${item.year}`}
-                                className="w-full h-full object-cover"
-                                onError={(e) => {
+                      <motion.div
+                        animate={{
+                          opacity: isActive ? 1 : 0.5,
+                          scale: isActive ? 1 : 0.97,
+                        }}
+                        transition={{ duration: 0.3 }}
+                        className="w-full"
+                      >
+                        <div className={`w-full rounded-[2rem] bg-white border p-5 shadow-md flex flex-col gap-4 text-left transition-all duration-300 ${
+                          isActive ? "border-blue-200 shadow-blue-100/40 shadow-xl" : "border-slate-100"
+                        }`}>
+                          {/* Photo */}
+                          <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden bg-slate-50 border border-slate-100">
+                            <img
+                              src={item.image}
+                              alt={`Curious Media ${item.year}`}
+                              className="w-full h-full object-cover"
+                              onError={(e) => {
                                   e.currentTarget.src = "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&w=600&q=80";
-                                }}
-                              />
+                              }}
+                            />
+                          </div>
+                          {/* Details */}
+                          <div className="flex flex-col gap-1.5">
+                            <span className="text-[9px] font-black uppercase tracking-[0.25em] text-[#0B2EA8]">
+                              {item.subtitle}
+                            </span>
+                            <h4 className="text-lg font-black text-[#0A1A4E] uppercase tracking-tight">
+                              {item.title}
+                            </h4>
+                            <p className="text-xs text-slate-500 font-semibold leading-relaxed">
+                              {translate(item.desc)}
+                            </p>
+                            {/* Milestones list */}
+                            <div className="flex flex-wrap gap-1.5 mt-2">
+                              {item.milestones.map((ms, idx) => (
+                                <span 
+                                  key={idx} 
+                                  className="text-[8px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full bg-blue-50 text-[#0B2EA8] border border-blue-100/30"
+                                >
+                                  {ms}
+                                </span>
+                              ))}
                             </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
+                          </div>
+                        </div>
+                      </motion.div>
 
                       {/* Mobile vertical line connector */}
                       {i < journeyTimeline.length - 1 && (
@@ -608,7 +703,7 @@ export default function AboutPage() {
                       )}
                     </div>
 
-                  </motion.div>
+                  </div>
                 );
               })}
             </div>

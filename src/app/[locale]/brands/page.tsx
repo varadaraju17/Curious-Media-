@@ -44,8 +44,8 @@ export default function BrandsPage() {
 
   const STATS = [
     { 
-      label: isHindi ? "एक वर्ष में वितरित कुल दृश्य" : "Viewership Delivered in a Year", 
-      num: 10, 
+      label: isHindi ? "मासिक वितरित कुल दृश्य" : "Monthly Views Delivered", 
+      num: 5, 
       suffix: "+", 
       unit: isHindi ? "बिलियन" : "Billion", 
       icon: <BarChart3 className="w-6 h-6" /> 
@@ -72,8 +72,8 @@ export default function BrandsPage() {
       title: isHindi ? "मीम मार्केटिंग" : "Meme Marketing",
       subtitle: isHindi ? "ऐसे मीम्स जो दिमाग में घर कर जाते हैं।" : "Memes that live rent-free in minds.",
       desc: isHindi 
-        ? "हम ऐसे मीम्स बनाते हैं जो तेजी से वायरल होते हैं, गहरा प्रभाव छोड़ते हैं और आपके दर्शकों के दिमाग में बने रहते हैं—हमारे वितरण इंजन के माध्यम से लाखों लोगों तक पहुंचाए जाते हैं।"
-        : "We create memes that travel fast, hit hard, and stay in your audience’s mind—scaled across millions through our distribution engine.",
+        ? "हम ऐसे मीम्स बनाते हैं जो तेजी से वायरल होते हैं, गहरा प्रभाव छोड़ते हैं और आपके दर्शकों के दिमाग में बने रहते हैं-हमारे वितरण इंजन के माध्यम से लाखों लोगों तक पहुंचाए जाते हैं।"
+        : "We create memes that travel fast, hit hard, and stay in your audience’s mind-scaled across millions through our distribution engine.",
       metricLabelTop: isHindi ? "वितरण नेटवर्क" : "Distribution Network",
       metricStat: "900M+",
       metricLabelBottom: "",
@@ -84,8 +84,8 @@ export default function BrandsPage() {
       title: isHindi ? "इन्फ्लुएंसर मार्केटिंग" : "Influencer Marketing",
       subtitle: isHindi ? "सिर्फ क्रिएटर नहीं, बल्कि ग्रोथ पार्टनर।" : "Not just creators. Growth partners.",
       desc: isHindi 
-        ? "हम आपके ब्रांड को उन क्रिएटर्स से जोड़ते हैं जो केवल बात नहीं करते—वे बड़े पैमाने पर प्रभावित करते हैं, जुड़ाव बनाते हैं और रूपांतरण लाते हैं।"
-        : "We match your brand with creators who don’t just talk—they influence, engage, and convert at scale.",
+        ? "हम आपके ब्रांड को उन क्रिएटर्स से जोड़ते हैं जो केवल बात नहीं करते-वे बड़े पैमाने पर प्रभावित करते हैं, जुड़ाव बनाते हैं और रूपांतरण लाते हैं।"
+        : "We match your brand with creators who don’t just talk-they influence, engage, and convert at scale.",
       metricLabelTop: isHindi ? "इन्फ्लुएंसर नेटवर्क –" : "Influencer Network –",
       metricStat: "15k+",
       metricLabelBottom: isHindi ? "संपूर्ण भारत" : "Pan India",
@@ -207,7 +207,7 @@ export default function BrandsPage() {
                   {isHindi ? "प्रभाव का पैमाना" : "The Scale of Impact"}
                 </span>
               </div>
-              <h2 className="text-4xl md:text-5xl lg:text-[70px] font-black font-heading tracking-tighter leading-[0.95] uppercase">
+              <h2 className="text-4xl md:text-5xl lg:text-[70px] font-black font-heading tracking-tight leading-[0.95] uppercase">
                 {isHindi ? (
                   <>
                     <span className="text-white">परिणाम जिन्हें</span><br/>
@@ -255,7 +255,7 @@ export default function BrandsPage() {
           {/* Stat Cards - on dark bg */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {[
-              { num: 10, suffix: "B+", label: isHindi ? "वार्षिक वितरित दृश्य" : "Annual Views Delivered", tag: isHindi ? "वार्षिक पहुंच" : "Annual Reach" },
+              { num: 5, suffix: "B+", label: isHindi ? "मासिक वितरित दृश्य" : "Monthly Views Delivered", tag: isHindi ? "मासिक पहुंच" : "Monthly Reach" },
               { num: 900, suffix: "M+", label: isHindi ? "मासिक वितरण पहुंच" : "Monthly Distribution Reach", tag: isHindi ? "अखिल भारतीय नेटवर्क" : "Pan India Network" },
               { num: 15, suffix: "K+", label: isHindi ? "सत्यापित क्रिएटर नेटवर्क" : "Verified Creator Network", tag: isHindi ? "संपूर्ण भारत" : "Pan India" },
             ].map((item, i) => (

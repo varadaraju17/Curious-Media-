@@ -18,7 +18,7 @@
     "headline_line3": "MONETIZE",
     "headline_line4": "WITH US.",
     "subheading": "Turn your content into a scalable income.",
-    "description": "Curious Media helps creators move beyond brand deals to earn consistently—across every platform.",
+    "description": "Curious Media helps creators move beyond brand deals to earn consistently-across every platform.",
     "features": ["Influencer Marketing", "Creator Management", "Content Monetization", "Distribution", "Event Marketing", "Meme Marketing"],
     "cta_primary": "Start Your Growth Journey →",
     "cta_secondary": "View Campaigns",
@@ -61,7 +61,7 @@
     "products": {
       "title": "Curious Product",
       "subtitle": "AI Tech & Platform",
-      "desc": "We build cutting-edge AI tools — AI image generators, video synthesis engines, and automation platforms that supercharge creative output for brands and creators."
+      "desc": "We build cutting-edge AI tools - AI image generators, video synthesis engines, and automation platforms that supercharge creative output for brands and creators."
     },
     "music": {
       "title": "Curious Music",
@@ -85,7 +85,7 @@
     "badge": "Contact Us",
     "title_1": "Let's build something",
     "title_2": "extraordinary.",
-    "description": "Ready to run your next campaign? Brief us in 2 minutes — our team comes back with a tailored creator strategy within 24 hours",
+    "description": "Ready to run your next campaign? Brief us in 2 minutes - our team comes back with a tailored creator strategy within 24 hours",
     "email": "Email Us",
     "phone": "Call Us",
     "location": "Our Location",
@@ -128,14 +128,14 @@
     "validation_phone": "Please enter a valid 10-digit phone number.",
     "validation_message": "Please write a message.",
     "validation_subject": "Please select a subject.",
-    "trusted_brands": "Trusted by 29+ brands across India"
+    "trusted_brands": "Trusted by 30+ brands across India"
   },
   "brand_win": {
     "badge": "Our Promise",
     "perf_guarantee": "Performance Guarantee",
     "title_1": "How Brands",
     "title_2": "Win With Us.",
-    "description": "We don't just promise results — we contractually commit to them. Every campaign is backed by our performance guarantee.",
+    "description": "We don't just promise results - we contractually commit to them. Every campaign is backed by our performance guarantee.",
     "commit": "WE Commit",
     "reach": {
       "title": "Reach.",
@@ -144,12 +144,12 @@
     },
     "engagement": {
       "title": "Engagement.",
-      "desc": "Real, authentic interactions that build brand love and community — not just numbers.",
+      "desc": "Real, authentic interactions that build brand love and community - not just numbers.",
       "stat_label": "Avg. Engagement Rate"
     },
     "viewership": {
       "title": "Viewership.",
-      "desc": "We over-deliver — always. Our track record speaks in millions of verified views.",
+      "desc": "We over-deliver - always. Our track record speaks in millions of verified views.",
       "stat_label": "Views on Best Campaign"
     }
   },
