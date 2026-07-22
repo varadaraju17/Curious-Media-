@@ -245,10 +245,10 @@ export function CaseStudies({ dict }: { dict: any }) {
       "Engagement rate": "जुड़ाव दर",
       "Influencers delivered": "वितरित इन्फ्लुएंसर्स",
       "CPV": "सीपीवी (CPV)",
-      
+
       // Values
       "🏆 Award-Winning Campaign": "🏆 पुरस्कार विजेता अभियान",
-      
+
       // Brands
       "TVF": "टीवीएफ",
       "Girliyapa": "गिर्लियापा",
@@ -261,7 +261,7 @@ export function CaseStudies({ dict }: { dict: any }) {
       "Rusk Live": "रस्क लाइव",
       "Black Coffee": "ब्लैक कॉफी",
       "MSDE": "एमएसडीई (MSDE)",
-      
+
       // Titles
       "Space Gen": "स्पेस जेन",
       "Medical Dreams": "मेडिकल ड्रीम्स",
@@ -367,9 +367,9 @@ export function CaseStudies({ dict }: { dict: any }) {
                     <div className="flex flex-col gap-3 mb-auto">
                       <div className="flex items-center justify-between">
                         <span className="text-xs font-black tracking-[0.3em] text-white/40 uppercase font-heading">{campaign.num}</span>
-                        <div className={`flex items-center gap-2 px-4 py-2 rounded-full border text-[10px] font-black uppercase tracking-widest ${campaign.tagBg} backdrop-blur-md shadow-lg`}>
-                          <span className={`w-2 h-2 rounded-full bg-gradient-to-r ${campaign.gradient} shadow-[0_0_10px_rgba(255,255,255,0.5)]`} />
-                          {translateText(campaign.brand)}
+                        <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/25 bg-slate-950/85 text-white text-[11px] font-black uppercase tracking-widest backdrop-blur-xl shadow-[0_8px_25px_rgba(0,0,0,0.75)] group-hover:bg-slate-950 group-hover:border-white/40 transition-all duration-300">
+                          <span className={`w-2.5 h-2.5 rounded-full bg-gradient-to-r ${campaign.gradient} shadow-[0_0_12px_rgba(255,255,255,0.9)]`} />
+                          <span className="drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">{translateText(campaign.brand)}</span>
                         </div>
                       </div>
                       {(campaign as any).award && (
@@ -378,15 +378,15 @@ export function CaseStudies({ dict }: { dict: any }) {
                         </div>
                       )}
                     </div>
- 
+
                     {/* Bottom content */}
                     <div className="mt-auto relative">
-                      
+
                       {/* Title */}
                       <h3 className="text-3xl md:text-4xl font-black font-heading tracking-tight text-white mb-6 leading-none transition-transform duration-500 group-hover:-translate-y-1 drop-shadow-lg">
                         {translateText(campaign.title)}
                       </h3>
- 
+
                       {/* Premium Glassmorphic Metrics */}
                       <div className={`rounded-3xl bg-white/25 border border-white/30 backdrop-blur-xl shadow-xl divide-y divide-white/10 mb-6 group-hover:bg-white/35 transition-all duration-500 overflow-hidden`}>
                         {campaign.metrics.map((metric, j) => (

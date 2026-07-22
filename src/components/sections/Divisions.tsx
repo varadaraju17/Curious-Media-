@@ -13,11 +13,7 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
       icon: <TrendingUp className="w-5 h-5" />,
       statIcon: <BarChart3 className="w-3.5 h-3.5" />,
       stat: "500+ Campaigns",
-      // No image for cards 01 & 02 — uses solid white bg
-      image: null as string | null,
       gradient: "from-[#0B2EA8] to-blue-500",
-      glowColor: "rgba(11,46,168,0.35)",
-      borderGlow: "group-hover:shadow-[0_20px_50px_rgba(11,46,168,0.08)]",
       accentText: "text-[#0B2EA8]",
       tagBg: "bg-blue-50 text-[#0B2EA8] border-blue-100/50",
       href: `/${locale}/creators`,
@@ -31,10 +27,7 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
       icon: <Film className="w-5 h-5" />,
       statIcon: <Play className="w-3.5 h-3.5" />,
       stat: "4K Production",
-      image: null as string | null,
       gradient: "from-indigo-700 to-violet-500",
-      glowColor: "rgba(99,102,241,0.35)",
-      borderGlow: "group-hover:shadow-[0_20px_50px_rgba(99,102,241,0.08)]",
       accentText: "text-indigo-600",
       tagBg: "bg-indigo-50 text-indigo-600 border-indigo-100/50",
       href: `/${locale}/studio`,
@@ -44,37 +37,30 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
     },
     {
       title: dict.divisions.music.title,
-      desc: dict.divisions.music.desc,
+      desc: "media and artist",
       icon: <Music2 className="w-5 h-5" />,
       statIcon: <Disc className="w-3.5 h-3.5" />,
-      stat: "Top Charts",
-      // Cards 03 & 04 — show background image ONLY, no content overlay
-      image: "/images/content/curious_music_coming_soon.png" as string | null,
+      stat: "coming soon -",
       gradient: "from-violet-700 to-fuchsia-500",
-      glowColor: "rgba(139,92,246,0.35)",
-      borderGlow: "group-hover:shadow-[0_32px_80px_rgba(139,92,246,0.25)]",
-      accentText: "text-violet-300",
-      tagBg: "bg-violet-500/20 text-violet-200 border-white/10",
+      accentText: "text-violet-600",
+      tagBg: "bg-violet-50 text-violet-600 border-violet-100/50",
       href: `/${locale}/records`,
       num: "03",
-      tag: dict.divisions.music.subtitle,
+      tag: "media and artist",
       comingSoon: true,
     },
     {
       title: dict.divisions.products.title,
-      desc: dict.divisions.products.desc,
+      desc: "AI and tech",
       icon: <Sparkles className="w-5 h-5" />,
       statIcon: <BarChart3 className="w-3.5 h-3.5" />,
-      stat: "AI-Powered Tools",
-      image: "/images/content/curious_product_coming_soon.png" as string | null,
+      stat: "coming soon -",
       gradient: "from-sky-600 to-cyan-400",
-      glowColor: "rgba(14,165,233,0.35)",
-      borderGlow: "group-hover:shadow-[0_32px_80px_rgba(14,165,233,0.25)]",
-      accentText: "text-sky-300",
-      tagBg: "bg-sky-500/20 text-sky-200 border-white/10",
+      accentText: "text-sky-600",
+      tagBg: "bg-sky-50 text-sky-600 border-sky-100/50",
       href: `/${locale}/products`,
       num: "04",
-      tag: dict.divisions.products.subtitle,
+      tag: "AI and tech",
       comingSoon: true,
     },
   ];
@@ -131,8 +117,6 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
         {/* ── Cards Grid ── */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-5">
           {divisions.map((div, i) => {
-            const isWhiteBg = !div.image;
-
             return (
               <Link key={div.title} href={div.href} className="group cursor-pointer block h-full">
                 <motion.div
@@ -140,42 +124,52 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                  className={`relative h-full flex flex-col rounded-3xl overflow-hidden transition-all duration-500 min-h-[360px] ${
-                    isWhiteBg
-                      ? `bg-white border border-slate-100 ${div.borderGlow} hover:border-slate-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:-translate-y-2`
-                      : `border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] ${div.borderGlow} hover:-translate-y-2`
-                  }`}
+                  className="relative h-full flex flex-col rounded-3xl overflow-hidden transition-all duration-500 min-h-[360px] bg-white border-2 border-[#0B2EA8] hover:border-[#0A1A4E] shadow-[0_4px_24px_rgba(11,46,168,0.06)] hover:shadow-[0_16px_40px_rgba(11,46,168,0.14)] hover:-translate-y-2"
                 >
-                  {/* ── Background layer ── */}
-                  <div className="absolute inset-0">
-                    {div.image ? (
-                      /* Cards 03 & 04: full-bleed photo */
-                      <div
-                        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
-                        style={{ backgroundImage: `url(${div.image})` }}
-                      />
-                    ) : (
-                      /* Cards 01 & 02: solid white background */
-                      <div className="absolute inset-0 bg-white" />
-                    )}
-                  </div>
+                  <div className="relative z-10 flex flex-col h-full p-6">
 
-                  {/* ── Content (only cards 01 & 02) ── */}
-                  {!div.comingSoon && (
-                    <div className="relative z-10 flex flex-col h-full p-6">
-
-                      {/* Top row: number + stat pill */}
-                      <div className="flex items-center justify-between mb-auto">
-                        <span className="text-[10px] font-black tracking-[0.3em] text-slate-300 group-hover:text-slate-400 uppercase transition-colors duration-300">
-                          {div.num}
-                        </span>
+                    {/* Top row: number + stat pill */}
+                    <div className="flex items-center justify-between mb-auto">
+                      <span className="text-[10px] font-black tracking-[0.3em] text-slate-300 group-hover:text-slate-400 uppercase transition-colors duration-300">
+                        {div.num}
+                      </span>
+                      {div.comingSoon ? (
+                        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-[10px] font-black uppercase text-[#0B2EA8] shadow-sm">
+                          <span className="relative flex h-2 w-2 shrink-0">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600" />
+                          </span>
+                          <span>coming soon -</span>
+                        </div>
+                      ) : (
                         <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-[10px] font-bold ${div.tagBg} shadow-sm`}>
                           {div.statIcon}
                           <span>{div.stat}</span>
                         </div>
-                      </div>
+                      )}
+                    </div>
 
-                      {/* Bottom block */}
+                    {/* Card Content */}
+                    {div.comingSoon ? (
+                      <div className="flex-1 flex flex-col items-center justify-center my-auto py-8 text-center">
+                        <motion.div
+                          animate={{ scale: [1, 1.08, 1], y: [0, -6, 0] }}
+                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                          className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-500 text-white shadow-[0_12px_32px_rgba(11,46,168,0.35)] border border-white/20"
+                        >
+                          <span className="relative flex h-3 w-3 shrink-0">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-300 opacity-85" />
+                            <span className="relative inline-flex rounded-full h-3 w-3 bg-white" />
+                          </span>
+                          <span className="text-xs sm:text-sm font-black uppercase tracking-[0.25em] font-heading drop-shadow-sm">
+                            Coming Soon
+                          </span>
+                        </motion.div>
+                        <p className="text-xs font-black text-[#0B2EA8]/80 mt-5 uppercase tracking-[0.2em]">
+                          {div.tag}
+                        </p>
+                      </div>
+                    ) : (
                       <div className="mt-auto pt-4">
                         {/* Icon + tag row */}
                         <div className="flex items-center gap-2 mb-3">
@@ -210,8 +204,8 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
                           </motion.div>
                         </div>
                       </div>
-                    </div>
-                  )}
+                    )}
+                  </div>
 
                   {/* Animated bottom gradient accent bar */}
                   <div className={`absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r ${div.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />

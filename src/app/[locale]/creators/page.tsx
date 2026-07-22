@@ -583,47 +583,65 @@ export default function CreatorsPage() {
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-400/5 blur-[120px] rounded-full pointer-events-none -ml-48 -mb-48" />
 
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col items-start"
-          >
-            {/* Top Section: Large Number */}
-            <div className="w-full mb-8">
-              <span className="text-3xl md:text-5xl font-black text-white/40 block mb-2 uppercase tracking-tight">₹</span>
-              <h2 className="text-[3.5rem] xs:text-[4.5rem] sm:text-[7rem] md:text-[8.5rem] lg:text-[10rem] font-black leading-[0.8] tracking-tighter uppercase flex items-start flex-wrap">
+          <div className="flex flex-col items-start w-full">
+            {/* Top Section: Large Number (1st element) */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="w-full mb-8"
+            >
+              <span className="text-2xl sm:text-3xl md:text-4xl font-black text-white/40 block mb-2 uppercase tracking-tight">₹</span>
+              <h2 className="text-[2.8rem] xs:text-[3.8rem] sm:text-[5.8rem] md:text-[7.5rem] lg:text-[9rem] font-black leading-[0.85] tracking-tighter uppercase flex items-center flex-wrap">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-cyan-400">
-                  {isHindi ? "10 लाख" : "1M"}
+                  {isHindi ? "10 लाख" : "1 Million"}
                 </span>
-                <span className="text-cyan-400 text-[0.5em] leading-[0.8] ml-2">+</span>
+                <span className="text-cyan-400 ml-3">+</span>
               </h2>
-            </div>
- 
-            {/* Divider Line */}
-            <div className="w-full h-px bg-white/10 mb-10" />
- 
-            {/* Bottom Section: Split Content */}
+            </motion.div>
+
+            {/* Divider Line (2nd element) */}
+            <motion.div
+              initial={{ opacity: 0, scaleX: 0 }}
+              whileInView={{ opacity: 1, scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+              className="w-full h-px bg-white/15 mb-10 origin-left"
+            />
+
+            {/* Bottom Section: Split Content (3rd & 4th elements) */}
             <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-10 md:gap-20">
-              <div className="max-w-4xl text-left">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                className="max-w-4xl text-left"
+              >
                 <p className="text-lg md:text-2xl text-white font-black leading-tight uppercase tracking-tight">
                   {isHindi 
                     ? "क्रिएटर और आईपी ओनर के लिए सभी प्लेटफॉर्मों और प्रारूपों में मुद्रीकरण (Monetization) के माध्यम से।"
                     : "THROUGH MONETIZATION ACROSS PLATFORMS AND FORMATS FOR CREATOR AND IP OWNER."}
                 </p>
-              </div>
- 
-              <div className="flex flex-col items-start md:items-end">
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
+                className="flex flex-col items-start md:items-end shrink-0"
+              >
                 <div className="text-6xl md:text-8xl lg:text-[100px] font-black text-white leading-none mb-2">
                   <AnimatedNumber value={70} suffix="+" />
                 </div>
-                <span className="text-sm md:text-base font-black text-cyan-400/60 uppercase tracking-[0.3em]">
+                <span className="text-sm md:text-base font-black text-cyan-400/80 uppercase tracking-[0.3em]">
                   {isHindi ? "चैनल्स से" : "From channels"}
                 </span>
-              </div>
+              </motion.div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 

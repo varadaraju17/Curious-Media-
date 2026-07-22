@@ -143,37 +143,69 @@ export default function ContactClient({ dict, locale }: ContactClientProps) {
             </p>
 
             <div className="flex flex-col gap-4 mb-8">
-              {[
-                { icon: <Mail className="w-4 h-4" />, label: dict.contact.direct_email, val: "info@curiousmedia.in", href: "mailto:info@curiousmedia.in" },
-                { icon: <MessageCircle className="w-4 h-4" />, label: dict.contact.whatsapp_phone, val: "+91 83750 70191", href: "https://wa.me/918375070191" },
-                { icon: <MapPin className="w-4 h-4" />, label: dict.contact.operating_office, val: "Sector 63, Noida - 201301", href: "https://maps.google.com/?q=Sector+63,+Noida+-+201301" },
-              ].map((item, i) => (
-                <motion.a
-                  key={i}
-                  href={item.href}
-                  target={item.href.startsWith("http") ? "_blank" : undefined}
-                  rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.08 * i + 0.3 }}
-                  className="group flex items-start gap-4 p-2 transition-all hover:translate-x-1.5"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-white border border-blue-50 flex items-center justify-center text-[#0B2EA8] shadow-sm group-hover:bg-[#0B2EA8] group-hover:text-white group-hover:scale-105 group-hover:shadow-[0_8px_20px_rgba(11,46,168,0.15)] transition-all duration-300 shrink-0">
-                    {item.icon}
+              <motion.a
+                href="mailto:info@curiousmedia.in"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="group flex items-start gap-4 p-2 transition-all hover:translate-x-1.5"
+              >
+                <div className="w-10 h-10 rounded-xl bg-white border border-blue-50 flex items-center justify-center text-[#0B2EA8] shadow-sm group-hover:bg-[#0B2EA8] group-hover:text-white group-hover:scale-105 group-hover:shadow-[0_8px_20px_rgba(11,46,168,0.15)] transition-all duration-300 shrink-0">
+                  <Mail className="w-4 h-4" />
+                </div>
+                <div>
+                  <p className="text-[9px] font-black uppercase tracking-[0.25em] text-slate-400 group-hover:text-[#0B2EA8] transition-colors duration-300">{dict.contact.direct_email}</p>
+                  <p className="text-xs sm:text-sm font-black text-[#0A1A4E] leading-tight max-w-sm md:max-w-md group-hover:text-[#0B2EA8] transition-colors duration-300">info@curiousmedia.in</p>
+                </div>
+              </motion.a>
+
+              <motion.a
+                href="https://wa.me/918375070191"
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.38 }}
+                className="group flex items-start gap-4 p-2 transition-all hover:translate-x-1.5"
+              >
+                <div className="w-10 h-10 rounded-xl bg-white border border-blue-50 flex items-center justify-center text-[#0B2EA8] shadow-sm group-hover:bg-[#0B2EA8] group-hover:text-white group-hover:scale-105 group-hover:shadow-[0_8px_20px_rgba(11,46,168,0.15)] transition-all duration-300 shrink-0">
+                  <MessageCircle className="w-4 h-4" />
+                </div>
+                <div>
+                  <p className="text-[9px] font-black uppercase tracking-[0.25em] text-slate-400 group-hover:text-[#0B2EA8] transition-colors duration-300">{dict.contact.whatsapp_phone}</p>
+                  <p className="text-xs sm:text-sm font-black text-[#0A1A4E] leading-tight max-w-sm md:max-w-md group-hover:text-[#0B2EA8] transition-colors duration-300">+91 83750 70191</p>
+                </div>
+              </motion.a>
+
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.46 }}
+                className="group flex items-start gap-4 p-2 transition-all hover:translate-x-1.5"
+              >
+                <div className="w-10 h-10 rounded-xl bg-white border border-blue-50 flex items-center justify-center text-[#0B2EA8] shadow-sm group-hover:bg-[#0B2EA8] group-hover:text-white group-hover:scale-105 group-hover:shadow-[0_8px_20px_rgba(11,46,168,0.15)] transition-all duration-300 shrink-0 mt-0.5">
+                  <MapPin className="w-4 h-4" />
+                </div>
+                <div>
+                  <p className="text-[9px] font-black uppercase tracking-[0.25em] text-slate-400 group-hover:text-[#0B2EA8] transition-colors duration-300 mb-1">{dict.contact.operating_office}</p>
+                  <div className="flex flex-col gap-2">
+                    <div>
+                      <p className="text-[11px] font-black text-[#0B2EA8] uppercase tracking-wide">Headquarters – Noida Office</p>
+                      <p className="text-xs font-bold text-[#0A1A4E] leading-tight">Sector 63, Noida, Uttar Pradesh, 201301</p>
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-black text-[#0B2EA8] uppercase tracking-wide">Mumbai Office</p>
+                      <p className="text-xs font-bold text-[#0A1A4E] leading-tight">Wework Spectrum Tower, Malad West, Mumbai</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-[9px] font-black uppercase tracking-[0.25em] text-slate-400 group-hover:text-[#0B2EA8] transition-colors duration-300">{item.label}</p>
-                    <p className="text-xs sm:text-sm font-black text-[#0A1A4E] leading-tight max-w-sm md:max-w-md group-hover:text-[#0B2EA8] transition-colors duration-300">{item.val}</p>
-                  </div>
-                </motion.a>
-              ))}
+                </div>
+              </motion.div>
             </div>
 
             {/* Social Pills */}
             <div className="flex flex-wrap gap-2.5">
               {[
                 { label: "Instagram", href: "https://www.instagram.com/curiousmedia_official/" },
-                { label: "Facebook", href: "https://www.facebook.com/share/1cN9eyhvx2/?mibextid=wwXIfr" },
                 { label: "LinkedIn", href: "https://www.linkedin.com/company/curiousmediaa/" },
                 { label: "WhatsApp", href: "https://wa.me/918375070191" }
               ].map((social) => (

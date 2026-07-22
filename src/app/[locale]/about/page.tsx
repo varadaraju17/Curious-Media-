@@ -725,15 +725,15 @@ export default function AboutPage() {
                 {isHindi ? "नेतृत्व" : "Leadership"}
               </span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter mb-4 leading-none">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black font-heading uppercase tracking-tighter mb-4 leading-tight">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-400">
-                {isHindi ? "परिणामों के पीछे के लोग" : "The People Behind the Results"}
+                {isHindi ? "क्यूरियस के पीछे के दिमागों से मिलें" : "MEET THE MINDS BEHIND CURIOUS"}
               </span>
             </h2>
             <p className="text-base text-slate-500 font-semibold leading-relaxed max-w-2xl mx-auto">
               {isHindi 
-                ? "भारत की सबसे तेजी से बढ़ती इन्फ्लुएंसर मार्केटिंग और क्रिएटर-नेतृत्व वाली विकास कंपनियों में से एक के पीछे की टीम।"
-                : "The team behind one of India's fastest-growing influencer marketing and creator-led growth companies."}
+                ? "क्यूरियस मीडिया के विज़न, संस्कृति और विकास को आगे बढ़ाने वाले दूरदर्शी।"
+                : "The visionaries driving Curious Media's vision, culture, and growth."}
             </p>
           </div>
 
@@ -922,16 +922,16 @@ export default function AboutPage() {
             
             <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
               <span className="text-4xl md:text-5xl mb-6 block">🎯</span>
-              <h3 className="text-4xl md:text-5xl lg:text-6xl font-black font-heading text-white uppercase tracking-tighter leading-[1.25] mb-12">
+              <h3 className="text-3xl md:text-5xl lg:text-6xl font-black font-heading text-white uppercase tracking-tighter leading-[1.25] mb-12">
                 {isHindi ? (
                   <>
-                    क्या आपमें वह बात <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-200 to-white">है जो चाहिए?</span>
+                    आपकी अगली बड़ी चाल <br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-200 to-white">यहाँ से शुरू होती है</span>
                   </>
                 ) : (
                   <>
-                    Think you’ve got <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-200 to-white">what it takes?</span>
+                    Your Next Big Move <br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-200 to-white">Starts Here</span>
                   </>
                 )}
               </h3>

@@ -142,21 +142,28 @@ export function ContactSection({ dict }: { dict: any }) {
                   </div>
                 </a>
 
-                <a href="https://maps.google.com/?q=Sector+63,+Noida+-+201301"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <div
                   className="group flex items-start gap-4 p-5 rounded-2xl bg-white border border-blue-100
                     shadow-[0_2px_12px_rgba(11,46,168,0.05)]
                     hover:shadow-[0_8px_30px_rgba(11,46,168,0.12)] hover:border-blue-300 hover:-translate-y-0.5 transition-all duration-300"
                 >
-                  <div className="w-11 h-11 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-[#0B2EA8] transition-colors duration-300 shrink-0">
+                  <div className="w-11 h-11 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-[#0B2EA8] transition-colors duration-300 shrink-0 mt-0.5">
                     <MapPin className="w-4 h-4 text-[#0B2EA8] group-hover:text-white transition-colors duration-300" />
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase tracking-[0.2em] font-black text-blue-800/40 mb-0.5">{dict.contact.operating_office}</p>
-                    <p className="text-[#0B2EA8] font-bold text-sm leading-snug">Sector 63, Noida- 201301</p>
+                    <p className="text-[10px] uppercase tracking-[0.2em] font-black text-blue-800/40 mb-1">{dict.contact.operating_office}</p>
+                    <div className="flex flex-col gap-2.5">
+                      <div>
+                        <p className="text-xs font-black text-[#0B2EA8] uppercase tracking-wide">Headquarters – Noida Office</p>
+                        <p className="text-[#0A1A4E] font-bold text-xs leading-snug">Sector 63, Noida, Uttar Pradesh, 201301</p>
+                      </div>
+                      <div>
+                        <p className="text-xs font-black text-[#0B2EA8] uppercase tracking-wide">Mumbai Office</p>
+                        <p className="text-[#0A1A4E] font-bold text-xs leading-snug">Wework Spectrum Tower, Malad West, Mumbai</p>
+                      </div>
+                    </div>
                   </div>
-                </a>
+                </div>
               </div>
             </motion.div>
 
@@ -337,12 +344,7 @@ export function ContactSection({ dict }: { dict: any }) {
                 color: "hover:bg-gradient-to-br hover:from-[#f58529] hover:to-[#8134af] hover:border-transparent",
                 icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>,
               },
-              {
-                label: "Facebook",
-                href: "https://www.facebook.com/share/1cN9eyhvx2/?mibextid=wwXIfr",
-                color: "hover:bg-[#1877F2] hover:border-transparent",
-                icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>,
-              },
+
               {
                 label: "LinkedIn",
                 href: "https://www.linkedin.com/company/curiousmediaa/",

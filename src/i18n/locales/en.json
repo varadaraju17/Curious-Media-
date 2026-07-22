@@ -97,7 +97,7 @@
     "clicks_clients": "Only if you're ready to turn clicks into clients.",
     "direct_email": "Direct Email",
     "whatsapp_phone": "WhatsApp / Phone",
-    "operating_office": "Operating Office",
+    "operating_office": "Office Address",
     "send_inquiry": "Send an Inquiry",
     "send_message": "Send us a message",
     "name": "Name",
@@ -155,7 +155,7 @@
   },
   "footer": {
     "tagline": "Relax...you have us",
-    "subtitle": "A premium media-tech platform empowering digital storytelling and powerful collaborations.",
+    "subtitle": "",
     "platform": "Platform",
     "company": "Company",
     "privacy": "Privacy Policy",

@@ -1,8 +1,8 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Star } from "lucide-react";
-import { useState } from "react";
+import { X, Star, ArrowLeft, ArrowRight } from "lucide-react";
+import { useState, useRef } from "react";
 
 const STAR_COUNT = 5;
 
@@ -26,7 +26,7 @@ function TestimonialCard({
       transition={{ delay: idx * 0.12, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="group relative flex flex-col bg-white rounded-[28px] p-8 md:p-9 border-2 transition-all duration-500 hover:-translate-y-1.5 overflow-hidden"
+      className="group relative flex flex-col bg-white rounded-[28px] p-8 md:p-9 border-2 transition-all duration-500 hover:-translate-y-1.5 overflow-hidden h-full min-h-[380px]"
       style={{
         borderColor: isHovered ? t.brandColor : `${t.brandColor}20`,
         boxShadow: isHovered ? `0 20px 50px ${t.brandColor}12` : '0 2px 24px rgba(0,0,0,0.02)'
@@ -87,9 +87,9 @@ function TestimonialCard({
       {/* Divider */}
       <div className="mt-8 pt-6 border-t border-slate-100">
         <div className="flex items-center gap-4">
-          {/* Company logo with brand colored border on hover */}
+          {/* Company logo enlarged */}
           <div 
-            className="w-12 h-12 rounded-2xl border bg-slate-50 flex items-center justify-center p-2 shrink-0 shadow-sm transition-all duration-300"
+            className="w-16 h-16 rounded-2xl border bg-slate-50 flex items-center justify-center p-2.5 shrink-0 shadow-sm transition-all duration-300"
             style={{
               borderColor: isHovered ? `${t.brandColor}40` : '#F1F5F9',
               backgroundColor: isHovered ? `${t.brandColor}05` : '#F8FAFC'
@@ -111,18 +111,6 @@ function TestimonialCard({
               {t.role}
             </p>
           </div>
-
-          {/* Company badge colored dynamically */}
-          <span 
-            className="shrink-0 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border transition-all duration-300"
-            style={{
-              backgroundColor: `${t.brandColor}08`,
-              color: t.brandColor,
-              borderColor: `${t.brandColor}20`
-            }}
-          >
-            {t.company}
-          </span>
         </div>
       </div>
     </motion.div>
@@ -132,6 +120,16 @@ function TestimonialCard({
 export function Testimonials({ dict }: { dict: any }) {
   const isHindi = dict.testimonials.badge !== "Client Experiences";
   const [activeTestimonial, setActiveTestimonial] = useState<any | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const firstChild = scrollRef.current.firstElementChild as HTMLElement;
+      const cardWidth = firstChild ? firstChild.offsetWidth + 24 : 380;
+      const scrollAmount = direction === "left" ? -cardWidth : cardWidth;
+      scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
 
   const rawTestimonials = [
     {
@@ -161,6 +159,15 @@ export function Testimonials({ dict }: { dict: any }) {
         "Working with Curious Media has been an absolute pleasure. Their team brings together deep expertise in digital marketing, creator partnerships, and content distribution making them a valuable partner for any organization looking to build meaningful audience engagement. What stands out most is their ability to combine creativity with execution. Whether it's influencer campaigns, content amplification, creator management, or digital brand building, Curious Media consistently delivers solutions that are strategic, data-driven, and impactful. It has been a pleasure working with Aanchal and Pushpraj. Their understanding of the digital and creator ecosystem, combined with their proactive approach and commitment to delivering results, makes Curious Media a valuable partner for brands.",
       logo: "/images/brands/tvf.png",
     },
+    {
+      name: "Reneeta Choudhury",
+      role: "Placement Head – Bennett University",
+      company: "Bennett University",
+      brandColor: "#003366", // Bennett Blue
+      quote:
+        "Bennett University has been associated with Curious Media for over a year, and our experience working with the team has been extremely positive. Curious Media provides meaningful learning opportunities and hands-on exposure to young talent, enabling students to gain valuable industry experience. We have consistently received encouraging feedback from our students regarding their engagement with the organization, and we appreciate Curious Media’s commitment to nurturing and empowering emerging professionals.",
+      logo: "/images/brands/bennett-university.png",
+    },
   ];
 
   const testimonials = rawTestimonials.map((t) => {
@@ -170,12 +177,14 @@ export function Testimonials({ dict }: { dict: any }) {
       Rahul: "राहुल",
       Shreya: "श्रेया",
       Amritansh: "अमृतांश",
+      "Reneeta Choudhury": "रेणीता चौधरी",
     };
     const roleMap: Record<string, string> = {
       "Influencer Marketing Associate": "इन्फ्लुएंसर मार्केटिंग एसोसिएट",
       "Influencer Marketing Manager": "इन्फ्लुएंसर मार्केटिंग मैनेजर",
       "Associate Producer — Leading New Ventures, IPs & Growth":
         "एसोसिएट प्रोड्यूसर - न्यू वेंचर्स, आईपी और ग्रोथ प्रमुख",
+      "Placement Head – Bennett University": "प्लेसमेंट हेड - बेनेट यूनिवर्सिटी",
     };
     const quoteMap: Record<string, string> = {
       "Working with Curious Media has been a great experience for Univest. Their expertise in influencer marketing extends beyond creator sourcing...they focus on the right partnerships, seamless execution, and meaningful results. From influencer campaigns to LinkedIn initiatives, the team has consistently helped us enhance brand visibility and reach the right audience. Their responsiveness, transparency, and execution excellence make them a reliable growth partner.":
@@ -186,6 +195,9 @@ export function Testimonials({ dict }: { dict: any }) {
 
       "Working with Curious Media has been an absolute pleasure. Their team brings together deep expertise in digital marketing, creator partnerships, and content distribution making them a valuable partner for any organization looking to build meaningful audience engagement. What stands out most is their ability to combine creativity with execution. Whether it's influencer campaigns, content amplification, creator management, or digital brand building, Curious Media consistently delivers solutions that are strategic, data-driven, and impactful. It has been a pleasure working with Aanchal and Pushpraj. Their understanding of the digital and creator ecosystem, combined with their proactive approach and commitment to delivering results, makes Curious Media a valuable partner for brands.":
         "क्यूरियस मीडिया के साथ काम करना बेहद खुशी की बात रही है। उनकी टीम डिजिटल मार्केटिंग, क्रिएटर पार्टनरशिप और कंटेंट डिस्ट्रीब्यूशन में गहरी विशेषज्ञता लाती है, जो उन्हें सार्थक दर्शक जुड़ाव बनाने के इच्छुक किसी भी संगठन के लिए एक मूल्यवान भागीदार बनाती है। जो बात सबसे अलग है वह है रचनात्मकता को निष्पादन के साथ संयोजित करने की उनकी क्षमता। चाहे वह इन्फ्लुएंसर अभियान हों, कंटेंट एम्प्लीफिकेशन, क्रिएटर प्रबंधन, या डिजिटल ब्रांड बिल्डिंग हो, क्यूरियस मीडिया लगातार ऐसे समाधान प्रदान करता है जो रणनीतिक, डेटा-संचालित और प्रभावशाली होते हैं। आंचल और पुष्पराज के साथ काम करना बहुत अच्छा रहा है। डिजिटल और क्रिएटर इकोसिस्टम की उनकी समझ, उनके सक्रिय दृष्टिकोण और परिणाम देने की प्रतिबद्धता के साथ मिलकर, क्यूरियस मीडिया को ब्रांडों के लिए एक मूल्यवान भागीदार बनाती है।",
+
+      "Bennett University has been associated with Curious Media for over a year, and our experience working with the team has been extremely positive. Curious Media provides meaningful learning opportunities and hands-on exposure to young talent, enabling students to gain valuable industry experience. We have consistently received encouraging feedback from our students regarding their engagement with the organization, and we appreciate Curious Media’s commitment to nurturing and empowering emerging professionals.":
+        "बेनेट यूनिवर्सिटी एक साल से अधिक समय से क्यूरियस मीडिया से जुड़ी हुई है, और टीम के साथ काम करने का हमारा अनुभव बेहद सकारात्मक रहा है। क्यूरियस मीडिया युवा प्रतिभाओं को सार्थक सीखने के अवसर और व्यावहारिक अनुभव प्रदान करता है, जिससे छात्रों को मूल्यवान उद्योग अनुभव प्राप्त करने में मदद मिलती है। हमें संगठन के साथ अपने जुड़ाव के संबंध में अपने छात्रों से लगातार उत्साहजनक प्रतिक्रिया मिली है, और हम उभरते पेशेवरों के पोषण और सशक्तीकरण के लिए क्यूरियस मीडिया की प्रतिबद्धता की सराहना करते हैं।",
     };
 
     return {
@@ -212,10 +224,10 @@ export function Testimonials({ dict }: { dict: any }) {
       <div className="absolute -top-48 -left-48 w-[500px] h-[500px] bg-blue-100/50 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute -bottom-48 -right-48 w-[500px] h-[500px] bg-sky-100/50 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="container mx-auto px-4 md:px-8 max-w-[1280px] relative z-10">
+      <div className="container mx-auto px-4 md:px-8 max-w-[1400px] relative z-10">
 
         {/* ── Section Header ── */}
-        <div className="text-center mb-16 md:mb-24">
+        <div className="text-center mb-16 md:mb-20">
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -262,16 +274,41 @@ export function Testimonials({ dict }: { dict: any }) {
           </motion.div>
         </div>
 
-        {/* ── Testimonials Grid ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {testimonials.map((t, idx) => (
-            <TestimonialCard
-              key={idx}
-              t={t}
-              idx={idx}
-              onOpenModal={() => setActiveTestimonial(t)}
-            />
-          ))}
+        {/* ── Testimonials Carousel (3 cards per view on desktop, 4th card via slide arrow) ── */}
+        <div className="relative w-full">
+
+          <div
+            ref={scrollRef}
+            className="flex overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 pb-8 pt-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          >
+            {testimonials.map((t, idx) => (
+              <div key={idx} className="flex-none w-[88vw] sm:w-[52vw] lg:w-[calc((100%-4rem)/3)] snap-start">
+                <TestimonialCard
+                  t={t}
+                  idx={idx}
+                  onOpenModal={() => setActiveTestimonial(t)}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Slider Controls (Arrow marks) */}
+          <div className="flex items-center justify-center gap-4 mt-6">
+            <button
+              onClick={() => scroll("left")}
+              className="w-12 h-12 rounded-full bg-white border border-blue-100 flex items-center justify-center text-[#0B2EA8] shadow-lg hover:bg-blue-50 hover:scale-110 active:scale-95 transition-all duration-300 group cursor-pointer"
+              aria-label="Previous Testimonial"
+            >
+              <ArrowLeft className="w-5 h-5 group-hover:-translate-x-0.5 transition-transform" />
+            </button>
+            <button
+              onClick={() => scroll("right")}
+              className="w-12 h-12 rounded-full bg-white border border-blue-100 flex items-center justify-center text-[#0B2EA8] shadow-lg hover:bg-blue-50 hover:scale-110 active:scale-95 transition-all duration-300 group cursor-pointer"
+              aria-label="Next Testimonial"
+            >
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -315,7 +352,7 @@ export function Testimonials({ dict }: { dict: any }) {
                 {/* Modal header row */}
                 <div className="flex items-center gap-4 mb-8">
                   <div 
-                    className="w-14 h-14 rounded-2xl border bg-slate-50 flex items-center justify-center p-2.5 shrink-0 shadow-sm"
+                    className="w-16 h-16 rounded-2xl border bg-slate-50 flex items-center justify-center p-2.5 shrink-0 shadow-sm"
                     style={{
                       borderColor: `${activeTestimonial.brandColor}30`,
                       backgroundColor: `${activeTestimonial.brandColor}05`
@@ -335,16 +372,6 @@ export function Testimonials({ dict }: { dict: any }) {
                       {activeTestimonial.role}
                     </p>
                   </div>
-                  <span 
-                    className="shrink-0 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border"
-                    style={{
-                      backgroundColor: `${activeTestimonial.brandColor}08`,
-                      color: activeTestimonial.brandColor,
-                      borderColor: `${activeTestimonial.brandColor}20`
-                    }}
-                  >
-                    {activeTestimonial.company}
-                  </span>
                 </div>
 
                 {/* Stars colored by brand color */}

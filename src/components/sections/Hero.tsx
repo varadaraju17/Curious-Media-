@@ -407,6 +407,9 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                     src="/images/hero-mobile-ui.png"
                     alt="Curious Media App Interface"
                     className="absolute inset-0 w-full h-full object-cover"
+                    width="270"
+                    height="585"
+                    fetchPriority="high"
                   />
                   {/* Screen gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#030918]/90 via-transparent to-transparent" />

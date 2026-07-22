@@ -566,7 +566,7 @@ export default function StudioPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="group relative bg-white rounded-[2rem] p-8 md:p-10 shadow-[0_8px_30px_rgba(11,46,168,0.04)] hover:shadow-[0_20px_60px_rgba(11,46,168,0.12)] transition-all duration-500 border border-slate-100 hover:border-blue-200 overflow-hidden flex flex-col"
+                className="group relative bg-white rounded-[2rem] p-8 md:p-10 shadow-[0_8px_30px_rgba(56,189,248,0.15)] hover:shadow-[0_20px_60px_rgba(56,189,248,0.3)] transition-all duration-500 border-2 border-sky-400 hover:border-sky-500 overflow-hidden flex flex-col"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 shadow-md relative z-10`}>
