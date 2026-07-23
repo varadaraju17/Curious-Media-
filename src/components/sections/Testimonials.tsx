@@ -104,9 +104,9 @@ function TestimonialCard({
 
           {/* Author info */}
           <div className="flex-1 min-w-0">
-            <h4 className="text-[#0A1A4E] font-black text-sm uppercase tracking-wide leading-tight mb-0.5">
+            <h3 className="text-[#0A1A4E] font-black text-sm uppercase tracking-wide leading-tight mb-0.5">
               {t.name}
-            </h4>
+            </h3>
             <p className="text-slate-500 text-[11px] font-semibold leading-snug line-clamp-2">
               {t.role}
             </p>
@@ -365,9 +365,9 @@ export function Testimonials({ dict }: { dict: any }) {
                     />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h4 className="text-[#0A1A4E] font-black text-base uppercase tracking-wide leading-none mb-1">
+                    <h3 className="text-[#0A1A4E] font-black text-base uppercase tracking-wide leading-none mb-1">
                       {activeTestimonial.name}
-                    </h4>
+                    </h3>
                     <p className="text-slate-500 text-xs font-semibold leading-snug">
                       {activeTestimonial.role}
                     </p>

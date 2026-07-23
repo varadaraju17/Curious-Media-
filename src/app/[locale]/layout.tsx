@@ -47,6 +47,7 @@ export async function generateMetadata(
 
   return {
     title,
+    description,
     keywords: [
       "Curious Media",
       "Curious Media Official",
@@ -155,7 +156,9 @@ export default async function LocaleLayout(
       <body className="font-sans bg-white text-[#0B2EA8] min-h-screen flex flex-col">
         <Providers>
           <Navbar dict={dict} locale={locale as Locale} />
-          {props.children}
+          <main id="main-content" className="flex-1">
+            {props.children}
+          </main>
           <Footer dict={dict} locale={locale as Locale} />
           <SpeedInsights />
         </Providers>

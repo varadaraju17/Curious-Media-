@@ -186,8 +186,9 @@ export function ContactSection({ dict }: { dict: any }) {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     {/* Name Input */}
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-[10px] uppercase tracking-[0.2em] font-black text-[#0B2EA8]">{dict.contact.name}</label>
+                      <label htmlFor="sec-contact-name" className="text-[10px] uppercase tracking-[0.2em] font-black text-[#0B2EA8]">{dict.contact.name}</label>
                       <input 
+                        id="sec-contact-name"
                         type="text" 
                         value={formData.name}
                         onChange={(e) => handleChange("name", e.target.value)}
@@ -204,8 +205,9 @@ export function ContactSection({ dict }: { dict: any }) {
 
                     {/* Email Input */}
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-[10px] uppercase tracking-[0.2em] font-black text-[#0B2EA8]">{dict.contact.email_label}</label>
+                      <label htmlFor="sec-contact-email" className="text-[10px] uppercase tracking-[0.2em] font-black text-[#0B2EA8]">{dict.contact.email_label}</label>
                       <input 
+                        id="sec-contact-email"
                         type="email" 
                         value={formData.email}
                         onChange={(e) => handleChange("email", e.target.value)}
@@ -224,8 +226,9 @@ export function ContactSection({ dict }: { dict: any }) {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     {/* Phone Input */}
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-[10px] uppercase tracking-[0.2em] font-black text-[#0B2EA8]">{dict.contact.phone_label}</label>
+                      <label htmlFor="sec-contact-phone" className="text-[10px] uppercase tracking-[0.2em] font-black text-[#0B2EA8]">{dict.contact.phone_label}</label>
                       <input 
+                        id="sec-contact-phone"
                         type="tel" 
                         value={formData.phone}
                         onChange={(e) => handleChange("phone", e.target.value)}
@@ -242,8 +245,9 @@ export function ContactSection({ dict }: { dict: any }) {
 
                     {/* Company Input */}
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-[10px] uppercase tracking-[0.2em] font-black text-[#0B2EA8]">{dict.contact.company_label}</label>
+                      <label htmlFor="sec-contact-company" className="text-[10px] uppercase tracking-[0.2em] font-black text-[#0B2EA8]">{dict.contact.company_label}</label>
                       <input 
+                        id="sec-contact-company"
                         type="text" 
                         value={formData.company}
                         onChange={(e) => handleChange("company", e.target.value)}
@@ -256,10 +260,12 @@ export function ContactSection({ dict }: { dict: any }) {
 
                   {/* Subject Selection */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] uppercase tracking-[0.2em] font-black text-[#0B2EA8]">{dict.contact.subject_label}</label>
+                    <label htmlFor="sec-contact-subject" className="text-[10px] uppercase tracking-[0.2em] font-black text-[#0B2EA8]">{dict.contact.subject_label}</label>
                     <select 
+                      id="sec-contact-subject"
                       value={formData.subject}
                       onChange={(e) => handleChange("subject", e.target.value)}
+                      aria-label={dict.contact.subject_label}
                       className="w-full bg-[#F8FAFF] border border-blue-100 rounded-2xl px-4 py-3.5 text-[#0B2EA8] text-sm font-medium
                         focus:outline-none focus:border-blue-400 focus:bg-white focus:shadow-[0_0_0_4px_rgba(11,46,168,0.08)] transition-all appearance-none cursor-pointer"
                     >
@@ -272,8 +278,9 @@ export function ContactSection({ dict }: { dict: any }) {
 
                   {/* Message Input */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] uppercase tracking-[0.2em] font-black text-[#0B2EA8]">{dict.contact.message_label}</label>
+                    <label htmlFor="sec-contact-message" className="text-[10px] uppercase tracking-[0.2em] font-black text-[#0B2EA8]">{dict.contact.message_label}</label>
                     <textarea 
+                      id="sec-contact-message"
                       value={formData.message}
                       onChange={(e) => handleChange("message", e.target.value)}
                       placeholder={dict.contact.message_placeholder} 
