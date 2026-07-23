@@ -92,6 +92,8 @@ export function Navbar({ dict, locale }: NavProps) {
                     </Link>
                   ) : (
                     <div
+                      role="button"
+                      tabIndex={0}
                       className={`relative z-10 text-[13px] md:text-sm font-bold tracking-wide transition-colors duration-300 flex items-center gap-1.5 cursor-pointer ${
                         isActive ? "text-[#0B2EA8]" : "text-slate-600 hover:text-[#0B2EA8]"
                       }`}
@@ -184,6 +186,8 @@ export function Navbar({ dict, locale }: NavProps) {
                     </Link>
                   ) : (
                     <div
+                      role="button"
+                      tabIndex={0}
                       className={`text-base font-bold py-3 px-4 rounded-none transition-all flex items-center justify-between cursor-pointer ${
                         isActive ? 'bg-blue-50 text-[#0B2EA8]' : 'text-slate-600 hover:text-[#0B2EA8] hover:bg-blue-50/50'
                       }`}

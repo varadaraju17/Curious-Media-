@@ -64,6 +64,8 @@ function BrandLogo({ item, type, size = "md" }: { item: { name: string; domain: 
 
   return (
     <div
+      role="button"
+      tabIndex={0}
       className="group flex flex-col items-center gap-2.5 px-2 md:px-3 relative shrink-0 transition-transform duration-300 hover:scale-105 hover:-translate-y-1.5 cursor-pointer"
       title={item.name}
     >
