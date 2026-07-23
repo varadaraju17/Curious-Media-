@@ -13,13 +13,13 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  display: "swap",
+  display: "optional",
 });
 
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
-  display: "swap",
+  display: "optional",
 });
 
 export const viewport: Viewport = {
@@ -150,6 +150,7 @@ export default async function LocaleLayout(
     <html lang={locale} className={`${inter.variable} ${outfit.variable} antialiased`} data-scroll-behavior="smooth">
       <head>
         <JsonLd locale={locale} />
+        <link rel="preload" href="/images/hero-mobile-ui.webp" as="image" type="image/webp" fetchPriority="high" />
         <link rel="preload" href="/images/logo.webp" as="image" type="image/webp" />
       </head>
       <body className="font-sans bg-white text-[#0B2EA8] min-h-screen flex flex-col">
