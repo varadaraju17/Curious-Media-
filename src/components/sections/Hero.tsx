@@ -25,33 +25,33 @@ const particles = [
 export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
   const floatingCards = [
     {
-      icon: <TrendingUp className="w-4 h-4 text-white" />,
+      icon: <TrendingUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />,
       iconBg: "bg-gradient-to-br from-emerald-400 to-teal-500",
       label: dict.hero.cards.campaign,
       value: `+110M ${dict.hero.cards.views}`,
       valueColor: "text-[#0B2EA8]",
       delay: 0.55,
-      pos: "left-0 sm:-left-6 top-8 sm:top-14",
+      pos: "-left-2 sm:-left-6 top-4 sm:top-10",
       floatClass: "float-card",
     },
     {
-      icon: <Zap className="w-4 h-4 text-white" />,
+      icon: <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />,
       iconBg: "bg-gradient-to-br from-violet-500 to-purple-600",
       label: dict.hero.cards.roi,
       value: "14.5×",
       valueColor: "text-violet-600",
       delay: 0.65,
-      pos: "right-0 sm:-right-4 top-4 sm:top-8",
+      pos: "-right-2 sm:-right-4 top-2 sm:top-6",
       floatClass: "float-card-slow",
     },
     {
-      icon: <Users className="w-4 h-4 text-white" />,
+      icon: <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />,
       iconBg: "bg-gradient-to-br from-[#0B2EA8] to-blue-500",
       label: dict.hero.cards.network,
       value: `1000+ ${dict.hero.cards.active}`,
       valueColor: "text-[#0B2EA8]",
       delay: 0.75,
-      pos: "left-0 sm:-left-6 bottom-8 sm:bottom-14",
+      pos: "-left-2 sm:-left-6 bottom-12 sm:bottom-16",
       floatClass: "float-card",
     },
   ];
@@ -353,11 +353,11 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
             initial={{ opacity: 0, scale: 0.92, y: 24 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ delay: 0.12, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 flex justify-center items-center relative py-14 sm:py-16"
+            className="lg:col-span-5 flex justify-center items-center relative py-8 sm:py-12 lg:py-14"
           >
             {/* Glow layers behind phone */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-52 h-52 sm:w-72 sm:h-72 rounded-full
+              <div className="w-48 h-48 sm:w-72 sm:h-72 rounded-full
                 bg-gradient-to-br from-blue-200/50 via-cyan-100/30 to-violet-200/30 blur-[70px]" />
             </div>
 
@@ -370,15 +370,15 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                 transition={{ delay: card.delay, duration: 0.65 }}
                 className={`absolute ${card.pos} z-20 ${card.floatClass}`}
               >
-                <div className="bg-white/90 backdrop-blur-md rounded-2xl border border-slate-100
+                <div className="bg-white/95 backdrop-blur-md rounded-2xl border border-slate-100
                   shadow-[0_8px_32px_rgba(11,46,168,0.12),0_2px_8px_rgba(0,0,0,0.06)]
-                  px-3 sm:px-4 py-2.5 sm:py-3 flex items-center gap-2.5 min-w-[130px] sm:min-w-[155px]"
+                  px-2.5 sm:px-4 py-2 sm:py-3 flex items-center gap-2 sm:gap-2.5 min-w-[120px] sm:min-w-[155px]"
                 >
-                  <div className={`w-8 h-8 rounded-xl ${card.iconBg} flex items-center justify-center shrink-0 shadow-md`}>
+                  <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-xl ${card.iconBg} flex items-center justify-center shrink-0 shadow-md`}>
                     {card.icon}
                   </div>
                   <div>
-                    <p className="text-[8px] sm:text-[9px] font-black uppercase tracking-widest text-slate-400">{card.label}</p>
+                    <p className="text-[7.5px] sm:text-[9px] font-black uppercase tracking-widest text-slate-400">{card.label}</p>
                     <p className={`text-xs sm:text-sm font-black ${card.valueColor}`}>{card.value}</p>
                   </div>
                 </div>
@@ -386,52 +386,54 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
             ))}
 
             {/* Phone */}
-            <div className="relative z-10 w-[185px] sm:w-[225px] md:w-[255px] lg:w-[245px] xl:w-[270px]">
+            <div className="relative z-10 w-[200px] sm:w-[235px] md:w-[255px] lg:w-[250px] xl:w-[270px]">
               {/* Halo ring */}
               <div className="absolute -inset-4 rounded-[3.5rem]
                 bg-gradient-to-br from-blue-300/30 via-cyan-200/20 to-violet-300/20 blur-[20px]" />
               {/* Device */}
-              <div className="relative rounded-[2.6rem] border-[9px] sm:border-[10px] border-[#1a1a2e] bg-[#1a1a2e]
-                shadow-[0_40px_90px_rgba(11,46,168,0.28),0_0_0_1px_rgba(0,0,0,0.15)] p-[3px]"
+              <div className="relative rounded-[2.5rem] sm:rounded-[2.7rem] border-[8px] sm:border-[10px] border-[#1a1a2e] bg-[#1a1a2e]
+                shadow-[0_40px_90px_rgba(11,46,168,0.28),0_0_0_1px_rgba(0,0,0,0.15)] p-[2px] sm:p-[3px]"
               >
                 {/* Dynamic Island */}
                 <div className="absolute top-2 left-1/2 -translate-x-1/2
-                  w-[30%] h-[20px] bg-[#1a1a2e] rounded-full z-30
+                  w-[30%] h-[18px] sm:h-[20px] bg-[#1a1a2e] rounded-full z-30
                   flex items-center justify-center gap-1"
                 >
-                  <div className="w-2 h-2 rounded-full bg-[#2a2a3e]" />
+                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#2a2a3e]" />
                 </div>
                 {/* Screen */}
-                <div className="aspect-[9/19.5] rounded-[2.2rem] overflow-hidden relative bg-[#030918]">
+                <div className="aspect-[9/19.5] rounded-[2.1rem] sm:rounded-[2.2rem] overflow-hidden relative bg-[#06102b] flex items-center justify-center">
                   <img
                     src="/images/hero-mobile-ui.webp"
                     alt="Curious Media App Interface"
-                    className="absolute inset-0 w-full h-full object-contain object-top"
+                    className="w-full h-full object-contain object-top p-1 sm:p-1.5 transition-transform duration-300"
                     width="270"
                     height="585"
                     fetchPriority="high"
+                    loading="eager"
+                    decoding="async"
                   />
                   {/* Screen gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#030918]/90 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#06102b]/80 via-transparent to-transparent pointer-events-none" />
 
                   {/* Floating screen widget */}
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.9, duration: 0.6 }}
-                    className="absolute bottom-4 left-3 right-3
-                      rounded-2xl overflow-hidden
-                      bg-white/10 backdrop-blur-xl border border-white/20
-                      px-3 sm:px-4 py-3"
+                    className="absolute bottom-3 left-2.5 right-2.5 sm:bottom-4 sm:left-3 sm:right-3
+                      rounded-xl sm:rounded-2xl overflow-hidden
+                      bg-[#0A1A4E]/80 backdrop-blur-xl border border-white/20
+                      px-3 py-2.5 sm:py-3"
                   >
-                    <div className="flex items-center gap-2 mb-2">
+                    <div className="flex items-center gap-1.5 mb-1 sm:mb-1.5">
                       <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                      <p className="text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-cyan-300 font-black">{dict.hero.widget.badge}</p>
+                      <p className="text-[7.5px] sm:text-[9px] uppercase tracking-[0.2em] text-cyan-300 font-black">{dict.hero.widget.badge}</p>
                     </div>
-                    <h3 className="text-sm sm:text-[15px] font-black text-white leading-tight">
+                    <h3 className="text-xs sm:text-[14px] font-black text-white leading-tight">
                       {dict.hero.widget.title}
                     </h3>
-                    <div className="mt-2 h-[2px] w-full rounded-full bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-400 opacity-60" />
+                    <div className="mt-1.5 sm:mt-2 h-[2px] w-full rounded-full bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-400 opacity-60" />
                   </motion.div>
                 </div>
               </div>
