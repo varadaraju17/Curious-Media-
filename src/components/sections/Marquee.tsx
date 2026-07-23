@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { TrendingUp, Users } from "lucide-react";
 
 /* ─── BRAND DATA ─── */
@@ -64,10 +63,8 @@ function BrandLogo({ item, type, size = "md" }: { item: { name: string; domain: 
   };
 
   return (
-    <motion.div
-      whileHover={{ scale: 1.08, y: -6 }}
-      transition={{ type: "spring", stiffness: 400, damping: 22 }}
-      className="group flex flex-col items-center gap-2.5 px-2 md:px-3 relative shrink-0"
+    <div
+      className="group flex flex-col items-center gap-2.5 px-2 md:px-3 relative shrink-0 transition-transform duration-300 hover:scale-105 hover:-translate-y-1.5 cursor-pointer"
       title={item.name}
     >
       <div className={`${sizeMap[size]} relative flex items-center justify-center rounded-[2rem] overflow-hidden shrink-0
@@ -79,7 +76,7 @@ function BrandLogo({ item, type, size = "md" }: { item: { name: string; domain: 
         {err < srcs.length ? (
           <img src={srcs[err]} alt="" aria-hidden="true"
             className="w-full h-full object-contain p-2 select-none transition-transform duration-400 group-hover:scale-110"
-            loading="lazy" onError={() => setErr(p => p + 1)}
+            loading="lazy" onError={() => setErr((p: number) => p + 1)}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-600 to-blue-800">
@@ -92,7 +89,7 @@ function BrandLogo({ item, type, size = "md" }: { item: { name: string; domain: 
       >
         {item.name}
       </span>
-    </motion.div>
+    </div>
   );
 }
 
@@ -129,11 +126,8 @@ export function Marquee({ type, dict, title }: MarqueeProps) {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
             {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-200 mb-5"
+            <div
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-200 mb-5 animate-fade-in-up"
             >
               {isBrands
                 ? <TrendingUp className="w-3.5 h-3.5 text-[#0B2EA8]" />
@@ -141,14 +135,10 @@ export function Marquee({ type, dict, title }: MarqueeProps) {
               <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#0B2EA8]">
                 {isBrands ? dict.marquee.brands_badge : dict.marquee.content_badge}
               </span>
-            </motion.div>
+            </div>
 
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.05 }}
-              className="text-4xl md:text-6xl lg:text-[68px] font-black font-heading tracking-tighter leading-[0.95] text-[#0B2EA8] uppercase"
+            <h2
+              className="text-4xl md:text-6xl lg:text-[68px] font-black font-heading tracking-tighter leading-[0.95] text-[#0B2EA8] uppercase animate-fade-in-up"
               aria-hidden="true"
             >
               {isBrands ? (
@@ -160,15 +150,11 @@ export function Marquee({ type, dict, title }: MarqueeProps) {
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-400">{dict.marquee.content_title_2}</span>
                 </>
               )}
-            </motion.h2>
+            </h2>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="flex flex-col items-start md:items-end gap-3 shrink-0"
+          <div
+            className="flex flex-col items-start md:items-end gap-3 shrink-0 animate-fade-in-up"
           >
             <p
               className="text-sm md:text-base text-blue-800/65 font-medium max-w-sm md:text-right leading-relaxed [&_strong]:text-[#0B2EA8] [&_strong]:font-bold"
@@ -186,7 +172,7 @@ export function Marquee({ type, dict, title }: MarqueeProps) {
                 {isBrands ? "Brand Partners" : "Content Partners"}
               </span>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 
@@ -205,33 +191,27 @@ export function Marquee({ type, dict, title }: MarqueeProps) {
           <div className="absolute inset-y-0 left-0 w-20 md:w-48 bg-gradient-to-r from-white to-transparent z-20 pointer-events-none" />
           <div className="absolute inset-y-0 right-0 w-20 md:w-48 bg-gradient-to-l from-white to-transparent z-20 pointer-events-none" />
 
-          {/* Strip A - left to right */}
           <div className="flex overflow-x-hidden py-4">
-            <motion.div
-              className="flex items-start"
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{ repeat: Infinity, ease: "linear", duration: 55 }}
+            <div
+              className="flex items-start animate-marquee-fast"
               style={{ width: "max-content" }}
             >
               {stripA.map((item, idx) => (
                 <BrandLogo key={`a-${item.slug}-${idx}`} item={item} type={type} size="md" />
               ))}
-            </motion.div>
+            </div>
           </div>
 
-          {/* Strip B - right to left */}
           {stripB.length > 0 && (
             <div className="flex overflow-x-hidden py-4">
-              <motion.div
-                className="flex items-start"
-                animate={{ x: ["-50%", "0%"] }}
-                transition={{ repeat: Infinity, ease: "linear", duration: 65 }}
+              <div
+                className="flex items-start animate-marquee-slow"
                 style={{ width: "max-content" }}
               >
                 {stripB.map((item, idx) => (
                   <BrandLogo key={`b-${item.slug}-${idx}`} item={item} type={type} size="md" />
                 ))}
-              </motion.div>
+              </div>
             </div>
           )}
         </div>

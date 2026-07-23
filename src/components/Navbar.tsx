@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Locale } from "@/i18n/config";
 
@@ -40,11 +39,8 @@ export function Navbar({ dict, locale }: NavProps) {
   ];
 
   return (
-    <motion.header
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
+    <header
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 animate-fade-in-down ${
         scrolled 
           ? "bg-white/95 backdrop-blur-md shadow-[0_2px_20px_rgba(11,46,168,0.06)] border-b border-blue-100/50 py-4" 
           : "bg-transparent py-6 md:py-8"
@@ -105,10 +101,8 @@ export function Navbar({ dict, locale }: NavProps) {
                   )}
 
                   {isActive && (
-                    <motion.div
-                       layoutId="nav-underline"
-                      className="absolute bottom-0 left-4 right-4 h-[2px] bg-[#0B2EA8] rounded-none"
-                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    <div
+                      className="absolute bottom-0 left-4 right-4 h-[2px] bg-[#0B2EA8] rounded-none transition-all duration-300"
                     />
                   )}
 
@@ -159,26 +153,19 @@ export function Navbar({ dict, locale }: NavProps) {
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
-            <AnimatePresence mode="wait">
-              {isOpen
-                ? <motion.div key="x"    initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}><X className="w-6 h-6" /></motion.div>
-                : <motion.div key="menu" initial={{ rotate: 90,  opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90,opacity: 0 }} transition={{ duration: 0.15 }}><Menu className="w-6 h-6" /></motion.div>
-              }
-            </AnimatePresence>
+            {isOpen
+              ? <div className="transition-transform duration-300 rotate-0"><X className="w-6 h-6" /></div>
+              : <div className="transition-transform duration-300 rotate-0"><Menu className="w-6 h-6" /></div>
+            }
           </button>
         </div>
       </div>
 
       {/* Mobile menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -15, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -15, scale: 0.97 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="md:hidden absolute top-[80px] left-4 right-4 bg-white p-6 rounded-3xl border border-blue-100 flex flex-col gap-1 shadow-[0_12px_40px_rgba(11,46,168,0.1)] z-50"
-          >
+      {isOpen && (
+        <div
+          className="md:hidden absolute top-[80px] left-4 right-4 bg-white p-6 rounded-3xl border border-blue-100 flex flex-col gap-1 shadow-[0_12px_40px_rgba(11,46,168,0.1)] z-50 animate-fade-in-down"
+        >
             {navLinks.map((link) => {
               const isChildActive = link.dropdown?.some(sub => pathname.includes(sub.href));
               const isActive = (link.href && pathname.includes(link.href)) || isChildActive;
@@ -237,9 +224,8 @@ export function Navbar({ dict, locale }: NavProps) {
                 {dict.nav.contact}
               </Link>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.header>
+        </div>
+      )}
+    </header>
   );
 }
