@@ -1,6 +1,5 @@
-"use client";
 
-import { motion } from "framer-motion";
+
 import { Locale } from "@/i18n/config";
 import Link from "next/link";
 import { ArrowRight, TrendingUp, Users, Zap, CheckCircle } from "lucide-react";
@@ -145,22 +144,16 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
         >
 
           {/* ═══ LEFT - Copy ═══ */}
-          <motion.div
-            initial={{ opacity: 0, y: 36 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7 flex flex-col"
+          <div
+            className="lg:col-span-7 flex flex-col animate-fade-in-up"
           >
 
             {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.88 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.08, duration: 0.55 }}
+            <div
               className="inline-flex items-center gap-2 self-start mb-5 sm:mb-6
                 rounded-full px-4 py-1.5
                 bg-white border border-blue-200
-                shadow-[0_2px_16px_rgba(11,46,168,0.10)]"
+                shadow-[0_2px_16px_rgba(11,46,168,0.10)] animate-fade-in-up"
             >
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-60" />
@@ -169,84 +162,60 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
               <span className="text-[10px] sm:text-[11px] font-black tracking-[0.20em] uppercase text-[#0B2EA8]">
                 {dict.hero.badge}
               </span>
-            </motion.div>
+            </div>
 
             {/* ── Headline ── */}
             <h1 className="font-black font-heading leading-[0.9] tracking-[-0.03em]
               text-[36px] sm:text-[48px] md:text-[58px] lg:text-[64px] xl:text-[52px]"
             >
               {/* Line 1 */}
-              <motion.span
-                initial={{ opacity: 0, x: -24 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.15, duration: 0.6 }}
-                className="block text-[#0A1A4E]"
+              <span
+                className="block text-[#0A1A4E] animate-fade-in-up"
               >
                 {dict.hero.headline_line1}
-              </motion.span>
+              </span>
 
               {/* Line 2 - with shimmer underline */}
-              <motion.span
-                initial={{ opacity: 0, x: -24 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.22, duration: 0.6 }}
-                className="block relative text-[#0B2EA8] w-fit"
+              <span
+                className="block relative text-[#0B2EA8] w-fit animate-fade-in-up"
               >
                 {dict.hero.headline_line2}
-                <motion.span
-                  initial={{ scaleX: 0, opacity: 0 }}
-                  animate={{ scaleX: 1, opacity: 1 }}
-                  transition={{ delay: 0.7, duration: 0.8, ease: [0.16,1,0.3,1] }}
+                <span
                   className="absolute -bottom-1 left-0 h-[4px] sm:h-[5px] w-full origin-left rounded-full
                     bg-gradient-to-r from-[#0B2EA8] via-cyan-400 to-sky-300"
                 />
-              </motion.span>
+              </span>
 
               {/* Lines 3+4 - animated shimmer */}
-              <motion.span
-                initial={{ opacity: 0, x: -24 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.30, duration: 0.6 }}
-                className="block mt-2"
+              <span
+                className="block mt-2 animate-fade-in-up"
               >
                 <span className="text-shimmer">{dict.hero.headline_line3}</span>
-              </motion.span>
-              <motion.span
-                initial={{ opacity: 0, x: -24 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.38, duration: 0.6 }}
-                className="block -mt-1 sm:-mt-2"
+              </span>
+              <span
+                className="block -mt-1 sm:-mt-2 animate-fade-in-up"
               >
                 <span className="text-shimmer">{dict.hero.headline_line4}</span>
-              </motion.span>
+              </span>
             </h1>
 
             {/* ── Sublines ── */}
             <div className="mt-4 sm:mt-6 max-w-2xl flex flex-col gap-1.5">
-              <motion.p
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.44, duration: 0.6 }}
-                className="text-base sm:text-lg md:text-xl font-black text-[#0B2EA8] leading-tight tracking-tight uppercase sm:whitespace-nowrap"
+              <p
+                className="text-base sm:text-lg md:text-xl font-black text-[#0B2EA8] leading-tight tracking-tight uppercase sm:whitespace-nowrap animate-fade-in-up"
               >
                 {dict.hero.subheading}
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.50, duration: 0.6 }}
-                className="text-sm sm:text-base md:text-[17px] text-slate-500 font-medium leading-relaxed"
+              </p>
+              <p
+                className="text-sm sm:text-base md:text-[17px] text-slate-500 font-medium leading-relaxed animate-fade-in-up"
               >
                 {dict.hero.description}
-              </motion.p>
+              </p>
             </div>
 
             {/* ── Features pills ── */}
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.56, duration: 0.6 }}
-              className="mt-7 flex flex-wrap gap-2"
+            <div
+              className="mt-7 flex flex-wrap gap-2 animate-fade-in-up"
             >
               {dict.hero.features.map((feat: string) => (
                 <div key={feat} className="inline-flex items-center gap-1.5 px-3.5 py-1.5
@@ -256,14 +225,11 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                   {feat}
                 </div>
               ))}
-            </motion.div>
+            </div>
 
             {/* ── CTA ── */}
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.62, duration: 0.6 }}
-              className="mt-9 sm:mt-10 flex items-center gap-4 flex-wrap"
+            <div
+              className="mt-9 sm:mt-10 flex items-center gap-4 flex-wrap animate-fade-in-up"
             >
               <Link
                 href={`/${locale}/contact`}
@@ -283,15 +249,12 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                 <ArrowRight className="relative z-10 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
 
-            </motion.div>
+            </div>
 
-          </motion.div>
+          </div>
 
           {/* ═══ RIGHT - Phone ═══ */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.92, y: 24 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ delay: 0.12, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          <div
             className="lg:col-span-5 flex justify-center items-center relative py-8 sm:py-12 lg:py-14"
           >
             {/* Glow layers behind phone */}
@@ -302,11 +265,8 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
 
             {/* Floating metric cards */}
             {floatingCards.map((card, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, x: i === 1 ? 16 : -16 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: card.delay, duration: 0.65 }}
                 className={`absolute ${card.pos} z-20 ${card.floatClass}`}
               >
                 <div className="bg-white/95 backdrop-blur-md rounded-2xl border border-slate-100
@@ -321,7 +281,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                     <p className={`text-xs sm:text-sm font-black ${card.valueColor}`}>{card.value}</p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
 
             {/* Phone */}
@@ -356,14 +316,11 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#06102b]/80 via-transparent to-transparent pointer-events-none" />
 
                   {/* Floating screen widget */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.9, duration: 0.6 }}
+                  <div
                     className="absolute bottom-3 left-2.5 right-2.5 sm:bottom-4 sm:left-3 sm:right-3
                       rounded-xl sm:rounded-2xl overflow-hidden
                       bg-[#0A1A4E]/80 backdrop-blur-xl border border-white/20
-                      px-3 py-2.5 sm:py-3"
+                      px-3 py-2.5 sm:py-3 animate-fade-in-up"
                   >
                     <div className="flex items-center gap-1.5 mb-1 sm:mb-1.5">
                       <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
@@ -373,13 +330,13 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                       {dict.hero.widget.title}
                     </p>
                     <div className="mt-1.5 sm:mt-2 h-[2px] w-full rounded-full bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-400 opacity-60" />
-                  </motion.div>
+                  </div>
                 </div>
               </div>
               {/* Ground shadow */}
               <div className="mt-2 mx-10 h-5 bg-blue-900/10 blur-xl rounded-full" />
             </div>
-          </motion.div>
+          </div>
 
         </div>
       </div>
