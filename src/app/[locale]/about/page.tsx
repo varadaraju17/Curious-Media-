@@ -134,7 +134,7 @@ export default function AboutPage() {
   const journeyTimeline = [
     {
       year: "2023",
-      image: "/images/about/about_timeline_2023.png",
+      image: "/images/about/about_timeline_2023.webp",
       title: "THE SEED",
       subtitle: "ONE IDEA, ONE TABLE",
       desc: "A single desk, a shared vision, and a bold beginning. We took our first steps in Noida, driven by the belief that marketing should feel like culture, not ads.",
@@ -144,7 +144,7 @@ export default function AboutPage() {
     },
     {
       year: "2024",
-      image: "/images/about/about_timeline_2024.png",
+      image: "/images/about/about_timeline_2024.webp",
       title: "THE SPARK",
       subtitle: "THE INTERNET NOTICED US",
       desc: "The internet noticed, and the industry followed. From orchestrating campaigns at Sunburn Festival to scaling our creator network, we proved our concept on the big stage.",
@@ -154,7 +154,7 @@ export default function AboutPage() {
     },
     {
       year: "2025",
-      image: "/images/about/about_timeline_2025.png",
+      image: "/images/about/about_timeline_2025.webp",
       title: "THE ACCELERATION",
       subtitle: "CURIOUS STUDIO LAUNCH",
       desc: "The launch of Curious Studio. Partnering with TVF and digital giants, we expanded our creative force and scaled our team to reshape digital storytelling.",
@@ -164,7 +164,7 @@ export default function AboutPage() {
     },
     {
       year: "2026",
-      image: "/images/about/about_timeline_2026.png",
+      image: "/images/about/about_timeline_2026.webp",
       title: "THE HORIZON",
       subtitle: "UNLIMITING CREATIVITY",
       desc: "Unlimiting creativity. Today, we are a scaling ecosystem of creators, brands, and modern campaigns, moving faster than the timeline itself.",
@@ -248,25 +248,25 @@ export default function AboutPage() {
   if (!mounted) return null;
 
   const galleryPhotos = [
-    { url: "/images/campaigns/image1.jpeg" },
-    { url: "/images/campaigns/image2.jpeg" },
-    { url: "/images/campaigns/image3.jpeg" },
-    { url: "/images/campaigns/image4.jpeg" },
-    { url: "/images/campaigns/image5.jpeg" },
+    { url: "/images/campaigns/image1.webp" },
+    { url: "/images/campaigns/image2.webp" },
+    { url: "/images/campaigns/image3.webp" },
+    { url: "/images/campaigns/image4.webp" },
+    { url: "/images/campaigns/image5.webp" },
   ];
 
   const leadership = [
     {
       name: "Aanchal Sharma",
       role: "Founder, Curious Media",
-      image: "/images/avatars/aanchal.png",
+      image: "/images/avatars/aanchal.webp",
       linkedin: "https://www.linkedin.com/in/aanchal-sharma-47b701375/",
       quote: "Aanchal is the creative and operational force behind Curious. She oversees the overall execution of Curious Media, from creator management to studio strategy, ensuring every vertical runs with precision, intent, and heart."
     },
     {
       name: "Pushpraj Singh",
       role: "Co-Founder, Curious Media",
-      image: "/images/avatars/pushpraj.png",
+      image: "/images/avatars/pushpraj.webp",
       linkedin: "https://www.linkedin.com/in/iampushprajsingh/",
       quote: "Pushpraj is the commercial engine of Curious. He leads the revenue strategy, business development, and partnership deals, turning creative assets into sustainable, scalable business opportunities."
     }
@@ -874,7 +874,7 @@ export default function AboutPage() {
                   className="absolute inset-0 rounded-full overflow-hidden border-2 border-sky-400 shadow-2xl bg-black"
                   style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
                 >
-                  <img src="/images/campaigns/sicko-leave.jpeg" alt="Sicko Leave Campaign" className="w-full h-full object-cover" />
+                  <img src="/images/campaigns/sicko-leave.webp" alt="Sicko Leave Campaign" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col items-center justify-end pb-8 px-6 text-center">
                     <h4 className="text-sm font-black uppercase tracking-wider text-white">
                       {isHindi ? "सिक्को लीव कैंपेन" : "Sicko Leave Campaign"}

@@ -59,7 +59,7 @@ const CREATORS_DATA = [
 function CreatorLogoCard({ creator }: { creator: typeof CREATORS_DATA[0] }) {
   const [err, setErr] = useState(0);
   const srcs = [
-    `/images/content/${creator.slug}.png`,
+    `/images/content/${creator.slug}.webp`,
     `/images/content/${creator.slug}.svg`,
     `/images/brands/${creator.slug}.webp`,
     `https://logo.clearbit.com/${creator.domain}`,

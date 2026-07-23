@@ -47,7 +47,7 @@ const segments = [
     id: "fb_products",
     name: "F&B Products Shoots",
     images: Array.from({ length: 8 }, (_, idx) => ({
-      src: `/images/studio/fb_products/img${idx + 1}.jpg`,
+      src: `/images/studio/fb_products/img${idx + 1}.webp`,
       fallback: [
         "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
         "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80",
@@ -65,7 +65,7 @@ const segments = [
     id: "lifestyle",
     name: "Lifestyle Portrait Shoot",
     images: Array.from({ length: 8 }, (_, idx) => ({
-      src: `/images/studio/lifestyle/img${idx + 1}.jpg`,
+      src: `/images/studio/lifestyle/img${idx + 1}.webp`,
       fallback: [
         "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
         "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80",
@@ -83,7 +83,7 @@ const segments = [
     id: "product_photos",
     name: "Product Photoshoot",
     images: Array.from({ length: 7 }, (_, idx) => ({
-      src: `/images/studio/product_photos/img${idx + 1}.jpg`,
+      src: `/images/studio/product_photos/img${idx + 1}.webp`,
       fallback: [
         "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80",
         "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80",

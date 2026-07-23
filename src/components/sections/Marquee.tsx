@@ -50,7 +50,7 @@ const contentPartners = [
 function BrandLogo({ item, type, size = "md" }: { item: { name: string; domain: string; slug: string }; type: string; size?: "sm" | "md" | "lg" | "xl" }) {
   const [err, setErr] = useState(0);
   const srcs = [
-    `/images/${type}/${item.slug}.png`,
+    `/images/${type}/${item.slug}.webp`,
     `/images/${type}/${item.slug}.svg`,
     `/images/brands/${item.slug}.webp`,
     `https://logo.clearbit.com/${item.domain}`,

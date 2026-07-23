@@ -16,8 +16,8 @@ const campaigns = [
     slug: "space-gen",
     images: [
       "/images/posters/space-gen.webp",
-      "/images/campaigns/space-gen.png",
-      "/images/campaigns/influencer-marketing.png"
+      "/images/campaigns/space-gen.webp",
+      "/images/campaigns/influencer-marketing.webp"
     ],
     gradient: "from-blue-600 to-sky-400",
     glowColor: "rgba(11,46,168,0.4)",
@@ -37,8 +37,8 @@ const campaigns = [
     slug: "medical-dreams",
     images: [
       "/images/posters/medical-dreams.webp",
-      "/images/campaigns/medical-dreams.png",
-      "/images/campaigns/motion-class.png"
+      "/images/campaigns/medical-dreams.webp",
+      "/images/campaigns/motion-class.webp"
     ],
     gradient: "from-indigo-600 to-violet-400",
     glowColor: "rgba(99,102,241,0.4)",
@@ -59,8 +59,8 @@ const campaigns = [
     slug: "travis-scott-india",
     images: [
       "/images/posters/travis-scott-india.webp",
-      "/images/campaigns/india-tour.png",
-      "/images/campaigns/redbull.png"
+      "/images/campaigns/india-tour.webp",
+      "/images/campaigns/redbull.webp"
     ],
     gradient: "from-violet-600 to-fuchsia-400",
     glowColor: "rgba(139,92,246,0.4)",
@@ -80,8 +80,8 @@ const campaigns = [
     slug: "pyaar-ki-raahein",
     images: [
       "/images/posters/pyaar-ki-raahein.webp",
-      "/images/campaigns/pyaar-ki-raahein.png",
-      "/images/campaigns/netflix.png"
+      "/images/campaigns/pyaar-ki-raahein.webp",
+      "/images/campaigns/netflix.webp"
     ],
     gradient: "from-rose-500 to-pink-400",
     glowColor: "rgba(244,63,94,0.4)",
@@ -101,8 +101,8 @@ const campaigns = [
     slug: "astrotalk-influencer",
     images: [
       "/images/posters/astrotalk-influencer.webp",
-      "/images/campaigns/influencer-marketing.png",
-      "/images/campaigns/zomato.png"
+      "/images/campaigns/influencer-marketing.webp",
+      "/images/campaigns/zomato.webp"
     ],
     gradient: "from-fuchsia-600 to-rose-400",
     glowColor: "rgba(192,38,211,0.4)",
@@ -122,8 +122,8 @@ const campaigns = [
     slug: "nykaa-pink-sale",
     images: [
       "/images/posters/nykaa-pink-sale.webp",
-      "/images/campaigns/pink-sale.png",
-      "/images/campaigns/motion-class.png"
+      "/images/campaigns/pink-sale.webp",
+      "/images/campaigns/motion-class.webp"
     ],
     gradient: "from-pink-500 to-orange-400",
     glowColor: "rgba(236,72,153,0.4)",
@@ -143,8 +143,8 @@ const campaigns = [
     slug: "motion-class-campaign",
     images: [
       "/images/posters/motion-class-campaign.webp",
-      "/images/campaigns/motion-class.png",
-      "/images/campaigns/redbull.png"
+      "/images/campaigns/motion-class.webp",
+      "/images/campaigns/redbull.webp"
     ],
     gradient: "from-sky-600 to-cyan-400",
     glowColor: "rgba(14,165,233,0.4)",
@@ -164,8 +164,8 @@ const campaigns = [
     slug: "collage-days",
     images: [
       "/images/posters/collage-days.webp",
-      "/images/campaigns/zomato.png",
-      "/images/campaigns/netflix.png"
+      "/images/campaigns/zomato.webp",
+      "/images/campaigns/netflix.webp"
     ],
     gradient: "from-blue-500 to-indigo-400",
     glowColor: "rgba(59,130,246,0.4)",

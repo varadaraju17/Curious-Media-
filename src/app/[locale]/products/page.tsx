@@ -71,7 +71,7 @@ export default function ProductsComingSoonPage() {
           className="relative w-full max-w-5xl aspect-[21/9] rounded-[2.5rem] overflow-hidden border border-blue-100 shadow-[0_20px_60px_rgba(11,46,168,0.1)] mb-16"
         >
           <Image 
-            src="/ai_products_coming_soon_poster_1778929928727.png" 
+            src="/ai_products_coming_soon_poster_1778929928727.webp" 
             alt={isHindi ? "जल्द आ रहे एआई उत्पाद" : "Coming Soon AI Products"} 
             fill
             className="object-cover"

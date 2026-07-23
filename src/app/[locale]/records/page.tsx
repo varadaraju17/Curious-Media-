@@ -71,7 +71,7 @@ export default function RecordsComingSoonPage() {
           className="relative w-full max-w-5xl aspect-[21/9] rounded-[2.5rem] overflow-hidden border border-blue-100 shadow-[0_20px_60px_rgba(11,46,168,0.1)] mb-16"
         >
           <Image 
-            src="/music_coming_soon_poster_1778925973281.png" 
+            src="/music_coming_soon_poster_1778925973281.webp" 
             alt={isHindi ? "जल्द आ रहा संगीत" : "Coming Soon Music"} 
             fill
             className="object-cover"
