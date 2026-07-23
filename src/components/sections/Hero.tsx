@@ -404,7 +404,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                 {/* Screen */}
                 <div className="aspect-[9/19.5] rounded-[2.2rem] overflow-hidden relative bg-[#030918]">
                   <img
-                    src="/images/hero-mobile-ui.png"
+                    src="/images/hero-mobile-ui.webp"
                     alt="Curious Media App Interface"
                     className="absolute inset-0 w-full h-full object-cover"
                     width="270"

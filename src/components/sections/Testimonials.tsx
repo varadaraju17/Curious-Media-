@@ -139,7 +139,7 @@ export function Testimonials({ dict }: { dict: any }) {
       brandColor: "#0A5CFF", // Univest Blue
       quote:
         "Working with Curious Media has been a great experience for Univest. Their expertise in influencer marketing extends beyond creator sourcing...they focus on the right partnerships, seamless execution, and meaningful results. From influencer campaigns to LinkedIn initiatives, the team has consistently helped us enhance brand visibility and reach the right audience. Their responsiveness, transparency, and execution excellence make them a reliable growth partner.",
-      logo: "/images/brands/univest.png",
+      logo: "/images/brands/univest.webp",
     },
     {
       name: "Shreya",
@@ -148,7 +148,7 @@ export function Testimonials({ dict }: { dict: any }) {
       brandColor: "#0FB45B", // Plix Green
       quote:
         "I recently started working with curious media for my influencer campaigns, it has been such a great experience overall, the creator pool that they offer is really good, execution is super smooth, i have all the updates on what's happening with the influencers that are onboarded. POC's are very helpful and always prompt when it comes to responses. This agency takes full accountabilities for all of the campaigns that they execute so i would love to work with them in the future as well.",
-      logo: "/images/brands/plix.png",
+      logo: "/images/brands/plix.webp",
     },
     {
       name: "Amritansh",
@@ -157,7 +157,7 @@ export function Testimonials({ dict }: { dict: any }) {
       brandColor: "#F58220", // TVF Orange
       quote:
         "Working with Curious Media has been an absolute pleasure. Their team brings together deep expertise in digital marketing, creator partnerships, and content distribution making them a valuable partner for any organization looking to build meaningful audience engagement. What stands out most is their ability to combine creativity with execution. Whether it's influencer campaigns, content amplification, creator management, or digital brand building, Curious Media consistently delivers solutions that are strategic, data-driven, and impactful. It has been a pleasure working with Aanchal and Pushpraj. Their understanding of the digital and creator ecosystem, combined with their proactive approach and commitment to delivering results, makes Curious Media a valuable partner for brands.",
-      logo: "/images/brands/tvf.png",
+      logo: "/images/brands/tvf.webp",
     },
     {
       name: "Reneeta Choudhury",
@@ -166,7 +166,7 @@ export function Testimonials({ dict }: { dict: any }) {
       brandColor: "#003366", // Bennett Blue
       quote:
         "Bennett University has been associated with Curious Media for over a year, and our experience working with the team has been extremely positive. Curious Media provides meaningful learning opportunities and hands-on exposure to young talent, enabling students to gain valuable industry experience. We have consistently received encouraging feedback from our students regarding their engagement with the organization, and we appreciate Curious Media’s commitment to nurturing and empowering emerging professionals.",
-      logo: "/images/brands/bennett-university.png",
+      logo: "/images/brands/bennett-university.webp",
     },
   ];
 

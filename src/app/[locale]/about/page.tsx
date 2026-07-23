@@ -73,7 +73,7 @@ function DropletPinLogo({ className = "w-12 h-14" }) {
       </svg>
       {/* Round logo image container */}
       <div className="absolute top-[8%] left-[17.5%] w-[65%] h-[55%] rounded-full overflow-hidden bg-white flex items-center justify-center border border-[#0B2EA8]">
-        <img src="/images/logo.png" alt="Curious Logo" className="w-[85%] h-[85%] object-contain" />
+        <img src="/images/logo.webp" alt="Curious Logo" className="w-[85%] h-[85%] object-contain" />
       </div>
     </div>
   );

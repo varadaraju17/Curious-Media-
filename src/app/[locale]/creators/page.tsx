@@ -61,7 +61,7 @@ function CreatorLogoCard({ creator }: { creator: typeof CREATORS_DATA[0] }) {
   const srcs = [
     `/images/content/${creator.slug}.png`,
     `/images/content/${creator.slug}.svg`,
-    `/images/brands/${creator.slug}.png`,
+    `/images/brands/${creator.slug}.webp`,
     `https://logo.clearbit.com/${creator.domain}`,
     `https://www.google.com/s2/favicons?domain=${creator.domain}&sz=128`,
   ];

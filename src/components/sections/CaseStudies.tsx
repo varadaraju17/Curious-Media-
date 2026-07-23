@@ -15,7 +15,7 @@ const campaigns = [
     ],
     slug: "space-gen",
     images: [
-      "/images/posters/space-gen.jpg",
+      "/images/posters/space-gen.webp",
       "/images/campaigns/space-gen.png",
       "/images/campaigns/influencer-marketing.png"
     ],
@@ -36,7 +36,7 @@ const campaigns = [
     ],
     slug: "medical-dreams",
     images: [
-      "/images/posters/medical-dreams.jpg",
+      "/images/posters/medical-dreams.webp",
       "/images/campaigns/medical-dreams.png",
       "/images/campaigns/motion-class.png"
     ],
@@ -58,7 +58,7 @@ const campaigns = [
     ],
     slug: "travis-scott-india",
     images: [
-      "/images/posters/travis-scott-india.jpg",
+      "/images/posters/travis-scott-india.webp",
       "/images/campaigns/india-tour.png",
       "/images/campaigns/redbull.png"
     ],
@@ -79,7 +79,7 @@ const campaigns = [
     ],
     slug: "pyaar-ki-raahein",
     images: [
-      "/images/posters/pyaar-ki-raahein.jpg",
+      "/images/posters/pyaar-ki-raahein.webp",
       "/images/campaigns/pyaar-ki-raahein.png",
       "/images/campaigns/netflix.png"
     ],
@@ -100,7 +100,7 @@ const campaigns = [
     ],
     slug: "astrotalk-influencer",
     images: [
-      "/images/posters/astrotalk-influencer.jpg",
+      "/images/posters/astrotalk-influencer.webp",
       "/images/campaigns/influencer-marketing.png",
       "/images/campaigns/zomato.png"
     ],
@@ -121,7 +121,7 @@ const campaigns = [
     ],
     slug: "nykaa-pink-sale",
     images: [
-      "/images/posters/nykaa-pink-sale.jpg",
+      "/images/posters/nykaa-pink-sale.webp",
       "/images/campaigns/pink-sale.png",
       "/images/campaigns/motion-class.png"
     ],
@@ -142,7 +142,7 @@ const campaigns = [
     ],
     slug: "motion-class-campaign",
     images: [
-      "/images/posters/motion-class-campaign.jpg",
+      "/images/posters/motion-class-campaign.webp",
       "/images/campaigns/motion-class.png",
       "/images/campaigns/redbull.png"
     ],
@@ -163,7 +163,7 @@ const campaigns = [
     ],
     slug: "collage-days",
     images: [
-      "/images/posters/collage-days.jpg",
+      "/images/posters/collage-days.webp",
       "/images/campaigns/zomato.png",
       "/images/campaigns/netflix.png"
     ],
@@ -184,7 +184,7 @@ const campaigns = [
     ],
     slug: "made-in-india",
     images: [
-      "/images/posters/made-in-india.jpg"
+      "/images/posters/made-in-india.webp"
     ],
     gradient: "from-amber-500 to-orange-400",
     glowColor: "rgba(245,158,11,0.4)",
@@ -203,7 +203,7 @@ const campaigns = [
     ],
     slug: "sunburn-delhi",
     images: [
-      "/images/posters/sunburn.jpg"
+      "/images/posters/sunburn.webp"
     ],
     gradient: "from-teal-500 to-emerald-400",
     glowColor: "rgba(20,184,166,0.4)",
@@ -222,7 +222,7 @@ const campaigns = [
     ],
     slug: "skill-india",
     images: [
-      "/images/posters/skill-india.jpg"
+      "/images/posters/skill-india.webp"
     ],
     gradient: "from-blue-400 to-cyan-300",
     glowColor: "rgba(56,189,248,0.4)",

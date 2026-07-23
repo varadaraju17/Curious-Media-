@@ -102,7 +102,7 @@ export async function generateMetadata(
       siteName: "Curious Media",
       images: [
         {
-          url: `${baseUrl}/images/logo.png`,
+          url: `${baseUrl}/images/logo.webp`,
           width: 1200,
           height: 630,
           alt: "Curious Media Logo",
@@ -115,7 +115,7 @@ export async function generateMetadata(
       card: "summary_large_image",
       title,
       description,
-      images: [`${baseUrl}/images/logo.png`],
+      images: [`${baseUrl}/images/logo.webp`],
     },
     robots: {
       index: true,

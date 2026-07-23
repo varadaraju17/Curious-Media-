@@ -52,7 +52,7 @@ function BrandLogo({ item, type, size = "md" }: { item: { name: string; domain: 
   const srcs = [
     `/images/${type}/${item.slug}.png`,
     `/images/${type}/${item.slug}.svg`,
-    `/images/brands/${item.slug}.png`,
+    `/images/brands/${item.slug}.webp`,
     `https://logo.clearbit.com/${item.domain}`,
     `https://www.google.com/s2/favicons?domain=${item.domain}&sz=128`,
   ];
