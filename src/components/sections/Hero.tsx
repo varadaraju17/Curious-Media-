@@ -170,14 +170,14 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
             >
               {/* Line 1 */}
               <span
-                className="block text-[#0A1A4E] animate-fade-in-up"
+                className="block text-[#0A1A4E]"
               >
                 {dict.hero.headline_line1}
               </span>
 
               {/* Line 2 - with shimmer underline */}
               <span
-                className="block relative text-[#0B2EA8] w-fit animate-fade-in-up"
+                className="block relative text-[#0B2EA8] w-fit"
               >
                 {dict.hero.headline_line2}
                 <span
@@ -188,12 +188,12 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
 
               {/* Lines 3+4 - animated shimmer */}
               <span
-                className="block mt-2 animate-fade-in-up"
+                className="block mt-2"
               >
                 <span className="text-shimmer">{dict.hero.headline_line3}</span>
               </span>
               <span
-                className="block -mt-1 sm:-mt-2 animate-fade-in-up"
+                className="block -mt-1 sm:-mt-2"
               >
                 <span className="text-shimmer">{dict.hero.headline_line4}</span>
               </span>
