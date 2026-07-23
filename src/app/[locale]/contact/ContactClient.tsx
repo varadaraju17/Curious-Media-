@@ -86,10 +86,9 @@ export default function ContactClient({ dict, locale }: ContactClientProps) {
   };
 
   return (
-    <main className="min-h-screen lg:h-screen w-full bg-[#F8FAFF] relative overflow-x-hidden lg:overflow-hidden pt-20 lg:pt-24 flex items-center justify-center">
-      {/* ─── DYNAMIC BACKGROUND (HOME PAGE HERO STYLE) ─── */}
+    <main className="min-h-screen w-full bg-[#F8FAFF] relative overflow-x-hidden pt-24 pb-12 lg:pt-28 lg:pb-16 flex items-center justify-center">
+      {/* ─── DYNAMIC BACKGROUND ─── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden bg-white">
-        {/* Dynamic Panning Grid */}
         <motion.div 
           className="absolute inset-0 [mask-image:radial-gradient(ellipse_80%_60%_at_50%_40%,#000_30%,transparent_100%)]"
           style={{
@@ -100,7 +99,6 @@ export default function ContactClient({ dict, locale }: ContactClientProps) {
           transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
         />
 
-        {/* Abstract Flowing Lines */}
         <svg className="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
           <motion.path
             d="M-200,600 C200,400 400,800 800,500 C1200,200 1400,400 1600,400"
@@ -111,51 +109,50 @@ export default function ContactClient({ dict, locale }: ContactClientProps) {
           />
         </svg>
 
-        {/* Cinematic Glowing Orbs */}
-        <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '8s' }} />
-        <div className="absolute bottom-[10%] left-[-10%] w-[500px] h-[500px] bg-cyan-100/30 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '10s' }} />
+        <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '8s' }} />
+        <div className="absolute bottom-[10%] left-[-10%] w-[450px] h-[450px] bg-cyan-100/30 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '10s' }} />
       </div>
 
-      <div className="container mx-auto px-4 md:px-8 max-w-[1400px] relative z-10 py-6 lg:py-0 w-full">
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 xl:gap-24 items-center">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 max-w-[1320px] relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 
           {/* LEFT CONTENT */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full lg:w-1/2 flex flex-col"
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 flex flex-col"
           >
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 mb-4 w-fit shadow-sm">
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-100 mb-4 w-fit shadow-sm">
               <Sparkles className="w-3.5 h-3.5 text-[#0B2EA8] animate-pulse" />
               <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#0B2EA8]">{dict.contact.connect_badge}</span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl lg:text-[72px] font-black font-heading tracking-tighter leading-[0.85] text-[#0A1A4E] mb-4 uppercase">
+            <h1 className="text-3xl sm:text-5xl lg:text-[46px] font-black font-heading tracking-tighter leading-[0.9] text-[#0A1A4E] mb-3 uppercase">
               {dict.contact.get_in_touch_1}<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-sky-400">
                 {dict.contact.get_in_touch_2}
               </span>
             </h1>
 
-            <p className="text-base sm:text-lg md:text-xl text-slate-500 font-bold mb-6 sm:mb-8 leading-tight italic max-w-md">
+            <p className="text-sm sm:text-base md:text-lg text-slate-500 font-bold mb-6 leading-snug italic max-w-md">
               {dict.contact.clicks_clients}
             </p>
 
-            <div className="flex flex-col gap-4 mb-8">
+            <div className="flex flex-col gap-3 mb-6">
               <motion.a
                 href="mailto:info@curiousmedia.in"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="group flex items-start gap-4 p-2 transition-all hover:translate-x-1.5"
+                transition={{ delay: 0.2 }}
+                className="group flex items-start gap-3.5 p-3 rounded-2xl bg-white/70 border border-blue-50/80 hover:border-blue-200 shadow-sm hover:shadow-md transition-all hover:translate-x-1"
               >
-                <div className="w-10 h-10 rounded-xl bg-white border border-blue-50 flex items-center justify-center text-[#0B2EA8] shadow-sm group-hover:bg-[#0B2EA8] group-hover:text-white group-hover:scale-105 group-hover:shadow-[0_8px_20px_rgba(11,46,168,0.15)] transition-all duration-300 shrink-0">
+                <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-[#0B2EA8] shadow-sm group-hover:bg-[#0B2EA8] group-hover:text-white group-hover:scale-105 transition-all duration-300 shrink-0">
                   <Mail className="w-4 h-4" />
                 </div>
                 <div>
-                  <p className="text-[9px] font-black uppercase tracking-[0.25em] text-slate-400 group-hover:text-[#0B2EA8] transition-colors duration-300">{dict.contact.direct_email}</p>
-                  <p className="text-xs sm:text-sm font-black text-[#0A1A4E] leading-tight max-w-sm md:max-w-md group-hover:text-[#0B2EA8] transition-colors duration-300">info@curiousmedia.in</p>
+                  <p className="text-[9px] font-black uppercase tracking-[0.25em] text-slate-400 group-hover:text-[#0B2EA8] transition-colors">{dict.contact.direct_email}</p>
+                  <p className="text-xs sm:text-sm font-black text-[#0A1A4E] leading-tight group-hover:text-[#0B2EA8] transition-colors">info@curiousmedia.in</p>
                 </div>
               </motion.a>
 
@@ -165,37 +162,37 @@ export default function ContactClient({ dict, locale }: ContactClientProps) {
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.38 }}
-                className="group flex items-start gap-4 p-2 transition-all hover:translate-x-1.5"
+                transition={{ delay: 0.28 }}
+                className="group flex items-start gap-3.5 p-3 rounded-2xl bg-white/70 border border-blue-50/80 hover:border-blue-200 shadow-sm hover:shadow-md transition-all hover:translate-x-1"
               >
-                <div className="w-10 h-10 rounded-xl bg-white border border-blue-50 flex items-center justify-center text-[#0B2EA8] shadow-sm group-hover:bg-[#0B2EA8] group-hover:text-white group-hover:scale-105 group-hover:shadow-[0_8px_20px_rgba(11,46,168,0.15)] transition-all duration-300 shrink-0">
+                <div className="w-9 h-9 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 shadow-sm group-hover:bg-emerald-600 group-hover:text-white group-hover:scale-105 transition-all duration-300 shrink-0">
                   <MessageCircle className="w-4 h-4" />
                 </div>
                 <div>
-                  <p className="text-[9px] font-black uppercase tracking-[0.25em] text-slate-400 group-hover:text-[#0B2EA8] transition-colors duration-300">{dict.contact.whatsapp_phone}</p>
-                  <p className="text-xs sm:text-sm font-black text-[#0A1A4E] leading-tight max-w-sm md:max-w-md group-hover:text-[#0B2EA8] transition-colors duration-300">+91 83750 70191</p>
+                  <p className="text-[9px] font-black uppercase tracking-[0.25em] text-slate-400 group-hover:text-[#0B2EA8] transition-colors">{dict.contact.whatsapp_phone}</p>
+                  <p className="text-xs sm:text-sm font-black text-[#0A1A4E] leading-tight group-hover:text-[#0B2EA8] transition-colors">+91 83750 70191</p>
                 </div>
               </motion.a>
 
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.46 }}
-                className="group flex items-start gap-4 p-2 transition-all hover:translate-x-1.5"
+                transition={{ delay: 0.34 }}
+                className="group flex items-start gap-3.5 p-3 rounded-2xl bg-white/70 border border-blue-50/80 hover:border-blue-200 shadow-sm transition-all"
               >
-                <div className="w-10 h-10 rounded-xl bg-white border border-blue-50 flex items-center justify-center text-[#0B2EA8] shadow-sm group-hover:bg-[#0B2EA8] group-hover:text-white group-hover:scale-105 group-hover:shadow-[0_8px_20px_rgba(11,46,168,0.15)] transition-all duration-300 shrink-0 mt-0.5">
+                <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-[#0B2EA8] shadow-sm group-hover:bg-[#0B2EA8] group-hover:text-white transition-all duration-300 shrink-0 mt-0.5">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div>
-                  <p className="text-[9px] font-black uppercase tracking-[0.25em] text-slate-400 group-hover:text-[#0B2EA8] transition-colors duration-300 mb-1">{dict.contact.operating_office}</p>
-                  <div className="flex flex-col gap-2">
+                  <p className="text-[9px] font-black uppercase tracking-[0.25em] text-slate-400 mb-1">{dict.contact.operating_office}</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <p className="text-[11px] font-black text-[#0B2EA8] uppercase tracking-wide">Headquarters – Noida Office</p>
-                      <p className="text-xs font-bold text-[#0A1A4E] leading-tight">Sector 63, Noida, Uttar Pradesh, 201301</p>
+                      <p className="text-[10px] font-black text-[#0B2EA8] uppercase tracking-wide">Headquarters – Noida</p>
+                      <p className="text-[11px] font-bold text-[#0A1A4E] leading-tight">Sector 63, Noida, UP, 201301</p>
                     </div>
                     <div>
-                      <p className="text-[11px] font-black text-[#0B2EA8] uppercase tracking-wide">Mumbai Office</p>
-                      <p className="text-xs font-bold text-[#0A1A4E] leading-tight">Wework Spectrum Tower, Malad West, Mumbai</p>
+                      <p className="text-[10px] font-black text-[#0B2EA8] uppercase tracking-wide">Mumbai Office</p>
+                      <p className="text-[11px] font-bold text-[#0A1A4E] leading-tight">Wework Spectrum Tower, Malad West</p>
                     </div>
                   </div>
                 </div>
@@ -203,7 +200,7 @@ export default function ContactClient({ dict, locale }: ContactClientProps) {
             </div>
 
             {/* Social Pills */}
-            <div className="flex flex-wrap gap-2.5">
+            <div className="flex flex-wrap gap-2">
               {[
                 { label: "Instagram", href: "https://www.instagram.com/curiousmedia_official/" },
                 { label: "LinkedIn", href: "https://www.linkedin.com/company/curiousmediaa/" },
@@ -214,7 +211,7 @@ export default function ContactClient({ dict, locale }: ContactClientProps) {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-2 rounded-full bg-white/60 border border-slate-200/60 text-[9px] font-black uppercase tracking-widest text-slate-400 hover:bg-[#0B2EA8] hover:text-white hover:border-[#0B2EA8] hover:scale-105 transition-all shadow-sm"
+                  className="px-4 py-1.5 rounded-full bg-white border border-slate-200/80 text-[9px] font-black uppercase tracking-widest text-slate-500 hover:bg-[#0B2EA8] hover:text-white hover:border-[#0B2EA8] hover:scale-105 transition-all shadow-sm"
                 >
                   {social.label}
                 </a>
@@ -224,119 +221,121 @@ export default function ContactClient({ dict, locale }: ContactClientProps) {
 
           {/* RIGHT FORM */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, x: 50 }}
+            initial={{ opacity: 0, scale: 0.96, x: 30 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full lg:w-1/2 relative"
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 relative"
           >
-            {/* response time floating badge */}
-            <div className="absolute -top-4 -right-4 bg-gradient-to-tr from-[#0B2EA8] to-cyan-400 p-[1px] rounded-2xl shadow-[0_12px_30px_rgba(11,46,168,0.15)] rotate-6 hover:rotate-0 transition-transform duration-500 hidden sm:block z-20">
-              <div className="bg-[#0A1A4E] text-white px-4 py-2.5 rounded-[15px] flex items-center gap-2">
+            {/* Response badge */}
+            <div className="absolute -top-3 -right-2 bg-gradient-to-tr from-[#0B2EA8] to-cyan-400 p-[1px] rounded-2xl shadow-md rotate-3 hover:rotate-0 transition-transform duration-300 hidden sm:block z-20">
+              <div className="bg-[#0A1A4E] text-white px-3.5 py-1.5 rounded-[15px] flex items-center gap-2">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
                 </span>
-                <span className="text-[9px] font-black tracking-widest uppercase">Response time: &lt; 24h</span>
+                <span className="text-[9px] font-black tracking-widest uppercase">Response: &lt; 24h</span>
               </div>
             </div>
 
-            <div className="bg-white/40 backdrop-blur-2xl rounded-3xl border border-white/60 p-6 md:p-8 shadow-[0_32px_100px_rgba(11,46,168,0.12),inset_0_2px_4px_rgba(255,255,255,0.4)]">
-              <h3 className="text-xl sm:text-2xl font-black font-heading tracking-tight text-[#0A1A4E] mb-5 uppercase">{dict.contact.send_inquiry}</h3>
+            <div className="bg-white/80 backdrop-blur-xl rounded-3xl border border-blue-100/80 p-5 sm:p-7 shadow-[0_20px_60px_rgba(11,46,168,0.08)]">
+              <h2 className="text-lg sm:text-xl font-black font-heading tracking-tight text-[#0A1A4E] mb-4 uppercase">{dict.contact.send_inquiry}</h2>
               
-              <form onSubmit={handleSubmit} className="flex flex-col gap-4" noValidate>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-3.5" noValidate>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   {/* Name Input */}
-                  <div className="flex flex-col gap-1.5 group relative">
-                    <label className="text-[9px] font-black uppercase tracking-widest text-[#0B2EA8]/80 ml-3 transition-colors duration-300 group-focus-within:text-[#0B2EA8]">{dict.contact.name}</label>
+                  <div className="flex flex-col gap-1 group relative">
+                    <label htmlFor="contact-name" className="text-[9px] font-black uppercase tracking-widest text-[#0B2EA8]/80 ml-2.5">{dict.contact.name}</label>
                     <div className="relative">
                       <input 
+                        id="contact-name"
                         type="text" 
                         value={formData.name}
                         onChange={(e) => handleChange("name", e.target.value)}
                         placeholder={dict.contact.fullname_placeholder} 
-                        className={`w-full bg-white/60 border rounded-2xl px-5 py-3 outline-none focus:bg-white focus:border-[#0B2EA8] transition-all font-semibold text-xs sm:text-sm shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)] ${
-                          errors.name ? "border-red-500 bg-red-50/10 focus:border-red-500" : "border-slate-100/80 hover:border-slate-200"
+                        className={`w-full bg-white border rounded-xl px-4 py-2.5 outline-none focus:border-[#0B2EA8] transition-all font-semibold text-xs shadow-sm ${
+                          errors.name ? "border-red-500 bg-red-50/10 focus:border-red-500" : "border-slate-200/80 hover:border-slate-300"
                         }`}
                       />
-                      <div className="absolute bottom-0 left-5 right-5 h-[2px] bg-gradient-to-r from-[#0B2EA8] to-cyan-400 origin-left scale-x-0 transition-transform duration-300 group-focus-within:scale-x-100" />
                     </div>
                     {errors.name && (
-                      <span className="text-[9px] text-red-500 font-bold ml-3 mt-0.5 flex items-center gap-1">
+                      <span className="text-[9px] text-red-500 font-bold ml-2.5 flex items-center gap-1">
                         <span className="w-1 h-1 rounded-full bg-red-500 animate-ping" /> {errors.name}
                       </span>
                     )}
                   </div>
                   
                   {/* Email Input */}
-                  <div className="flex flex-col gap-1.5 group relative">
-                    <label className="text-[9px] font-black uppercase tracking-widest text-[#0B2EA8]/80 ml-3 transition-colors duration-300 group-focus-within:text-[#0B2EA8]">{dict.contact.email_label}</label>
+                  <div className="flex flex-col gap-1 group relative">
+                    <label htmlFor="contact-email" className="text-[9px] font-black uppercase tracking-widest text-[#0B2EA8]/80 ml-2.5">{dict.contact.email_label}</label>
                     <div className="relative">
                       <input 
+                        id="contact-email"
                         type="email" 
                         value={formData.email}
                         onChange={(e) => handleChange("email", e.target.value)}
                         placeholder={dict.contact.email_placeholder} 
-                        className={`w-full bg-white/60 border rounded-2xl px-5 py-3 outline-none focus:bg-white focus:border-[#0B2EA8] transition-all font-semibold text-xs sm:text-sm shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)] ${
-                          errors.email ? "border-red-500 bg-red-50/10 focus:border-red-500" : "border-slate-100/80 hover:border-slate-200"
+                        className={`w-full bg-white border rounded-xl px-4 py-2.5 outline-none focus:border-[#0B2EA8] transition-all font-semibold text-xs shadow-sm ${
+                          errors.email ? "border-red-500 bg-red-50/10 focus:border-red-500" : "border-slate-200/80 hover:border-slate-300"
                         }`}
                       />
-                      <div className="absolute bottom-0 left-5 right-5 h-[2px] bg-gradient-to-r from-[#0B2EA8] to-cyan-400 origin-left scale-x-0 transition-transform duration-300 group-focus-within:scale-x-100" />
                     </div>
                     {errors.email && (
-                      <span className="text-[9px] text-red-500 font-bold ml-3 mt-0.5 flex items-center gap-1">
+                      <span className="text-[9px] text-red-500 font-bold ml-2.5 flex items-center gap-1">
                         <span className="w-1 h-1 rounded-full bg-red-500 animate-ping" /> {errors.email}
                       </span>
                     )}
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   {/* Phone Input */}
-                  <div className="flex flex-col gap-1.5 group relative">
-                    <label className="text-[9px] font-black uppercase tracking-widest text-[#0B2EA8]/80 ml-3 transition-colors duration-300 group-focus-within:text-[#0B2EA8]">{dict.contact.phone_label}</label>
+                  <div className="flex flex-col gap-1 group relative">
+                    <label htmlFor="contact-phone" className="text-[9px] font-black uppercase tracking-widest text-[#0B2EA8]/80 ml-2.5">{dict.contact.phone_label}</label>
                     <div className="relative">
                       <input 
+                        id="contact-phone"
                         type="tel" 
                         value={formData.phone}
                         onChange={(e) => handleChange("phone", e.target.value)}
                         placeholder={dict.contact.phone_placeholder} 
-                        className={`w-full bg-white/60 border rounded-2xl px-5 py-3 outline-none focus:bg-white focus:border-[#0B2EA8] transition-all font-semibold text-xs sm:text-sm shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)] ${
-                          errors.phone ? "border-red-500 bg-red-50/10 focus:border-red-500" : "border-slate-100/80 hover:border-slate-200"
+                        className={`w-full bg-white border rounded-xl px-4 py-2.5 outline-none focus:border-[#0B2EA8] transition-all font-semibold text-xs shadow-sm ${
+                          errors.phone ? "border-red-500 bg-red-50/10 focus:border-red-500" : "border-slate-200/80 hover:border-slate-300"
                         }`}
                       />
-                      <div className="absolute bottom-0 left-5 right-5 h-[2px] bg-gradient-to-r from-[#0B2EA8] to-cyan-400 origin-left scale-x-0 transition-transform duration-300 group-focus-within:scale-x-100" />
                     </div>
                     {errors.phone && (
-                      <span className="text-[9px] text-red-500 font-bold ml-3 mt-0.5 flex items-center gap-1">
+                      <span className="text-[9px] text-red-500 font-bold ml-2.5 flex items-center gap-1">
                         <span className="w-1 h-1 rounded-full bg-red-500 animate-ping" /> {errors.phone}
                       </span>
                     )}
                   </div>
 
                   {/* Company Input */}
-                  <div className="flex flex-col gap-1.5 group relative">
-                    <label className="text-[9px] font-black uppercase tracking-widest text-[#0B2EA8]/80 ml-3 transition-colors duration-300 group-focus-within:text-[#0B2EA8]">{dict.contact.company_label}</label>
+                  <div className="flex flex-col gap-1 group relative">
+                    <label htmlFor="contact-company" className="text-[9px] font-black uppercase tracking-widest text-[#0B2EA8]/80 ml-2.5">{dict.contact.company_label}</label>
                     <div className="relative">
                       <input 
+                        id="contact-company"
                         type="text" 
                         value={formData.company}
                         onChange={(e) => handleChange("company", e.target.value)}
                         placeholder={dict.contact.company_placeholder} 
-                        className="w-full bg-white/60 border border-slate-100/80 rounded-2xl px-5 py-3 outline-none focus:bg-white focus:border-[#0B2EA8] transition-all font-semibold text-xs sm:text-sm shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)] hover:border-slate-200"
+                        className="w-full bg-white border border-slate-200/80 rounded-xl px-4 py-2.5 outline-none focus:border-[#0B2EA8] transition-all font-semibold text-xs shadow-sm hover:border-slate-300"
                       />
-                      <div className="absolute bottom-0 left-5 right-5 h-[2px] bg-gradient-to-r from-[#0B2EA8] to-cyan-400 origin-left scale-x-0 transition-transform duration-300 group-focus-within:scale-x-100" />
                     </div>
                   </div>
                 </div>
 
                 {/* Subject Selection */}
-                <div className="flex flex-col gap-1.5 group relative">
-                  <label className="text-[9px] font-black uppercase tracking-widest text-[#0B2EA8]/80 ml-3 transition-colors duration-300 group-focus-within:text-[#0B2EA8]">{dict.contact.subject_label}</label>
+                <div className="flex flex-col gap-1 group relative">
+                  <label htmlFor="contact-subject" className="text-[9px] font-black uppercase tracking-widest text-[#0B2EA8]/80 ml-2.5">{dict.contact.subject_label}</label>
                   <div className="relative">
                     <select 
+                      id="contact-subject"
                       value={formData.subject}
                       onChange={(e) => handleChange("subject", e.target.value)}
-                      className="w-full bg-white/60 border border-slate-100/80 rounded-2xl px-5 py-3 outline-none focus:bg-white focus:border-[#0B2EA8] transition-all font-bold text-[#0A1A4E] text-xs sm:text-sm shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)] appearance-none cursor-pointer pr-10 hover:border-slate-200"
+                      aria-label={dict.contact.subject_label}
+                      className="w-full bg-white border border-slate-200/80 rounded-xl px-4 py-2.5 outline-none focus:border-[#0B2EA8] transition-all font-bold text-[#0A1A4E] text-xs shadow-sm appearance-none cursor-pointer pr-10 hover:border-slate-300"
                     >
                       <option value={dict.contact.opt_brand || "Brand Campaign"}>{dict.contact.opt_brand}</option>
                       <option value={dict.contact.opt_creator || "Creator Management"}>{dict.contact.opt_creator}</option>
@@ -348,27 +347,26 @@ export default function ContactClient({ dict, locale }: ContactClientProps) {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                       </svg>
                     </div>
-                    <div className="absolute bottom-0 left-5 right-5 h-[2px] bg-gradient-to-r from-[#0B2EA8] to-cyan-400 origin-left scale-x-0 transition-transform duration-300 group-focus-within:scale-x-100" />
                   </div>
                 </div>
 
                 {/* Message Textarea */}
-                <div className="flex flex-col gap-1.5 group relative">
-                  <label className="text-[9px] font-black uppercase tracking-widest text-[#0B2EA8]/80 ml-3 transition-colors duration-300 group-focus-within:text-[#0B2EA8]">{dict.contact.message_label}</label>
+                <div className="flex flex-col gap-1 group relative">
+                  <label htmlFor="contact-message" className="text-[9px] font-black uppercase tracking-widest text-[#0B2EA8]/80 ml-2.5">{dict.contact.message_label}</label>
                   <div className="relative">
                     <textarea 
+                      id="contact-message"
                       value={formData.message}
                       onChange={(e) => handleChange("message", e.target.value)}
-                      rows={2} 
+                      rows={3} 
                       placeholder={dict.contact.message_placeholder} 
-                      className={`w-full bg-white/60 border rounded-2xl px-5 py-3 outline-none focus:bg-white focus:border-[#0B2EA8] transition-all font-semibold text-xs sm:text-sm shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)] resize-none ${
-                        errors.message ? "border-red-500 bg-red-50/10 focus:border-red-500" : "border-slate-100/80 hover:border-slate-200"
+                      className={`w-full bg-white border rounded-xl px-4 py-2.5 outline-none focus:border-[#0B2EA8] transition-all font-semibold text-xs shadow-sm resize-none ${
+                        errors.message ? "border-red-500 bg-red-50/10 focus:border-red-500" : "border-slate-200/80 hover:border-slate-300"
                       }`}
                     />
-                    <div className="absolute bottom-0 left-5 right-5 h-[2px] bg-gradient-to-r from-[#0B2EA8] to-cyan-400 origin-left scale-x-0 transition-transform duration-300 group-focus-within:scale-x-100" />
                   </div>
                   {errors.message && (
-                    <span className="text-[9px] text-red-500 font-bold ml-3 mt-0.5 flex items-center gap-1">
+                    <span className="text-[9px] text-red-500 font-bold ml-2.5 flex items-center gap-1">
                       <span className="w-1 h-1 rounded-full bg-red-500 animate-ping" /> {errors.message}
                     </span>
                   )}
@@ -378,11 +376,10 @@ export default function ContactClient({ dict, locale }: ContactClientProps) {
                 <button 
                   type="submit" 
                   disabled={loading} 
-                  className="group relative w-full flex items-center justify-center gap-2.5 overflow-hidden rounded-full py-4 bg-[#0A1A4E] text-white font-black tracking-[0.2em] uppercase text-xs sm:text-sm shadow-[0_16px_36px_rgba(11,46,168,0.15)] hover:shadow-[0_20px_50px_rgba(11,46,168,0.3)] hover:scale-[1.01] active:scale-95 transition-all duration-300 disabled:opacity-85"
+                  className="group relative w-full flex items-center justify-center gap-2 overflow-hidden rounded-full py-3.5 bg-[#0A1A4E] text-white font-black tracking-[0.2em] uppercase text-xs shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-95 transition-all duration-300 disabled:opacity-85 mt-1"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-[#0B2EA8] via-blue-500 to-[#0B2EA8] bg-[size:200%] transition-all duration-700 group-hover:bg-[position:100%]" />
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.4)_0%,transparent_70%)] transition-opacity duration-500 pointer-events-none" />
-                  <span className="relative z-10 flex items-center gap-2.5">
+                  <span className="relative z-10 flex items-center gap-2">
                     {loading ? dict.contact.btn_sending : success ? dict.contact.btn_sent : dict.contact.btn_submit}
                     {!loading && !success && <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />}
                   </span>
@@ -391,13 +388,6 @@ export default function ContactClient({ dict, locale }: ContactClientProps) {
             </div>
           </motion.div>
         </div>
-      </div>
-
-      {/* Decorative Wave Bottom */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none rotate-180 opacity-40">
-        <svg viewBox="0 0 1440 120" fill="none" preserveAspectRatio="none" className="w-full h-12 sm:h-20">
-          <path d="M0,64 C480,128 960,0 1440,64 L1440,120 L0,120 Z" fill="#F8FAFF"/>
-        </svg>
       </div>
     </main>
   );

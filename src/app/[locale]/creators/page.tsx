@@ -230,7 +230,7 @@ function WorkflowSteps() {
             {isHindi ? "प्रक्रिया" : "The Process"}
           </span>
         </div>
-        <h2 className="text-4xl md:text-7xl lg:text-[100px] font-black font-heading tracking-tighter leading-[0.85] uppercase">
+        <h2 className="text-4xl md:text-5xl lg:text-[64px] font-black font-heading tracking-tighter leading-[0.85] uppercase">
           {isHindi ? (
             <>यह कैसे <br className="hidden lg:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-500 pb-2">काम करता है।</span></>
           ) : (
@@ -477,7 +477,7 @@ export default function CreatorsPage() {
                 initial={{ opacity: 0, y: 60, rotateX: -20 }}
                 animate={{ opacity: 1, y: 0, rotateX: 0 }}
                 transition={{ delay: 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                className="text-[3.5rem] sm:text-7xl md:text-8xl lg:text-[140px] font-black font-heading tracking-tighter leading-[0.85] text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase pb-2 drop-shadow-sm"
+                className="text-[3.5rem] sm:text-5xl md:text-6xl lg:text-[60px] font-black font-heading tracking-tighter leading-[0.85] text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase pb-2 drop-shadow-sm"
               >
                 {isHindi ? "हमारी कमाई" : "WE EARN"}
               </motion.span>
@@ -485,7 +485,7 @@ export default function CreatorsPage() {
                 initial={{ opacity: 0, y: 60, rotateX: -20 }}
                 animate={{ opacity: 1, y: 0, rotateX: 0 }}
                 transition={{ delay: 0.25, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                className="text-[3.5rem] sm:text-7xl md:text-8xl lg:text-[140px] font-black font-heading tracking-tighter leading-[0.85] text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase pb-4"
+                className="text-[3.5rem] sm:text-5xl md:text-6xl lg:text-[60px] font-black font-heading tracking-tighter leading-[0.85] text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase pb-4"
               >
                 {isHindi ? "आपकी कमाई के साथ है।" : "WHEN YOU EARN."}
               </motion.span>
@@ -539,7 +539,7 @@ export default function CreatorsPage() {
                   {isHindi ? "हमारे भागीदार" : "Our Partners"}
                 </span>
               </motion.div>
-              <h2 className="text-4xl md:text-5xl lg:text-7xl font-black font-heading tracking-tighter text-[#0A1A4E] leading-[0.9] uppercase mt-2">
+              <h2 className="text-4xl md:text-5xl lg:text-5xl font-black font-heading tracking-tighter text-[#0A1A4E] leading-[0.9] uppercase mt-2">
                 {isHindi ? (
                   <>50+ प्रमुख क्रिएटर्स <br className="hidden md:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-cyan-500">द्वारा विश्वसनीय।</span></>
                 ) : (
@@ -633,7 +633,7 @@ export default function CreatorsPage() {
                 transition={{ duration: 0.8, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
                 className="flex flex-col items-start md:items-end shrink-0"
               >
-                <div className="text-6xl md:text-8xl lg:text-[100px] font-black text-white leading-none mb-2">
+                <div className="text-6xl md:text-6xl lg:text-[64px] font-black text-white leading-none mb-2">
                   <AnimatedNumber value={70} suffix="+" />
                 </div>
                 <span className="text-sm md:text-base font-black text-cyan-400/80 uppercase tracking-[0.3em]">
@@ -657,7 +657,7 @@ export default function CreatorsPage() {
         <div className="container mx-auto max-w-7xl">
           <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-20">
             <div>
-              <h2 className="text-4xl md:text-6xl lg:text-7xl font-black font-heading tracking-tighter text-[#0A1A4E] leading-none uppercase">
+              <h2 className="text-4xl md:text-6xl lg:text-5xl font-black font-heading tracking-tighter text-[#0A1A4E] leading-none uppercase">
                 {isHindi ? (
                   <>हम किसके <br className="hidden md:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-cyan-500">साथ काम करते हैं</span></>
                 ) : (

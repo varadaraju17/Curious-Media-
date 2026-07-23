@@ -77,7 +77,7 @@ export default function MediaPage() {
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-bold font-heading mb-6 tracking-tight"
+            className="text-5xl md:text-5xl font-bold font-heading mb-6 tracking-tight"
           >
             {translate("Curious")} <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-400">{translate("Media.")}</span>
           </motion.h1>

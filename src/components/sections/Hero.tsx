@@ -202,7 +202,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
       ══════════════════════════════════ */}
       <div className="container mx-auto px-4 sm:px-6 md:px-8 max-w-[1400px] relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-4 items-center
-          pt-20 sm:pt-24 md:pt-32 pb-4 sm:pb-6"
+          pt-16 sm:pt-20 md:pt-24 pb-4 sm:pb-6"
         >
 
           {/* ═══ LEFT - Copy ═══ */}
@@ -234,7 +234,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
 
             {/* ── Headline ── */}
             <h1 className="font-black font-heading leading-[0.9] tracking-[-0.03em]
-              text-[42px] sm:text-[56px] md:text-[68px] lg:text-[76px] xl:text-[84px]"
+              text-[36px] sm:text-[48px] md:text-[58px] lg:text-[64px] xl:text-[52px]"
             >
               {/* Line 1 */}
               <motion.span
@@ -406,7 +406,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                   <img
                     src="/images/hero-mobile-ui.webp"
                     alt="Curious Media App Interface"
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="absolute inset-0 w-full h-full object-contain object-top"
                     width="270"
                     height="585"
                     fetchPriority="high"

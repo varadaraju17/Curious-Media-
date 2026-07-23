@@ -145,7 +145,7 @@ export default function BrandsPage() {
                     duration: 0.8, 
                     ease: [0.34, 1.56, 0.64, 1]
                   }}
-                  className="text-[3.5rem] sm:text-6xl md:text-7xl lg:text-[105px] font-black font-heading tracking-wide leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-[#0B2EA8] to-sky-400 uppercase drop-shadow-sm pb-2"
+                  className="text-[3.5rem] sm:text-6xl md:text-5xl lg:text-[68px] font-black font-heading tracking-wide leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-[#0B2EA8] to-sky-400 uppercase drop-shadow-sm pb-2"
                 >
                   {text}
                 </motion.span>
@@ -207,7 +207,7 @@ export default function BrandsPage() {
                   {isHindi ? "प्रभाव का पैमाना" : "The Scale of Impact"}
                 </span>
               </div>
-              <h2 className="text-4xl md:text-5xl lg:text-[70px] font-black font-heading tracking-tight leading-[0.95] uppercase">
+              <h2 className="text-4xl md:text-5xl lg:text-[50px] font-black font-heading tracking-tight leading-[0.95] uppercase">
                 {isHindi ? (
                   <>
                     <span className="text-white">परिणाम जिन्हें</span><br/>
@@ -279,7 +279,7 @@ export default function BrandsPage() {
 
                   {/* Hero Metric: Big stat */}
                   <div className="mb-2">
-                    <p className="text-5xl md:text-6xl lg:text-7xl font-black font-heading tracking-tighter leading-none text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-400 pb-1">
+                    <p className="text-5xl md:text-6xl lg:text-5xl font-black font-heading tracking-tighter leading-none text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-400 pb-1">
                       <AnimatedNumber value={item.num} suffix={item.suffix} />
                     </p>
                   </div>
@@ -312,7 +312,7 @@ export default function BrandsPage() {
                   {isHindi ? "कार्यप्रणाली" : "Methodology"}
                 </span>
               </div>
-              <h2 className="text-4xl md:text-7xl lg:text-[100px] font-black font-heading tracking-tighter leading-[0.85] uppercase">
+              <h2 className="text-4xl md:text-5xl lg:text-[64px] font-black font-heading tracking-tighter leading-[0.85] uppercase">
                 {isHindi ? (
                   <>सहयोग के <br className="hidden lg:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-500">तरीके।</span></>
                 ) : (

@@ -37,7 +37,7 @@ export default function RecordsComingSoonPage() {
           initial={{ opacity: 0, y: 60, rotateX: -20 }}
           animate={{ opacity: 1, y: 0, rotateX: 0 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[3rem] sm:text-6xl md:text-8xl lg:text-[100px] font-black font-heading tracking-tighter leading-tight mb-8 uppercase"
+          className="text-[3rem] sm:text-6xl md:text-6xl lg:text-[64px] font-black font-heading tracking-tighter leading-tight mb-8 uppercase"
         >
           {isHindi ? (
             <>

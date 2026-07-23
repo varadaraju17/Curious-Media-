@@ -322,7 +322,7 @@ export function ContactSection({ dict }: { dict: any }) {
             transition={{ duration: 0.8 }}
             className="mb-12"
           >
-            <h2 className="text-5xl md:text-7xl lg:text-[90px] font-black font-heading tracking-tighter leading-none text-white mb-4">
+            <h2 className="text-5xl md:text-5xl lg:text-[64px] font-black font-heading tracking-tighter leading-none text-white mb-4">
               {dict.contact.get_in_touch}
             </h2>
             <p className="text-lg md:text-xl text-white/60 font-medium max-w-md mx-auto">

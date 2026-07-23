@@ -379,7 +379,7 @@ export default function StudioPage() {
                 <span className="text-[11px] font-black tracking-[0.2em] uppercase text-[#0B2EA8]">{translate("Curious Studios")}</span>
               </motion.div>
 
-              <h1 className="flex flex-col mb-6 w-full font-black font-heading leading-[0.9] tracking-tighter text-[50px] sm:text-[60px] md:text-[76px] lg:text-[84px] uppercase">
+              <h1 className="flex flex-col mb-6 w-full font-black font-heading leading-[0.9] tracking-tighter text-[50px] sm:text-[60px] md:text-[56px] lg:text-[60px] uppercase">
                 <motion.span
                   initial={{ opacity: 0, x: -24 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -550,7 +550,7 @@ export default function StudioPage() {
         <div className="container mx-auto px-4 max-w-[1400px] relative z-10">
           <div className="text-center mb-16 md:mb-24">
             <h2 className="text-sm font-black uppercase tracking-[0.3em] text-[#0B2EA8] mb-4">{translate("What We Do")}</h2>
-            <h3 className="text-4xl md:text-5xl lg:text-7xl font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase mb-6 pb-2">
+            <h3 className="text-4xl md:text-5xl lg:text-5xl font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase mb-6 pb-2">
               {translate("Inside Curious Studios")}
             </h3>
             <p className="text-lg md:text-xl text-slate-500 font-medium max-w-3xl mx-auto leading-relaxed">
@@ -591,7 +591,7 @@ export default function StudioPage() {
         <div className="container mx-auto px-4 max-w-[1400px] relative z-10">
           <div className="text-center mb-20 md:mb-28">
             <h2 className="text-sm font-black uppercase tracking-[0.3em] text-cyan-400 mb-4">{translate("Process")}</h2>
-            <h3 className="text-4xl md:text-5xl lg:text-[70px] font-black font-heading tracking-tighter text-white uppercase mb-6 leading-none">
+            <h3 className="text-4xl md:text-5xl lg:text-[50px] font-black font-heading tracking-tighter text-white uppercase mb-6 leading-none">
               {translate("How It Works")}
             </h3>
             <p className="text-xl md:text-2xl text-white/70 font-medium max-w-4xl mx-auto leading-relaxed">
@@ -638,7 +638,7 @@ export default function StudioPage() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-6">
             <div>
               <h2 className="text-sm font-black uppercase tracking-[0.3em] text-[#0B2EA8] mb-4">{translate("Our Work")}</h2>
-              <h3 className="text-4xl md:text-6xl lg:text-[70px] font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase leading-none pb-2">
+              <h3 className="text-4xl md:text-6xl lg:text-[50px] font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase leading-none pb-2">
                 {translate("Portfolio")}
               </h3>
             </div>

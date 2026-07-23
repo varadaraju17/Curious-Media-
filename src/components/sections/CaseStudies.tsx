@@ -312,7 +312,7 @@ export function CaseStudies({ dict }: { dict: any }) {
               <Zap className="w-4 h-4 text-[#0B2EA8]" />
               <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#0B2EA8]">{dict.case_studies.badge}</span>
             </div>
-            <h2 className="text-5xl md:text-7xl lg:text-[80px] font-black font-heading tracking-tighter leading-[0.95] text-[#0A1A4E] uppercase">
+            <h2 className="text-5xl md:text-5xl lg:text-[60px] font-black font-heading tracking-tighter leading-[0.95] text-[#0A1A4E] uppercase">
               {dict.case_studies.title_1}<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-cyan-500">{dict.case_studies.title_2}</span>
             </h2>

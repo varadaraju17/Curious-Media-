@@ -32,7 +32,7 @@ export function CTASection({ dict, locale }: { dict: any; locale: Locale }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-6xl md:text-[90px] lg:text-[140px] font-black font-heading leading-[0.85] tracking-tighter mb-8 text-transparent bg-clip-text bg-gradient-to-b from-[#0B2EA8] via-blue-800 to-blue-600 drop-shadow-xl"
+          className="text-6xl md:text-[60px] lg:text-[60px] font-black font-heading leading-[0.85] tracking-tighter mb-8 text-transparent bg-clip-text bg-gradient-to-b from-[#0B2EA8] via-blue-800 to-blue-600 drop-shadow-xl"
         >
           {dict.home?.cta?.title?.split(' ')[0] || "READY."}
           <br />

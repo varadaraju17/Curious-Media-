@@ -19,7 +19,7 @@ export function Story({ dict }: { dict: any }) {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[500px] bg-white/5 blur-[200px] rounded-full pointer-events-none mix-blend-screen mix-blend-plus-lighter"></div>
       
       <div className="container mx-auto px-4 md:px-8 max-w-6xl relative z-10">
-        <h2 className="text-4xl md:text-7xl lg:text-[100px] font-black font-heading leading-[0.9] tracking-tighter flex flex-wrap gap-x-4 md:gap-x-8 gap-y-2 md:gap-y-6">
+        <h2 className="text-4xl md:text-5xl lg:text-[64px] font-black font-heading leading-[0.9] tracking-tighter flex flex-wrap gap-x-4 md:gap-x-8 gap-y-2 md:gap-y-6">
           {words.map((word: string, i: number) => (
             <Word 
               key={i} 

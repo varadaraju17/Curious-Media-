@@ -312,7 +312,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.8 }}
-              className="text-5xl md:text-7xl lg:text-[85px] font-black font-heading tracking-tighter leading-[0.9] uppercase mb-8"
+              className="text-5xl md:text-5xl lg:text-[60px] font-black font-heading tracking-tighter leading-[0.9] uppercase mb-8"
             >
               {isHindi ? (
                 <>
@@ -477,8 +477,8 @@ export default function AboutPage() {
                           >
                             <span className={`font-black font-heading tracking-tighter transition-all duration-300 leading-none select-none ${
                               isActive
-                                ? "text-[72px] md:text-[88px] text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-400"
-                                : "text-[56px] md:text-[72px] text-[#0A1A4E]/20 group-hover:text-[#0A1A4E]/40"
+                                ? "text-[52px] md:text-[54px] text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-400"
+                                : "text-[56px] md:text-[52px] text-[#0A1A4E]/20 group-hover:text-[#0A1A4E]/40"
                             }`}>
                               {item.year}
                             </span>
@@ -563,8 +563,8 @@ export default function AboutPage() {
                           >
                             <span className={`font-black font-heading tracking-tighter transition-all duration-300 leading-none select-none ${
                               isActive
-                                ? "text-[72px] md:text-[88px] text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-400"
-                                : "text-[56px] md:text-[72px] text-[#0A1A4E]/20 group-hover:text-[#0A1A4E]/40"
+                                ? "text-[52px] md:text-[54px] text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-400"
+                                : "text-[56px] md:text-[52px] text-[#0A1A4E]/20 group-hover:text-[#0A1A4E]/40"
                             }`}>
                               {item.year}
                             </span>

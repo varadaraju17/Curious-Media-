@@ -43,7 +43,7 @@ function TestimonialCard({
 
       {/* Large editorial quote mark */}
       <span 
-        className="absolute top-4 right-8 text-[100px] leading-none font-black select-none pointer-events-none transition-colors duration-500" 
+        className="absolute top-4 right-8 text-[64px] leading-none font-black select-none pointer-events-none transition-colors duration-500" 
         style={{
           color: isHovered ? `${t.brandColor}15` : '#F1F5F9'
         }}
@@ -166,7 +166,7 @@ export function Testimonials({ dict }: { dict: any }) {
       brandColor: "#003366", // Bennett Blue
       quote:
         "Bennett University has been associated with Curious Media for over a year, and our experience working with the team has been extremely positive. Curious Media provides meaningful learning opportunities and hands-on exposure to young talent, enabling students to gain valuable industry experience. We have consistently received encouraging feedback from our students regarding their engagement with the organization, and we appreciate Curious Media’s commitment to nurturing and empowering emerging professionals.",
-      logo: "/images/brands/bennett-university.webp",
+      logo: "/images/avatars/Bennett.webp",
     },
   ];
 
@@ -245,7 +245,7 @@ export function Testimonials({ dict }: { dict: any }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.08 }}
-            className="text-4xl md:text-6xl lg:text-[72px] font-black font-heading tracking-tighter leading-[0.92] text-[#0A1A4E] uppercase"
+            className="text-4xl md:text-6xl lg:text-[56px] font-black font-heading tracking-tighter leading-[0.92] text-[#0A1A4E] uppercase"
           >
             {dict.testimonials.title_1}
             <br />
