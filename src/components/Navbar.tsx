@@ -55,7 +55,7 @@ export function Navbar({ dict, locale }: NavProps) {
 
           {/* Logo */}
           <Link href={`/${locale}`} className="group relative z-10 shrink-0 flex items-center gap-2">
-            <img src="/images/logo.webp" alt="Curious Media Logo" className="h-10 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+            <img src="/images/logo.webp" alt="Curious Media Logo" width="180" height="48" loading="eager" decoding="async" className="h-10 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
             <span className="text-base md:text-lg font-black uppercase tracking-wider text-[#0A1A4E] group-hover:text-[#0B2EA8] transition-colors duration-300 font-heading">
               Curious Media
             </span>

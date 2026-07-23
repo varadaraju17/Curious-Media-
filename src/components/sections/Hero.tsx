@@ -64,18 +64,16 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
       <div className="absolute inset-0 pointer-events-none overflow-hidden bg-white">
         
         {/* 1. Dynamic Panning Grid */}
-        <motion.div 
+        <div 
           className="absolute inset-0 [mask-image:radial-gradient(ellipse_80%_60%_at_50%_40%,#000_30%,transparent_100%)]"
           style={{
             backgroundImage: "linear-gradient(rgba(11,46,168,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(11,46,168,0.06) 1px, transparent 1px)",
             backgroundSize: "60px 60px"
           }}
-          animate={{ backgroundPosition: ["0px 0px", "60px 60px"] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
         />
 
         {/* 2. Abstract Flowing Lines (SVG) */}
-        <svg className="absolute inset-0 w-full h-full opacity-50" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+        <svg className="absolute inset-0 w-full h-full opacity-40" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
           <defs>
             <linearGradient id="lineGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#0B2EA8" stopOpacity="0" />
@@ -88,36 +86,19 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
               <stop offset="100%" stopColor="#3B82F6" stopOpacity="0" />
             </linearGradient>
           </defs>
-          
-          <motion.path
-            d="M-200,600 C200,400 400,800 800,500 C1200,200 1400,400 1600,400"
-            fill="none"
-            stroke="url(#lineGrad1)"
-            strokeWidth="2"
-            initial={{ pathLength: 0, pathOffset: 1 }}
-            animate={{ pathLength: 1, pathOffset: 0 }}
-            transition={{ duration: 6, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" }}
-          />
-          <motion.path
-            d="M-200,400 C200,600 600,200 1000,500 C1400,800 1500,600 1600,600"
-            fill="none"
-            stroke="url(#lineGrad2)"
-            strokeWidth="3"
-            initial={{ pathLength: 0, pathOffset: 1 }}
-            animate={{ pathLength: 1, pathOffset: 0 }}
-            transition={{ duration: 8, ease: "easeInOut", repeat: Infinity, repeatType: "mirror", delay: 1 }}
-          />
+          <path d="M-200,600 C200,400 400,800 800,500 C1200,200 1400,400 1600,400" fill="none" stroke="url(#lineGrad1)" strokeWidth="2" />
+          <path d="M-200,400 C200,600 600,200 1000,500 C1400,800 1500,600 1600,600" fill="none" stroke="url(#lineGrad2)" strokeWidth="3" />
         </svg>
 
         {/* 3. Floating Geometric Elements (Pluses and Circles) */}
         {[
-          { top: '15%', left: '10%', size: 24, type: 'plus', color: 'text-blue-400/40', delay: 0 },
-          { top: '25%', left: '85%', size: 32, type: 'circle', color: 'border-cyan-400/30', delay: 1 },
-          { top: '65%', left: '15%', size: 16, type: 'circle', color: 'border-violet-400/40', delay: 2 },
-          { top: '75%', left: '80%', size: 28, type: 'plus', color: 'text-blue-500/30', delay: 0.5 },
-          { top: '40%', left: '50%', size: 20, type: 'plus', color: 'text-cyan-500/30', delay: 1.5 },
+          { top: '15%', left: '10%', size: 24, type: 'plus', color: 'text-blue-400/40' },
+          { top: '25%', left: '85%', size: 32, type: 'circle', color: 'border-cyan-400/30' },
+          { top: '65%', left: '15%', size: 16, type: 'circle', color: 'border-violet-400/40' },
+          { top: '75%', left: '80%', size: 28, type: 'plus', color: 'text-blue-500/30' },
+          { top: '40%', left: '50%', size: 20, type: 'plus', color: 'text-cyan-500/30' },
         ].map((el, i) => (
-          <motion.div
+          <div
             key={i}
             className={`absolute ${el.type === 'circle' ? `rounded-full border-[2px] ${el.color}` : el.color}`}
             style={{ 
@@ -129,70 +110,28 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
               fontWeight: 'bold',
               lineHeight: 1
             }}
-            animate={{
-              y: [0, -30, 0],
-              rotate: el.type === 'plus' ? [0, 90, 180, 270, 360] : 0,
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.8, 0.3]
-            }}
-            transition={{
-              duration: 6 + i,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: el.delay
-            }}
           >
             {el.type === 'plus' && '+'}
-          </motion.div>
+          </div>
         ))}
 
-        {/* 4. Cinematic Glowing Orbs */}
-        <motion.div
-          className="absolute rounded-full mix-blend-multiply filter blur-[100px] opacity-[0.15] bg-[#3B82F6]"
+        {/* 4. Cinematic Glowing Orbs (CSS Keyframe Animations) */}
+        <div
+          className="absolute rounded-full mix-blend-multiply filter blur-[100px] opacity-[0.15] bg-[#3B82F6] blob-1"
           style={{ width: '45vw', height: '45vw', maxWidth: '600px', maxHeight: '600px', top: '-10%', left: '-10%' }}
-          animate={{
-            scale: [1, 1.1, 1],
-            x: [0, 50, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         />
-        <motion.div
-          className="absolute rounded-full mix-blend-multiply filter blur-[100px] opacity-[0.12] bg-[#06B6D4]"
+        <div
+          className="absolute rounded-full mix-blend-multiply filter blur-[100px] opacity-[0.12] bg-[#06B6D4] blob-2"
           style={{ width: '35vw', height: '35vw', maxWidth: '500px', maxHeight: '500px', top: '20%', right: '-5%' }}
-          animate={{
-            scale: [1, 1.2, 1],
-            x: [0, -40, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
         />
-        <motion.div
-          className="absolute rounded-full mix-blend-multiply filter blur-[120px] opacity-[0.10] bg-[#8B5CF6]"
+        <div
+          className="absolute rounded-full mix-blend-multiply filter blur-[120px] opacity-[0.10] bg-[#8B5CF6] blob-3"
           style={{ width: '40vw', height: '40vw', maxWidth: '550px', maxHeight: '550px', bottom: '-20%', left: '20%' }}
-          animate={{
-            scale: [1, 1.15, 1],
-            x: [0, 60, 0],
-            y: [0, -40, 0],
-          }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 4 }}
         />
 
         {/* 5. Minimalist Concentric Radar Rings */}
         <div className="absolute top-[20%] right-[20%] flex items-center justify-center opacity-40 pointer-events-none">
-          <motion.div className="absolute border border-blue-400 rounded-full w-[150px] h-[150px] sm:w-[200px] sm:h-[200px]"
-            animate={{ scale: [1, 2.5], opacity: [0.6, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeOut" }}
-          />
-          <motion.div className="absolute border border-blue-400 rounded-full w-[150px] h-[150px] sm:w-[200px] sm:h-[200px]"
-            animate={{ scale: [1, 2.5], opacity: [0.6, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeOut", delay: 1.33 }}
-          />
-          <motion.div className="absolute border border-blue-400 rounded-full w-[150px] h-[150px] sm:w-[200px] sm:h-[200px]"
-            animate={{ scale: [1, 2.5], opacity: [0.6, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeOut", delay: 2.66 }}
-          />
-          <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-500 rounded-full shadow-[0_0_12px_#3B82F6] animate-pulse" />
+          <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-500 rounded-full shadow-[0_0_12px_#3B82F6] animate-ping" />
         </div>
 
       </div>
@@ -430,9 +369,9 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                       <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
                       <p className="text-[7.5px] sm:text-[9px] uppercase tracking-[0.2em] text-cyan-300 font-black">{dict.hero.widget.badge}</p>
                     </div>
-                    <h3 className="text-xs sm:text-[14px] font-black text-white leading-tight">
+                    <p className="text-xs sm:text-[14px] font-black text-white leading-tight">
                       {dict.hero.widget.title}
-                    </h3>
+                    </p>
                     <div className="mt-1.5 sm:mt-2 h-[2px] w-full rounded-full bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-400 opacity-60" />
                   </motion.div>
                 </div>
