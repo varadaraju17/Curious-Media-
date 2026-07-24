@@ -308,11 +308,7 @@ export function CaseStudies({ dict }: { dict: any }) {
           className="flex flex-col md:flex-row md:items-end justify-between gap-8"
         >
           <div>
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-50 border border-blue-100 mb-6 shadow-sm">
-              <Zap className="w-4 h-4 text-[#0B2EA8]" />
-              <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#0B2EA8]">{dict.case_studies.badge}</span>
-            </div>
-            <h2 className="text-5xl md:text-5xl lg:text-[60px] font-black font-heading tracking-tighter leading-[0.95] text-[#0A1A4E] uppercase">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-heading tracking-tighter leading-[0.95] text-[#0A1A4E] uppercase">
               {dict.case_studies.title_1}<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-cyan-500">{dict.case_studies.title_2}</span>
             </h2>

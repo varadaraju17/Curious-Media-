@@ -804,7 +804,7 @@ export default function AboutPage() {
                 {isHindi ? "सम्मान" : "Accolades"}
               </span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-widest leading-none mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-heading uppercase tracking-tighter leading-none mb-6">
               {isHindi ? (
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-sky-300">
                   उद्योग से <br className="hidden md:inline" /> मान्यता

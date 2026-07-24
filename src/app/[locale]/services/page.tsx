@@ -202,7 +202,7 @@ export default function ServicesPage() {
       {/* ─── FINAL CTA ─── */}
       <section className="py-24 md:py-32 bg-[#F8FAFF] relative overflow-hidden mt-20">
         <div className="container mx-auto px-4 text-center relative z-10">
-          <h2 className="text-4xl md:text-6xl font-black font-heading tracking-tighter text-[#0A1A4E] uppercase mb-8">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-heading tracking-tighter text-[#0A1A4E] uppercase mb-8">
             Ready to <span className="text-[#0B2EA8]">{translate("Ready to Dominate?")}</span>
           </h2>
           <Link

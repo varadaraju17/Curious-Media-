@@ -333,20 +333,19 @@ export default function StudioPage() {
   return (
     <main className="flex-1 w-full bg-white relative overflow-x-hidden pt-24">
       
-      {/* ─── HERO SECTION (Split Layout with Original Mobile Frame) ─── */}
-      <section className="relative overflow-hidden pt-12 pb-24 md:pt-20 md:pb-32 bg-white">
-        
-        {/* Animated Background from Home Page */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden bg-white">
-          <motion.div 
-            className="absolute inset-0 [mask-image:radial-gradient(ellipse_80%_60%_at_50%_40%,#000_30%,transparent_100%)]"
-            style={{
-              backgroundImage: "linear-gradient(rgba(11,46,168,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(11,46,168,0.06) 1px, transparent 1px)",
-              backgroundSize: "60px 60px"
-            }}
-            animate={{ backgroundPosition: ["0px 0px", "60px 60px"] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-          />
+      {/* ─── HERO SECTION ─── */}
+      <section className="relative bg-white overflow-hidden min-h-[calc(100vh-80px)] flex flex-col justify-center">
+        {/* Dynamic Panning Grid */}
+        <div 
+          className="absolute inset-0 [mask-image:radial-gradient(ellipse_80%_60%_at_50%_40%,#000_30%,transparent_100%)] pointer-events-none"
+          style={{
+            backgroundImage: "linear-gradient(rgba(11,46,168,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(11,46,168,0.06) 1px, transparent 1px)",
+            backgroundSize: "60px 60px"
+          }}
+        />
+
+        {/* Abstract Background Elements */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <motion.div
             className="absolute rounded-full mix-blend-multiply filter blur-[100px] opacity-[0.15] bg-[#3B82F6]"
             style={{ width: '45vw', height: '45vw', maxWidth: '600px', maxHeight: '600px', top: '-10%', left: '-10%' }}
@@ -361,24 +360,11 @@ export default function StudioPage() {
           />
         </div>
 
-        <div className="container mx-auto px-4 max-w-[1400px] relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center pt-8 md:pt-16">
+        <div className="container mx-auto px-4 max-w-[1400px] relative z-10 my-auto py-4 lg:py-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center pt-16 sm:pt-20 lg:pt-22">
             
             {/* Left Content */}
             <div className="lg:col-span-7 flex flex-col items-start text-left max-w-2xl">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.88 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.55 }}
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-blue-200 mb-6 shadow-[0_2px_16px_rgba(11,46,168,0.10)]"
-              >
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-60" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600" />
-                </span>
-                <span className="text-[11px] font-black tracking-[0.2em] uppercase text-[#0B2EA8]">{translate("Curious Studios")}</span>
-              </motion.div>
-
               <h1 className="flex flex-col mb-6 w-full font-black font-heading leading-[0.9] tracking-tighter text-[50px] sm:text-[60px] md:text-[56px] lg:text-[60px] uppercase">
                 <motion.span
                   initial={{ opacity: 0, x: -24 }}

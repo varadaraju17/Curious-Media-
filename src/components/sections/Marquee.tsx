@@ -122,23 +122,11 @@ export function Marquee({ type, dict, title }: MarqueeProps) {
       </div>
 
       {/* ══ HEADER ══ */}
-      <div className="container mx-auto px-4 md:px-8 max-w-[1400px] relative z-10 mb-14 md:mb-20">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+      <div className="container mx-auto px-4 md:px-8 max-w-[1400px] relative z-10 mb-8 md:mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-8">
           <div>
-            {/* Badge */}
-            <div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-200 mb-5 animate-fade-in-up"
-            >
-              {isBrands
-                ? <TrendingUp className="w-3.5 h-3.5 text-[#0B2EA8]" />
-                : <Users className="w-3.5 h-3.5 text-[#0B2EA8]" />}
-              <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#0B2EA8]">
-                {isBrands ? dict.marquee.brands_badge : dict.marquee.content_badge}
-              </span>
-            </div>
-
             <h2
-              className="text-4xl md:text-6xl lg:text-[68px] font-black font-heading tracking-tighter leading-[0.95] text-[#0B2EA8] uppercase animate-fade-in-up"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-heading tracking-tighter leading-[0.95] text-[#0B2EA8] uppercase animate-fade-in-up"
             >
               {isBrands ? (
                 <>{dict.marquee.brands_title_1}<br />
@@ -177,10 +165,10 @@ export function Marquee({ type, dict, title }: MarqueeProps) {
 
       {/* ══ LOGO STRIPS ══ */}
       {!isBrands ? (
-        <div className="container mx-auto px-4 md:px-8 max-w-[1250px] relative z-10 py-6" aria-hidden="true">
-          <div className="flex flex-row flex-nowrap items-center justify-start md:justify-center gap-6 md:gap-14 overflow-x-auto md:overflow-x-visible max-w-full pb-4 scrollbar-none">
+        <div className="container mx-auto px-4 md:px-8 max-w-[1400px] relative z-10 py-4" aria-hidden="true">
+          <div className="flex flex-row flex-wrap md:flex-nowrap items-center justify-center gap-4 sm:gap-6 lg:gap-8 xl:gap-10 max-w-full pb-2">
             {items.map((item) => (
-              <BrandLogo key={item.slug} item={item} type="content-partners" size="xl" />
+              <BrandLogo key={item.slug} item={item} type="content-partners" size="lg" />
             ))}
           </div>
         </div>

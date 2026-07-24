@@ -230,7 +230,7 @@ function WorkflowSteps() {
             {isHindi ? "प्रक्रिया" : "The Process"}
           </span>
         </div>
-        <h2 className="text-4xl md:text-5xl lg:text-[64px] font-black font-heading tracking-tighter leading-[0.85] uppercase">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-heading tracking-tighter leading-[0.95] uppercase">
           {isHindi ? (
             <>यह कैसे <br className="hidden lg:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-500 pb-2">काम करता है।</span></>
           ) : (
@@ -447,7 +447,7 @@ export default function CreatorsPage() {
     <main className="flex-1 w-full bg-white min-h-screen relative overflow-x-hidden pt-24">
       
       {/* ─── HERO SECTION ─── */}
-      <section className="relative overflow-hidden pt-24 pb-32 lg:pt-40 lg:pb-48 bg-white">
+      <section className="relative overflow-hidden bg-white min-h-[calc(100vh-80px)] flex flex-col justify-center">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           {/* Enhanced Grid & Glow */}
           <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "linear-gradient(#0A1A4E 1px, transparent 1px), linear-gradient(90deg, #0A1A4E 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
@@ -455,39 +455,30 @@ export default function CreatorsPage() {
           <div className="absolute top-[20%] left-[-10%] w-[700px] h-[700px] bg-gradient-to-tr from-cyan-300/20 to-transparent blur-[150px] rounded-full pointer-events-none" />
         </div>
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 relative z-10 my-auto py-4 lg:py-6">
           <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-blue-50/50 backdrop-blur-md border border-blue-200/50 mb-12 shadow-[0_8px_30px_rgba(11,46,168,0.06)]"
-            >
-              <div className="relative flex items-center justify-center">
-                <span className="absolute w-3 h-3 rounded-full bg-emerald-400 animate-ping opacity-50" />
-                <span className="relative w-2 h-2 rounded-full bg-emerald-500" />
-              </div>
-              <span className="text-xs font-black tracking-[0.25em] uppercase text-[#0B2EA8]">
-                {isHindi ? "क्रिएटर कैपिटल और ग्रोथ" : "Creator Capital & Growth"}
-              </span>
-            </motion.div>
-
-            <h1 className="flex flex-col mb-10 w-full overflow-hidden">
+            <h1 className="flex flex-col mb-6 w-full overflow-hidden items-center">
               <motion.span
-                initial={{ opacity: 0, y: 60, rotateX: -20 }}
+                initial={{ opacity: 0, y: 40, rotateX: -15 }}
                 animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                transition={{ delay: 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                className="text-[3.5rem] sm:text-5xl md:text-6xl lg:text-[60px] font-black font-heading tracking-tighter leading-[0.85] text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase pb-2 drop-shadow-sm"
+                transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="text-[34px] sm:text-[46px] md:text-[54px] lg:text-[62px] xl:text-[68px] font-black font-heading tracking-tighter leading-[0.92] text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase pb-1 drop-shadow-sm"
               >
                 {isHindi ? "हमारी कमाई" : "WE EARN"}
               </motion.span>
               <motion.span
-                initial={{ opacity: 0, y: 60, rotateX: -20 }}
+                initial={{ opacity: 0, y: 40, rotateX: -15 }}
                 animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                transition={{ delay: 0.25, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                className="text-[3.5rem] sm:text-5xl md:text-6xl lg:text-[60px] font-black font-heading tracking-tighter leading-[0.85] text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase pb-4"
+                transition={{ delay: 0.25, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="relative text-[34px] sm:text-[46px] md:text-[54px] lg:text-[62px] xl:text-[68px] font-black font-heading tracking-tighter leading-[0.92] text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase w-fit pb-2"
               >
                 {isHindi ? "आपकी कमाई के साथ है।" : "WHEN YOU EARN."}
+                <motion.span
+                  initial={{ scaleX: 0, opacity: 0 }}
+                  animate={{ scaleX: 1, opacity: 1 }}
+                  transition={{ delay: 0.7, duration: 0.8, ease: [0.16,1,0.3,1] }}
+                  className="absolute bottom-0 left-0 h-[4px] sm:h-[5px] w-full origin-left rounded-full bg-gradient-to-r from-[#0B2EA8] via-cyan-400 to-sky-300"
+                />
               </motion.span>
             </h1>
 
@@ -495,7 +486,7 @@ export default function CreatorsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-lg md:text-2xl text-slate-500 max-w-4xl mx-auto mb-16 font-medium leading-relaxed"
+              className="text-base md:text-lg text-slate-500 max-w-3xl mx-auto mb-8 font-medium leading-relaxed"
             >
               {isHindi 
                 ? "क्यूरियस मीडिया आपके कंटेंट लाइब्रेरी की मुद्रीकरण (Monetization) क्षमता को सभी प्लेटफॉर्मों पर खोलता है, जो कि एशिया के सबसे बड़े वितरण नेटवर्क द्वारा संचालित है।"
@@ -509,14 +500,11 @@ export default function CreatorsPage() {
             >
               <Link 
                 href={`/${locale}/contact`}
-                className="group relative inline-flex items-center gap-4 px-12 py-6 text-white font-black uppercase tracking-[0.2em] text-sm rounded-full overflow-hidden transition-all duration-500 hover:scale-[1.02] bg-[#0A1A4E] shadow-[0_20px_40px_rgba(10,26,78,0.25)] hover:shadow-[0_20px_60px_rgba(11,46,168,0.4)] hover:bg-[#0B2EA8]"
+                className="group relative inline-flex items-center gap-2.5 rounded-full px-8 py-3.5 text-white font-black uppercase text-sm tracking-widest overflow-hidden shadow-[0_8px_28px_rgba(11,46,168,0.30)] hover:shadow-[0_16px_48px_rgba(11,46,168,0.45)] hover:scale-[1.03] transition-all duration-300"
               >
-                <span className="relative z-10 group-hover:text-cyan-300 transition-colors duration-500">
-                  {isHindi ? "हमारे भागीदार बनें" : "Partner With Us"}
-                </span>
-                <div className="relative z-10 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-cyan-400 group-hover:text-[#0A1A4E] transition-all duration-500">
-                  <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-0.5" />
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0B2EA8] via-blue-500 to-[#0B2EA8] bg-[size:200%] hover:bg-right-center transition-all duration-700 group-hover:bg-[position:100%]" />
+                <span className="relative z-10">{isHindi ? "हमारे भागीदार बनें" : "Partner With Us"}</span>
+                <ArrowRight className="relative z-10 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
           </div>
@@ -539,7 +527,7 @@ export default function CreatorsPage() {
                   {isHindi ? "हमारे भागीदार" : "Our Partners"}
                 </span>
               </motion.div>
-              <h2 className="text-4xl md:text-5xl lg:text-5xl font-black font-heading tracking-tighter text-[#0A1A4E] leading-[0.9] uppercase mt-2">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-heading tracking-tighter text-[#0A1A4E] leading-[0.95] uppercase mt-2">
                 {isHindi ? (
                   <>50+ प्रमुख क्रिएटर्स <br className="hidden md:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-cyan-500">द्वारा विश्वसनीय।</span></>
                 ) : (

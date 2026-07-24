@@ -96,12 +96,7 @@ export function ContactSection({ dict }: { dict: any }) {
               transition={{ duration: 0.7 }}
               className="w-full lg:w-5/12 flex flex-col"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0B2EA8] mb-6 w-fit">
-                <span className="flex h-1.5 w-1.5 rounded-full bg-blue-300 animate-pulse" />
-                <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white">{dict.contact.badge}</span>
-              </div>
-
-              <h2 className="text-4xl md:text-5xl lg:text-[56px] font-black font-heading tracking-tighter leading-[0.95] text-[#0B2EA8] mb-5 uppercase">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-heading tracking-tighter leading-[0.95] text-[#0B2EA8] mb-5 uppercase">
                 {dict.contact.title_1}<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-400">{dict.contact.title_2}</span>
               </h2>
@@ -329,7 +324,7 @@ export function ContactSection({ dict }: { dict: any }) {
             transition={{ duration: 0.8 }}
             className="mb-12"
           >
-            <h2 className="text-5xl md:text-5xl lg:text-[64px] font-black font-heading tracking-tighter leading-none text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-heading tracking-tighter leading-none text-white mb-4">
               {dict.contact.get_in_touch}
             </h2>
             <p className="text-lg md:text-xl text-white/60 font-medium max-w-md mx-auto">

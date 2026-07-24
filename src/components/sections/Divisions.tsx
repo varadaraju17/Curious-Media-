@@ -81,16 +81,6 @@ export function Divisions({ dict, locale }: { dict: any; locale: Locale }) {
         {/* ── Header ── */}
         <div className="mb-16 md:mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0B2EA8] mb-5"
-            >
-              <span className="flex h-1.5 w-1.5 rounded-full bg-blue-300 animate-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white">{dict.divisions.badge}</span>
-            </motion.div>
-
             <motion.h2
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}

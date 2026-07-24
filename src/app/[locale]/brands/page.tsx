@@ -109,7 +109,7 @@ export default function BrandsPage() {
     <main className="flex-1 w-full bg-white min-h-screen relative overflow-x-hidden pt-24">
       
       {/* ─── HERO SECTION ─── */}
-      <section className="relative overflow-hidden pt-24 pb-32 lg:pt-40 lg:pb-48 bg-white">
+      <section className="relative overflow-hidden bg-white min-h-[calc(100vh-80px)] flex flex-col justify-center">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           {/* Abstract Grid & Glow */}
           <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "linear-gradient(#0A1A4E 1px, transparent 1px), linear-gradient(90deg, #0A1A4E 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
@@ -117,37 +117,30 @@ export default function BrandsPage() {
           <div className="absolute bottom-[-10%] right-[-10%] w-[700px] h-[700px] bg-gradient-to-tl from-cyan-300/20 to-transparent blur-[150px] rounded-full pointer-events-none" />
         </div>
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 relative z-10 my-auto py-4 lg:py-6">
           <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-blue-50/50 backdrop-blur-md border border-blue-200/50 mb-12 shadow-[0_8px_30px_rgba(11,46,168,0.06)]"
-            >
-              <div className="relative flex items-center justify-center">
-                <span className="absolute w-3 h-3 rounded-full bg-blue-500 animate-ping opacity-50" />
-                <span className="relative w-2 h-2 rounded-full bg-blue-600" />
-              </div>
-              <span className="text-xs font-black tracking-[0.25em] uppercase text-[#0B2EA8]">
-                {isHindi ? "ब्रांड्स और एजेंसियां" : "Brands & Agencies"}
-              </span>
-            </motion.div>
-
-            <h1 className="flex flex-col mb-10 w-full overflow-hidden gap-2 lg:gap-4">
+            <h1 className="flex flex-col mb-6 w-full overflow-hidden items-center gap-1.5 lg:gap-2">
               {(isHindi ? ["दिखें।", "सुने जाएं।", "याद रखे जाएं।"] : ["BE SEEN.", "BE HEARD.", "BE REMEMBERED."]).map((text, i) => (
                 <motion.span
                   key={i}
-                  initial={{ opacity: 0, scale: 0.85, y: 40 }}
+                  initial={{ opacity: 0, scale: 0.85, y: 30 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   transition={{ 
-                    delay: i * 0.35, 
-                    duration: 0.8, 
+                    delay: i * 0.25, 
+                    duration: 0.7, 
                     ease: [0.34, 1.56, 0.64, 1]
                   }}
-                  className="text-[3.5rem] sm:text-6xl md:text-5xl lg:text-[68px] font-black font-heading tracking-wide leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-[#0B2EA8] to-sky-400 uppercase drop-shadow-sm pb-2"
+                  className="relative text-[32px] sm:text-[44px] md:text-[50px] lg:text-[56px] xl:text-[60px] font-black font-heading tracking-wide leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase drop-shadow-sm pb-1 w-fit"
                 >
                   {text}
+                  {i === 2 && (
+                    <motion.span
+                      initial={{ scaleX: 0, opacity: 0 }}
+                      animate={{ scaleX: 1, opacity: 1 }}
+                      transition={{ delay: 0.8, duration: 0.8, ease: [0.16,1,0.3,1] }}
+                      className="absolute bottom-0 left-0 h-[4px] sm:h-[5px] w-full origin-left rounded-full bg-gradient-to-r from-[#0B2EA8] via-cyan-400 to-sky-300"
+                    />
+                  )}
                 </motion.span>
               ))}
             </h1>
@@ -156,7 +149,7 @@ export default function BrandsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="text-lg md:text-2xl text-slate-500 max-w-4xl mx-auto mb-16 font-medium leading-relaxed"
+              className="text-base md:text-lg text-slate-500 max-w-3xl mx-auto mb-8 font-medium leading-relaxed"
             >
               {isHindi 
                 ? "हम तभी जीतते हैं जब आप जीतते हैं। हर अभियान को एक सांस्कृतिक घटना में बदलने के लिए भारत के सबसे बड़े वितरण नेटवर्क के साथ साझेदारी करें।"
@@ -170,14 +163,11 @@ export default function BrandsPage() {
             >
               <Link 
                 href={`/${locale}/contact`}
-                className="group relative inline-flex items-center gap-4 px-12 py-6 text-white font-black uppercase tracking-[0.2em] text-sm rounded-full overflow-hidden transition-all duration-500 hover:scale-[1.02] bg-[#0A1A4E] shadow-[0_20px_40px_rgba(10,26,78,0.25)] hover:shadow-[0_20px_60px_rgba(11,46,168,0.4)] hover:bg-[#0B2EA8]"
+                className="group relative inline-flex items-center gap-2.5 rounded-full px-8 py-3.5 text-white font-black uppercase text-sm tracking-widest overflow-hidden shadow-[0_8px_28px_rgba(11,46,168,0.30)] hover:shadow-[0_16px_48px_rgba(11,46,168,0.45)] hover:scale-[1.03] transition-all duration-300"
               >
-                <span className="relative z-10 group-hover:text-cyan-300 transition-colors duration-500">
-                  {isHindi ? "संपर्क में रहें" : "Get in touch"}
-                </span>
-                <div className="relative z-10 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-cyan-400 group-hover:text-[#0A1A4E] transition-all duration-500">
-                  <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-0.5" />
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0B2EA8] via-blue-500 to-[#0B2EA8] bg-[size:200%] hover:bg-right-center transition-all duration-700 group-hover:bg-[position:100%]" />
+                <span className="relative z-10">{isHindi ? "संपर्क में रहें" : "Get in touch"}</span>
+                <ArrowRight className="relative z-10 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
           </div>
@@ -207,7 +197,7 @@ export default function BrandsPage() {
                   {isHindi ? "प्रभाव का पैमाना" : "The Scale of Impact"}
                 </span>
               </div>
-              <h2 className="text-4xl md:text-5xl lg:text-[50px] font-black font-heading tracking-tight leading-[0.95] uppercase">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-heading tracking-tighter leading-[0.95] uppercase">
                 {isHindi ? (
                   <>
                     <span className="text-white">परिणाम जिन्हें</span><br/>
@@ -312,7 +302,7 @@ export default function BrandsPage() {
                   {isHindi ? "कार्यप्रणाली" : "Methodology"}
                 </span>
               </div>
-              <h2 className="text-4xl md:text-5xl lg:text-[64px] font-black font-heading tracking-tighter leading-[0.85] uppercase">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-heading tracking-tighter leading-[0.95] uppercase">
                 {isHindi ? (
                   <>सहयोग के <br className="hidden lg:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-500">तरीके।</span></>
                 ) : (

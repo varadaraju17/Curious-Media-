@@ -55,7 +55,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
     },
   ];
   return (
-    <section className="relative bg-white overflow-hidden">
+    <section className="relative bg-white overflow-hidden min-h-[calc(100vh-80px)] flex flex-col justify-between">
 
       {/* ══════════════════════════════════
           MOTION GRAPHICS BACKGROUND
@@ -138,35 +138,17 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
       {/* ══════════════════════════════════
           MAIN CONTENT
       ══════════════════════════════════ */}
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 max-w-[1400px] relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-4 items-center
-          pt-16 sm:pt-20 md:pt-24 pb-4 sm:pb-6"
-        >
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 max-w-[1400px] relative z-10 flex-1 flex flex-col justify-center py-4 lg:py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-6 items-center my-auto pt-16 sm:pt-20 lg:pt-22">
 
           {/* ═══ LEFT - Copy ═══ */}
           <div
             className="lg:col-span-7 flex flex-col animate-fade-in-up"
           >
 
-            {/* Badge */}
-            <div
-              className="inline-flex items-center gap-2 self-start mb-5 sm:mb-6
-                rounded-full px-4 py-1.5
-                bg-white border border-blue-200
-                shadow-[0_2px_16px_rgba(11,46,168,0.10)] animate-fade-in-up"
-            >
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-60" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600" />
-              </span>
-              <span className="text-[10px] sm:text-[11px] font-black tracking-[0.20em] uppercase text-[#0B2EA8]">
-                {dict.hero.badge}
-              </span>
-            </div>
-
             {/* ── Headline ── */}
-            <h1 className="font-black font-heading leading-[0.9] tracking-[-0.03em]
-              text-[36px] sm:text-[48px] md:text-[58px] lg:text-[64px] xl:text-[52px]"
+            <h1 className="font-black font-heading leading-[0.93] tracking-[-0.03em]
+              text-[34px] sm:text-[46px] md:text-[54px] lg:text-[60px] xl:text-[66px] 2xl:text-[72px]"
             >
               {/* Line 1 */}
               <span
@@ -181,33 +163,33 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
               >
                 {dict.hero.headline_line2}
                 <span
-                  className="absolute -bottom-1 left-0 h-[4px] sm:h-[5px] w-full origin-left rounded-full
+                  className="absolute -bottom-1 sm:-bottom-1.5 left-0 h-[4px] sm:h-[5px] md:h-[6px] w-full origin-left rounded-full
                     bg-gradient-to-r from-[#0B2EA8] via-cyan-400 to-sky-300"
                 />
               </span>
 
               {/* Lines 3+4 - animated shimmer */}
               <span
-                className="block mt-2"
+                className="block mt-1.5 sm:mt-2"
               >
                 <span className="text-shimmer">{dict.hero.headline_line3}</span>
               </span>
               <span
-                className="block -mt-1 sm:-mt-2"
+                className="block -mt-1 sm:-mt-1.5"
               >
                 <span className="text-shimmer">{dict.hero.headline_line4}</span>
               </span>
             </h1>
 
             {/* ── Sublines ── */}
-            <div className="mt-4 sm:mt-6 max-w-2xl flex flex-col gap-1.5">
+            <div className="mt-3 sm:mt-4 max-w-2xl flex flex-col gap-1">
               <p
                 className="text-base sm:text-lg md:text-xl font-black text-[#0B2EA8] leading-tight tracking-tight uppercase sm:whitespace-nowrap animate-fade-in-up"
               >
                 {dict.hero.subheading}
               </p>
               <p
-                className="text-sm sm:text-base md:text-[17px] text-slate-500 font-medium leading-relaxed animate-fade-in-up"
+                className="text-xs sm:text-sm md:text-[15px] text-slate-500 font-medium leading-relaxed animate-fade-in-up"
               >
                 {dict.hero.description}
               </p>
@@ -215,10 +197,10 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
 
             {/* ── Features pills ── */}
             <div
-              className="mt-7 flex flex-wrap gap-2 animate-fade-in-up"
+              className="mt-4 sm:mt-5 flex flex-wrap gap-2 animate-fade-in-up"
             >
               {dict.hero.features.map((feat: string) => (
-                <div key={feat} className="inline-flex items-center gap-1.5 px-3.5 py-1.5
+                <div key={feat} className="inline-flex items-center gap-1.5 px-3 py-1
                   rounded-full bg-blue-50 border border-blue-100 text-[11px] font-bold text-[#0B2EA8]"
                 >
                   <CheckCircle className="w-3 h-3 text-blue-400" />
@@ -229,13 +211,13 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
 
             {/* ── CTA ── */}
             <div
-              className="mt-9 sm:mt-10 flex items-center gap-4 flex-wrap animate-fade-in-up"
+              className="mt-6 sm:mt-7 flex items-center gap-4 flex-wrap animate-fade-in-up"
             >
               <Link
                 href={`/${locale}/contact`}
                 id="hero-cta-primary"
                 className="group relative inline-flex items-center gap-2.5 rounded-full
-                  px-7 sm:px-9 py-3.5 sm:py-4
+                  px-7 sm:px-8 py-3 sm:py-3.5
                   text-white font-black text-sm sm:text-base tracking-wide overflow-hidden
                   shadow-[0_8px_28px_rgba(11,46,168,0.30)]
                   hover:shadow-[0_16px_48px_rgba(11,46,168,0.45)]
@@ -255,7 +237,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
 
           {/* ═══ RIGHT - Phone ═══ */}
           <div
-            className="lg:col-span-5 flex justify-center items-center relative py-8 sm:py-12 lg:py-14"
+            className="lg:col-span-5 flex justify-center items-center relative py-4 lg:py-6"
           >
             {/* Glow layers behind phone */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
