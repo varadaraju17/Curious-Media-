@@ -228,24 +228,12 @@ export function Testimonials({ dict }: { dict: any }) {
 
         {/* ── Section Header ── */}
         <div className="text-center mb-16 md:mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#0B2EA8] mb-6 shadow-lg shadow-blue-200/50"
-          >
-            <span className="flex h-1.5 w-1.5 rounded-full bg-blue-300 animate-pulse" />
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white">
-              {dict.testimonials.badge}
-            </span>
-          </motion.div>
-
           <motion.h2
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.08 }}
-            className="text-4xl md:text-6xl lg:text-[56px] font-black font-heading tracking-tighter leading-[0.92] text-[#0A1A4E] uppercase"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-heading tracking-tighter leading-[0.95] text-[#0A1A4E] uppercase"
           >
             {dict.testimonials.title_1}
             <br />

@@ -535,10 +535,9 @@ export default function StudioPage() {
       <section className="py-24 md:py-36 bg-white relative">
         <div className="container mx-auto px-4 max-w-[1400px] relative z-10">
           <div className="text-center mb-16 md:mb-24">
-            <h2 className="text-sm font-black uppercase tracking-[0.3em] text-[#0B2EA8] mb-4">{translate("What We Do")}</h2>
-            <h3 className="text-4xl md:text-5xl lg:text-5xl font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase mb-6 pb-2">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase mb-6 pb-2">
               {translate("Inside Curious Studios")}
-            </h3>
+            </h2>
             <p className="text-lg md:text-xl text-slate-500 font-medium max-w-3xl mx-auto leading-relaxed">
               {translate("Curious Studios sets a new benchmark in quality-every package is built to deliver excellence and includes:")}
             </p>
@@ -576,10 +575,9 @@ export default function StudioPage() {
         
         <div className="container mx-auto px-4 max-w-[1400px] relative z-10">
           <div className="text-center mb-20 md:mb-28">
-            <h2 className="text-sm font-black uppercase tracking-[0.3em] text-cyan-400 mb-4">{translate("Process")}</h2>
-            <h3 className="text-4xl md:text-5xl lg:text-[50px] font-black font-heading tracking-tighter text-white uppercase mb-6 leading-none">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-heading tracking-tighter text-white uppercase mb-6 leading-none">
               {translate("How It Works")}
-            </h3>
+            </h2>
             <p className="text-xl md:text-2xl text-white/70 font-medium max-w-4xl mx-auto leading-relaxed">
               {translate("Your brand deserves high-performing content with thumb-stopping quality-built to stand out across every platform. Here's how we make it happen.")}
             </p>
@@ -616,17 +614,16 @@ export default function StudioPage() {
         </div>
       </section>
 
-      {/* ─── PORTFOLIO (Three Horizontal Scroll lines, one for each segment) ─── */}
+      {/* ─── PORTFOLIO ─── */}
       <section className="py-24 md:py-32 bg-gradient-to-b from-[#F8FAFF] via-white to-[#F8FAFF] relative overflow-hidden">
         <div className="container mx-auto px-4 max-w-[1400px] relative z-10">
           
           {/* Header */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-6">
             <div>
-              <h2 className="text-sm font-black uppercase tracking-[0.3em] text-[#0B2EA8] mb-4">{translate("Our Work")}</h2>
-              <h3 className="text-4xl md:text-6xl lg:text-[50px] font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase leading-none pb-2">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase leading-none pb-2">
                 {translate("Portfolio")}
-              </h3>
+              </h2>
             </div>
             <Link href={`/${locale}/contact`} className="inline-flex items-center gap-2.5 px-6 py-3 rounded-none bg-[#0A1A4E] text-white font-black uppercase tracking-wider text-xs hover:bg-[#0B2EA8] hover:scale-105 transition-all duration-300 shadow-md">
               {translate("Start Your Project")} <ArrowRight className="w-4 h-4" />

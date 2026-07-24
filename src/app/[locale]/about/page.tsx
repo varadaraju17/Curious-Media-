@@ -296,23 +296,11 @@ export default function AboutPage() {
           
           {/* Hero Left Content */}
           <div className="flex-1 text-center lg:text-left">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 mb-8 shadow-sm"
-            >
-              <Sparkles className="w-4 h-4 text-[#0B2EA8] animate-pulse" />
-              <span className="text-xs font-black tracking-[0.25em] uppercase text-[#0B2EA8]">
-                {isHindi ? "हमारे बारे में" : "About Us"}
-              </span>
-            </motion.div>
-
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.8 }}
-              className="text-5xl md:text-5xl lg:text-[60px] font-black font-heading tracking-tighter leading-[0.9] uppercase mb-8"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-heading tracking-tighter leading-[0.92] uppercase mb-6"
             >
               {isHindi ? (
                 <>
@@ -714,19 +702,13 @@ export default function AboutPage() {
 
 
       {/* ─── MEET THE TEAM (LEADERSHIP BOARD - WHITE & BLUE) ─── */}
-      <section className="py-20 md:py-24 bg-white text-[#0A1A4E] border-t border-slate-100">
+      <section className="py-24 md:py-36 bg-white text-[#0A1A4E] border-t border-slate-100">
         <div className="container mx-auto px-4 max-w-6xl">
           
           {/* Header */}
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 mb-6 shadow-sm">
-              <Users className="w-4 h-4 text-[#0B2EA8]" />
-              <span className="text-xs font-black tracking-[0.25em] uppercase text-[#0B2EA8]">
-                {isHindi ? "नेतृत्व" : "Leadership"}
-              </span>
-            </div>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black font-heading uppercase tracking-tighter mb-4 leading-tight">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-sky-400">
+          <div className="max-w-3xl mx-auto text-center mb-20 md:mb-24">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-heading uppercase tracking-tighter mb-6 leading-[0.95] py-2">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-sky-400">
                 {isHindi ? "क्यूरियस के पीछे के दिमागों से मिलें" : "MEET THE MINDS BEHIND CURIOUS"}
               </span>
             </h2>

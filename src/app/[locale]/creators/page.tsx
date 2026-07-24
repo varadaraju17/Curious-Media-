@@ -645,7 +645,7 @@ export default function CreatorsPage() {
         <div className="container mx-auto max-w-7xl">
           <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-20">
             <div>
-              <h2 className="text-4xl md:text-6xl lg:text-5xl font-black font-heading tracking-tighter text-[#0A1A4E] leading-none uppercase">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-heading tracking-tighter text-[#0A1A4E] leading-[0.95] uppercase">
                 {isHindi ? (
                   <>हम किसके <br className="hidden md:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-cyan-500">साथ काम करते हैं</span></>
                 ) : (
