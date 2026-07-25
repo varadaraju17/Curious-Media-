@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView, animate } from "framer-motion";
-import { TrendingUp, ArrowRight, BarChart3, Globe2, Zap, Rocket, Mail, Sparkles, Target, ZapIcon, Users } from "lucide-react";
+import { TrendingUp, ArrowRight, BarChart3, Globe2, Zap, Rocket, Mail, Sparkles, Target, ZapIcon, Users, Award } from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { Marquee } from "@/components/sections/Marquee";
