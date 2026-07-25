@@ -29,29 +29,28 @@ export function Navbar({ dict, locale }: NavProps) {
       href: `/${locale}/creators`,
       dropdown: [
         { name: dict.nav.creators || "Creators", href: `/${locale}/creators` },
-        { name: dict.nav.brands   || "Brands",   href: `/${locale}/brands` },
+        { name: dict.nav.brands || "Brands", href: `/${locale}/brands` },
       ],
     },
-    { name: dict.nav.studio,                         href: `/${locale}/studio`   },
-    { name: dict.nav.records || "Curious Music",   href: `/${locale}/records`  },
-    { name: dict.nav.products,                       href: `/${locale}/products` },
-    { name: dict.nav.about   || "About",             href: `/${locale}/about`    },
+    { name: dict.nav.studio, href: `/${locale}/studio` },
+    { name: dict.nav.records || "Curious Music", href: `/${locale}/records` },
+    { name: dict.nav.products, href: `/${locale}/products` },
+    { name: dict.nav.about || "About", href: `/${locale}/about` },
   ];
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 animate-fade-in-down ${
-        scrolled 
-          ? "bg-white/95 backdrop-blur-md shadow-[0_2px_20px_rgba(11,46,168,0.06)] border-b border-blue-100/50 py-4" 
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 animate-fade-in-down ${scrolled
+          ? "bg-white/95 backdrop-blur-md shadow-[0_2px_20px_rgba(11,46,168,0.06)] border-b border-blue-100/50 py-4"
           : "bg-transparent py-6 md:py-8"
-      }`}
+        }`}
     >
       <div className="container mx-auto px-4 md:px-8 max-w-[1400px]">
         <div className="flex items-center justify-between">
 
           {/* Logo */}
           <Link href={`/${locale}`} className="group relative z-10 shrink-0 flex items-center gap-2.5">
-            <img src="/images/logo.svg" alt="Curious Media Logo" width="40" height="40" loading="eager" decoding="async" className="h-9 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+            <img src="/images/logo.png" alt="Curious Media Logo" width="40" height="40" loading="eager" decoding="async" className="h-9 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
             <span className="text-base md:text-lg font-black uppercase tracking-wider text-[#0A1A4E] group-hover:text-[#0B2EA8] transition-colors duration-300 font-heading">
               Curious Media
             </span>
@@ -63,7 +62,7 @@ export function Navbar({ dict, locale }: NavProps) {
               const isChildActive = link.dropdown?.some(sub => pathname.includes(sub.href));
               const isActive = (link.href && pathname.includes(link.href) && (link.href !== `/${locale}` || pathname === `/${locale}`)) || isChildActive;
               const hasDropdown = !!link.dropdown;
-              
+
               const content = (
                 <>
                   {link.name}
@@ -84,9 +83,8 @@ export function Navbar({ dict, locale }: NavProps) {
                   {link.href ? (
                     <Link
                       href={link.href}
-                      className={`relative z-10 text-[13px] md:text-sm font-bold tracking-wide transition-colors duration-300 flex items-center gap-1.5 ${
-                        isActive ? "text-[#0B2EA8]" : "text-slate-600 hover:text-[#0B2EA8]"
-                      }`}
+                      className={`relative z-10 text-[13px] md:text-sm font-bold tracking-wide transition-colors duration-300 flex items-center gap-1.5 ${isActive ? "text-[#0B2EA8]" : "text-slate-600 hover:text-[#0B2EA8]"
+                        }`}
                     >
                       {content}
                     </Link>
@@ -94,9 +92,8 @@ export function Navbar({ dict, locale }: NavProps) {
                     <div
                       role="button"
                       tabIndex={0}
-                      className={`relative z-10 text-[13px] md:text-sm font-bold tracking-wide transition-colors duration-300 flex items-center gap-1.5 cursor-pointer ${
-                        isActive ? "text-[#0B2EA8]" : "text-slate-600 hover:text-[#0B2EA8]"
-                      }`}
+                      className={`relative z-10 text-[13px] md:text-sm font-bold tracking-wide transition-colors duration-300 flex items-center gap-1.5 cursor-pointer ${isActive ? "text-[#0B2EA8]" : "text-slate-600 hover:text-[#0B2EA8]"
+                        }`}
                     >
                       {content}
                     </div>
@@ -168,66 +165,64 @@ export function Navbar({ dict, locale }: NavProps) {
         <div
           className="md:hidden absolute top-[80px] left-4 right-4 bg-white p-6 rounded-3xl border border-blue-100 flex flex-col gap-1 shadow-[0_12px_40px_rgba(11,46,168,0.1)] z-50 animate-fade-in-down"
         >
-            {navLinks.map((link) => {
-              const isChildActive = link.dropdown?.some(sub => pathname.includes(sub.href));
-              const isActive = (link.href && pathname.includes(link.href)) || isChildActive;
+          {navLinks.map((link) => {
+            const isChildActive = link.dropdown?.some(sub => pathname.includes(sub.href));
+            const isActive = (link.href && pathname.includes(link.href)) || isChildActive;
 
-              return (
-                <div key={link.name}>
-                  {link.href ? (
-                    <Link
-                      href={link.href}
-                      onClick={() => setIsOpen(false)}
-                      className={`text-base font-bold py-3 px-4 rounded-none transition-all flex items-center justify-between ${
-                        isActive ? 'bg-blue-50 text-[#0B2EA8]' : 'text-slate-600 hover:text-[#0B2EA8] hover:bg-blue-50/50'
+            return (
+              <div key={link.name}>
+                {link.href ? (
+                  <Link
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`text-base font-bold py-3 px-4 rounded-none transition-all flex items-center justify-between ${isActive ? 'bg-blue-50 text-[#0B2EA8]' : 'text-slate-600 hover:text-[#0B2EA8] hover:bg-blue-50/50'
                       }`}
-                    >
-                      {link.name}
-                    </Link>
-                  ) : (
-                    <div
-                      role="button"
-                      tabIndex={0}
-                      className={`text-base font-bold py-3 px-4 rounded-none transition-all flex items-center justify-between cursor-pointer ${
-                        isActive ? 'bg-blue-50 text-[#0B2EA8]' : 'text-slate-600 hover:text-[#0B2EA8] hover:bg-blue-50/50'
+                  >
+                    {link.name}
+                  </Link>
+                ) : (
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    className={`text-base font-bold py-3 px-4 rounded-none transition-all flex items-center justify-between cursor-pointer ${isActive ? 'bg-blue-50 text-[#0B2EA8]' : 'text-slate-600 hover:text-[#0B2EA8] hover:bg-blue-50/50'
                       }`}
-                    >
-                      {link.name}
-                    </div>
-                  )}
-                  {link.dropdown && (
-                    <div className="ml-4 mt-1 flex flex-col gap-0.5 border-l-2 border-slate-100 pl-4">
-                      {link.dropdown.map((sub) => (
-                        <Link
-                          key={sub.href}
-                          href={sub.href}
-                          onClick={() => setIsOpen(false)}
-                          className="text-sm font-semibold py-2.5 px-3 rounded-none text-slate-600 hover:text-[#0B2EA8] hover:bg-blue-50/50 transition-all"
-                        >
-                          {sub.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-            <div className="flex gap-3 mt-4 pt-4 border-t border-blue-100">
-              <Link
-                href={pathname.replace(`/${locale}`, `/${locale === 'en' ? 'hi' : 'en'}`)}
-                onClick={() => setIsOpen(false)}
-                className="flex-1 py-3 text-center rounded-full border border-blue-200 text-blue-700 font-bold uppercase hover:bg-blue-50 text-sm transition-all"
-              >
-                {locale === 'en' ? 'हिन्दी' : 'English'}
-              </Link>
-              <Link
-                href={`/${locale}/contact`}
-                onClick={() => setIsOpen(false)}
-                className="flex-1 py-3 text-center rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold text-sm shadow-[0_0_20px_rgba(37,99,235,0.45)]"
-              >
-                {dict.nav.contact}
-              </Link>
-            </div>
+                  >
+                    {link.name}
+                  </div>
+                )}
+                {link.dropdown && (
+                  <div className="ml-4 mt-1 flex flex-col gap-0.5 border-l-2 border-slate-100 pl-4">
+                    {link.dropdown.map((sub) => (
+                      <Link
+                        key={sub.href}
+                        href={sub.href}
+                        onClick={() => setIsOpen(false)}
+                        className="text-sm font-semibold py-2.5 px-3 rounded-none text-slate-600 hover:text-[#0B2EA8] hover:bg-blue-50/50 transition-all"
+                      >
+                        {sub.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+          <div className="flex gap-3 mt-4 pt-4 border-t border-blue-100">
+            <Link
+              href={pathname.replace(`/${locale}`, `/${locale === 'en' ? 'hi' : 'en'}`)}
+              onClick={() => setIsOpen(false)}
+              className="flex-1 py-3 text-center rounded-full border border-blue-200 text-blue-700 font-bold uppercase hover:bg-blue-50 text-sm transition-all"
+            >
+              {locale === 'en' ? 'हिन्दी' : 'English'}
+            </Link>
+            <Link
+              href={`/${locale}/contact`}
+              onClick={() => setIsOpen(false)}
+              className="flex-1 py-3 text-center rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold text-sm shadow-[0_0_20px_rgba(37,99,235,0.45)]"
+            >
+              {dict.nav.contact}
+            </Link>
+          </div>
         </div>
       )}
     </header>
