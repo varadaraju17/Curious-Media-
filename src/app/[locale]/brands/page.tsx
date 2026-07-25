@@ -218,17 +218,17 @@ export default function BrandsPage() {
               </div>
 
               {/* Showcase Container */}
-              <div className="relative z-10 w-full max-w-[420px] rounded-[2.5rem] bg-white border-2 border-sky-200/80 p-6 sm:p-7 shadow-[0_25px_70px_rgba(11,46,168,0.18)] flex flex-col gap-5">
+              <div className="relative z-10 w-full max-w-[540px] rounded-[2.5rem] bg-white border-2 border-sky-200/80 p-5 sm:p-6 shadow-[0_25px_70px_rgba(11,46,168,0.18)] flex flex-col gap-4">
                 
                 {/* Header Badge */}
-                <div className="flex items-center justify-between pb-3.5 border-b border-slate-100">
+                <div className="flex items-center justify-between pb-3 border-b border-slate-100">
                   <div className="flex items-center gap-2.5">
                     <div className="w-9 h-9 rounded-xl bg-[#0B2EA8] flex items-center justify-center text-white font-black shadow-md">
                       <Sparkles className="w-5 h-5 text-cyan-300" />
                     </div>
                     <div>
                       <h4 className="text-sm font-black text-[#0A1A4E] uppercase tracking-tight">Campaign Performance</h4>
-                      <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">High Impact Case Studies</p>
+                      <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Side-By-Side Showcase</p>
                     </div>
                   </div>
                   <span className="px-2.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0B2EA8] font-black text-[9px] uppercase tracking-wider">
@@ -236,59 +236,49 @@ export default function BrandsPage() {
                   </span>
                 </div>
 
-                {/* Large Featured Campaign Poster Showcase Stack */}
-                <div className="space-y-4">
+                {/* SIDE-BY-SIDE Campaign Poster Grid */}
+                <div className="grid grid-cols-2 gap-3">
                   
-                  {/* Large Card 1: Nykaa Pink Sale */}
-                  <div className="relative rounded-2xl overflow-hidden bg-slate-900 border-2 border-blue-200/80 shadow-md group transition-all duration-300 hover:shadow-xl hover:border-blue-400">
-                    <div className="relative aspect-[16/9] w-full overflow-hidden">
+                  {/* Side-by-Side Card 1: Nykaa Pink Sale */}
+                  <div className="relative rounded-2xl overflow-hidden bg-slate-900 border-2 border-blue-200/80 shadow-md group transition-all duration-300 hover:shadow-xl hover:border-blue-400 flex flex-col justify-between">
+                    <div className="relative aspect-[4/5] w-full overflow-hidden">
                       <img 
                         src="/images/posters/nykaa-pink-sale.webp" 
                         alt="Nykaa Pink Sale Campaign" 
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
                       
-                      <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white font-black text-[9px] uppercase tracking-wider">
+                      <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white font-black text-[8px] uppercase tracking-wider">
                         +220% ROI
                       </div>
                       
-                      <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
-                        <div>
-                          <p className="text-[9px] font-black uppercase tracking-widest text-cyan-300">Beauty & Lifestyle</p>
-                          <h5 className="text-sm font-black uppercase tracking-tight text-white">Nykaa Pink Sale</h5>
-                        </div>
-                        <div className="text-right">
-                          <span className="text-sm font-black text-cyan-300 block">85M+</span>
-                          <span className="text-[8px] font-bold uppercase tracking-wider text-slate-300">Reach</span>
-                        </div>
+                      <div className="absolute bottom-2.5 left-2.5 right-2.5 text-white">
+                        <p className="text-[8px] font-black uppercase tracking-widest text-cyan-300">Beauty</p>
+                        <h5 className="text-xs font-black uppercase tracking-tight text-white leading-tight">Nykaa Pink Sale</h5>
+                        <p className="text-xs font-black text-cyan-300 mt-0.5">85M+ <span className="text-[8px] font-bold text-slate-300 uppercase">Reach</span></p>
                       </div>
                     </div>
                   </div>
 
-                  {/* Large Card 2: Travis Scott India Concert */}
-                  <div className="relative rounded-2xl overflow-hidden bg-slate-900 border-2 border-sky-200/80 shadow-md group transition-all duration-300 hover:shadow-xl hover:border-sky-400">
-                    <div className="relative aspect-[16/9] w-full overflow-hidden">
+                  {/* Side-by-Side Card 2: Travis Scott India Concert */}
+                  <div className="relative rounded-2xl overflow-hidden bg-slate-900 border-2 border-sky-200/80 shadow-md group transition-all duration-300 hover:shadow-xl hover:border-sky-400 flex flex-col justify-between">
+                    <div className="relative aspect-[4/5] w-full overflow-hidden">
                       <img 
                         src="/images/posters/travis-scott-india.webp" 
                         alt="Travis Scott India Campaign" 
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
                       
-                      <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-cyan-500/80 backdrop-blur-md border border-cyan-300 text-white font-black text-[9px] uppercase tracking-wider">
-                        VIRAL FESTIVAL
+                      <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-cyan-500/80 backdrop-blur-md border border-cyan-300 text-white font-black text-[8px] uppercase tracking-wider">
+                        VIRAL
                       </div>
                       
-                      <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
-                        <div>
-                          <p className="text-[9px] font-black uppercase tracking-widest text-sky-300">Live Event & Music</p>
-                          <h5 className="text-sm font-black uppercase tracking-tight text-white">Travis Scott India</h5>
-                        </div>
-                        <div className="text-right">
-                          <span className="text-sm font-black text-sky-300 block">150M+</span>
-                          <span className="text-[8px] font-bold uppercase tracking-wider text-slate-300">Impressions</span>
-                        </div>
+                      <div className="absolute bottom-2.5 left-2.5 right-2.5 text-white">
+                        <p className="text-[8px] font-black uppercase tracking-widest text-sky-300">Live Music</p>
+                        <h5 className="text-xs font-black uppercase tracking-tight text-white leading-tight">Travis Scott</h5>
+                        <p className="text-xs font-black text-sky-300 mt-0.5">150M+ <span className="text-[8px] font-bold text-slate-300 uppercase">Views</span></p>
                       </div>
                     </div>
                   </div>
