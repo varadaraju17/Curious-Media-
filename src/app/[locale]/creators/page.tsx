@@ -446,68 +446,201 @@ export default function CreatorsPage() {
   return (
     <main className="flex-1 w-full bg-white min-h-screen relative overflow-x-hidden pt-24">
       
-      {/* ─── HERO SECTION ─── */}
-      <section className="relative overflow-hidden bg-white min-h-[calc(100vh-80px)] flex flex-col justify-center">
+      {/* ─── HERO SECTION (SPLIT 2-COLUMN LUXURY CREATOR MASTERSTAGE) ─── */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-blue-50/40 via-white to-white min-h-[calc(100vh-80px)] flex flex-col justify-between border-b border-slate-100">
+        
+        {/* Ambient Background & Grid */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {/* Enhanced Grid & Glow */}
-          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "linear-gradient(#0A1A4E 1px, transparent 1px), linear-gradient(90deg, #0A1A4E 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
-          <div className="absolute top-[-20%] right-[-10%] w-[900px] h-[900px] bg-gradient-to-bl from-blue-400/20 to-transparent blur-[150px] rounded-full pointer-events-none animate-pulse duration-[8000ms]" />
-          <div className="absolute top-[20%] left-[-10%] w-[700px] h-[700px] bg-gradient-to-tr from-cyan-300/20 to-transparent blur-[150px] rounded-full pointer-events-none" />
+          <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "linear-gradient(#0A1A4E 1px, transparent 1px), linear-gradient(90deg, #0A1A4E 1px, transparent 1px)", backgroundSize: "48px 48px" }} />
+          <div className="absolute -top-[15%] right-[-5%] w-[850px] h-[850px] bg-gradient-to-br from-blue-500/15 via-cyan-400/10 to-transparent blur-[140px] rounded-full pointer-events-none" />
+          <div className="absolute bottom-[-10%] left-[-5%] w-[750px] h-[750px] bg-gradient-to-tr from-sky-400/15 via-indigo-500/10 to-transparent blur-[140px] rounded-full pointer-events-none" />
         </div>
 
-        <div className="container mx-auto px-4 relative z-10 my-auto py-4 lg:py-6">
-          <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
-            <h1 className="flex flex-col mb-6 w-full overflow-hidden items-center">
-              <motion.span
-                initial={{ opacity: 0, y: 40, rotateX: -15 }}
-                animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="text-[34px] sm:text-[46px] md:text-[54px] lg:text-[62px] xl:text-[68px] font-black font-heading tracking-tighter leading-[0.92] text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase pb-1 drop-shadow-sm"
-              >
-                {isHindi ? "हमारी कमाई" : "WE EARN"}
-              </motion.span>
-              <motion.span
-                initial={{ opacity: 0, y: 40, rotateX: -15 }}
-                animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                transition={{ delay: 0.25, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="relative text-[34px] sm:text-[46px] md:text-[54px] lg:text-[62px] xl:text-[68px] font-black font-heading tracking-tighter leading-[0.92] text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase w-fit pb-2"
-              >
-                {isHindi ? "आपकी कमाई के साथ है।" : "WHEN YOU EARN."}
+        {/* Hero Content (Exact Copy Preserved) */}
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 max-w-[1400px] relative z-10 my-auto py-6 sm:py-8 lg:py-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-6 sm:pt-10 lg:pt-12">
+            
+            {/* Left Column: Headline, Copy & Stat Ribbon */}
+            <div className="lg:col-span-7 flex flex-col items-start text-left">
+              
+              {/* Status Pill Badge */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50/90 border border-blue-200/80 shadow-sm mb-6">
+                <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
+                <span className="text-[11px] font-black uppercase tracking-[0.25em] text-[#0B2EA8]">
+                  CREATOR MONETIZATION NETWORK
+                </span>
+              </div>
+
+              {/* EXACT ORIGINAL HEADLINE */}
+              <h1 className="font-black font-heading leading-[0.93] tracking-[-0.03em] text-[34px] sm:text-[46px] md:text-[54px] lg:text-[62px] xl:text-[68px] uppercase mb-6">
                 <motion.span
-                  initial={{ scaleX: 0, opacity: 0 }}
-                  animate={{ scaleX: 1, opacity: 1 }}
-                  transition={{ delay: 0.7, duration: 0.8, ease: [0.16,1,0.3,1] }}
-                  className="absolute bottom-0 left-0 h-[4px] sm:h-[5px] w-full origin-left rounded-full bg-gradient-to-r from-[#0B2EA8] via-cyan-400 to-sky-300"
-                />
-              </motion.span>
-            </h1>
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1, duration: 0.8 }}
+                  className="block text-[#0A1A4E] pb-1"
+                >
+                  {isHindi ? "हमारी कमाई" : "WE EARN"}
+                </motion.span>
+                <motion.span
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.25, duration: 0.8 }}
+                  className="relative block text-[#0B2EA8] w-fit pb-2"
+                >
+                  {isHindi ? "आपकी कमाई के साथ है।" : "WHEN YOU EARN."}
+                  <motion.span
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ delay: 0.6, duration: 0.8 }}
+                    className="absolute bottom-0 left-0 h-[5px] w-full origin-left rounded-full bg-gradient-to-r from-[#0B2EA8] via-cyan-400 to-sky-300"
+                  />
+                </motion.span>
+              </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-base md:text-lg text-slate-500 max-w-3xl mx-auto mb-8 font-medium leading-relaxed"
-            >
-              {isHindi 
-                ? "क्यूरियस मीडिया आपके कंटेंट लाइब्रेरी की मुद्रीकरण (Monetization) क्षमता को सभी प्लेटफॉर्मों पर खोलता है, जो कि एशिया के सबसे बड़े वितरण नेटवर्क द्वारा संचालित है।"
-                : "Curious Media unlocks the full monetization potential of your content library across platforms, powered by Asia's largest distribution network."}
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-            >
-              <Link 
-                href={`/${locale}/contact`}
-                className="group relative inline-flex items-center gap-2.5 rounded-full px-8 py-3.5 text-white font-black uppercase text-sm tracking-widest overflow-hidden shadow-[0_8px_28px_rgba(11,46,168,0.30)] hover:shadow-[0_16px_48px_rgba(11,46,168,0.45)] hover:scale-[1.03] transition-all duration-300"
+              {/* EXACT ORIGINAL DESCRIPTION */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.8 }}
+                className="text-base sm:text-lg text-slate-500 max-w-2xl mb-8 font-medium leading-relaxed"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0B2EA8] via-blue-500 to-[#0B2EA8] bg-[size:200%] hover:bg-right-center transition-all duration-700 group-hover:bg-[position:100%]" />
-                <span className="relative z-10">{isHindi ? "हमारे भागीदार बनें" : "Partner With Us"}</span>
-                <ArrowRight className="relative z-10 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </motion.div>
+                {isHindi 
+                  ? "क्यूरियस मीडिया आपके कंटेंट लाइब्रेरी की मुद्रीकरण (Monetization) क्षमता को सभी प्लेटफॉर्मों पर खोलता है, जो कि एशिया के सबसे बड़े वितरण नेटवर्क द्वारा संचालित है।"
+                  : "Curious Media unlocks the full monetization potential of your content library across platforms, powered by Asia's largest distribution network."}
+              </motion.p>
+
+              {/* Integrated Stat Ribbon */}
+              <div className="grid grid-cols-3 gap-3 w-full max-w-xl mb-8 p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-[0_8px_30px_rgba(11,46,168,0.06)]">
+                <div className="text-left border-r border-slate-100 pr-2">
+                  <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">Monthly Views</p>
+                  <p className="text-sm sm:text-lg font-black text-[#0A1A4E]">1.2B+</p>
+                </div>
+                <div className="text-left border-r border-slate-100 pr-2 pl-1">
+                  <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">Active Channels</p>
+                  <p className="text-sm sm:text-lg font-black text-[#0B2EA8]">70+ Network</p>
+                </div>
+                <div className="text-left pl-1">
+                  <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">Disbursed</p>
+                  <p className="text-sm sm:text-lg font-black text-cyan-600">{isHindi ? "₹10 लाख+" : "₹1M+"}</p>
+                </div>
+              </div>
+
+              {/* CTA BUTTON */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+                className="flex items-center gap-4 flex-wrap"
+              >
+                <Link 
+                  href={`/${locale}/contact`}
+                  className="group relative inline-flex items-center gap-2.5 rounded-full px-8 py-3.5 text-white font-black uppercase text-sm tracking-widest overflow-hidden shadow-[0_10px_32px_rgba(11,46,168,0.30)] hover:shadow-[0_18px_50px_rgba(11,46,168,0.45)] hover:scale-[1.03] transition-all duration-300"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#0B2EA8] via-blue-500 to-[#0B2EA8] bg-[size:200%] hover:bg-right-center transition-all duration-700 group-hover:bg-[position:100%]" />
+                  <span className="relative z-10">{isHindi ? "हमारे भागीदार बनें" : "Partner With Us"}</span>
+                  <ArrowRight className="relative z-10 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </motion.div>
+
+            </div>
+
+            {/* Right Column: 3D Creator Monetization & Media HUD */}
+            <div className="lg:col-span-5 flex justify-center items-center relative py-4 lg:py-6">
+              
+              {/* Background Glow */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-gradient-to-br from-blue-300/30 via-cyan-200/20 to-violet-300/20 blur-[80px]" />
+              </div>
+
+              {/* Main Control HUD Console */}
+              <div className="relative z-10 w-full max-w-[420px] rounded-[2.5rem] bg-white border-2 border-sky-200/80 p-6 sm:p-7 shadow-[0_25px_70px_rgba(11,46,168,0.18)] flex flex-col gap-5">
+                
+                {/* HUD Top Bar */}
+                <div className="flex items-center justify-between pb-3.5 border-b border-slate-100">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-9 h-9 rounded-xl bg-[#0B2EA8] flex items-center justify-center text-white font-black shadow-md">
+                      <Zap className="w-5 h-5 text-cyan-300" />
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-black text-[#0A1A4E] uppercase tracking-tight">Distribution Engine</h4>
+                      <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Multi-Platform Syndication</p>
+                    </div>
+                  </div>
+                  <span className="px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-600 font-black text-[9px] uppercase tracking-wider flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
+                    LIVE
+                  </span>
+                </div>
+
+                {/* Platforms Grid (Blue Tones) */}
+                <div className="grid grid-cols-4 gap-2 my-1">
+                  {[
+                    { name: "YouTube", stat: "450M+", color: "bg-blue-50 text-[#0B2EA8] border-blue-200" },
+                    { name: "Instagram", stat: "320M+", color: "bg-sky-50 text-sky-700 border-sky-200" },
+                    { name: "Facebook", stat: "280M+", color: "bg-indigo-50 text-indigo-700 border-indigo-200" },
+                    { name: "OTT / TV", stat: "150M+", color: "bg-cyan-50 text-cyan-700 border-cyan-200" }
+                  ].map((p, idx) => (
+                    <div key={idx} className={`p-2 rounded-xl border ${p.color} text-center flex flex-col justify-center`}>
+                      <span className="text-[9px] font-black uppercase tracking-wider block opacity-75">{p.name}</span>
+                      <span className="text-xs font-black block mt-0.5">{p.stat}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Content Feature Box */}
+                <div className="relative rounded-2xl overflow-hidden bg-slate-900 aspect-[16/9] border border-slate-800 shadow-inner group">
+                  <img 
+                    src="/images/ip_owners_showcase.png" 
+                    alt="Curious IP Owners & Monetization Dashboard"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+                  
+                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
+                    <div>
+                      <p className="text-[8px] font-black uppercase tracking-widest text-cyan-400">Featured Network Partner</p>
+                      <p className="text-xs font-black uppercase tracking-tight text-white">IP Owners & Creator Studios</p>
+                    </div>
+                    <span className="px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-[9px] font-black uppercase text-white border border-white/30">
+                      Multi-Format
+                    </span>
+                  </div>
+                </div>
+
+                {/* Bottom Revenue Status Pill */}
+                <div className="flex items-center justify-between p-3.5 rounded-2xl bg-gradient-to-r from-blue-50 via-cyan-50 to-blue-50 border border-blue-100">
+                  <div className="flex items-center gap-2">
+                    <TrendingUp className="w-4 h-4 text-[#0B2EA8]" />
+                    <span className="text-xs font-black text-[#0A1A4E] uppercase tracking-tight">Average Revenue Lift</span>
+                  </div>
+                  <span className="text-sm font-black text-[#0B2EA8]">+380% YOY</span>
+                </div>
+
+              </div>
+
+              {/* Floating Metric Badge */}
+              <div className="absolute -bottom-4 -left-4 sm:-left-6 z-20 animate-bounce duration-[4000ms]">
+                <div className="bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200 shadow-[0_12px_35px_rgba(11,46,168,0.15)] px-4 py-3 flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 font-black shrink-0">
+                    ✓
+                  </div>
+                  <div>
+                    <p className="text-[9px] font-black uppercase tracking-widest text-slate-400">Copyright Guarantee</p>
+                    <p className="text-xs font-black text-slate-800">100% Protected IP</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
           </div>
+        </div>
+
+        {/* Decorative Wave Divider */}
+        <div className="w-full overflow-hidden leading-none -mt-2">
+          <svg viewBox="0 0 1440 52" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-10 sm:h-12 md:h-14">
+            <path d="M0,26 C360,52 1080,0 1440,26 L1440,52 L0,52 Z" fill="#F8FAFF"/>
+          </svg>
         </div>
       </section>
 
