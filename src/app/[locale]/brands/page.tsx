@@ -217,21 +217,21 @@ export default function BrandsPage() {
                 <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-gradient-to-br from-blue-400/25 via-cyan-300/20 to-sky-300/20 blur-[80px]" />
               </div>
 
-              {/* Showcase Container */}
-              <div className="relative z-10 w-full max-w-[540px] rounded-[2.5rem] bg-white border-2 border-sky-200/80 p-5 sm:p-6 shadow-[0_25px_70px_rgba(11,46,168,0.18)] flex flex-col gap-4">
+              {/* Showcase Container with Blue-to-Sky-Blue Gradient Fill */}
+              <div className="relative z-10 w-full max-w-[540px] rounded-[2.5rem] bg-gradient-to-br from-[#0B2EA8] via-[#0A1A4E] to-[#0284C7] border-2 border-sky-400/50 p-5 sm:p-6 shadow-[0_25px_70px_rgba(11,46,168,0.35)] flex flex-col gap-4 text-white">
                 
                 {/* Header Badge */}
-                <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+                <div className="flex items-center justify-between pb-3 border-b border-sky-400/30">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-9 h-9 rounded-xl bg-[#0B2EA8] flex items-center justify-center text-white font-black shadow-md">
+                    <div className="w-9 h-9 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white font-black shadow-md">
                       <Sparkles className="w-5 h-5 text-cyan-300" />
                     </div>
                     <div>
-                      <h4 className="text-sm font-black text-[#0A1A4E] uppercase tracking-tight">Campaign Performance</h4>
-                      <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Side-By-Side Showcase</p>
+                      <h4 className="text-sm font-black text-white uppercase tracking-tight">Campaign Performance</h4>
+                      <p className="text-[10px] font-bold text-cyan-200/80 uppercase tracking-widest">Side-By-Side Showcase</p>
                     </div>
                   </div>
-                  <span className="px-2.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0B2EA8] font-black text-[9px] uppercase tracking-wider">
+                  <span className="px-2.5 py-1 rounded-full bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 font-black text-[9px] uppercase tracking-wider">
                     TOP 1%
                   </span>
                 </div>
@@ -240,7 +240,7 @@ export default function BrandsPage() {
                 <div className="grid grid-cols-2 gap-3">
                   
                   {/* Side-by-Side Card 1: Nykaa Pink Sale */}
-                  <div className="relative rounded-2xl overflow-hidden bg-slate-900 border-2 border-blue-200/80 shadow-md group transition-all duration-300 hover:shadow-xl hover:border-blue-400 flex flex-col justify-between">
+                  <div className="relative rounded-2xl overflow-hidden bg-slate-900 border-2 border-sky-400/40 shadow-md group transition-all duration-300 hover:shadow-xl hover:border-cyan-300 flex flex-col justify-between">
                     <div className="relative aspect-[4/5] w-full overflow-hidden">
                       <img 
                         src="/images/posters/nykaa-pink-sale.webp" 
@@ -249,7 +249,7 @@ export default function BrandsPage() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
                       
-                      <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white font-black text-[8px] uppercase tracking-wider">
+                      <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-cyan-500/80 backdrop-blur-md border border-cyan-300 text-white font-black text-[8px] uppercase tracking-wider">
                         +220% ROI
                       </div>
                       
@@ -262,7 +262,7 @@ export default function BrandsPage() {
                   </div>
 
                   {/* Side-by-Side Card 2: Travis Scott India Concert */}
-                  <div className="relative rounded-2xl overflow-hidden bg-slate-900 border-2 border-sky-200/80 shadow-md group transition-all duration-300 hover:shadow-xl hover:border-sky-400 flex flex-col justify-between">
+                  <div className="relative rounded-2xl overflow-hidden bg-slate-900 border-2 border-sky-400/40 shadow-md group transition-all duration-300 hover:shadow-xl hover:border-cyan-300 flex flex-col justify-between">
                     <div className="relative aspect-[4/5] w-full overflow-hidden">
                       <img 
                         src="/images/posters/travis-scott-india.webp" 
@@ -286,12 +286,12 @@ export default function BrandsPage() {
                 </div>
 
                 {/* Bottom Trust Ribbon */}
-                <div className="flex items-center justify-between p-3.5 rounded-2xl bg-gradient-to-r from-blue-50 via-cyan-50 to-blue-50 border border-blue-100">
+                <div className="flex items-center justify-between p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20">
                   <div className="flex items-center gap-2">
-                    <Award className="w-4 h-4 text-[#0B2EA8]" />
-                    <span className="text-xs font-black text-[#0A1A4E] uppercase tracking-tight">Enterprise Client Trust</span>
+                    <Award className="w-4 h-4 text-cyan-300" />
+                    <span className="text-xs font-black text-white uppercase tracking-tight">Enterprise Client Trust</span>
                   </div>
-                  <span className="text-xs font-black text-[#0B2EA8]">50+ Brands</span>
+                  <span className="text-xs font-black text-cyan-300">50+ Brands</span>
                 </div>
 
               </div>

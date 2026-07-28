@@ -552,43 +552,43 @@ export default function CreatorsPage() {
                 <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-gradient-to-br from-blue-300/30 via-cyan-200/20 to-violet-300/20 blur-[80px]" />
               </div>
 
-              {/* Main Control HUD Console */}
-              <div className="relative z-10 w-full max-w-[420px] rounded-[2.5rem] bg-white border-2 border-sky-200/80 p-6 sm:p-7 shadow-[0_25px_70px_rgba(11,46,168,0.18)] flex flex-col gap-5">
+              {/* Main Control HUD Console with Blue-to-Sky-Blue Gradient Fill */}
+              <div className="relative z-10 w-full max-w-[420px] rounded-[2.5rem] bg-gradient-to-br from-[#0B2EA8] via-[#0A1A4E] to-[#0284C7] border-2 border-sky-400/50 p-6 sm:p-7 shadow-[0_25px_70px_rgba(11,46,168,0.35)] flex flex-col gap-5 text-white">
                 
                 {/* HUD Top Bar */}
-                <div className="flex items-center justify-between pb-3.5 border-b border-slate-100">
+                <div className="flex items-center justify-between pb-3.5 border-b border-sky-400/30">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-9 h-9 rounded-xl bg-[#0B2EA8] flex items-center justify-center text-white font-black shadow-md">
+                    <div className="w-9 h-9 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white font-black shadow-md">
                       <Zap className="w-5 h-5 text-cyan-300" />
                     </div>
                     <div>
-                      <h4 className="text-sm font-black text-[#0A1A4E] uppercase tracking-tight">Distribution Engine</h4>
-                      <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Multi-Platform Syndication</p>
+                      <h4 className="text-sm font-black text-white uppercase tracking-tight">Distribution Engine</h4>
+                      <p className="text-[10px] font-bold text-cyan-200/80 uppercase tracking-widest">Multi-Platform Syndication</p>
                     </div>
                   </div>
-                  <span className="px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-600 font-black text-[9px] uppercase tracking-wider flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
+                  <span className="px-2.5 py-1 rounded-full bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 font-black text-[9px] uppercase tracking-wider flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
                     LIVE
                   </span>
                 </div>
 
-                {/* Platforms Grid (Blue Tones) */}
+                {/* Platforms Grid (Rich Gradient Tiles) */}
                 <div className="grid grid-cols-4 gap-2 my-1">
                   {[
-                    { name: "YouTube", stat: "450M+", color: "bg-blue-50 text-[#0B2EA8] border-blue-200" },
-                    { name: "Instagram", stat: "320M+", color: "bg-sky-50 text-sky-700 border-sky-200" },
-                    { name: "Facebook", stat: "280M+", color: "bg-indigo-50 text-indigo-700 border-indigo-200" },
-                    { name: "OTT / TV", stat: "150M+", color: "bg-cyan-50 text-cyan-700 border-cyan-200" }
+                    { name: "YouTube", stat: "450M+", color: "bg-blue-900/60 text-cyan-300 border-sky-400/40" },
+                    { name: "Instagram", stat: "320M+", color: "bg-sky-900/60 text-sky-200 border-sky-400/40" },
+                    { name: "Facebook", stat: "280M+", color: "bg-indigo-900/60 text-indigo-200 border-indigo-400/40" },
+                    { name: "OTT / TV", stat: "150M+", color: "bg-cyan-900/60 text-cyan-200 border-cyan-400/40" }
                   ].map((p, idx) => (
-                    <div key={idx} className={`p-2 rounded-xl border ${p.color} text-center flex flex-col justify-center`}>
-                      <span className="text-[9px] font-black uppercase tracking-wider block opacity-75">{p.name}</span>
+                    <div key={idx} className={`p-2 rounded-xl border backdrop-blur-sm ${p.color} text-center flex flex-col justify-center`}>
+                      <span className="text-[9px] font-black uppercase tracking-wider block opacity-90">{p.name}</span>
                       <span className="text-xs font-black block mt-0.5">{p.stat}</span>
                     </div>
                   ))}
                 </div>
 
                 {/* Content Feature Box */}
-                <div className="relative rounded-2xl overflow-hidden bg-slate-900 aspect-[16/9] border border-slate-800 shadow-inner group">
+                <div className="relative rounded-2xl overflow-hidden bg-slate-900 aspect-[16/9] border border-sky-400/40 shadow-inner group">
                   <img 
                     src="/images/ip_owners_showcase.png" 
                     alt="Curious IP Owners & Monetization Dashboard"
@@ -598,7 +598,7 @@ export default function CreatorsPage() {
                   
                   <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
                     <div>
-                      <p className="text-[8px] font-black uppercase tracking-widest text-cyan-400">Featured Network Partner</p>
+                      <p className="text-[8px] font-black uppercase tracking-widest text-cyan-300">Featured Network Partner</p>
                       <p className="text-xs font-black uppercase tracking-tight text-white">IP Owners & Creator Studios</p>
                     </div>
                     <span className="px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-[9px] font-black uppercase text-white border border-white/30">
@@ -608,12 +608,12 @@ export default function CreatorsPage() {
                 </div>
 
                 {/* Bottom Revenue Status Pill */}
-                <div className="flex items-center justify-between p-3.5 rounded-2xl bg-gradient-to-r from-blue-50 via-cyan-50 to-blue-50 border border-blue-100">
+                <div className="flex items-center justify-between p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20">
                   <div className="flex items-center gap-2">
-                    <TrendingUp className="w-4 h-4 text-[#0B2EA8]" />
-                    <span className="text-xs font-black text-[#0A1A4E] uppercase tracking-tight">Average Revenue Lift</span>
+                    <TrendingUp className="w-4 h-4 text-cyan-300" />
+                    <span className="text-xs font-black text-white uppercase tracking-tight">Average Revenue Lift</span>
                   </div>
-                  <span className="text-sm font-black text-[#0B2EA8]">+380% YOY</span>
+                  <span className="text-sm font-black text-cyan-300">+380% YOY</span>
                 </div>
 
               </div>

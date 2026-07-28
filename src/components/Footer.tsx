@@ -30,9 +30,9 @@ export function Footer({ dict, locale }: FooterProps) {
 
           {/* Brand */}
           <div className="col-span-1 md:col-span-5">
-            <Link href={`/${locale}`} className="inline-flex items-center gap-3 mb-4 group">
-              <img src="/images/logo.png" alt="Curious Media Logo" width="48" height="48" loading="lazy" decoding="async" className="h-10 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
-              <span className="text-lg md:text-xl font-black uppercase tracking-wider text-[#0A1A4E] group-hover:text-[#0B2EA8] transition-colors duration-300 font-heading">
+            <Link href={`/${locale}`} className="inline-flex items-center gap-3.5 mb-4 group">
+              <img src="/images/logo.png" alt="Curious Media Logo" width="64" height="64" loading="lazy" decoding="async" className="h-14 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-110 scale-110 md:scale-125 origin-left" />
+              <span className="text-xl md:text-2xl font-black uppercase tracking-wider text-[#0A1A4E] group-hover:text-[#0B2EA8] transition-colors duration-300 font-heading">
                 Curious Media
               </span>
             </Link>

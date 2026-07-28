@@ -49,9 +49,9 @@ export function Navbar({ dict, locale }: NavProps) {
         <div className="flex items-center justify-between">
 
           {/* Logo */}
-          <Link href={`/${locale}`} className="group relative z-10 shrink-0 flex items-center gap-2.5">
-            <img src="/images/logo.png" alt="Curious Media Logo" width="40" height="40" loading="eager" decoding="async" className="h-9 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
-            <span className="text-base md:text-lg font-black uppercase tracking-wider text-[#0A1A4E] group-hover:text-[#0B2EA8] transition-colors duration-300 font-heading">
+          <Link href={`/${locale}`} className="group relative z-10 shrink-0 flex items-center gap-3">
+            <img src="/images/logo.png" alt="Curious Media Logo" width="56" height="56" loading="eager" decoding="async" className="h-11 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-110 scale-110 md:scale-125 origin-left" />
+            <span className="text-lg md:text-xl font-black uppercase tracking-wider text-[#0A1A4E] group-hover:text-[#0B2EA8] transition-colors duration-300 font-heading">
               Curious Media
             </span>
           </Link>

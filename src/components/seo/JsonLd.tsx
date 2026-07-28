@@ -107,8 +107,8 @@ export function JsonLd({ locale }: JsonLdProps) {
       'Influencer Marketing Agency Noida',
     ],
     description: isHindi
-      ? 'क्यूरियस मीडिया एक प्रमुख मीडिया-टेक कंपनी है जो ब्रांडों और क्रिएटर्स को जोड़ती है।'
-      : 'Curious Media is a premium media-tech platform empowering digital storytelling, influencer marketing, content production, and brand growth.',
+      ? 'क्यूरियस मीडिया भारत की अग्रणी क्रिएटर मोनेटाइजेशन और इन्फ्लुएंसर मार्केटिंग एजेंसी है।'
+      : 'Curious Media is India\'s leading creator monetization and influencer marketing agency. Connecting top brands with creators to deliver 5B+ monthly views, viral campaigns, and scalable income.',
   };
 
   // 2. ProfessionalService / LocalBusiness Schema (Noida HQ & Mumbai Office)

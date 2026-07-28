@@ -38,12 +38,12 @@ export async function generateMetadata(
   const baseUrl = "https://curiousmedia.in";
 
   const title = isHindi
-    ? "क्यूरियस मीडिया | भारत की अग्रणी क्रिएटर-नेतृत्व वाली विकास एजेंसी"
-    : "Curious Media | Where Visionary Brands Meet Creators";
+    ? "क्यूरियस मीडिया | भारत की #1 क्रिएटर मोनेटाइजेशन और ब्रांड ग्रोथ एजेंसी"
+    : "Curious Media | India's #1 Creator Monetization & Brand Growth Agency";
 
   const description = isHindi
-    ? "क्यूरियस मीडिया एक प्रमुख मीडिया-टेक प्लेटफ़ॉर्म है जो इन्फ्लुएंसर मार्केटिंग, कंटेंट प्रोडक्शन और ब्रांड विकास को नया आकार देता है।"
-    : "Curious Media is a premium media-tech platform empowering digital storytelling, influencer marketing, ad production, and strategic brand partnerships.";
+    ? "क्यूरियस मीडिया भारत की अग्रणी क्रिएटर मोनेटाइजेशन और इन्फ्लुएंसर मार्केटिंग एजेंसी है। हम ब्रांडों और क्रिएटर्स को जोड़कर 5B+ मासिक दृश्य और उच्च-ROI अभियान प्रदान करते हैं।"
+    : "Curious Media is India's leading creator monetization and influencer marketing agency. Connecting top brands with creators to deliver 5B+ monthly views, viral campaigns, and scalable income.";
 
   return {
     title,
@@ -189,10 +189,12 @@ export async function generateMetadata(
     },
     icons: {
       icon: [
-        { url: "/images/logo.png", type: "image/png" },
+        { url: "/favicon.ico", sizes: "any" },
+        { url: "/favicon-48x48.png", type: "image/png", sizes: "48x48" },
+        { url: "/icon.png", type: "image/png", sizes: "192x192" },
       ],
-      shortcut: "/images/logo.png",
-      apple: "/images/logo.png",
+      shortcut: "/favicon.ico",
+      apple: "/apple-touch-icon.png",
     },
     openGraph: {
       title,
@@ -252,6 +254,11 @@ export default async function LocaleLayout(
     <html lang={locale} className={`${inter.variable} ${outfit.variable} antialiased`} data-scroll-behavior="smooth">
       <head>
         <JsonLd locale={locale} />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48" />
+        <link rel="icon" href="/icon.png" type="image/png" sizes="192x192" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+        <link rel="manifest" href="/site.webmanifest" />
         <link rel="preload" href="/images/hero-mobile-ui.webp" as="image" type="image/webp" fetchPriority="high" />
         <link rel="preload" href="/images/logo.png" as="image" type="image/png" />
       </head>
