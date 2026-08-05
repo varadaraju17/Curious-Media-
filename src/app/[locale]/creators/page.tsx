@@ -512,16 +512,16 @@ export default function CreatorsPage() {
               {/* Integrated Stat Ribbon */}
               <div className="grid grid-cols-3 gap-3 w-full max-w-xl mb-8 p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-[0_8px_30px_rgba(11,46,168,0.06)]">
                 <div className="text-left border-r border-slate-100 pr-2">
-                  <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">Monthly Views</p>
-                  <p className="text-sm sm:text-lg font-black text-[#0A1A4E]">1.2B+</p>
+                  <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">{isHindi ? "अभियान पहुंच" : "Campaign Reach"}</p>
+                  <p className="text-sm sm:text-lg font-black text-[#0A1A4E]">500M+</p>
                 </div>
                 <div className="text-left border-r border-slate-100 pr-2 pl-1">
-                  <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">Active Channels</p>
-                  <p className="text-sm sm:text-lg font-black text-[#0B2EA8]">70+ Network</p>
+                  <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">{isHindi ? "औसत ROI लिफ्ट" : "Avg ROI Lift"}</p>
+                  <p className="text-sm sm:text-lg font-black text-[#0B2EA8]">+145%</p>
                 </div>
                 <div className="text-left pl-1">
-                  <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">Disbursed</p>
-                  <p className="text-sm sm:text-lg font-black text-cyan-600">{isHindi ? "₹10 लाख+" : "₹1M+"}</p>
+                  <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">{isHindi ? "ब्रांड रिटेंशन" : "Brand Retention"}</p>
+                  <p className="text-sm sm:text-lg font-black text-cyan-600">98.4%</p>
                 </div>
               </div>
 
@@ -575,10 +575,10 @@ export default function CreatorsPage() {
                 {/* Platforms Grid (Rich Gradient Tiles) */}
                 <div className="grid grid-cols-4 gap-2 my-1">
                   {[
-                    { name: "YouTube", stat: "450M+", color: "bg-blue-900/60 text-cyan-300 border-sky-400/40" },
+                    { name: "Facebook", stat: "1.2B+", color: "bg-indigo-900/60 text-indigo-200 border-indigo-400/40" },
+                    { name: "Youtube", stat: "450M+", color: "bg-blue-900/60 text-cyan-300 border-sky-400/40" },
                     { name: "Instagram", stat: "320M+", color: "bg-sky-900/60 text-sky-200 border-sky-400/40" },
-                    { name: "Facebook", stat: "280M+", color: "bg-indigo-900/60 text-indigo-200 border-indigo-400/40" },
-                    { name: "OTT / TV", stat: "150M+", color: "bg-cyan-900/60 text-cyan-200 border-cyan-400/40" }
+                    { name: "Disbursed", stat: "1M+", color: "bg-cyan-900/60 text-cyan-200 border-cyan-400/40" }
                   ].map((p, idx) => (
                     <div key={idx} className={`p-2 rounded-xl border backdrop-blur-sm ${p.color} text-center flex flex-col justify-center`}>
                       <span className="text-[9px] font-black uppercase tracking-wider block opacity-90">{p.name}</span>
@@ -587,23 +587,27 @@ export default function CreatorsPage() {
                   ))}
                 </div>
 
-                {/* Content Feature Box */}
-                <div className="relative rounded-2xl overflow-hidden bg-slate-900 aspect-[16/9] border border-sky-400/40 shadow-inner group">
-                  <img 
-                    src="/images/ip_owners_showcase.png" 
-                    alt="Curious IP Owners & Monetization Dashboard"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+                {/* Content Feature Box (Redesigned Glassmorphic Showcase Card) */}
+                <div className="relative rounded-2xl overflow-hidden bg-white/10 backdrop-blur-md border border-sky-300/30 p-3.5 flex flex-col gap-3 shadow-[0_10px_30px_rgba(0,0,0,0.2)] group transition-all duration-300 hover:border-cyan-300/60">
                   
-                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
+                  {/* Card Top Label Strip */}
+                  <div className="flex items-center justify-between px-1">
                     <div>
-                      <p className="text-[8px] font-black uppercase tracking-widest text-cyan-300">Featured Network Partner</p>
+                      <p className="text-[8px] font-black uppercase tracking-[0.2em] text-cyan-300">Featured Network Partners</p>
                       <p className="text-xs font-black uppercase tracking-tight text-white">IP Owners & Creator Studios</p>
                     </div>
-                    <span className="px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-[9px] font-black uppercase text-white border border-white/30">
+                    <span className="px-2.5 py-0.5 rounded-full bg-cyan-400/20 backdrop-blur-md text-[9px] font-black uppercase text-cyan-200 border border-cyan-300/40">
                       Multi-Format
                     </span>
+                  </div>
+
+                  {/* Clean Logo Grid Showcase Frame */}
+                  <div className="relative rounded-xl overflow-hidden bg-white/95 p-2 shadow-inner border border-white/60">
+                    <img 
+                      src="/images/ip_owners_showcase.png" 
+                      alt="Curious IP Owners & Monetization Dashboard"
+                      className="w-full h-auto object-contain rounded-lg group-hover:scale-[1.02] transition-transform duration-500"
+                    />
                   </div>
                 </div>
 

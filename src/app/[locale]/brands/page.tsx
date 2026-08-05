@@ -177,16 +177,16 @@ export default function BrandsPage() {
               {/* Integrated Stat Bar (Official Brand Metrics) */}
               <div className="grid grid-cols-3 gap-3 w-full max-w-xl mb-8 p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-[0_8px_30px_rgba(11,46,168,0.06)]">
                 <div className="text-left border-r border-slate-100 pr-2">
-                  <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">Campaign Reach</p>
+                  <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">{isHindi ? "अभियान पहुंच" : "Campaign Reach"}</p>
                   <p className="text-sm sm:text-lg font-black text-[#0A1A4E]">500M+</p>
                 </div>
                 <div className="text-left border-r border-slate-100 pr-2 pl-1">
-                  <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">Avg ROI Lift</p>
-                  <p className="text-sm sm:text-lg font-black text-[#0B2EA8]">+145%</p>
+                  <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">{isHindi ? "इंगेजमेंट दर" : "Engagement Rate"}</p>
+                  <p className="text-sm sm:text-lg font-black text-[#0B2EA8]">5%</p>
                 </div>
                 <div className="text-left pl-1">
-                  <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">Brand Retention</p>
-                  <p className="text-sm sm:text-lg font-black text-cyan-600">98.4%</p>
+                  <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">{isHindi ? "ब्रांड रिटेंशन" : "Brand Retention"}</p>
+                  <p className="text-sm sm:text-lg font-black text-cyan-600">93%</p>
                 </div>
               </div>
 
