@@ -16,7 +16,7 @@ export function JsonLd({ locale }: JsonLdProps) {
     name: 'Curious Media',
     legalName: 'Curious Media Private Limited',
     url: baseUrl,
-    logo: `${baseUrl}/images/logo.png`,
+    logo: `${baseUrl}/images/logo.webp`,
     foundingDate: '2023',
     founders: [
       {

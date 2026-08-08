@@ -266,7 +266,7 @@ export default function AboutPage() {
     {
       name: "Pushpraj Singh",
       role: "Co-Founder, Curious Media",
-      image: "/images/avatars/pushpraj.webp",
+      image: "/images/pushapa_raj.jpeg",
       linkedin: "https://www.linkedin.com/in/iampushprajsingh/",
       quote: "Pushpraj is the commercial engine of Curious. He leads the revenue strategy, business development, and partnership deals, turning creative assets into sustainable, scalable business opportunities."
     }

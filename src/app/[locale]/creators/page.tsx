@@ -512,16 +512,16 @@ export default function CreatorsPage() {
               {/* Integrated Stat Ribbon */}
               <div className="grid grid-cols-3 gap-3 w-full max-w-xl mb-8 p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-[0_8px_30px_rgba(11,46,168,0.06)]">
                 <div className="text-left border-r border-slate-100 pr-2">
-                  <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">{isHindi ? "अभियान पहुंच" : "Campaign Reach"}</p>
-                  <p className="text-sm sm:text-lg font-black text-[#0A1A4E]">500M+</p>
+                  <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">{isHindi ? "मासिक व्यूज" : "Monthly Views"}</p>
+                  <p className="text-sm sm:text-lg font-black text-[#0A1A4E]">1.2B+</p>
                 </div>
                 <div className="text-left border-r border-slate-100 pr-2 pl-1">
-                  <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">{isHindi ? "औसत ROI लिफ्ट" : "Avg ROI Lift"}</p>
-                  <p className="text-sm sm:text-lg font-black text-[#0B2EA8]">+145%</p>
+                  <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">{isHindi ? "सक्रिय चैनल" : "Active Channels"}</p>
+                  <p className="text-sm sm:text-lg font-black text-[#0B2EA8]">70+ Network</p>
                 </div>
                 <div className="text-left pl-1">
-                  <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">{isHindi ? "ब्रांड रिटेंशन" : "Brand Retention"}</p>
-                  <p className="text-sm sm:text-lg font-black text-cyan-600">98.4%</p>
+                  <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">{isHindi ? "वितरित राशि" : "Disbursed"}</p>
+                  <p className="text-sm sm:text-lg font-black text-cyan-600">₹1M+</p>
                 </div>
               </div>
 
@@ -604,7 +604,7 @@ export default function CreatorsPage() {
                   {/* Clean Logo Grid Showcase Frame */}
                   <div className="relative rounded-xl overflow-hidden bg-white/95 p-2 shadow-inner border border-white/60">
                     <img 
-                      src="/images/ip_owners_showcase.png" 
+                      src="/images/ip_owners_showcase.webp" 
                       alt="Curious IP Owners & Monetization Dashboard"
                       className="w-full h-auto object-contain rounded-lg group-hover:scale-[1.02] transition-transform duration-500"
                     />

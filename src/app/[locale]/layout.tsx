@@ -13,13 +13,13 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  display: "optional",
+  display: "swap",
 });
 
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
-  display: "optional",
+  display: "swap",
 });
 
 export const viewport: Viewport = {
@@ -203,7 +203,7 @@ export async function generateMetadata(
       siteName: "Curious Media",
       images: [
         {
-          url: `${baseUrl}/images/logo.png`,
+          url: `${baseUrl}/images/logo.webp`,
           width: 1200,
           height: 630,
           alt: "Curious Media - Creator & Brand Management Agency",
@@ -216,7 +216,7 @@ export async function generateMetadata(
       card: "summary_large_image",
       title,
       description,
-      images: [`${baseUrl}/images/logo.png`],
+      images: [`${baseUrl}/images/logo.webp`],
       creator: "@curiousmedia",
     },
     robots: {
@@ -260,7 +260,7 @@ export default async function LocaleLayout(
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="preload" href="/images/hero-mobile-ui.webp" as="image" type="image/webp" fetchPriority="high" />
-        <link rel="preload" href="/images/logo.png" as="image" type="image/png" />
+        <link rel="preload" href="/images/logo.webp" as="image" type="image/webp" />
       </head>
       <body className="font-sans bg-white text-[#0B2EA8] min-h-screen flex flex-col">
         <Providers>

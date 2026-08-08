@@ -168,6 +168,15 @@ export function Testimonials({ dict }: { dict: any }) {
         "Bennett University has been associated with Curious Media for over a year, and our experience working with the team has been extremely positive. Curious Media provides meaningful learning opportunities and hands-on exposure to young talent, enabling students to gain valuable industry experience. We have consistently received encouraging feedback from our students regarding their engagement with the organization, and we appreciate Curious Media’s commitment to nurturing and empowering emerging professionals.",
       logo: "/images/avatars/Bennett.webp",
     },
+    {
+      name: "Shreya Baveja",
+      role: "Social Media Associate",
+      company: "Blue Tea",
+      brandColor: "#0F52BA", // Blue Tea Blue
+      quote:
+        "Working with Curious Media over the past 6–7 months has been an incredible experience. Their team has consistently gone above and beyond to support us with our influencer marketing efforts no matter how challenging or last-minute the requirements have been. From handling unrealistic briefs with ease to ensuring timely execution, they've always delivered with professionalism and efficiency. What truly stands out is their attention to detail they've supported us through every minor aspect of influencer marketing making the entire process smooth and stress-free. Their proactive communication, reliability, and commitment to quality have made them a valuable extension of our team. It's been a pleasure collaborating with them and I look forward to continuing this partnership.",
+      logo: "/images/bluetea.jpg",
+    },
   ];
 
   const testimonials = rawTestimonials.map((t) => {
@@ -178,6 +187,7 @@ export function Testimonials({ dict }: { dict: any }) {
       Shreya: "श्रेया",
       Amritansh: "अमृतांश",
       "Reneeta Choudhury": "रेणीता चौधरी",
+      "Shreya Baveja": "श्रेया बवेजा",
     };
     const roleMap: Record<string, string> = {
       "Influencer Marketing Associate": "इन्फ्लुएंसर मार्केटिंग एसोसिएट",
@@ -185,6 +195,7 @@ export function Testimonials({ dict }: { dict: any }) {
       "Associate Producer — Leading New Ventures, IPs & Growth":
         "एसोसिएट प्रोड्यूसर - न्यू वेंचर्स, आईपी और ग्रोथ प्रमुख",
       "Placement Head – Bennett University": "प्लेसमेंट हेड - बेनेट यूनिवर्सिटी",
+      "Social Media Associate": "सोशल मीडिया एसोसिएट",
     };
     const quoteMap: Record<string, string> = {
       "Working with Curious Media has been a great experience for Univest. Their expertise in influencer marketing extends beyond creator sourcing...they focus on the right partnerships, seamless execution, and meaningful results. From influencer campaigns to LinkedIn initiatives, the team has consistently helped us enhance brand visibility and reach the right audience. Their responsiveness, transparency, and execution excellence make them a reliable growth partner.":
@@ -198,6 +209,9 @@ export function Testimonials({ dict }: { dict: any }) {
 
       "Bennett University has been associated with Curious Media for over a year, and our experience working with the team has been extremely positive. Curious Media provides meaningful learning opportunities and hands-on exposure to young talent, enabling students to gain valuable industry experience. We have consistently received encouraging feedback from our students regarding their engagement with the organization, and we appreciate Curious Media’s commitment to nurturing and empowering emerging professionals.":
         "बेनेट यूनिवर्सिटी एक साल से अधिक समय से क्यूरियस मीडिया से जुड़ी हुई है, और टीम के साथ काम करने का हमारा अनुभव बेहद सकारात्मक रहा है। क्यूरियस मीडिया युवा प्रतिभाओं को सार्थक सीखने के अवसर और व्यावहारिक अनुभव प्रदान करता है, जिससे छात्रों को मूल्यवान उद्योग अनुभव प्राप्त करने में मदद मिलती है। हमें संगठन के साथ अपने जुड़ाव के संबंध में अपने छात्रों से लगातार उत्साहजनक प्रतिक्रिया मिली है, और हम उभरते पेशेवरों के पोषण और सशक्तीकरण के लिए क्यूरियस मीडिया की प्रतिबद्धता की सराहना करते हैं।",
+
+      "Working with Curious Media over the past 6–7 months has been an incredible experience. Their team has consistently gone above and beyond to support us with our influencer marketing efforts no matter how challenging or last-minute the requirements have been. From handling unrealistic briefs with ease to ensuring timely execution, they've always delivered with professionalism and efficiency. What truly stands out is their attention to detail they've supported us through every minor aspect of influencer marketing making the entire process smooth and stress-free. Their proactive communication, reliability, and commitment to quality have made them a valuable extension of our team. It's been a pleasure collaborating with them and I look forward to continuing this partnership.":
+        "पिछले 6-7 महीनों में क्यूरियस मीडिया के साथ काम करना एक अद्भुत अनुभव रहा है। उनकी टीम ने लगातार हमारी इन्फ्लुएंसर मार्केटिंग प्रयासों का समर्थन करने के लिए अपनी सीमाओं से परे जाकर काम किया है, चाहे आवश्यकताएं कितनी भी चुनौतीपूर्ण या अंतिम समय की क्यों न हों। अवास्तविक ब्रीफ को आसानी से संभालने से लेकर समय पर निष्पादन सुनिश्चित करने तक, उन्होंने हमेशा व्यावसायिकता और दक्षता के साथ परिणाम दिए हैं। जो बात वास्तव में सामने आती है वह है उनका विस्तार पर ध्यान - उन्होंने इन्फ्लुएंसर मार्केटिंग के हर छोटे पहलू के माध्यम से हमारा समर्थन किया है जिससे पूरी प्रक्रिया सहज और तनाव मुक्त हो गई है। उनके सक्रिय संचार, विश्वसनीयता और गुणवत्ता के प्रति प्रतिबद्धता ने उन्हें हमारी टीम का एक मूल्यवान विस्तार बना दिया है। उनके साथ सहयोग करना एक खुशी की बात रही है और मैं इस साझेदारी को जारी रखने के लिए उत्सुक हूं।",
     };
 
     return {
