@@ -143,7 +143,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
 
           {/* ═══ LEFT - Copy ═══ */}
           <div
-            className="lg:col-span-7 flex flex-col animate-fade-in-up"
+            className="lg:col-span-7 flex flex-col"
           >
 
             {/* ── Headline ── */}
@@ -184,12 +184,12 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
             {/* ── Sublines ── */}
             <div className="mt-3 sm:mt-4 max-w-2xl flex flex-col gap-1">
               <p
-                className="text-base sm:text-lg md:text-xl font-black text-[#0B2EA8] leading-tight tracking-tight uppercase sm:whitespace-nowrap animate-fade-in-up"
+                className="text-base sm:text-lg md:text-xl font-black text-[#0B2EA8] leading-tight tracking-tight uppercase sm:whitespace-nowrap"
               >
                 {dict.hero.subheading}
               </p>
               <p
-                className="text-xs sm:text-sm md:text-[15px] text-slate-500 font-medium leading-relaxed animate-fade-in-up"
+                className="text-xs sm:text-sm md:text-[15px] text-slate-500 font-medium leading-relaxed"
               >
                 {dict.hero.description}
               </p>
@@ -197,7 +197,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
 
             {/* ── Features pills ── */}
             <div
-              className="mt-4 sm:mt-5 flex flex-wrap gap-2 animate-fade-in-up"
+              className="mt-4 sm:mt-5 flex flex-wrap gap-2"
             >
               {dict.hero.features.map((feat: string) => (
                 <div key={feat} className="inline-flex items-center gap-1.5 px-3 py-1
@@ -211,7 +211,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
 
             {/* ── CTA ── */}
             <div
-              className="mt-6 sm:mt-7 flex items-center gap-4 flex-wrap animate-fade-in-up"
+              className="mt-6 sm:mt-7 flex items-center gap-4 flex-wrap"
             >
               <Link
                 href={`/${locale}/contact`}
