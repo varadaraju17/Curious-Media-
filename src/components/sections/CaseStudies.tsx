@@ -347,11 +347,13 @@ export function CaseStudies({ dict }: { dict: any }) {
                     hover:-translate-y-4 transition-all duration-700 min-h-[500px] md:min-h-[580px]`}
                   style={{ boxShadow: `0 20px 60px ${campaign.glowColor}`, WebkitTapHighlightColor: 'transparent' }}
                 >
-                  {/* Full-bleed image styled to prevent zooming/cropping */}
+                  {/* Full-bleed high-resolution uncompressed image */}
                   <div className="absolute inset-0">
-                    <div
-                      className="absolute inset-0 bg-[size:100%_auto] bg-no-repeat bg-top"
-                      style={{ backgroundImage: `url(${currentImg})` }}
+                    <img
+                      src={currentImg}
+                      alt={campaign.title}
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                      loading="eager"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0A1A4E]/95 via-[#0A1A4E]/40 to-transparent" />
                   </div>
@@ -410,42 +412,6 @@ export function CaseStudies({ dict }: { dict: any }) {
             );
           })}
           <div className="flex-none w-12" />
-        </div>
-
-        {/* Desktop Navigation Arrows - overlaid */}
-        <button
-          onClick={() => scroll("left")}
-          className="hidden md:flex absolute left-6 lg:left-10 top-1/2 -translate-y-1/2 z-30 w-14 h-14 rounded-full bg-white border border-blue-100 items-center justify-center text-[#0B2EA8] shadow-2xl hover:bg-blue-50 hover:scale-110 active:scale-95 transition-all duration-300 group"
-          aria-label="Previous Campaigns"
-        >
-          <ArrowLeft className="w-6 h-6 group-hover:-translate-x-0.5 transition-transform" />
-        </button>
-        <button
-          onClick={() => scroll("right")}
-          className="hidden md:flex absolute right-6 lg:right-10 top-1/2 -translate-y-1/2 z-30 w-14 h-14 rounded-full bg-white border border-blue-100 items-center justify-center text-[#0B2EA8] shadow-2xl hover:bg-blue-50 hover:scale-110 active:scale-95 transition-all duration-300 group"
-          aria-label="Next Campaigns"
-        >
-          <ArrowRight className="w-6 h-6 group-hover:translate-x-0.5 transition-transform" />
-        </button>
-
-        {/* Mobile Navigation Arrows - bottom pill bar */}
-        <div className="md:hidden flex items-center justify-center gap-4 mt-2 pb-2">
-          <button
-            onClick={() => scroll("left")}
-            className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#0B2EA8] text-white shadow-lg active:scale-95 transition-all duration-200"
-            aria-label="Previous Campaigns"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span className="text-xs font-black uppercase tracking-widest">Prev</span>
-          </button>
-          <button
-            onClick={() => scroll("right")}
-            className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#0B2EA8] text-white shadow-lg active:scale-95 transition-all duration-200"
-            aria-label="Next Campaigns"
-          >
-            <span className="text-xs font-black uppercase tracking-widest">Next</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
         </div>
       </div>
     </section>

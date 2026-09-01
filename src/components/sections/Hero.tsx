@@ -285,7 +285,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                 {/* Screen */}
                 <div className="aspect-[9/19.5] rounded-[2.1rem] sm:rounded-[2.2rem] overflow-hidden relative bg-[#06102b] flex items-center justify-center">
                   <img
-                    src="/images/hero-mobile-ui.webp"
+                    src="/images/Home pg.webp"
                     alt="Curious Media App Interface"
                     className="w-full h-full object-contain object-top p-1 sm:p-1.5 transition-transform duration-300"
                     width="270"
@@ -295,7 +295,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                     decoding="async"
                   />
                   {/* Screen gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#06102b]/80 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#06102b]/40 via-transparent to-transparent pointer-events-none" />
 
                   {/* Floating screen widget */}
                   <div

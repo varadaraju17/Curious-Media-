@@ -259,7 +259,7 @@ export default async function LocaleLayout(
         <link rel="icon" href="/icon.png" type="image/png" sizes="192x192" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
         <link rel="manifest" href="/site.webmanifest" />
-        <link rel="preload" href="/images/hero-mobile-ui.webp" as="image" type="image/webp" fetchPriority="high" />
+        <link rel="preload" href="/images/Home pg.webp" as="image" type="image/webp" fetchPriority="high" />
         <link rel="preload" href="/images/logo.webp" as="image" type="image/webp" />
       </head>
       <body className="font-sans bg-white text-[#0B2EA8] min-h-screen flex flex-col">

@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Play, Video, PenTool, Mic, Users, Layout, Share2, Star, Quote, TrendingUp, Camera, Zap, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, Play, Video, PenTool, Mic, Users, Layout, Share2, Star, Quote, TrendingUp, Camera, Zap, ChevronLeft, ChevronRight, Volume2, VolumeX } from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
@@ -180,6 +180,7 @@ export default function StudioPage() {
 
   const [activeTab, setActiveTab] = useState("fb_products");
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [isMuted, setIsMuted] = useState(false);
 
   const rowRefs: Record<string, React.RefObject<HTMLDivElement | null>> = {
     fb_products: useRef<HTMLDivElement>(null),
@@ -501,24 +502,40 @@ export default function StudioPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="relative mx-auto w-full max-w-[320px] sm:max-w-3xl lg:max-w-4xl max-h-[30vh] md:max-h-[50vh] aspect-[19.5/9] rounded-[2rem] md:rounded-[3.5rem] border-[6px] md:border-[16px] border-[#1a1a2e] bg-[#1a1a2e] shadow-[0_40px_100px_rgba(11,46,168,0.25)] flex items-center justify-center shrink-0 mb-8"
+            className="relative mx-auto w-full max-w-[340px] sm:max-w-3xl lg:max-w-4xl aspect-[16/9] sm:aspect-[19.5/9] rounded-[2rem] md:rounded-[3.5rem] border-[6px] md:border-[14px] border-[#1a1a2e] bg-[#1a1a2e] shadow-[0_40px_100px_rgba(11,46,168,0.25)] flex items-center justify-center shrink-0 mb-8 overflow-hidden"
           >
             {/* Dynamic Island (Horizontal Orientation - left side) */}
-            <div className="absolute top-1/2 left-2 -translate-y-1/2 w-[16px] md:w-[24px] h-[30%] bg-[#1a1a2e] rounded-full z-30 shadow-inner flex items-center justify-center">
-               <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#2a2a3e]" />
+            <div className="absolute top-1/2 left-2 -translate-y-1/2 w-[12px] md:w-[20px] h-[25%] bg-[#1a1a2e] rounded-full z-30 shadow-inner flex items-center justify-center pointer-events-none">
+               <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-[#2a2a3e]" />
             </div>
 
-            <div className="w-full h-full bg-black rounded-[1.2rem] md:rounded-[2.5rem] overflow-hidden relative group cursor-pointer">
-              {/* Video removed temporarily */}
+            <div className="w-full h-full bg-black rounded-[1.2rem] md:rounded-[2.5rem] overflow-hidden relative group">
+              <iframe
+                src={`https://www.youtube.com/embed/QsNRHKZE2YE?autoplay=1&mute=${isMuted ? 1 : 0}&enablejsapi=1&loop=1&playlist=QsNRHKZE2YE&controls=1&rel=0&modestbranding=1&playsinline=1`}
+                title="Curious Studios Videography Showreel"
+                className="w-full h-full border-0 absolute inset-0 rounded-[1.2rem] md:rounded-[2.5rem]"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
 
-
-              {/* Floating Tag inside screen */}
-              <div className="absolute bottom-6 right-8 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 px-4 py-2 hidden md:block">
-                 <div className="flex items-center gap-2">
-                   <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                    <p className="text-[10px] uppercase tracking-[0.2em] text-white font-black">{translate("Horizontal Mobile View")}</p>
-                 </div>
-              </div>
+              {/* Dedicated Mute / Unmute Button */}
+              <button
+                onClick={() => setIsMuted(!isMuted)}
+                className="absolute top-3 right-3 sm:top-4 sm:right-4 z-30 rounded-full bg-black/80 backdrop-blur-md border border-white/30 px-3.5 py-1.5 flex items-center gap-2 text-white hover:bg-black/95 transition-all shadow-xl cursor-pointer"
+                title={isMuted ? "Click to Unmute" : "Click to Mute"}
+              >
+                {isMuted ? (
+                  <>
+                    <VolumeX className="w-4 h-4 text-red-400" />
+                    <span className="text-[11px] font-extrabold uppercase tracking-wider">Unmute</span>
+                  </>
+                ) : (
+                  <>
+                    <Volume2 className="w-4 h-4 text-cyan-400 animate-pulse" />
+                    <span className="text-[11px] font-extrabold uppercase tracking-wider">Mute</span>
+                  </>
+                )}
+              </button>
             </div>
           </motion.div>
         </div>
