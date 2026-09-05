@@ -26,32 +26,31 @@ export function Footer({ dict, locale }: FooterProps) {
       <div className="absolute inset-0 bg-[linear-gradient(rgba(11,46,168,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(11,46,168,0.02)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
 
       <div className="container mx-auto px-4 md:px-8 max-w-[1400px] relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-10 md:gap-8 mb-14">
 
           {/* Brand */}
-          <div className="col-span-1 md:col-span-5">
-            <Link href={`/${locale}`} className="inline-flex items-center gap-3.5 mb-4 group">
-              <img src="/images/logo.webp" alt="Curious Media Logo" width="64" height="64" loading="lazy" decoding="async" className="h-14 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-110 scale-110 md:scale-125 origin-left" />
+          <div className="sm:col-span-2 md:col-span-5">
+            <Link href={`/${locale}`} className="inline-flex items-center gap-3 mb-4 group">
+              <img src="/images/logo.webp" alt="Curious Media Logo" width="64" height="64" loading="lazy" decoding="async" className="h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105 origin-left" />
               <span className="text-xl md:text-2xl font-black uppercase tracking-wider text-[#0A1A4E] group-hover:text-[#0B2EA8] transition-colors duration-300 font-heading">
                 Curious Media
               </span>
             </Link>
-            <p className="text-sm font-black text-[#0B2EA8] tracking-wider mb-3 font-heading uppercase italic">
+            <p className="text-xs sm:text-sm font-black text-[#0B2EA8] tracking-wider mb-2 font-heading uppercase italic">
               {dict.footer.tagline || "Relax...you have us"}
             </p>
             {dict.footer.subtitle && (
-              <p className="text-blue-800/60 max-w-xs mb-8 text-sm font-medium leading-relaxed">
+              <p className="text-slate-500 max-w-xs mb-6 text-xs sm:text-sm font-medium leading-relaxed">
                 {dict.footer.subtitle}
               </p>
             )}
 
             {/* Social mini buttons */}
-            <div className="flex gap-2.5">
+            <div className="flex items-center gap-3">
               {[
                 {
                   label: "Instagram",
                   href: "https://www.instagram.com/curiousmedia_official/",
-                  brandColor: "#E4405F",
                   hoverStyle: "hover:bg-[#E4405F] hover:border-[#E4405F] hover:text-white text-[#E4405F]",
                   icon: (
                     <svg viewBox="0 0 24 24" className="w-4 h-4 fill-none stroke-current stroke-2" xmlns="http://www.w3.org/2000/svg">
@@ -64,7 +63,6 @@ export function Footer({ dict, locale }: FooterProps) {
                 {
                   label: "Linkedin",
                   href: "https://www.linkedin.com/company/curiousmediaa/",
-                  brandColor: "#0A66C2",
                   hoverStyle: "hover:bg-[#0A66C2] hover:border-[#0A66C2] hover:text-white text-[#0A66C2]",
                   icon: (
                     <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg">
@@ -75,7 +73,6 @@ export function Footer({ dict, locale }: FooterProps) {
                 {
                   label: "Whatsapp",
                   href: "https://wa.me/918375070191",
-                  brandColor: "#25D366",
                   hoverStyle: "hover:bg-[#25D366] hover:border-[#25D366] hover:text-white text-[#25D366]",
                   icon: (
                     <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg">
@@ -89,8 +86,8 @@ export function Footer({ dict, locale }: FooterProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className={`w-10 h-10 rounded-xl border border-slate-200 bg-white flex items-center justify-center
-                    ${s.hoverStyle} transition-all duration-300 cursor-pointer shadow-sm hover:scale-110`}
+                  className={`w-11 h-11 rounded-xl border border-slate-200 bg-white flex items-center justify-center
+                    ${s.hoverStyle} transition-all duration-300 cursor-pointer shadow-xs hover:scale-105 active:scale-95`}
                 >
                   {s.icon}
                 </a>
@@ -98,16 +95,31 @@ export function Footer({ dict, locale }: FooterProps) {
             </div>
           </div>
 
+          {/* Locations */}
+          <div className="sm:col-span-1 md:col-span-3 lg:col-span-3">
+            <h3 className="text-[10px] font-black tracking-[0.28em] uppercase mb-4 text-[#0B2EA8]">Offices</h3>
+            <div className="flex flex-col gap-3 text-xs text-slate-600 font-medium leading-relaxed">
+              <div className="p-3 rounded-xl bg-white border border-blue-100/80 shadow-2xs">
+                <span className="font-bold text-[#0B2EA8] block mb-0.5">Noida HQ</span>
+                <span>Sector 63, Noida, UP - 201301</span>
+              </div>
+              <div className="p-3 rounded-xl bg-white border border-blue-100/80 shadow-2xs">
+                <span className="font-bold text-[#0B2EA8] block mb-0.5">Mumbai Office</span>
+                <span>WeWork Spectrum Tower, Malad West, Mumbai - 400064</span>
+              </div>
+            </div>
+          </div>
+
           {/* Platform */}
-          <div className="md:col-span-3 lg:col-span-2 lg:col-start-7">
-            <h3 className="text-[10px] font-black tracking-[0.28em] uppercase mb-6 text-[#0B2EA8]">{dict.footer.platform}</h3>
-            <ul className="flex flex-col gap-3">
+          <div className="sm:col-span-1 md:col-span-2 lg:col-span-2">
+            <h3 className="text-[10px] font-black tracking-[0.28em] uppercase mb-4 text-[#0B2EA8]">{dict.footer.platform}</h3>
+            <ul className="flex flex-col gap-2.5">
               {links.platform.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href}
-                    className="text-blue-800/55 hover:text-[#0B2EA8] text-sm font-medium transition-colors duration-200 flex items-center gap-2 group"
+                    className="text-slate-600 hover:text-[#0B2EA8] text-sm font-medium transition-colors duration-200 inline-flex items-center gap-2 group py-1"
                   >
-                    <span className="w-0 group-hover:w-3 h-px bg-gradient-to-r from-blue-500 to-sky-400 transition-all duration-300 rounded-full" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-[#0B2EA8] transition-colors" />
                     {link.label}
                   </Link>
                 </li>
@@ -116,15 +128,15 @@ export function Footer({ dict, locale }: FooterProps) {
           </div>
 
           {/* Company */}
-          <div className="md:col-span-3 lg:col-span-2">
-            <h3 className="text-[10px] font-black tracking-[0.28em] uppercase mb-6 text-[#0B2EA8]">{dict.footer.company}</h3>
-            <ul className="flex flex-col gap-3">
+          <div className="sm:col-span-1 md:col-span-2 lg:col-span-2">
+            <h3 className="text-[10px] font-black tracking-[0.28em] uppercase mb-4 text-[#0B2EA8]">{dict.footer.company}</h3>
+            <ul className="flex flex-col gap-2.5">
               {links.company.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href}
-                    className="text-blue-800/55 hover:text-[#0B2EA8] text-sm font-medium transition-colors duration-200 flex items-center gap-2 group"
+                    className="text-slate-600 hover:text-[#0B2EA8] text-sm font-medium transition-colors duration-200 inline-flex items-center gap-2 group py-1"
                   >
-                    <span className="w-0 group-hover:w-3 h-px bg-gradient-to-r from-blue-500 to-sky-400 transition-all duration-300 rounded-full" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-[#0B2EA8] transition-colors" />
                     {link.label}
                   </Link>
                 </li>
@@ -134,11 +146,11 @@ export function Footer({ dict, locale }: FooterProps) {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-blue-100 pt-8 flex flex-col md:flex-row items-center justify-between text-blue-800/40 text-xs font-medium tracking-wide gap-4">
-          <p>© {new Date().getFullYear()} Curious Media. {dict.footer.rights}</p>
-          <div className="flex gap-8">
-            <Link href={`/${locale}/privacy`} className="hover:text-[#0B2EA8] transition-colors">{dict.footer.privacy}</Link>
-            <Link href={`/${locale}/terms`} className="hover:text-[#0B2EA8] transition-colors">{dict.footer.terms}</Link>
+        <div className="border-t border-blue-100 pt-8 flex flex-col sm:flex-row items-center justify-between text-slate-500 text-xs font-medium tracking-wide gap-4 text-center sm:text-left">
+          <p>© {new Date().getFullYear()} Curious Media Private Limited. {dict.footer.rights}</p>
+          <div className="flex gap-6">
+            <Link href={`/${locale}/privacy`} className="hover:text-[#0B2EA8] transition-colors py-1">{dict.footer.privacy}</Link>
+            <Link href={`/${locale}/terms`} className="hover:text-[#0B2EA8] transition-colors py-1">{dict.footer.terms}</Link>
           </div>
         </div>
       </div>

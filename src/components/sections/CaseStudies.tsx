@@ -322,13 +322,26 @@ export function CaseStudies({ dict }: { dict: any }) {
         </motion.div>
       </div>
 
-      {/* Horizontal scroll - Cinematic Posters with interactive click-swap */}
-      <div className="w-full relative z-10">
-        {/* Edge fades */}
-        <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-white to-transparent z-20 pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-white to-transparent z-20 pointer-events-none" />
+      {/* Horizontal scroll - Cinematic Posters with interactive navigation arrows */}
+      <div className="w-full relative z-10 group/carousel">
+        {/* Floating Navigation Arrows on Left and Right sides */}
+        <button
+          onClick={() => scroll("left")}
+          className="absolute left-3 md:left-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/95 backdrop-blur-xl border border-blue-100 text-[#0B2EA8] shadow-[0_8px_30px_rgba(11,46,168,0.2)] hover:bg-[#0B2EA8] hover:text-white hover:border-[#0B2EA8] hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center cursor-pointer"
+          aria-label="Previous Campaign"
+        >
+          <ArrowLeft className="w-5 h-5 md:w-6 md:h-6" />
+        </button>
 
-        <div ref={scrollRef} className="flex overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 px-4 md:px-8 xl:px-[calc((100%-1400px)/2+2rem)] pb-12 pt-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+        <button
+          onClick={() => scroll("right")}
+          className="absolute right-3 md:right-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/95 backdrop-blur-xl border border-blue-100 text-[#0B2EA8] shadow-[0_8px_30px_rgba(11,46,168,0.2)] hover:bg-[#0B2EA8] hover:text-white hover:border-[#0B2EA8] hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center cursor-pointer"
+          aria-label="Next Campaign"
+        >
+          <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
+        </button>
+
+        <div ref={scrollRef} className="flex overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 px-4 md:px-12 xl:px-[calc((100%-1400px)/2+3rem)] pb-12 pt-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {campaigns.map((campaign, i) => {
             const currentImg = campaign.images[0];
 

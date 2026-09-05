@@ -3,13 +3,11 @@ import { Locale, locales } from "@/i18n/config";
 
 import { Hero } from "@/components/sections/Hero";
 import { Marquee } from "@/components/sections/Marquee";
-import dynamic from "next/dynamic";
-
-const BrandWin = dynamic(() => import("@/components/sections/BrandWin").then(mod => mod.BrandWin), { ssr: true });
-const CaseStudies = dynamic(() => import("@/components/sections/CaseStudies").then(mod => mod.CaseStudies), { ssr: true });
-const Divisions = dynamic(() => import("@/components/sections/Divisions").then(mod => mod.Divisions), { ssr: true });
-const Testimonials = dynamic(() => import("@/components/sections/Testimonials").then(mod => mod.Testimonials), { ssr: true });
-const ContactSection = dynamic(() => import("@/components/sections/ContactSection").then(mod => mod.ContactSection), { ssr: true });
+import { BrandWin } from "@/components/sections/BrandWin";
+import { CaseStudies } from "@/components/sections/CaseStudies";
+import { Divisions } from "@/components/sections/Divisions";
+import { Testimonials } from "@/components/sections/Testimonials";
+import { ContactSection } from "@/components/sections/ContactSection";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));

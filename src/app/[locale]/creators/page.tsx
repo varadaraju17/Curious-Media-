@@ -2,16 +2,16 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useInView, animate } from "framer-motion";
-import { 
-  X, 
-  MapPin, 
-  Search, 
-  Filter, 
-  Camera, 
-  Play, 
-  Users, 
-  BarChart3, 
-  CheckCircle2, 
+import {
+  X,
+  MapPin,
+  Search,
+  Filter,
+  Camera,
+  Play,
+  Users,
+  BarChart3,
+  CheckCircle2,
   ArrowRight,
   TrendingUp,
   Mail,
@@ -70,14 +70,14 @@ function CreatorLogoCard({ creator }: { creator: typeof CREATORS_DATA[0] }) {
     <motion.div
       whileHover={{ scale: 0.98, y: -4 }}
       transition={{ duration: 0.3 }}
-      className="relative h-[340px] w-[75vw] sm:w-[260px] md:w-[280px] lg:w-[22.5vw] shrink-0 rounded-3xl overflow-hidden group shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(11,46,168,0.12)] bg-white border border-slate-100 flex flex-col mx-2 md:mx-3 cursor-pointer"
+      className="relative h-[320px] sm:h-[340px] w-[82vw] sm:w-[260px] md:w-[280px] lg:w-[22.5vw] shrink-0 rounded-3xl overflow-hidden group shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(11,46,168,0.12)] bg-white border border-slate-100 flex flex-col mx-2 md:mx-3 cursor-pointer"
     >
       {/* Image Section - Slightly Zoomed Out (Contain) */}
       <div className="relative flex-1 bg-[#F8FAFC] overflow-hidden group-hover:bg-blue-50/50 transition-colors duration-500">
         {err < srcs.length ? (
-          <img 
-            src={srcs[err]} 
-            alt={creator.name} 
+          <img
+            src={srcs[err]}
+            alt={creator.name}
             className="w-full h-full object-contain p-3 transition-transform duration-700 group-hover:scale-105"
             onError={() => setErr(p => p + 1)}
           />
@@ -232,30 +232,30 @@ function WorkflowSteps() {
         </div>
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-heading tracking-tighter leading-[0.95] uppercase">
           {isHindi ? (
-            <>यह कैसे <br className="hidden lg:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-500 pb-2">काम करता है।</span></>
+            <>यह कैसे <br className="hidden lg:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-500 pb-2">काम करता है।</span></>
           ) : (
-            <>HOW IT <br className="hidden lg:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-500 pb-2">WORKS.</span></>
+            <>HOW IT <br className="hidden lg:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] via-blue-600 to-cyan-500 pb-2">WORKS.</span></>
           )}
         </h2>
         <p className="mt-6 md:mt-8 text-slate-500 text-lg md:text-2xl font-medium max-w-md leading-relaxed">
-          {isHindi 
+          {isHindi
             ? "अधिकतम वृद्धि और पूर्ण पारदर्शिता के लिए बनाई गई एक सीधी साझेदारी।"
             : "A straightforward partnership designed for maximum growth and complete transparency."}
         </p>
- 
+
         {/* Step counter pill */}
         <div className="mt-10 inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-blue-50 border border-blue-100">
           <span className="text-3xl font-black text-[#0B2EA8] leading-none">{workflowData.length}</span>
           <span className="text-xs font-black uppercase tracking-[0.2em] text-[#0B2EA8]/70">
-            {isHindi ? <>साझेदारी<br/>के कदम</> : <>Partnership<br/>Steps</>}
+            {isHindi ? <>साझेदारी<br />के कदम</> : <>Partnership<br />Steps</>}
           </span>
         </div>
       </div>
- 
+
       {/* Right Column: Vertical List of Steps */}
       <div className="flex flex-col py-10">
         {workflowData.map((item, i) => (
-          <motion.div 
+          <motion.div
             key={i}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -270,7 +270,7 @@ function WorkflowSteps() {
               </div>
               <div className="w-px flex-1 bg-slate-100 group-hover:bg-blue-200 transition-colors duration-300 min-h-[2rem]" />
             </div>
- 
+
             {/* Content */}
             <div className="flex flex-col gap-3 pb-2">
               <div className="flex items-center gap-3">
@@ -328,30 +328,26 @@ function FAQAccordion() {
   return (
     <div className="max-w-4xl mx-auto">
       {faqsData.map((faq, i) => (
-        <motion.div 
-          key={i} 
+        <motion.div
+          key={i}
           initial={false}
-          className={`border-b transition-all duration-300 ${
-            i === 0 ? 'border-t border-slate-100' : 'border-slate-100'
-          }`}
+          className={`border-b transition-all duration-300 ${i === 0 ? 'border-t border-slate-100' : 'border-slate-100'
+            }`}
         >
-          <button 
+          <button
             onClick={() => setOpenIndex(openIndex === i ? null : i)}
             className="w-full py-7 md:py-8 flex items-center justify-between text-left focus:outline-none gap-6 group"
           >
             <div className="flex items-center gap-4">
-              <span className={`text-xs font-black tabular-nums shrink-0 transition-colors duration-300 ${
-                openIndex === i ? 'text-[#0B2EA8]' : 'text-slate-300 group-hover:text-slate-400'
-              }`}>{String(i + 1).padStart(2, '0')}</span>
-              <span className={`text-xl md:text-2xl font-black transition-colors duration-300 ${
-                openIndex === i ? 'text-[#0B2EA8]' : 'text-[#0A1A4E] group-hover:text-[#0B2EA8]'
-              }`}>{faq.q}</span>
+              <span className={`text-xs font-black tabular-nums shrink-0 transition-colors duration-300 ${openIndex === i ? 'text-[#0B2EA8]' : 'text-slate-300 group-hover:text-slate-400'
+                }`}>{String(i + 1).padStart(2, '0')}</span>
+              <span className={`text-xl md:text-2xl font-black transition-colors duration-300 ${openIndex === i ? 'text-[#0B2EA8]' : 'text-[#0A1A4E] group-hover:text-[#0B2EA8]'
+                }`}>{faq.q}</span>
             </div>
-            <span className={`w-10 h-10 shrink-0 rounded-xl flex items-center justify-center transition-all duration-500 ${
-              openIndex === i 
-                ? 'bg-[#0B2EA8] text-white rotate-45' 
-                : 'bg-slate-100 text-slate-400 group-hover:bg-blue-50 group-hover:text-[#0B2EA8]'
-            }`}>
+            <span className={`w-10 h-10 shrink-0 rounded-xl flex items-center justify-center transition-all duration-500 ${openIndex === i
+              ? 'bg-[#0B2EA8] text-white rotate-45'
+              : 'bg-slate-100 text-slate-400 group-hover:bg-blue-50 group-hover:text-[#0B2EA8]'
+              }`}>
               <X className="w-5 h-5" />
             </span>
           </button>
@@ -390,7 +386,7 @@ export default function CreatorsPage() {
 
   useEffect(() => {
     if (!mounted) return;
-    
+
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
@@ -401,8 +397,8 @@ export default function CreatorsPage() {
 
     const playScroll = () => {
       if (!isHovered && !isTouching) {
-        currentScroll += 1.5; 
-        
+        currentScroll += 1.5;
+
         if (currentScroll >= scrollContainer.scrollWidth / 2) {
           currentScroll = 0;
         }
@@ -445,10 +441,10 @@ export default function CreatorsPage() {
 
   return (
     <main className="flex-1 w-full bg-white min-h-screen relative overflow-x-hidden pt-24">
-      
+
       {/* ─── HERO SECTION (SPLIT 2-COLUMN LUXURY CREATOR MASTERSTAGE) ─── */}
       <section className="relative overflow-hidden bg-gradient-to-b from-blue-50/40 via-white to-white min-h-[calc(100vh-80px)] flex flex-col justify-between border-b border-slate-100">
-        
+
         {/* Ambient Background & Grid */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "linear-gradient(#0A1A4E 1px, transparent 1px), linear-gradient(90deg, #0A1A4E 1px, transparent 1px)", backgroundSize: "48px 48px" }} />
@@ -459,10 +455,10 @@ export default function CreatorsPage() {
         {/* Hero Content (Exact Copy Preserved) */}
         <div className="container mx-auto px-4 sm:px-6 md:px-8 max-w-[1400px] relative z-10 my-auto py-6 sm:py-8 lg:py-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-6 sm:pt-10 lg:pt-12">
-            
+
             {/* Left Column: Headline, Copy & Stat Ribbon */}
             <div className="lg:col-span-7 flex flex-col items-start text-left">
-              
+
               {/* Status Pill Badge */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50/90 border border-blue-200/80 shadow-sm mb-6">
                 <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
@@ -504,7 +500,7 @@ export default function CreatorsPage() {
                 transition={{ delay: 0.4, duration: 0.8 }}
                 className="text-base sm:text-lg text-slate-500 max-w-2xl mb-8 font-medium leading-relaxed"
               >
-                {isHindi 
+                {isHindi
                   ? "क्यूरियस मीडिया आपके कंटेंट लाइब्रेरी की मुद्रीकरण (Monetization) क्षमता को सभी प्लेटफॉर्मों पर खोलता है, जो कि एशिया के सबसे बड़े वितरण नेटवर्क द्वारा संचालित है।"
                   : "Curious Media unlocks the full monetization potential of your content library across platforms, powered by Asia's largest distribution network."}
               </motion.p>
@@ -532,7 +528,7 @@ export default function CreatorsPage() {
                 transition={{ delay: 0.5, duration: 0.8 }}
                 className="flex items-center gap-4 flex-wrap"
               >
-                <Link 
+                <Link
                   href={`/${locale}/contact`}
                   className="group relative inline-flex items-center gap-2.5 rounded-full px-8 py-3.5 text-white font-black uppercase text-sm tracking-widest overflow-hidden shadow-[0_10px_32px_rgba(11,46,168,0.30)] hover:shadow-[0_18px_50px_rgba(11,46,168,0.45)] hover:scale-[1.03] transition-all duration-300"
                 >
@@ -546,7 +542,7 @@ export default function CreatorsPage() {
 
             {/* Right Column: 3D Creator Monetization & Media HUD */}
             <div className="lg:col-span-5 flex justify-center items-center relative py-4 lg:py-6">
-              
+
               {/* Background Glow */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-gradient-to-br from-blue-300/30 via-cyan-200/20 to-violet-300/20 blur-[80px]" />
@@ -554,7 +550,7 @@ export default function CreatorsPage() {
 
               {/* Main Control HUD Console with Blue-to-Sky-Blue Gradient Fill */}
               <div className="relative z-10 w-full max-w-[420px] rounded-[2.5rem] bg-gradient-to-br from-[#0B2EA8] via-[#0A1A4E] to-[#0284C7] border-2 border-sky-400/50 p-6 sm:p-7 shadow-[0_25px_70px_rgba(11,46,168,0.35)] flex flex-col gap-5 text-white">
-                
+
                 {/* HUD Top Bar */}
                 <div className="flex items-center justify-between pb-3.5 border-b border-sky-400/30">
                   <div className="flex items-center gap-2.5">
@@ -589,7 +585,7 @@ export default function CreatorsPage() {
 
                 {/* Content Feature Box (Redesigned Glassmorphic Showcase Card) */}
                 <div className="relative rounded-2xl overflow-hidden bg-white/10 backdrop-blur-md border border-sky-300/30 p-3.5 flex flex-col gap-3 shadow-[0_10px_30px_rgba(0,0,0,0.2)] group transition-all duration-300 hover:border-cyan-300/60">
-                  
+
                   {/* Card Top Label Strip */}
                   <div className="flex items-center justify-between px-1">
                     <div>
@@ -603,8 +599,8 @@ export default function CreatorsPage() {
 
                   {/* Clean Logo Grid Showcase Frame */}
                   <div className="relative rounded-xl overflow-hidden bg-white/95 p-2 shadow-inner border border-white/60">
-                    <img 
-                      src="/images/ip_owners_showcase.webp" 
+                    <img
+                      src="/images/ip_owners_showcase.webp"
                       alt="Curious IP Owners & Monetization Dashboard"
                       className="w-full h-auto object-contain rounded-lg group-hover:scale-[1.02] transition-transform duration-500"
                     />
@@ -643,7 +639,7 @@ export default function CreatorsPage() {
         {/* Decorative Wave Divider */}
         <div className="w-full overflow-hidden leading-none -mt-2">
           <svg viewBox="0 0 1440 52" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-10 sm:h-12 md:h-14">
-            <path d="M0,26 C360,52 1080,0 1440,26 L1440,52 L0,52 Z" fill="#F8FAFF"/>
+            <path d="M0,26 C360,52 1080,0 1440,26 L1440,52 L0,52 Z" fill="#F8FAFF" />
           </svg>
         </div>
       </section>
@@ -653,7 +649,7 @@ export default function CreatorsPage() {
         <div className="container mx-auto px-4 md:px-8 max-w-7xl mb-24 relative z-10">
           <div className="flex flex-col md:flex-row items-end justify-between gap-8">
             <div>
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -666,14 +662,14 @@ export default function CreatorsPage() {
               </motion.div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-heading tracking-tighter text-[#0A1A4E] leading-[0.95] uppercase mt-2">
                 {isHindi ? (
-                  <>50+ प्रमुख क्रिएटर्स <br className="hidden md:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-cyan-500">द्वारा विश्वसनीय।</span></>
+                  <>50+ प्रमुख क्रिएटर्स <br className="hidden md:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-cyan-500">द्वारा विश्वसनीय।</span></>
                 ) : (
-                  <>Trusted by 50+ <br className="hidden md:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-cyan-500">Leading Creators.</span></>
+                  <>Trusted by 50+ <br className="hidden md:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-cyan-500">Leading Creators.</span></>
                 )}
               </h2>
             </div>
             <div className="text-slate-500 font-bold text-lg max-w-sm md:text-right leading-relaxed">
-              {isHindi 
+              {isHindi
                 ? "प्लेटफ़ॉर्म पर अपनी सामग्री की क्षमता को अधिकतम करने वाले डिजिटल क्रिएटर्स के विशिष्ट नेटवर्क में शामिल हों।"
                 : "Join the elite network of digital creators maximizing their content's potential across platforms."}
             </div>
@@ -685,8 +681,8 @@ export default function CreatorsPage() {
           {/* Edge Fades */}
           <div className="absolute inset-y-0 left-0 w-20 md:w-48 bg-gradient-to-r from-slate-50 to-transparent z-20 pointer-events-none" />
           <div className="absolute inset-y-0 right-0 w-20 md:w-48 bg-gradient-to-l from-slate-50 to-transparent z-20 pointer-events-none" />
-          
-          <div 
+
+          <div
             ref={scrollRef}
             className="flex w-full overflow-x-auto no-scrollbar cursor-grab active:cursor-grabbing pb-16 pt-8 px-4"
           >
@@ -745,7 +741,7 @@ export default function CreatorsPage() {
                 className="max-w-4xl text-left"
               >
                 <p className="text-lg md:text-2xl text-white font-black leading-tight uppercase tracking-tight">
-                  {isHindi 
+                  {isHindi
                     ? "क्रिएटर और आईपी ओनर के लिए सभी प्लेटफॉर्मों और प्रारूपों में मुद्रीकरण (Monetization) के माध्यम से।"
                     : "THROUGH MONETIZATION ACROSS PLATFORMS AND FORMATS FOR CREATOR AND IP OWNER."}
                 </p>
@@ -784,22 +780,22 @@ export default function CreatorsPage() {
             <div>
               <h2 className="text-4xl md:text-6xl lg:text-5xl font-black font-heading tracking-tighter text-[#0A1A4E] leading-none uppercase">
                 {isHindi ? (
-                  <>हम किसके <br className="hidden md:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-cyan-500">साथ काम करते हैं</span></>
+                  <>हम किसके <br className="hidden md:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-cyan-500">साथ काम करते हैं</span></>
                 ) : (
-                  <>Who We <br className="hidden md:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-cyan-500">Work With</span></>
+                  <>Who We <br className="hidden md:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2EA8] to-cyan-500">Work With</span></>
                 )}
               </h2>
             </div>
             <p className="text-slate-500 text-xl font-medium max-w-sm leading-relaxed">
-              {isHindi 
+              {isHindi
                 ? "पात्रता के बारे में प्रश्न हैं? हमारे साथ साझेदारी करने के बारे में वह सब कुछ जो आपको जानना आवश्यक है।"
                 : "Got questions about eligibility? Everything you need to know about partnering with us."}
             </p>
           </div>
 
           <FAQAccordion />
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -826,19 +822,19 @@ export default function CreatorsPage() {
                   <h3 className="text-3xl md:text-5xl lg:text-[54px] font-black font-heading tracking-normal md:tracking-wide leading-tight md:leading-[1.15] uppercase">
                     {isHindi ? (
                       <>
-                        <span className="text-white">अपनी क्षमता को</span><br/>
+                        <span className="text-white">अपनी क्षमता को</span><br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-200 to-white">अनलॉक करने के लिए तैयार?</span>
                       </>
                     ) : (
                       <>
-                        <span className="text-white">Ready to unlock</span><br/>
+                        <span className="text-white">Ready to unlock</span><br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-200 to-white">your potential?</span>
                       </>
                     )}
                   </h3>
                 </div>
                 <p className="text-blue-200/70 text-base md:text-lg font-medium max-w-sm leading-relaxed lg:text-right">
-                  {isHindi 
+                  {isHindi
                     ? "भारत के अग्रणी रचनाकारों में शामिल हों और आज ही अपने कंटेंट लाइब्रेरी के मूल्य को अधिकतम करें।"
                     : "Join India's leading creators and maximize the value of your content library today."}
                 </p>
@@ -864,7 +860,7 @@ export default function CreatorsPage() {
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </Link>
- 
+
               {/* Email CTA */}
               <a
                 href="mailto:info@curiousmedia.in"

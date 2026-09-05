@@ -148,82 +148,92 @@ export function Navbar({ dict, locale }: NavProps) {
           {/* Mobile toggle */}
           <button
             id="mobile-menu-btn"
-            className="md:hidden text-blue-700 hover:text-[#0B2EA8] z-10 relative transition-colors"
+            className="md:hidden w-11 h-11 rounded-full bg-blue-50/90 border border-blue-200/80 text-[#0B2EA8] flex items-center justify-center z-10 relative transition-all active:scale-95 shadow-sm"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
             {isOpen
-              ? <div className="transition-transform duration-300 rotate-0"><X className="w-6 h-6" /></div>
-              : <div className="transition-transform duration-300 rotate-0"><Menu className="w-6 h-6" /></div>
+              ? <div className="transition-transform duration-300 rotate-90"><X className="w-5 h-5" /></div>
+              : <div className="transition-transform duration-300 rotate-0"><Menu className="w-5 h-5" /></div>
             }
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu overlay & drawer */}
       {isOpen && (
-        <div
-          className="md:hidden absolute top-[80px] left-4 right-4 bg-white p-6 rounded-3xl border border-blue-100 flex flex-col gap-1 shadow-[0_12px_40px_rgba(11,46,168,0.1)] z-50 animate-fade-in-down"
-        >
-          {navLinks.map((link) => {
-            const isChildActive = link.dropdown?.some(sub => pathname.includes(sub.href));
-            const isActive = (link.href && pathname.includes(link.href)) || isChildActive;
+        <>
+          <div 
+            className="md:hidden fixed inset-0 bg-slate-900/30 backdrop-blur-sm z-40 transition-opacity" 
+            onClick={() => setIsOpen(false)}
+          />
+          <div
+            className="md:hidden absolute top-[76px] left-4 right-4 bg-white/95 backdrop-blur-xl p-5 sm:p-6 rounded-3xl border border-blue-100 flex flex-col gap-1.5 shadow-[0_20px_50px_rgba(11,46,168,0.15)] z-50 animate-fade-in-down max-h-[calc(100vh-100px)] overflow-y-auto"
+          >
+            {navLinks.map((link) => {
+              const isChildActive = link.dropdown?.some(sub => pathname.includes(sub.href));
+              const isActive = (link.href && pathname.includes(link.href)) || isChildActive;
 
-            return (
-              <div key={link.name}>
-                {link.href ? (
-                  <Link
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className={`text-base font-bold py-3 px-4 rounded-none transition-all flex items-center justify-between ${isActive ? 'bg-blue-50 text-[#0B2EA8]' : 'text-slate-600 hover:text-[#0B2EA8] hover:bg-blue-50/50'
+              return (
+                <div key={link.name}>
+                  {link.href ? (
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`text-base font-bold py-3 px-4 rounded-xl transition-all flex items-center justify-between ${
+                        isActive ? 'bg-blue-50/90 text-[#0B2EA8] shadow-xs' : 'text-slate-700 hover:text-[#0B2EA8] hover:bg-blue-50/50'
                       }`}
-                  >
-                    {link.name}
-                  </Link>
-                ) : (
-                  <div
-                    role="button"
-                    tabIndex={0}
-                    className={`text-base font-bold py-3 px-4 rounded-none transition-all flex items-center justify-between cursor-pointer ${isActive ? 'bg-blue-50 text-[#0B2EA8]' : 'text-slate-600 hover:text-[#0B2EA8] hover:bg-blue-50/50'
+                    >
+                      <span>{link.name}</span>
+                      {isActive && <span className="w-2 h-2 rounded-full bg-[#0B2EA8]" />}
+                    </Link>
+                  ) : (
+                    <div
+                      role="button"
+                      tabIndex={0}
+                      className={`text-base font-bold py-3 px-4 rounded-xl transition-all flex items-center justify-between cursor-pointer ${
+                        isActive ? 'bg-blue-50/90 text-[#0B2EA8] shadow-xs' : 'text-slate-700 hover:text-[#0B2EA8] hover:bg-blue-50/50'
                       }`}
-                  >
-                    {link.name}
-                  </div>
-                )}
-                {link.dropdown && (
-                  <div className="ml-4 mt-1 flex flex-col gap-0.5 border-l-2 border-slate-100 pl-4">
-                    {link.dropdown.map((sub) => (
-                      <Link
-                        key={sub.href}
-                        href={sub.href}
-                        onClick={() => setIsOpen(false)}
-                        className="text-sm font-semibold py-2.5 px-3 rounded-none text-slate-600 hover:text-[#0B2EA8] hover:bg-blue-50/50 transition-all"
-                      >
-                        {sub.name}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            );
-          })}
-          <div className="flex gap-3 mt-4 pt-4 border-t border-blue-100">
-            <Link
-              href={pathname.replace(`/${locale}`, `/${locale === 'en' ? 'hi' : 'en'}`)}
-              onClick={() => setIsOpen(false)}
-              className="flex-1 py-3 text-center rounded-full border border-blue-200 text-blue-700 font-bold uppercase hover:bg-blue-50 text-sm transition-all"
-            >
-              {locale === 'en' ? 'हिन्दी' : 'English'}
-            </Link>
-            <Link
-              href={`/${locale}/contact`}
-              onClick={() => setIsOpen(false)}
-              className="flex-1 py-3 text-center rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold text-sm shadow-[0_0_20px_rgba(37,99,235,0.45)]"
-            >
-              {dict.nav.contact}
-            </Link>
+                    >
+                      <span>{link.name}</span>
+                    </div>
+                  )}
+                  {link.dropdown && (
+                    <div className="ml-3 mt-1 mb-1 flex flex-col gap-1 border-l-2 border-blue-100 pl-3">
+                      {link.dropdown.map((sub) => (
+                        <Link
+                          key={sub.href}
+                          href={sub.href}
+                          onClick={() => setIsOpen(false)}
+                          className="text-sm font-semibold py-2.5 px-3 rounded-lg text-slate-600 hover:text-[#0B2EA8] hover:bg-blue-50/60 transition-all flex items-center gap-2"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-slate-300" />
+                          {sub.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+            <div className="flex gap-3 mt-3 pt-4 border-t border-blue-100/80">
+              <Link
+                href={pathname.replace(`/${locale}`, `/${locale === 'en' ? 'hi' : 'en'}`)}
+                onClick={() => setIsOpen(false)}
+                className="flex-1 py-3 text-center rounded-full border border-blue-200/80 text-blue-700 font-bold uppercase hover:bg-blue-50 text-xs tracking-wider transition-all"
+              >
+                {locale === 'en' ? 'हिन्दी' : 'English'}
+              </Link>
+              <Link
+                href={`/${locale}/contact`}
+                onClick={() => setIsOpen(false)}
+                className="flex-1 py-3 text-center rounded-full bg-gradient-to-r from-[#0B2EA8] to-blue-500 text-white font-bold text-xs uppercase tracking-wider shadow-[0_4px_14px_rgba(11,46,168,0.3)]"
+              >
+                {dict.nav.contact}
+              </Link>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </header>
   );

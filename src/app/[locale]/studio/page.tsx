@@ -98,6 +98,94 @@ const segments = [
   }
 ];
 
+function VideographyPlayer() {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [imgSrc, setImgSrc] = useState("https://img.youtube.com/vi/hMa4fxsUiHE/maxresdefault.jpg");
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  const handlePlayClick = () => {
+    setIsPlaying(true);
+  };
+
+  const handleIframeLoad = () => {
+    const setVolumeMsg = JSON.stringify({
+      event: "command",
+      func: "setVolume",
+      args: [50]
+    });
+
+    const sendVolume = () => {
+      iframeRef.current?.contentWindow?.postMessage(setVolumeMsg, "*");
+    };
+
+    sendVolume();
+    setTimeout(sendVolume, 300);
+    setTimeout(sendVolume, 800);
+    setTimeout(sendVolume, 1500);
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="relative mx-auto w-full max-w-[760px] lg:max-w-[880px] aspect-video rounded-2xl md:rounded-3xl border border-slate-200/80 bg-black shadow-[0_20px_60px_rgba(11,46,168,0.15)] overflow-hidden group"
+    >
+      {!isPlaying ? (
+        <div 
+          className="relative w-full h-full cursor-pointer overflow-hidden" 
+          onClick={handlePlayClick}
+          role="button"
+          aria-label="Play Videography Showreel"
+          tabIndex={0}
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handlePlayClick(); }}
+        >
+          {/* Poster Image - Absolutely Positioned */}
+          <img
+            src={imgSrc}
+            alt="Curious Studios Videography Showreel"
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            onError={() => setImgSrc("https://img.youtube.com/vi/hMa4fxsUiHE/hqdefault.jpg")}
+          />
+          
+          {/* Dark Glass Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A1A4E]/80 via-black/30 to-transparent group-hover:bg-black/30 transition-all duration-300 pointer-events-none" />
+
+          {/* Center Play Button Container - Absolutely Centered */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 z-20 pointer-events-none">
+            <div className="relative flex items-center justify-center">
+              {/* Pulsing Aura */}
+              <div className="absolute w-20 h-20 md:w-28 md:h-28 rounded-full bg-blue-500/40 animate-ping pointer-events-none" />
+              <div className="absolute w-24 h-24 md:w-32 md:h-32 rounded-full bg-cyan-400/25 blur-xl pointer-events-none" />
+              
+              {/* Play Button Icon Circle */}
+              <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-tr from-[#0B2EA8] via-blue-600 to-cyan-400 text-white flex items-center justify-center shadow-[0_10px_35px_rgba(11,46,168,0.5)] group-hover:scale-110 group-active:scale-95 transition-all duration-300 border-2 border-white/40 pointer-events-auto">
+                <Play className="w-8 h-8 md:w-10 md:h-10 text-white fill-white ml-1" />
+              </div>
+            </div>
+            <span className="text-white font-black text-xs md:text-sm uppercase tracking-[0.25em] bg-black/70 backdrop-blur-md px-6 py-2.5 rounded-full border border-white/20 shadow-xl group-hover:bg-[#0B2EA8] transition-colors pointer-events-auto">
+              Play Showreel
+            </span>
+          </div>
+        </div>
+      ) : (
+        <div className="w-full h-full bg-black relative overflow-hidden">
+          <iframe
+            ref={iframeRef}
+            src="https://www.youtube.com/embed/hMa4fxsUiHE?autoplay=1&enablejsapi=1&rel=0&modestbranding=1&controls=1&playsinline=1"
+            title="Curious Studios Videography Showreel"
+            className="w-full h-full border-0 absolute inset-0 rounded-2xl md:rounded-3xl scale-[1.03] origin-center transform-gpu"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            onLoad={handleIframeLoad}
+          />
+        </div>
+      )}
+    </motion.div>
+  );
+}
+
 export default function StudioPage() {
   const { locale } = useParams();
   const isHindi = locale === "hi";
@@ -470,74 +558,27 @@ export default function StudioPage() {
         </div>
       </section>
 
-      {/* Wave Transition */}
-      <div className="w-full overflow-hidden leading-none bg-[#F8FAFF]">
-        <svg viewBox="0 0 1440 52" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-10 sm:h-12 md:h-16 rotate-180 bg-white">
-          <path d="M0,26 C360,52 1080,0 1440,26 L1440,52 L0,52 Z" fill="#F8FAFF"/>
-        </svg>
-      </div>
-
-      {/* ─── VIDEOGRAPHY & HORIZONTAL MOBILE SCREEN ─── */}
-      <section className="py-8 md:py-10 bg-[#F8FAFF] relative overflow-hidden flex flex-col justify-center min-h-0 md:min-h-screen">
-        <div className="container mx-auto px-4 max-w-[1400px] relative z-10 text-center flex-1 flex flex-col justify-center">
+      {/* ─── VIDEOGRAPHY & SHOWREEL SECTION (SINGLE SCREEN FIT) ─── */}
+      <section className="py-8 sm:py-10 md:py-12 bg-[#F8FAFF] relative overflow-hidden flex flex-col justify-center min-h-[calc(100vh-80px)] border-t border-slate-100/60">
+        <div className="container mx-auto px-4 max-w-[1400px] relative z-10 text-center my-auto">
           
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
-            className="mb-6 md:mb-8 shrink-0"
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="mb-4 sm:mb-6 max-w-3xl mx-auto"
           >
-            <h2 className="text-3xl md:text-5xl lg:text-[50px] font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase mb-3 py-1">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-black font-heading tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#0A1A4E] via-blue-600 to-sky-400 uppercase mb-2 sm:mb-3 py-0.5">
               {translate("Videography")}
             </h2>
-            <p className="text-base md:text-xl text-slate-500 font-medium max-w-4xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto">
               {translate("From full-scale ad films to high-ROI video creatives across Instagram, YouTube, TikTok, and social media management-we handle it all, start to finish, so you can focus on growing your brand and revenue.")}
             </p>
           </motion.div>
 
-          {/* Horizontal Mobile Screen Device */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="relative mx-auto w-full max-w-[340px] sm:max-w-3xl lg:max-w-4xl aspect-[16/9] sm:aspect-[19.5/9] rounded-[2rem] md:rounded-[3.5rem] border-[6px] md:border-[14px] border-[#1a1a2e] bg-[#1a1a2e] shadow-[0_40px_100px_rgba(11,46,168,0.25)] flex items-center justify-center shrink-0 mb-8 overflow-hidden"
-          >
-            {/* Dynamic Island (Horizontal Orientation - left side) */}
-            <div className="absolute top-1/2 left-2 -translate-y-1/2 w-[12px] md:w-[20px] h-[25%] bg-[#1a1a2e] rounded-full z-30 shadow-inner flex items-center justify-center pointer-events-none">
-               <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-[#2a2a3e]" />
-            </div>
-
-            <div className="w-full h-full bg-black rounded-[1.2rem] md:rounded-[2.5rem] overflow-hidden relative group">
-              <iframe
-                src={`https://www.youtube.com/embed/QsNRHKZE2YE?autoplay=1&mute=${isMuted ? 1 : 0}&enablejsapi=1&loop=1&playlist=QsNRHKZE2YE&controls=1&rel=0&modestbranding=1&playsinline=1`}
-                title="Curious Studios Videography Showreel"
-                className="w-full h-full border-0 absolute inset-0 rounded-[1.2rem] md:rounded-[2.5rem]"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
-
-              {/* Dedicated Mute / Unmute Button */}
-              <button
-                onClick={() => setIsMuted(!isMuted)}
-                className="absolute top-3 right-3 sm:top-4 sm:right-4 z-30 rounded-full bg-black/80 backdrop-blur-md border border-white/30 px-3.5 py-1.5 flex items-center gap-2 text-white hover:bg-black/95 transition-all shadow-xl cursor-pointer"
-                title={isMuted ? "Click to Unmute" : "Click to Mute"}
-              >
-                {isMuted ? (
-                  <>
-                    <VolumeX className="w-4 h-4 text-red-400" />
-                    <span className="text-[11px] font-extrabold uppercase tracking-wider">Unmute</span>
-                  </>
-                ) : (
-                  <>
-                    <Volume2 className="w-4 h-4 text-cyan-400 animate-pulse" />
-                    <span className="text-[11px] font-extrabold uppercase tracking-wider">Mute</span>
-                  </>
-                )}
-              </button>
-            </div>
-          </motion.div>
+          {/* Centered Box-Shaped Video Player Container */}
+          <VideographyPlayer />
         </div>
       </section>
 

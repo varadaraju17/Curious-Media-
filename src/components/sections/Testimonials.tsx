@@ -2,7 +2,8 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Star, ArrowLeft, ArrowRight } from "lucide-react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 
 const STAR_COUNT = 5;
 
@@ -52,7 +53,7 @@ function TestimonialCard({
         &ldquo;
       </span>
 
-      {/* Star row (colored with t.brandColor) */}
+      {/* Star row */}
       <div className="flex items-center gap-0.5 mb-4">
         {Array.from({ length: STAR_COUNT }).map((_, i) => (
           <Star 
@@ -120,7 +121,27 @@ function TestimonialCard({
 export function Testimonials({ dict }: { dict: any }) {
   const isHindi = dict.testimonials.badge !== "Client Experiences";
   const [activeTestimonial, setActiveTestimonial] = useState<any | null>(null);
+  const [mounted, setMounted] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Lock body scroll and handle Escape key when modal is open
+  useEffect(() => {
+    if (activeTestimonial) {
+      document.body.style.overflow = "hidden";
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") setActiveTestimonial(null);
+      };
+      window.addEventListener("keydown", handleKeyDown);
+      return () => {
+        document.body.style.overflow = "";
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    }
+  }, [activeTestimonial]);
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
@@ -276,7 +297,7 @@ export function Testimonials({ dict }: { dict: any }) {
           </motion.div>
         </div>
 
-        {/* ── Testimonials Carousel (3 cards per view on desktop, 4th card via slide arrow) ── */}
+        {/* ── Testimonials Carousel ── */}
         <div className="relative w-full">
 
           <div
@@ -294,7 +315,7 @@ export function Testimonials({ dict }: { dict: any }) {
             ))}
           </div>
 
-          {/* Slider Controls (Arrow marks) */}
+          {/* Slider Controls */}
           <div className="flex items-center justify-center gap-4 mt-6">
             <button
               onClick={() => scroll("left")}
@@ -314,91 +335,98 @@ export function Testimonials({ dict }: { dict: any }) {
         </div>
       </div>
 
-      {/* ── Full Quote Modal ── */}
-      <AnimatePresence>
-        {activeTestimonial && (
-          <motion.div
-            key="overlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A1A4E]/50 backdrop-blur-md"
-            onClick={() => setActiveTestimonial(null)}
-          >
+      {/* ── Full Quote Modal using React Portal ── */}
+      {mounted && createPortal(
+        <AnimatePresence>
+          {activeTestimonial && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.96, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.96, y: 20 }}
-              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-2xl bg-white rounded-[32px] border-2 shadow-[0_32px_80px_rgba(11,46,168,0.22)] overflow-hidden"
-              style={{ borderColor: activeTestimonial.brandColor }}
+              key="overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 bg-slate-950/70 backdrop-blur-md overflow-y-auto"
+              onClick={() => setActiveTestimonial(null)}
             >
-              {/* Top accent line matching brand color */}
-              <div 
-                className="absolute top-0 left-0 right-0 h-[4px]" 
-                style={{ backgroundColor: activeTestimonial.brandColor }}
-              />
-
-              {/* Close button */}
-              <button
-                onClick={() => setActiveTestimonial(null)}
-                className="absolute top-6 right-6 w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:text-[#0B2EA8] hover:border-blue-300 hover:bg-blue-50 transition-all duration-300 cursor-pointer z-10"
+              <motion.div
+                initial={{ opacity: 0, scale: 0.92, y: 24 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.92, y: 24 }}
+                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative w-full max-w-2xl bg-white rounded-3xl sm:rounded-[32px] border-2 shadow-[0_25px_80px_rgba(0,0,0,0.4)] my-auto flex flex-col max-h-[85vh] overflow-hidden"
+                style={{ borderColor: activeTestimonial.brandColor }}
               >
-                <X className="w-4 h-4" />
-              </button>
+                {/* Top accent line matching brand color */}
+                <div 
+                  className="w-full h-1.5 shrink-0" 
+                  style={{ backgroundColor: activeTestimonial.brandColor }}
+                />
 
-              <div className="p-8 md:p-12 overflow-y-auto max-h-[88vh]">
-
-                {/* Modal header row */}
-                <div className="flex items-center gap-4 mb-8">
-                  <div 
-                    className="w-16 h-16 rounded-2xl border bg-slate-50 flex items-center justify-center p-2.5 shrink-0 shadow-sm"
-                    style={{
-                      borderColor: `${activeTestimonial.brandColor}30`,
-                      backgroundColor: `${activeTestimonial.brandColor}05`
-                    }}
-                  >
-                    <img
-                      src={activeTestimonial.logo}
-                      alt={activeTestimonial.company}
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-[#0A1A4E] font-black text-base uppercase tracking-wide leading-none mb-1">
-                      {activeTestimonial.name}
-                    </h3>
-                    <p className="text-slate-500 text-xs font-semibold leading-snug">
-                      {activeTestimonial.role}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Stars colored by brand color */}
-                <div className="flex items-center gap-0.5 mb-4">
-                  {Array.from({ length: STAR_COUNT }).map((_, i) => (
-                    <Star 
-                      key={i} 
-                      className="w-3.5 h-3.5" 
+                {/* Modal Header Bar with Close Button */}
+                <div className="p-5 sm:p-7 pb-4 flex items-center justify-between gap-4 border-b border-slate-100 shrink-0 relative bg-white">
+                  <div className="flex items-center gap-3.5 min-w-0 pr-2">
+                    <div 
+                      className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl border bg-slate-50 flex items-center justify-center p-2 shrink-0 shadow-xs"
                       style={{
-                        fill: activeTestimonial.brandColor,
-                        stroke: activeTestimonial.brandColor
+                        borderColor: `${activeTestimonial.brandColor}30`,
+                        backgroundColor: `${activeTestimonial.brandColor}08`
                       }}
-                    />
-                  ))}
+                    >
+                      <img
+                        src={activeTestimonial.logo}
+                        alt={activeTestimonial.company}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className="text-[#0A1A4E] font-black text-base sm:text-lg uppercase tracking-wide leading-tight mb-1 truncate">
+                        {activeTestimonial.name}
+                      </h3>
+                      <p className="text-slate-500 text-xs font-semibold leading-snug line-clamp-2">
+                        {activeTestimonial.role}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Close button */}
+                  <button
+                    onClick={() => setActiveTestimonial(null)}
+                    className="w-10 h-10 rounded-full border border-slate-200 bg-slate-50 flex items-center justify-center text-slate-500 hover:text-[#0B2EA8] hover:border-blue-300 hover:bg-blue-50 transition-all duration-200 cursor-pointer shrink-0 shadow-2xs"
+                    aria-label="Close modal"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
                 </div>
 
-                {/* Full quote */}
-                <p className="text-slate-700 text-base md:text-[17px] leading-[1.8] font-medium">
-                  &ldquo;{activeTestimonial.quote}&rdquo;
-                </p>
-              </div>
+                {/* Scrollable Modal Content */}
+                <div className="p-6 sm:p-8 overflow-y-auto flex-1 bg-white">
+                  {/* Stars colored by brand color */}
+                  <div className="flex items-center gap-1 mb-4">
+                    {Array.from({ length: STAR_COUNT }).map((_, i) => (
+                      <Star 
+                        key={i} 
+                        className="w-4 h-4" 
+                        style={{
+                          fill: activeTestimonial.brandColor,
+                          stroke: activeTestimonial.brandColor
+                        }}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Full quote */}
+                  <p className="text-slate-700 text-base sm:text-lg leading-[1.8] font-medium">
+                    &ldquo;{activeTestimonial.quote}&rdquo;
+                  </p>
+                </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </section>
   );
 }
+

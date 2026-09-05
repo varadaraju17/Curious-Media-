@@ -145,10 +145,9 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
           <div
             className="lg:col-span-7 flex flex-col"
           >
-
             {/* ── Headline ── */}
-            <h1 className="font-black font-heading leading-[0.93] tracking-[-0.03em]
-              text-[34px] sm:text-[46px] md:text-[54px] lg:text-[60px] xl:text-[66px] 2xl:text-[72px]"
+            <h1 className="font-black font-heading leading-[0.95] tracking-[-0.03em]
+              text-[30px] xs:text-[36px] sm:text-[46px] md:text-[54px] lg:text-[60px] xl:text-[66px] 2xl:text-[72px]"
             >
               {/* Line 1 */}
               <span
@@ -159,7 +158,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
 
               {/* Line 2 - with shimmer underline */}
               <span
-                className="block relative text-[#0B2EA8] w-fit"
+                className="block relative text-[#0B2EA8] w-fit max-w-full"
               >
                 {dict.hero.headline_line2}
                 <span
@@ -184,7 +183,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
             {/* ── Sublines ── */}
             <div className="mt-3 sm:mt-4 max-w-2xl flex flex-col gap-1">
               <p
-                className="text-base sm:text-lg md:text-xl font-black text-[#0B2EA8] leading-tight tracking-tight uppercase sm:whitespace-nowrap"
+                className="text-sm sm:text-base md:text-xl font-black text-[#0B2EA8] leading-tight tracking-tight uppercase"
               >
                 {dict.hero.subheading}
               </p>
@@ -201,9 +200,9 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
             >
               {dict.hero.features.map((feat: string) => (
                 <div key={feat} className="inline-flex items-center gap-1.5 px-3 py-1
-                  rounded-full bg-blue-50 border border-blue-100 text-[11px] font-bold text-[#0B2EA8]"
+                  rounded-full bg-blue-50/90 border border-blue-100 text-[11px] font-bold text-[#0B2EA8]"
                 >
-                  <CheckCircle className="w-3 h-3 text-blue-400" />
+                  <CheckCircle className="w-3 h-3 text-blue-500 shrink-0" />
                   {feat}
                 </div>
               ))}
@@ -211,17 +210,17 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
 
             {/* ── CTA ── */}
             <div
-              className="mt-6 sm:mt-7 flex items-center gap-4 flex-wrap"
+              className="mt-6 sm:mt-7 flex items-center gap-4 flex-wrap w-full sm:w-auto"
             >
               <Link
                 href={`/${locale}/contact`}
                 id="hero-cta-primary"
-                className="group relative inline-flex items-center gap-2.5 rounded-full
-                  px-7 sm:px-8 py-3 sm:py-3.5
+                className="group relative inline-flex items-center justify-center gap-2.5 rounded-full
+                  w-full sm:w-auto px-7 sm:px-8 py-3.5
                   text-white font-black text-sm sm:text-base tracking-wide overflow-hidden
                   shadow-[0_8px_28px_rgba(11,46,168,0.30)]
                   hover:shadow-[0_16px_48px_rgba(11,46,168,0.45)]
-                  hover:scale-[1.03] transition-all duration-300"
+                  hover:scale-[1.02] active:scale-95 transition-all duration-300"
               >
                 {/* Animated gradient bg */}
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0B2EA8] via-blue-500 to-[#0B2EA8]
@@ -230,9 +229,7 @@ export function Hero({ dict, locale }: { dict: any; locale: Locale }) {
                 <span className="relative z-10">{dict.hero.cta_primary}</span>
                 <ArrowRight className="relative z-10 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-
             </div>
-
           </div>
 
           {/* ═══ RIGHT - Phone ═══ */}
