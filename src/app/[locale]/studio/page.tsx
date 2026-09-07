@@ -165,7 +165,7 @@ function VideographyPlayer() {
               </div>
             </div>
             <span className="text-white font-black text-xs md:text-sm uppercase tracking-[0.25em] bg-black/70 backdrop-blur-md px-6 py-2.5 rounded-full border border-white/20 shadow-xl group-hover:bg-[#0B2EA8] transition-colors pointer-events-auto">
-              Play Showreel
+              Play
             </span>
           </div>
         </div>
